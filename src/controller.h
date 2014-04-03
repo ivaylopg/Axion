@@ -51,4 +51,5 @@ class controller : public ofBaseApp{
     
     Intro introPlayer;
     MoviePlayer player;
+    Tunnel tunnel;
 };
