@@ -8,7 +8,7 @@ Tunnel::Tunnel(){
 //--------------------------------------------------------------
 void Tunnel::setup(){
     hallModel.loadModel("Hallway1C.obj");
-    hallModel.setPosition(ofGetWidth()/2, ofGetHeight()/2 , 100);
+    hallModel.setPosition(0, 0, 100);
     offRange = 10;
     meshAdvance = 0;
     mOffset = 0;
@@ -26,12 +26,13 @@ void Tunnel::draw(){
 	hallLight.enable();
     
     ofPushMatrix();
-    ofTranslate(0,0,meshAdvance);
-    meshAdvance+=0.25;
-    ofTranslate(hallModel.getPosition().x, hallModel.getPosition().y, 0);
-    ofScale(2.5, 2.5);
-    ofTranslate(mOffset, 0, 0);
-    ofTranslate(-hallModel.getPosition().x, -hallModel.getPosition().y, 0);
+    ofSetColor(255);
+    glLineWidth(1);
+    
+    
+//    ofTranslate(hallModel.getPosition().x, hallModel.getPosition().y, 0);
+//    ofScale(2.5, 2.5);
+//    ofTranslate(-hallModel.getPosition().x, -hallModel.getPosition().y, 0);
     
     ofxAssimpMeshHelper & meshHelper = hallModel.getMeshHelper(0);
     ofMultMatrix(hallModel.getModelMatrix());
@@ -39,6 +40,18 @@ void Tunnel::draw(){
     
     //hallMesh.drawFaces();
     hallMesh.drawWireframe();
+
+//
+//    glLineWidth(4);
+//    
+//    ofSetColor(255, 0, 0);
+//    ofLine(0, 0, -1000, 0, 0, 1000);
+//    
+//    ofSetColor(0,255,0);
+//    ofLine(-1000, 0, 0, 1000, 0, 0);
+//    
+//    ofSetColor(0,0,255);
+//    ofLine(0, -1000, 0, 0, 1000, 0);
     
     ofPopMatrix();
     

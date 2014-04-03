@@ -7,6 +7,11 @@ void controller::setup(){
     ofSetVerticalSync(true);
     ofSetFrameRate(60);
     
+    camera.setup();
+    camTargSet = false;
+    camera.speed =  5.0f;
+    camera.disableMove();
+    
     current_state = A;
     next_state = B;
     
@@ -16,6 +21,14 @@ void controller::setup(){
     ofEnableDepthTest();
     glShadeModel(GL_SMOOTH);
     ofEnableSeparateSpecularLight();
+    
+    /*
+    #ifdef __APPLE__
+        CGDisplayHideCursor(NULL); // <- Sometimes necessary to hide curson on Macs
+    #endif
+    ofHideCursor();
+    */
+    ofSetWindowPosition(ofGetScreenWidth()/2 - ofGetWidth()/2, ofGetScreenHeight()/2 - ofGetHeight()/2);
 }
 
 //--------------------------------------------------------------
@@ -41,6 +54,7 @@ void controller::update(){
 //--------------------------------------------------------------
 void controller::draw(){
     ofBackground(0);
+    
     switch (current_state) {
         case A:
             introPlayer.draw();
@@ -56,12 +70,21 @@ void controller::draw(){
             break;
             
         case C:
+            camera.enableMove();
+            camera.begin();
+            if (!camTargSet) {
+                camera.target(ofVec3f(0,0,1));
+                camTargSet = true;
+            }
             tunnel.draw();
+            camera.end();
             break;
             
         default:
             break;
     }
+    
+    
 }
 
 //--------------------------------------------------------------
@@ -73,6 +96,10 @@ void controller::keyPressed(int key){
         
         case OF_KEY_ESC:
             //
+            break;
+            
+        case 'p':
+            //camera.target(ofVec3f(0,0,1));
             break;
             
         default:
