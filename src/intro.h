@@ -1,6 +1,4 @@
-#ifndef intro_h
-#define intro_h
-
+#pragma once
 #include "ofMain.h"
 #include "ofxAssimpModelLoader.h"
 #include "ofVboMesh.h"
@@ -22,4 +20,3 @@ public:
     ofVec3f introPos;
     float introRot;
 };
-#endif
