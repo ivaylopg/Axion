@@ -41,6 +41,7 @@
 		F965124A18ECA71300933E76 /* tinyxmlparser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F965124618ECA71300933E76 /* tinyxmlparser.cpp */; };
 		F965124E18ECAC1D00933E76 /* intro.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F965124D18ECAC1D00933E76 /* intro.cpp */; };
 		F965125418ECD97000933E76 /* moviePlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F965125318ECD97000933E76 /* moviePlayer.cpp */; };
+		F965125718EDED6E00933E76 /* tunnel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F965125618EDED6E00933E76 /* tunnel.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -159,6 +160,7 @@
 		F965125218ECD0B800933E76 /* moviePlayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = moviePlayer.h; sourceTree = "<group>"; };
 		F965125318ECD97000933E76 /* moviePlayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = moviePlayer.cpp; sourceTree = "<group>"; };
 		F965125518EDEB1D00933E76 /* tunnel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tunnel.h; sourceTree = "<group>"; };
+		F965125618EDED6E00933E76 /* tunnel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tunnel.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -346,6 +348,7 @@
 				F965125218ECD0B800933E76 /* moviePlayer.h */,
 				F965125318ECD97000933E76 /* moviePlayer.cpp */,
 				F965125518EDEB1D00933E76 /* tunnel.h */,
+				F965125618EDED6E00933E76 /* tunnel.cpp */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -543,6 +546,7 @@
 				E4B69E210A3A1BDC003C02F2 /* controller.cpp in Sources */,
 				4E322024174AFB49A3BEA152 /* model3DS.cpp in Sources */,
 				C2B7714E50909A7BCAE5A51C /* texture3DS.cpp in Sources */,
+				F965125718EDED6E00933E76 /* tunnel.cpp in Sources */,
 				59DB8A662B2617751F4A9412 /* ofx3dModelLoader.cpp in Sources */,
 				3B8120368B4FCCD80883BAF3 /* ofxAssimpAnimation.cpp in Sources */,
 				F965124718ECA71300933E76 /* ofxXmlSettings.cpp in Sources */,

@@ -29,6 +29,10 @@ void controller::update(){
             player.update();
             break;
             
+        case C:
+            tunnel.update();
+            break;
+            
         default:
             break;
     }
@@ -47,8 +51,12 @@ void controller::draw(){
             if (player.isDone) {
                 player.stop();
                 player.reset();
-                current_state = A;
+                current_state = C;
             }
+            break;
+            
+        case C:
+            tunnel.draw();
             break;
             
         default:
