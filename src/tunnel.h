@@ -1,6 +1,4 @@
-#ifndef tunnel_h
-#define tunnel_h
-
+#pragma once
 #include "ofMain.h"
 #include "ofxAssimpModelLoader.h"
 #include "ofVboMesh.h"
@@ -18,4 +16,3 @@ public:
     ofxAssimpModelLoader hallModel;
     
 };
-#endif
