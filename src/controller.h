@@ -3,6 +3,7 @@
 #include "ofMain.h"
 #include "ofxAssimpModelLoader.h"
 #include "ofVboMesh.h"
+#include "ofxFPSCamera.h"
 
 #include "intro.h"
 #include "moviePlayer.h"
@@ -46,6 +47,9 @@ class controller : public ofBaseApp{
     
     State current_state;
     State next_state;
+    
+    ofxFPSCamera camera;
+    bool camTargSet;
     
     Vid current_video;
     
