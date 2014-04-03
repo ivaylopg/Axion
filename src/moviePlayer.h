@@ -1,6 +1,4 @@
-#ifndef MoviePlayer_h
-#define MoviePlayer_h
-
+#pragma once
 #include "ofMain.h"
 
 class MoviePlayer {
@@ -27,4 +25,3 @@ public:
     bool isDone;
     
 };
-#endif
