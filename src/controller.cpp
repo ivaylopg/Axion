@@ -16,7 +16,7 @@ void controller::setup(){
     camera.disableMove();
     camera.disableStrafe();
     
-    current_state = C;
+    current_state = A;
     next_state = B;
     
     current_video = m0;
