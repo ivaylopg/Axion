@@ -9,10 +9,14 @@ void controller::setup(){
     
     camera.setup();
     camTargSet = false;
-    camera.speed =  5.0f;
+    camera.speed =  0.8f;
+    camera.sensitivityX = 0.05f;
+    camera.sensitivityY = 0.05f;
+    camera.accel = 0.05f;
     camera.disableMove();
+    camera.disableStrafe();
     
-    current_state = A;
+    current_state = C;
     next_state = B;
     
     current_video = m0;
@@ -22,12 +26,12 @@ void controller::setup(){
     glShadeModel(GL_SMOOTH);
     ofEnableSeparateSpecularLight();
     
-    /*
+
     #ifdef __APPLE__
         CGDisplayHideCursor(NULL); // <- Sometimes necessary to hide curson on Macs
     #endif
     ofHideCursor();
-    */
+
     ofSetWindowPosition(ofGetScreenWidth()/2 - ofGetWidth()/2, ofGetScreenHeight()/2 - ofGetHeight()/2);
 }
 

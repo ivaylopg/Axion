@@ -7,8 +7,9 @@ Tunnel::Tunnel(){
 
 //--------------------------------------------------------------
 void Tunnel::setup(){
-    hallModel.loadModel("Hallway1C.obj");
-    hallModel.setPosition(0, 0, 100);
+    //hallModel.loadModel("Hallway1C.obj");
+    hallModel.loadModel("hallway1.obj");
+    hallModel.setPosition(0, 0, 0);
     offRange = 10;
     meshAdvance = 0;
     mOffset = 0;
