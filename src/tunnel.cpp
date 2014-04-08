@@ -18,6 +18,20 @@ void Tunnel::setup(){
     offRange = 10;
     meshAdvance = 0;
     mOffset = 0;
+    
+    camera.setup();
+    camTargSet = false;
+    camera.speed =  0.8f;
+    camera.sensitivityX = 0.05f;
+    camera.sensitivityY = 0.05f;
+    camera.accel = 0.05f;
+    camera.disableMove();
+    camera.disableStrafe();
+    
+    camPos = ofVec3f(0,0,0);
+    
+    goal1 = ofVec3f(442,0,854);
+    goal2 = ofVec3f(-317,0,1175);
 }
 
 //--------------------------------------------------------------
@@ -28,39 +42,46 @@ void Tunnel::update(){
 }
 
 //--------------------------------------------------------------
-void Tunnel::draw(){
+void Tunnel::draw(float alph){
+    camera.enableMove();
+    camera.begin();
+    if (!camTargSet) {
+        camera.target(ofVec3f(0,0,1));
+        camTargSet = true;
+    }
+    
+    camPos = camera.getPosition();
 	hallLight.enable();
     
     ofPushMatrix();
-    ofSetColor(255);
+    ofSetColor(255,255-alph);
     glLineWidth(1);
-    
-    
-//    ofTranslate(hallModel.getPosition().x, hallModel.getPosition().y, 0);
-//    ofScale(2.5, 2.5);
-//    ofTranslate(-hallModel.getPosition().x, -hallModel.getPosition().y, 0);
     
     ofxAssimpMeshHelper & meshHelper = hallModel.getMeshHelper(0);
     ofMultMatrix(hallModel.getModelMatrix());
     ofMultMatrix(meshHelper.matrix);
+
+    //cout << "Cam x: " << camera.getPosition().x << " | Cam y: " << camera.getPosition().y << " | Cam z: " << camera.getPosition().z << endl;
+    
+    cout << "goal 1: " << camera.getPosition().distance(goal1) << " | goal 2: " << camera.getPosition().distance(goal2) << endl;
+    
+    /*
+    if (camPos.z < -52.0) {
+        camPos.z = -52.0;
+        camera.clip(camPos);
+    }
+    */
+    
+    
+    
     
     //hallMesh.drawFaces();
     hallMesh.drawWireframe();
-
-//
-//    glLineWidth(4);
-//    
-//    ofSetColor(255, 0, 0);
-//    ofLine(0, 0, -1000, 0, 0, 1000);
-//    
-//    ofSetColor(0,255,0);
-//    ofLine(-1000, 0, 0, 1000, 0, 0);
-//    
-//    ofSetColor(0,0,255);
-//    ofLine(0, -1000, 0, 0, 1000, 0);
     
     ofPopMatrix();
     
     hallLight.disable();
     ofDisableLighting();
+    
+    camera.end();
 }

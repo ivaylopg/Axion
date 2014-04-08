@@ -2,6 +2,7 @@
 #include "ofMain.h"
 #include "ofxAssimpModelLoader.h"
 #include "ofVboMesh.h"
+#include "ofxFPSCamera.h"
 
 class Tunnel {
 public:
@@ -9,7 +10,7 @@ public:
     
     void setup();
     void update();
-    void draw();
+    void draw(float alph = 0);
     
     bool initialized = false;
     
@@ -20,4 +21,10 @@ public:
     float offRange;
     float meshAdvance;
     
+    ofxFPSCamera camera;
+    bool camTargSet;
+    ofVec3f camPos;
+    
+    ofVec3f goal1;
+    ofVec3f goal2;
 };
