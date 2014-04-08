@@ -8,6 +8,7 @@
 #include "intro.h"
 #include "moviePlayer.h"
 #include "tunnel.h"
+#include "fader.h"
 
 
 class controller : public ofBaseApp{
@@ -44,6 +45,8 @@ class controller : public ofBaseApp{
             m5,     // Martin no sound, long clip COLOR
             m6      // Martin 'we don't have a clue. No idea how to experiment'
         };
+    
+    Fader fader;
     
     State current_state;
     State next_state;
