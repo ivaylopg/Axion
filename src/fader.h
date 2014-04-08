@@ -19,6 +19,8 @@ public:
     void drawTest();
     float getAlpha();
     
+    //void gotMessage(ofMessage& msg);
+    
 protected:
     float fadFac;
     float fadz;
