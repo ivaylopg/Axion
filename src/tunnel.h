@@ -27,4 +27,6 @@ public:
     
     ofVec3f goal1;
     ofVec3f goal2;
+    
+    bool secondTime;
 };
