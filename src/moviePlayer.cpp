@@ -30,10 +30,6 @@ void MoviePlayer::setup(){
 void MoviePlayer::setFile(int i){
     videos.at(whichMov)->stop();
     videos.at(whichMov)->firstFrame();
-    /*
-    videos.at(i)->loadMovie("mov/" + ofToString(i) + ".mov");
-    videos.at(i)->setLoopState(OF_LOOP_NONE);
-    */
     videos.at(i)->firstFrame();
     whichMov = i;
     isDone = false;
@@ -52,9 +48,6 @@ void MoviePlayer::update(){
 //--------------------------------------------------------------
 void MoviePlayer::draw(int x, int y){
     ofSetColor(255);
-//    if (videos.at(whichMov)->getIsMovieDone()) {
-//        isDone = true;
-//    }
     if (!isDone) {
         videos.at(whichMov)->draw(x,y);
     }
@@ -62,9 +55,6 @@ void MoviePlayer::draw(int x, int y){
 
 //--------------------------------------------------------------
 void MoviePlayer::draw(int x, int y, int w, int h){
-//    if (videos.at(whichMov)->getIsMovieDone()) {
-//        isDone = true;
-//    }
     if (!isDone) {
         videos.at(whichMov)->draw(x,y,w,h);
     }
@@ -72,9 +62,6 @@ void MoviePlayer::draw(int x, int y, int w, int h){
 
 //--------------------------------------------------------------
 void MoviePlayer::play(){
-//    if (videos.at(whichMov)->getIsMovieDone()) {
-//        isDone = true;
-//    }
     if (!isPlaying() && !isDone) {
         videos.at(whichMov)->play();
     }
