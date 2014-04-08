@@ -45,6 +45,8 @@ void controller::setup(){
     ofHideCursor();
 
     ofSetWindowPosition(ofGetScreenWidth()/2 - ofGetWidth()/2, ofGetScreenHeight()/2 - ofGetHeight()/2);
+    
+    ofRegisterGetMessages(this);
 }
 
 //--------------------------------------------------------------
@@ -68,6 +70,10 @@ void controller::update(){
     
     fader.update();
     if (fader.fullCover()) {
+        if (current_state == B) {
+            tunnel.camera.reset();
+            tunnel.camera.target(ofVec3f(0,0,1));
+        }
         current_state = next_state;
     }
 }
@@ -102,6 +108,41 @@ void controller::draw(){
             break;
     }
     fader.draw();
+}
+//--------------------------------------------------------------
+void controller::gotMessage(ofMessage& msg){
+    
+    if (ofIsStringInString(msg.message, "SetVid")) {
+        int vid = ofToInt(ofSplitString(msg.message, ":")[1]);
+        //cout << "vid will be: " << state << endl;
+        player.setFile(vid);
+        
+    }
+    
+    if (ofIsStringInString(msg.message, "NextState")) {
+        int state = ofToInt(ofSplitString(msg.message, ":")[1]);
+        //cout << "state will be: " << state << endl;
+        if (state == 0) {
+            next_state = A;
+        } else if (state == 1) {
+            next_state = B;
+        } else if (state == 2) {
+            next_state = C;
+        } else if (state == 3) {
+            next_state = D;
+        }
+    }
+    
+    if (ofIsStringInString("moveOn", msg.message)) {
+        cout << msg.message << endl;
+        fader.moveOn();
+    }
+    
+    if (ofIsStringInString("fadeUp", msg.message)) {
+        cout << msg.message << endl;
+        fader.fadeUp();
+    }
+    
 }
 
 //--------------------------------------------------------------

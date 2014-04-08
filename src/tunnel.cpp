@@ -21,7 +21,8 @@ void Tunnel::setup(){
     
     camera.setup();
     camTargSet = false;
-    camera.speed =  0.8f;
+    //camera.speed =  0.8f;
+    camera.speed =  1.0f;
     camera.sensitivityX = 0.05f;
     camera.sensitivityY = 0.05f;
     camera.accel = 0.05f;
@@ -72,6 +73,11 @@ void Tunnel::draw(float alph){
     }
     */
     
+    if (camera.getPosition().distance(goal1) < 70) {
+        ofSendMessage("SetVid:1");
+        ofSendMessage("NextState:1");
+        ofSendMessage("moveOn");
+    }
     
     
     
