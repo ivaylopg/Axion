@@ -51,8 +51,8 @@ class controller : public ofBaseApp{
     State current_state;
     State next_state;
     
-    ofxFPSCamera camera;
-    bool camTargSet;
+    //ofxFPSCamera camera;
+    //bool camTargSet;
     
     Vid current_video;
     

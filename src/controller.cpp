@@ -1,3 +1,12 @@
+/*
+ *
+ *
+ *
+ *  Main Framework for Axion. This will handle all state changes and store history.
+ *
+ *
+ */
+
 #include "controller.h"
 
 
@@ -7,6 +16,7 @@ void controller::setup(){
     ofSetVerticalSync(true);
     ofSetFrameRate(60);
     
+    /*
     camera.setup();
     camTargSet = false;
     camera.speed =  0.8f;
@@ -15,8 +25,9 @@ void controller::setup(){
     camera.accel = 0.05f;
     camera.disableMove();
     camera.disableStrafe();
+    */
     
-    current_state = A;
+    current_state = C;
     next_state = B;
     
     current_video = m0;
@@ -56,6 +67,9 @@ void controller::update(){
     }
     
     fader.update();
+    if (fader.fullCover()) {
+        current_state = next_state;
+    }
 }
 
 //--------------------------------------------------------------
@@ -66,37 +80,28 @@ void controller::draw(){
     switch (current_state) {
         case A:
             introPlayer.draw();
+            next_state = B;
             break;
         case B:
             player.play();
             player.draw(0, 0, ofGetWidth(), ofGetHeight());
+            
             if (player.isDone) {
                 player.stop();
                 player.reset();
-                current_state = C;
+                next_state = C;
+                fader.fadeUp();
             }
             break;
             
         case C:
-            camera.enableMove();
-            camera.begin();
-            if (!camTargSet) {
-                camera.target(ofVec3f(0,0,1));
-                camTargSet = true;
-            }
-            tunnel.draw();
-            camera.end();
+            tunnel.draw(fader.getAlpha());
             break;
             
         default:
             break;
     }
-    
-    
     fader.draw();
-    
-    
-    
 }
 
 //--------------------------------------------------------------
@@ -133,7 +138,11 @@ void controller::mouseDragged(int x, int y, int button){
 
 //--------------------------------------------------------------
 void controller::mousePressed(int x, int y, int button){
-    current_state = B;
+    //current_state = B;
+    
+    if (current_state == A) {
+        fader.moveOn();
+    }
 
 }
 
