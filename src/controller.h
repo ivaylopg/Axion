@@ -18,6 +18,7 @@ class controller : public ofBaseApp{
 		void update();
 		void draw();
 
+        void gotMessage(ofMessage& msg);
 		void keyPressed(int key);
 		void keyReleased(int key);
 		void mouseMoved(int x, int y );
@@ -29,9 +30,9 @@ class controller : public ofBaseApp{
 		void gotMessage(ofMessage msg);
     
         enum State {
-            A,
-            B,
-            C,
+            A,      // Intro
+            B,      // Movie Player
+            C,      // Tunnel Player 1
             D,
             Pause
         };
