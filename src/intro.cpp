@@ -6,6 +6,10 @@ Intro::Intro(){
 	setup();
 }
 
+Intro::~Intro(){
+	cout << "I'm dead" << endl;
+}
+
 //--------------------------------------------------------------
 void Intro::setup(){
     if(initialized) {

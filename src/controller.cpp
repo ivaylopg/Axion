@@ -27,7 +27,7 @@ void controller::setup(){
     camera.disableStrafe();
     */
     
-    current_state = C;
+    current_state = A;
     next_state = B;
     
     current_video = m0;
@@ -47,10 +47,15 @@ void controller::setup(){
     ofSetWindowPosition(ofGetScreenWidth()/2 - ofGetWidth()/2, ofGetScreenHeight()/2 - ofGetHeight()/2);
     
     ofRegisterGetMessages(this);
+    
+    outImage.loadImage("logo.png");
 }
 
 //--------------------------------------------------------------
 void controller::update(){
+    
+    sound.update();
+    
     switch (current_state) {
         case A:
             introPlayer.update();
@@ -73,6 +78,7 @@ void controller::update(){
         if (current_state == B) {
             tunnel.camera.reset();
             tunnel.camera.target(ofVec3f(0,0,1));
+            //tunnel.secondTime = true;
         }
         current_state = next_state;
     }
@@ -82,6 +88,8 @@ void controller::update(){
 void controller::draw(){
     ofSetColor(255);
     ofBackground(0);
+    
+    sound.play();
     
     switch (current_state) {
         case A:
@@ -95,13 +103,27 @@ void controller::draw(){
             if (player.isDone) {
                 player.stop();
                 player.reset();
-                next_state = C;
+                if (player.whichMov == 1 || player.whichMov == 2) {
+                    tunnel.secondTime = true;
+                }
+                if (player.whichMov == 3) {
+                    next_state = D;
+                    tunnel.secondTime = false;
+                    player.setFile(0);
+                    fader.fadeUp();
+                } else {
+                    next_state = C;
+                }
                 fader.fadeUp();
             }
             break;
             
         case C:
             tunnel.draw(fader.getAlpha());
+            break;
+            
+        case D:
+            drawOut();
             break;
             
         default:
@@ -134,12 +156,12 @@ void controller::gotMessage(ofMessage& msg){
     }
     
     if (ofIsStringInString("moveOn", msg.message)) {
-        cout << msg.message << endl;
+        //cout << msg.message << endl;
         fader.moveOn();
     }
     
     if (ofIsStringInString("fadeUp", msg.message)) {
-        cout << msg.message << endl;
+        //wcout << msg.message << endl;
         fader.fadeUp();
     }
     
@@ -205,4 +227,18 @@ void controller::gotMessage(ofMessage msg){
 //--------------------------------------------------------------
 void controller::dragEvent(ofDragInfo dragInfo){ 
 
+}
+
+//--------------------------------------------------------------
+void controller::drawOut(){
+    float scl = (float) ofGetWidth() / (float) ofGetScreenWidth();
+    ofBackground(0);
+    ofSetColor(255);
+    ofPushMatrix();
+    ofTranslate(ofGetWidth()/2, ofGetHeight()/6);
+    //ofScale(.6, .6);
+    ofScale(scl*0.6, scl*0.6);
+    ofTranslate(-outImage.width/2, 0);
+    outImage.draw(0, 0);
+    ofPopMatrix();
 }
