@@ -21,6 +21,7 @@ void controller::setup(){
     
     current_video = m0;
     
+    //ofEnableAlphaBlending();
     ofEnableBlendMode(OF_BLENDMODE_ALPHA);
     ofEnableDepthTest();
     glShadeModel(GL_SMOOTH);
@@ -53,10 +54,13 @@ void controller::update(){
         default:
             break;
     }
+    
+    fader.update();
 }
 
 //--------------------------------------------------------------
 void controller::draw(){
+    ofSetColor(255);
     ofBackground(0);
     
     switch (current_state) {
@@ -89,6 +93,10 @@ void controller::draw(){
     }
     
     
+    fader.draw();
+    
+    
+    
 }
 
 //--------------------------------------------------------------
@@ -100,10 +108,6 @@ void controller::keyPressed(int key){
         
         case OF_KEY_ESC:
             //
-            break;
-            
-        case 'p':
-            //camera.target(ofVec3f(0,0,1));
             break;
             
         default:

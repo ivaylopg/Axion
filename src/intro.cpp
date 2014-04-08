@@ -29,8 +29,8 @@ void Intro::update(){
 
 //--------------------------------------------------------------
 void Intro::draw(){
+    ofSetColor(255);
     float scl = (float) ofGetWidth() / (float) ofGetScreenWidth();
-    
 	//ofBackgroundGradient(ofColor(20,20,20),ofColor(0,0,0), OF_GRADIENT_CIRCULAR);
     
     ofPushMatrix();
