@@ -33,6 +33,8 @@ void Tunnel::setup(){
     
     goal1 = ofVec3f(442,0,854);
     goal2 = ofVec3f(-317,0,1175);
+    
+    secondTime = false;
 }
 
 //--------------------------------------------------------------
@@ -64,7 +66,7 @@ void Tunnel::draw(float alph){
 
     //cout << "Cam x: " << camera.getPosition().x << " | Cam y: " << camera.getPosition().y << " | Cam z: " << camera.getPosition().z << endl;
     
-    cout << "goal 1: " << camera.getPosition().distance(goal1) << " | goal 2: " << camera.getPosition().distance(goal2) << endl;
+    //cout << "goal 1: " << camera.getPosition().distance(goal1) << " | goal 2: " << camera.getPosition().distance(goal2) << endl;
     
     /*
     if (camPos.z < -52.0) {
@@ -73,11 +75,28 @@ void Tunnel::draw(float alph){
     }
     */
     
-    if (camera.getPosition().distance(goal1) < 70) {
-        ofSendMessage("SetVid:1");
-        ofSendMessage("NextState:1");
-        ofSendMessage("moveOn");
+    if (!secondTime) {
+        if (camera.getPosition().distance(goal1) < 70) {
+            ofSendMessage("SetVid:1");
+            ofSendMessage("NextState:1");
+            ofSendMessage("moveOn");
+        }
+        
+        if (camera.getPosition().distance(goal2) < 70) {
+            ofSendMessage("SetVid:2");
+            ofSendMessage("NextState:1");
+            ofSendMessage("moveOn");
+        }
     }
+    
+    if (secondTime) {
+        if (camera.getPosition().distance(goal1) < 500 || camera.getPosition().distance(goal2) < 500) {
+            ofSendMessage("SetVid:3");
+            ofSendMessage("NextState:1");
+            ofSendMessage("moveOn");
+        }
+    }
+    
     
     
     
