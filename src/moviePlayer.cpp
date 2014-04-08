@@ -51,6 +51,7 @@ void MoviePlayer::update(){
 
 //--------------------------------------------------------------
 void MoviePlayer::draw(int x, int y){
+    ofSetColor(255);
     if (!isDone) {
         videos.at(whichMov)->draw(x,y);
     }

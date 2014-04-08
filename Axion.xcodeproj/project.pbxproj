@@ -42,6 +42,7 @@
 		F965124E18ECAC1D00933E76 /* intro.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F965124D18ECAC1D00933E76 /* intro.cpp */; };
 		F965125418ECD97000933E76 /* moviePlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F965125318ECD97000933E76 /* moviePlayer.cpp */; };
 		F965125718EDED6E00933E76 /* tunnel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F965125618EDED6E00933E76 /* tunnel.cpp */; };
+		F9DA0FF218F3D9D600AC6455 /* fader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F9DA0FF118F3D9D600AC6455 /* fader.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -161,6 +162,8 @@
 		F965125318ECD97000933E76 /* moviePlayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = moviePlayer.cpp; sourceTree = "<group>"; };
 		F965125518EDEB1D00933E76 /* tunnel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tunnel.h; sourceTree = "<group>"; };
 		F965125618EDED6E00933E76 /* tunnel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tunnel.cpp; sourceTree = "<group>"; };
+		F9DA0FF018F3D93200AC6455 /* fader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fader.h; sourceTree = "<group>"; };
+		F9DA0FF118F3D9D600AC6455 /* fader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = fader.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -349,6 +352,8 @@
 				F965125318ECD97000933E76 /* moviePlayer.cpp */,
 				F965125518EDEB1D00933E76 /* tunnel.h */,
 				F965125618EDED6E00933E76 /* tunnel.cpp */,
+				F9DA0FF018F3D93200AC6455 /* fader.h */,
+				F9DA0FF118F3D9D600AC6455 /* fader.cpp */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -552,6 +557,7 @@
 				F965124718ECA71300933E76 /* ofxXmlSettings.cpp in Sources */,
 				483FA4F6D5FA6422C559B1F5 /* ofxAssimpMeshHelper.cpp in Sources */,
 				8DED5056525646FA71980866 /* ofxAssimpModelLoader.cpp in Sources */,
+				F9DA0FF218F3D9D600AC6455 /* fader.cpp in Sources */,
 				F965124A18ECA71300933E76 /* tinyxmlparser.cpp in Sources */,
 				B8846EF8E504895A4A9EFEC0 /* ofxAssimpTexture.cpp in Sources */,
 				F965125418ECD97000933E76 /* moviePlayer.cpp in Sources */,
