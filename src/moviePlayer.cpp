@@ -52,6 +52,9 @@ void MoviePlayer::update(){
 //--------------------------------------------------------------
 void MoviePlayer::draw(int x, int y){
     ofSetColor(255);
+//    if (videos.at(whichMov)->getIsMovieDone()) {
+//        isDone = true;
+//    }
     if (!isDone) {
         videos.at(whichMov)->draw(x,y);
     }
@@ -59,6 +62,9 @@ void MoviePlayer::draw(int x, int y){
 
 //--------------------------------------------------------------
 void MoviePlayer::draw(int x, int y, int w, int h){
+//    if (videos.at(whichMov)->getIsMovieDone()) {
+//        isDone = true;
+//    }
     if (!isDone) {
         videos.at(whichMov)->draw(x,y,w,h);
     }
@@ -66,7 +72,10 @@ void MoviePlayer::draw(int x, int y, int w, int h){
 
 //--------------------------------------------------------------
 void MoviePlayer::play(){
-    if (!isPlaying()) {
+//    if (videos.at(whichMov)->getIsMovieDone()) {
+//        isDone = true;
+//    }
+    if (!isPlaying() && !isDone) {
         videos.at(whichMov)->play();
     }
 }

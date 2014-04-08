@@ -24,6 +24,8 @@ void Fader::setup(){
     holdTime = 1.0;
     
     isFading = false;
+    
+    //ofRegisterGetMessages(this);
 
 }
 
@@ -88,6 +90,20 @@ void Fader::moveOn(){
         movingOn = true;
     }
 }
+
+////--------------------------------------------------------------
+//void Fader::gotMessage(ofMessage& msg){
+//    /*
+//    const char * a = "moveOn";
+//    const char * b = "fadeUp";
+//    std::strncmp(a, b, 6);
+//    */
+//    
+//    if (ofIsStringInString("moveOn", msg.message)) {
+//        cout << msg.message << endl;
+//    }
+//    
+//}
 
 //--------------------------------------------------------------
 float Fader::getAlpha(){
