@@ -9,6 +9,7 @@
 #include "moviePlayer.h"
 #include "tunnel.h"
 #include "fader.h"
+#include "soundPlayer.h"
 
 
 class controller : public ofBaseApp{
@@ -29,6 +30,8 @@ class controller : public ofBaseApp{
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
     
+        void drawOut();
+    
         enum State {
             A,      // Intro
             B,      // Movie Player
@@ -47,6 +50,8 @@ class controller : public ofBaseApp{
             m6      // Martin 'we don't have a clue. No idea how to experiment'
         };
     
+    ofImage outImage;
+    
     Fader fader;
     
     State current_state;
@@ -57,6 +62,7 @@ class controller : public ofBaseApp{
     
     Vid current_video;
     
+    SoundPlayer sound = SoundPlayer();
     Intro introPlayer;
     MoviePlayer player;
     Tunnel tunnel;

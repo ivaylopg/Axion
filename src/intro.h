@@ -6,6 +6,7 @@
 class Intro {
 public:
     Intro();
+    ~Intro();
     
     void setup();
     void update();
