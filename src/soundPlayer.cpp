@@ -6,8 +6,6 @@ SoundPlayer::SoundPlayer(){
 	setup();
 }
 
-// Do something with closeMovie() ?
-
 //--------------------------------------------------------------
 void SoundPlayer::setup(){
     if(initialized) {
@@ -19,16 +17,10 @@ void SoundPlayer::setup(){
     volume = 0.0;
     
     sound1.loadSound("audio/1.aiff");
-    //sound2.loadSound("audio/2.aiff");
-    //sound3.loadSound("audio/3.aiff");
     
     sound1.setMultiPlay(false);
-    //sound2.setMultiPlay(false);
-    //sound3.setMultiPlay(false);
 
     sound1.setLoop(true);
-    //sound2.setLoop(true);
-    //sound3.setLoop(true);
 }
 
 //--------------------------------------------------------------
@@ -43,8 +35,6 @@ void SoundPlayer::update(){
     }
     
     sound1.setVolume(volume);
-    //sound2.setVolume(volume);
-    //sound3.setVolume(volume);
     
 }
 

@@ -1,16 +1,19 @@
 #pragma once
 
+// addons
 #include "ofMain.h"
 #include "ofxAssimpModelLoader.h"
 #include "ofVboMesh.h"
 #include "ofxFPSCamera.h"
 
-
+// classes
+#include "states.h"
 #include "intro.h"
 #include "moviePlayer.h"
 #include "tunnel.h"
 #include "fader.h"
 #include "soundPlayer.h"
+#include "outro.h"
 
 
 class controller : public ofBaseApp{
@@ -20,7 +23,7 @@ class controller : public ofBaseApp{
 		void update();
 		void draw();
 
-        void gotMessage(ofMessage& msg);
+    
 		void keyPressed(int key);
 		void keyReleased(int key);
 		void mouseMoved(int x, int y );
@@ -30,42 +33,17 @@ class controller : public ofBaseApp{
 		void windowResized(int w, int h);
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
+        void gotMessage(ofMessage& msg);
     
-        void drawOut();
-    
-        enum State {
-            A,      // Intro
-            B,      // Movie Player
-            C,      // Tunnel Player 1
-            D,
-            Pause
-        };
-    
-    ///////////////////////////
-    // Not using this yet...
-        enum Vid {
-            m0,     // Martin intro
-            m1,     // Martin 'artists can create another nature...i would kill science''
-            m2,     // Martin 'All reasons to beleive dark matter is real...'
-            m3,     // Martin 'people must talk to each other'
-            m4      // Martin 'It doesn't behave as if it was only the visible...'
-        };
-    ///////////////////////////
-    
-    ofImage outImage;
-    
-    Fader fader;
     
     State current_state;
     State next_state;
     
-    //ofxFPSCamera camera;
-    //bool camTargSet;
-    
     Vid current_video;
-    
-    SoundPlayer sound = SoundPlayer();
+    Fader fader;
     Intro introPlayer;
     MoviePlayer player;
     Tunnel tunnel;
+    SoundPlayer sound;
+    Outro outroPlayer;
 };

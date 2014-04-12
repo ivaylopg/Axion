@@ -35,6 +35,7 @@
 		E7E077E515D3B63C0020DFD4 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E415D3B63C0020DFD4 /* CoreVideo.framework */; };
 		E7E077E815D3B6510020DFD4 /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E715D3B6510020DFD4 /* QTKit.framework */; };
 		E7F985F815E0DEA3003869B5 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7F985F515E0DE99003869B5 /* Accelerate.framework */; };
+		F91DBA1F18F9AA4500C90AB6 /* outro.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F91DBA1E18F9AA4500C90AB6 /* outro.cpp */; };
 		F965124718ECA71300933E76 /* ofxXmlSettings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F965124018ECA71300933E76 /* ofxXmlSettings.cpp */; };
 		F965124818ECA71300933E76 /* tinyxml.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F965124318ECA71300933E76 /* tinyxml.cpp */; };
 		F965124918ECA71300933E76 /* tinyxmlerror.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F965124518ECA71300933E76 /* tinyxmlerror.cpp */; };
@@ -151,6 +152,9 @@
 		F19AB0F312D36358FC181E5B /* ofx3dModelLoader.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofx3dModelLoader.cpp; path = ../../../addons/ofx3DModelLoader/src/ofx3dModelLoader.cpp; sourceTree = SOURCE_ROOT; };
 		F67FE68E327BEFBD4B777571 /* ofxAssimpMeshHelper.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxAssimpMeshHelper.cpp; path = ../../../addons/ofxAssimpModelLoader/src/ofxAssimpMeshHelper.cpp; sourceTree = SOURCE_ROOT; };
 		F82EF0C060CBDAC33AB84F27 /* aiMaterial.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = aiMaterial.h; path = ../../../addons/ofxAssimpModelLoader/libs/assimp/include/aiMaterial.h; sourceTree = SOURCE_ROOT; };
+		F91DBA1C18F9A75500C90AB6 /* states.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = states.h; sourceTree = "<group>"; };
+		F91DBA1D18F9A9EE00C90AB6 /* outro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = outro.h; sourceTree = "<group>"; };
+		F91DBA1E18F9AA4500C90AB6 /* outro.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = outro.cpp; sourceTree = "<group>"; };
 		F965124018ECA71300933E76 /* ofxXmlSettings.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxXmlSettings.cpp; sourceTree = "<group>"; };
 		F965124118ECA71300933E76 /* ofxXmlSettings.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxXmlSettings.h; sourceTree = "<group>"; };
 		F965124318ECA71300933E76 /* tinyxml.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = tinyxml.cpp; sourceTree = "<group>"; };
@@ -359,6 +363,9 @@
 				F9DA0FF118F3D9D600AC6455 /* fader.cpp */,
 				F97436F718F4893400199CF1 /* soundPlayer.h */,
 				F97436F818F4897F00199CF1 /* soundPlayer.cpp */,
+				F91DBA1C18F9A75500C90AB6 /* states.h */,
+				F91DBA1D18F9A9EE00C90AB6 /* outro.h */,
+				F91DBA1E18F9AA4500C90AB6 /* outro.cpp */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -553,6 +560,7 @@
 				F97436F918F4897F00199CF1 /* soundPlayer.cpp in Sources */,
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
 				F965124818ECA71300933E76 /* tinyxml.cpp in Sources */,
+				F91DBA1F18F9AA4500C90AB6 /* outro.cpp in Sources */,
 				F965124E18ECAC1D00933E76 /* intro.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* controller.cpp in Sources */,
 				4E322024174AFB49A3BEA152 /* model3DS.cpp in Sources */,
