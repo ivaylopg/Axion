@@ -5,6 +5,7 @@
 #include "ofVboMesh.h"
 #include "ofxFPSCamera.h"
 
+
 #include "intro.h"
 #include "moviePlayer.h"
 #include "tunnel.h"
@@ -40,15 +41,16 @@ class controller : public ofBaseApp{
             Pause
         };
     
+    ///////////////////////////
+    // Not using this yet...
         enum Vid {
             m0,     // Martin intro
-            m1,     // Martin 'doing things that cannot be done'
-            m2,     // Martin 'artists can create another nature'
-            m3,     // Martin 'envy of artists....i would kill science'
-            m4,     // Martin 'people must talk to each other'
-            m5,     // Martin no sound, long clip COLOR
-            m6      // Martin 'we don't have a clue. No idea how to experiment'
+            m1,     // Martin 'artists can create another nature...i would kill science''
+            m2,     // Martin 'All reasons to beleive dark matter is real...'
+            m3,     // Martin 'people must talk to each other'
+            m4      // Martin 'It doesn't behave as if it was only the visible...'
         };
+    ///////////////////////////
     
     ofImage outImage;
     
