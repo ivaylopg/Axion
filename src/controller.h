@@ -34,8 +34,14 @@ class controller : public ofBaseApp{
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
         void gotMessage(ofMessage& msg);
+        void drawHelp();
+        void drawDebugMessages();
         void exit();
     
+    const float VERSION = 0.2;
+    
+    bool helpOn;
+    bool debugMessages;
     
     State current_state;
     State next_state;

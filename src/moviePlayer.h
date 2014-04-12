@@ -15,6 +15,7 @@ public:
     void setFile(int i);
     void reset();
     bool isPlaying();
+    string getPath();
     
     bool initialized = false;
     
