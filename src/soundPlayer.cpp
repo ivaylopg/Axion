@@ -18,8 +18,8 @@ void SoundPlayer::setup(){
     
     sound1.loadSound("audio/1.aiff");
     
+    
     sound1.setMultiPlay(false);
-
     sound1.setLoop(true);
 }
 
