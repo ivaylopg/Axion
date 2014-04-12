@@ -30,7 +30,7 @@ void controller::setup(){
     
 
     #ifdef __APPLE__
-        CGDisplayHideCursor(NULL); // <- Sometimes necessary to hide curson on Macs
+        CGDisplayHideCursor(NULL); // <- Sometimes necessary to hide cursor on Macs
     #endif
     ofHideCursor();
 
@@ -96,9 +96,9 @@ void controller::draw(){
                 player.stop();
                 player.reset();
                 
-                if (player.whichMov == 1 || player.whichMov == 2) {     // This seems a little inelegant
-                    tunnel.secondTime = true;                           // I think there is a better way by
-                }                                                       // doing this from within the movieplayer class
+                if (player.whichMov == 1 || player.whichMov == 2) {     // This seems a little inelegant with if/then.
+                    tunnel.secondTime = true;                           // I think there is a better way by doing this
+                }                                                       // from within the movieplayer class somehow.
                 if (player.whichMov == 3) {
                     next_state = D;
                     tunnel.secondTime = false;
@@ -134,6 +134,8 @@ void controller::gotMessage(ofMessage& msg){
     // or something like that, but I didn't have too much time to play around with it.
     //
     // Let me know if you think of a better/faster idea.
+    //
+    //
     
     if (ofIsStringInString(msg.message, "SetVid")) {
         int vid = ofToInt(ofSplitString(msg.message, ":")[1]);
@@ -185,9 +187,11 @@ void controller::keyPressed(int key){
             break;
             
         default:
+            if (current_state == A) {
+                fader.moveOn();
+            }
             break;
     }
-
 }
 
 //--------------------------------------------------------------
@@ -207,12 +211,9 @@ void controller::mouseDragged(int x, int y, int button){
 
 //--------------------------------------------------------------
 void controller::mousePressed(int x, int y, int button){
-    //current_state = B;
-    
     if (current_state == A) {
         fader.moveOn();
     }
-
 }
 
 //--------------------------------------------------------------
@@ -228,4 +229,8 @@ void controller::windowResized(int w, int h){
 //--------------------------------------------------------------
 void controller::dragEvent(ofDragInfo dragInfo){ 
 
+}
+//--------------------------------------------------------------
+void controller::exit(){
+    
 }
