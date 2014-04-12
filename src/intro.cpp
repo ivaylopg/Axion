@@ -7,7 +7,7 @@ Intro::Intro(){
 }
 
 Intro::~Intro(){
-	cout << "I'm dead" << endl;
+	//cout << "I'm dead" << endl;
 }
 
 //--------------------------------------------------------------
