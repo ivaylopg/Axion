@@ -29,4 +29,5 @@ public:
     ofVec3f goal2;
     
     bool secondTime;
+    float distFactor;
 };

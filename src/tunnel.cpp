@@ -31,8 +31,10 @@ void Tunnel::setup(){
     
     camPos = ofVec3f(0,0,0);
     
-    goal1 = ofVec3f(442,0,854);
-    goal2 = ofVec3f(-317,0,1175);
+    distFactor = ((float)ofGetScreenWidth())/2560.0;
+    
+    goal1 = ofVec3f(442,0,854) * distFactor;
+    goal2 = ofVec3f(-317,0,1175) * distFactor;
     
     secondTime = false;
 }
@@ -74,15 +76,14 @@ void Tunnel::draw(float alph){
         camera.clip(camPos);
     }
     */
-    
     if (!secondTime) {
-        if (camera.getPosition().distance(goal1) < 70) {
+        if (camera.getPosition().squareDistance(goal1) < (4900.0 * distFactor)) {
             ofSendMessage("SetVid:1");
             ofSendMessage("NextState:1");
             ofSendMessage("moveOn");
         }
         
-        if (camera.getPosition().distance(goal2) < 70) {
+        if (camera.getPosition().squareDistance(goal2) < (4900.0 * distFactor)) {
             ofSendMessage("SetVid:2");
             ofSendMessage("NextState:1");
             ofSendMessage("moveOn");
@@ -90,15 +91,12 @@ void Tunnel::draw(float alph){
     }
     
     if (secondTime) {
-        if (camera.getPosition().distance(goal1) < 500 || camera.getPosition().distance(goal2) < 500) {
+        if (camera.getPosition().squareDistance(goal1) < (250000.0 * distFactor) || camera.getPosition().squareDistance(goal2) < (250000.0 * distFactor)) {
             ofSendMessage("SetVid:3");
             ofSendMessage("NextState:1");
             ofSendMessage("moveOn");
         }
     }
-    
-    
-    
     
     //hallMesh.drawFaces();
     hallMesh.drawWireframe();
@@ -109,4 +107,12 @@ void Tunnel::draw(float alph){
     ofDisableLighting();
     
     camera.end();
+    
+    /*
+    ofDrawBitmapString("goal 1: " + ofToString(camera.getPosition().squareDistance(goal1)) + " | goal 2: " + ofToString(camera.getPosition().squareDistance(goal2)), 20,20);
+    
+    ofDrawBitmapString("Cam x: " + ofToString(camera.getPosition().x) + " | Cam y: " + ofToString(camera.getPosition().y) + " | Cam z: " + ofToString(camera.getPosition().z), 20,50);
+    
+    ofDrawBitmapString(ofToString(ofGetScreenWidth()) + "  |  " + ofToString(((float)(ofGetScreenWidth()/2560.0))), 20,80);
+    */
 }
