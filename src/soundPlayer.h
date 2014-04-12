@@ -16,8 +16,6 @@ public:
     bool isDone;
     
     ofSoundPlayer sound1;
-    ofSoundPlayer sound2;
-    ofSoundPlayer sound3;
     
     bool hasStarted;
     float volume;
