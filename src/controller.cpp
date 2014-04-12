@@ -16,17 +16,6 @@ void controller::setup(){
     ofSetVerticalSync(true);
     ofSetFrameRate(60);
     
-    /*
-    camera.setup();
-    camTargSet = false;
-    camera.speed =  0.8f;
-    camera.sensitivityX = 0.05f;
-    camera.sensitivityY = 0.05f;
-    camera.accel = 0.05f;
-    camera.disableMove();
-    camera.disableStrafe();
-    */
-    
     current_state = A;
     next_state = B;
     
@@ -103,9 +92,10 @@ void controller::draw(){
             if (player.isDone) {
                 player.stop();
                 player.reset();
-                if (player.whichMov == 1 || player.whichMov == 2) {
-                    tunnel.secondTime = true;
-                }
+                
+                if (player.whichMov == 1 || player.whichMov == 2) {     // This seems a little inelegant
+                    tunnel.secondTime = true;                           // I think there is a better way by
+                }                                                       // doing this from within the movieplayer class
                 if (player.whichMov == 3) {
                     next_state = D;
                     tunnel.secondTime = false;
@@ -114,6 +104,7 @@ void controller::draw(){
                 } else {
                     next_state = C;
                 }
+                
                 fader.fadeUp();
             }
             break;
@@ -133,6 +124,13 @@ void controller::draw(){
 }
 //--------------------------------------------------------------
 void controller::gotMessage(ofMessage& msg){
+    
+    // I'm using these messages to control transitions between states
+    //
+    // I think there is probably a better way to do it with a "State Holder" class
+    // or something like that, but I didn't have too much time to play around with it.
+    //
+    // Let me know if you think of a better/faster idea.
     
     if (ofIsStringInString(msg.message, "SetVid")) {
         int vid = ofToInt(ofSplitString(msg.message, ":")[1]);
