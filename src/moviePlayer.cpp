@@ -1,3 +1,4 @@
+
 #include "moviePlayer.h"
 
 //--------------------------------------------------------------
@@ -91,6 +92,17 @@ bool MoviePlayer::isPlaying(){
 void MoviePlayer::reset(){
     videos.at(whichMov)->firstFrame();
     isDone = false;
+}
+
+//--------------------------------------------------------------
+string MoviePlayer::getPath(){
+    string s = videos.at(whichMov)->getMoviePath();
+    if (s.length() > 0) {
+        return s;
+    } else {
+        s = " ";
+        return s;
+    }
 }
 
 
