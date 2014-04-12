@@ -15,10 +15,8 @@ public:
     
     bool isDone;
     
-    ofSoundPlayer sound1;
-    
     bool hasStarted;
     float volume;
     
-    
+    ofSoundPlayer sound1;
 };
