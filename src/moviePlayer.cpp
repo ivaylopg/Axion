@@ -55,6 +55,11 @@ void MoviePlayer::draw(int x, int y){
 
 //--------------------------------------------------------------
 void MoviePlayer::draw(int x, int y, int w, int h){
+    float ratio = 16/9;
+    if (abs(ratio - (w/h)) > 0.01) {
+        h = (w*9)/16;
+    }
+    
     if (!isDone) {
         videos.at(whichMov)->draw(x,y,w,h);
     }
