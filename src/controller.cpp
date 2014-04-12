@@ -8,6 +8,7 @@
  */
 
 #include "controller.h"
+#include "states.h"
 
 
 
@@ -36,8 +37,6 @@ void controller::setup(){
     ofSetWindowPosition(ofGetScreenWidth()/2 - ofGetWidth()/2, ofGetScreenHeight()/2 - ofGetHeight()/2);
     
     ofRegisterGetMessages(this);
-    
-    outImage.loadImage("logo.png");
 }
 
 //--------------------------------------------------------------
@@ -56,6 +55,10 @@ void controller::update(){
             
         case C:
             tunnel.update();
+            break;
+            
+        case D:
+            outroPlayer.update();
             break;
             
         default:
@@ -114,7 +117,7 @@ void controller::draw(){
             break;
             
         case D:
-            drawOut();
+            outroPlayer.draw();
             break;
             
         default:
@@ -162,6 +165,11 @@ void controller::gotMessage(ofMessage& msg){
         //wcout << msg.message << endl;
         fader.fadeUp();
     }
+    
+}
+
+//--------------------------------------------------------------
+void controller::gotMessage(ofMessage msg){
     
 }
 
@@ -218,25 +226,6 @@ void controller::windowResized(int w, int h){
 }
 
 //--------------------------------------------------------------
-void controller::gotMessage(ofMessage msg){
-
-}
-
-//--------------------------------------------------------------
 void controller::dragEvent(ofDragInfo dragInfo){ 
 
-}
-
-//--------------------------------------------------------------
-void controller::drawOut(){
-    float scl = (float) ofGetWidth() / (float) ofGetScreenWidth();
-    ofBackground(0);
-    ofSetColor(255);
-    ofPushMatrix();
-    ofTranslate(ofGetWidth()/2, ofGetHeight()/6);
-    //ofScale(.6, .6);
-    ofScale(scl*0.6, scl*0.6);
-    ofTranslate(-outImage.width/2, 0);
-    outImage.draw(0, 0);
-    ofPopMatrix();
 }
