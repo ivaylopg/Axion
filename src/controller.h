@@ -34,6 +34,7 @@ class controller : public ofBaseApp{
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
         void gotMessage(ofMessage& msg);
+        void exit();
     
     
     State current_state;
