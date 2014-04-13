@@ -39,3 +39,7 @@ xcuserdata
 # svn & cvs
 .svn
 CVS
+
+# binaries
+bin/*.app/*
+*/bin/*.app/*
