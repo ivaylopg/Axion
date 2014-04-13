@@ -20,7 +20,7 @@ public:
     bool initialized = false;
     
     vector<ofVideoPlayer* > videos;
-    static const int N_VIDEOS = 5;
+    static const int N_VIDEOS = 4;
     int whichMov;
     
     bool isDone;
