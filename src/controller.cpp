@@ -14,9 +14,6 @@
 
 //--------------------------------------------------------------
 void controller::setup(){
-    ofSetDataPathRoot("../Resources/data/");  // If not building via the XCode Project on a Mac, you WILL need to comment this out!
-                                              // This is to make self-contained app (via xcode) on Mac.
-    
     ofSetVerticalSync(true);
     ofSetFrameRate(60);
     
