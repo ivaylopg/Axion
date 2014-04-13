@@ -22,7 +22,7 @@ void MoviePlayer::setup(){
     for (int i = 0; i < N_VIDEOS; i++) {
         ofVideoPlayer* p = new ofVideoPlayer();
         videos.push_back(p);
-        videos.at(i)->loadMovie("mov/" + ofToString(i) + ".mov");
+        videos.at(i)->loadMovie("mov/" + ofToString(i) + ".mp4");
         videos.at(i)->setLoopState(OF_LOOP_NONE);
     }
 }
@@ -39,10 +39,12 @@ void MoviePlayer::setFile(int i){
 
 //--------------------------------------------------------------
 void MoviePlayer::update(){
-    videos.at(whichMov)->update();
     if (videos.at(whichMov)->getIsMovieDone()) {
         videos.at(whichMov)->stop();
         isDone = true;
+        return;
+    } else {
+        videos.at(whichMov)->update();
     }
 }
 
