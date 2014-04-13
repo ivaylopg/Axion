@@ -14,6 +14,9 @@
 
 //--------------------------------------------------------------
 void controller::setup(){
+    ofSetDataPathRoot("../Resources/data/");  // If not building via the XCode Project on a Mac, you WILL need to comment this out!
+                                              // This is to make self-contained app (via xcode) on Mac.
+    
     ofSetVerticalSync(true);
     ofSetFrameRate(60);
     
@@ -285,7 +288,7 @@ void controller::drawHelp(){
         case B:
             if (helpOn) {
                 ofDrawBitmapStringHighlight("There should be a MOVIE playing here. If there isn\'t, I\'m Sorry! Please let me know.\n\n"
-                                            "If it does not automatically move on, press \" 0 \" (zero)"
+                                            "If it does not automatically move on, or if it keeps looping, press \" 0 \" (zero)"
                                             , 20,20);
             } else {
                 ofDrawBitmapStringHighlight("Press the \" i \" key for HELP", 20,20);
