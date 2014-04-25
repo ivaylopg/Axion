@@ -23,8 +23,9 @@ void controller::setup(){
     current_state = A;
     next_state = B;
     
-    current_video = m0;
     mind.reset();
+    
+    volume = 0.65;
     
     //ofEnableAlphaBlending();
     ofEnableBlendMode(OF_BLENDMODE_ALPHA);
@@ -69,22 +70,37 @@ void controller::setup(){
 //--------------------------------------------------------------
 void controller::update(){
     mind.update();
-    sound.update();
+    //sound.update();
     
     switch (current_state) {
         case A:
+            if (sound.volume < volume) {
+                sound.fadeUp();
+            }
             introPlayer.update();
             break;
         
         case B:
+            if (sound.volume > volume/3) {
+                sound.fadeDown();
+            }
             playerIntro.update();
             break;
             
         case C:
+            if (sound.volume < volume) {
+                sound.fadeUp();
+            }
             tunnel1.update();
             break;
             
         case D:
+            if (sound.volume > 0) {
+                sound.fadeDown();
+            }
+            if (sound.volume <= 0) {
+                sound.newFile("audio/3.aiff");
+            }
             playerBranch1.update();
             break;
             
@@ -93,6 +109,9 @@ void controller::update(){
             break;
             
         case F:
+            if (sound.volume > volume/3) {
+                sound.fadeDown();
+            }
             playerBranch2.update();
             break;
             
@@ -101,10 +120,16 @@ void controller::update(){
             break;
             
         case H:
+            if (sound.volume > 0) {
+                sound.fadeDown();
+            }
             playerOutro.update();
             break;
             
         case I:
+            if (sound.volume < volume) {
+                sound.fadeUp();
+            }
             outroPlayer.update();
             break;
             
@@ -112,9 +137,11 @@ void controller::update(){
             break;
     }
     
+    sound.update();
+    
     fader.update();                                     // fader is what controls transition between states
     if (fader.fullCover()) {
-        if (current_state != C) {
+        if (current_state != C && next_state == C) {
             tunnel1.camera.reset();
             tunnel1.camera.target(ofVec3f(0,0,1));
             //tunnel.secondTime = true;
@@ -381,6 +408,8 @@ void controller::keyPressed(int key){
             
         case ';':
             if (current_state == I) {
+                sound.volume == 0;
+                sound.newFile("audio/1.aiff");
                 setup();
             }
             break;
