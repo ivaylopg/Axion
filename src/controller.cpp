@@ -33,7 +33,7 @@ void controller::setup(){
     ofEnableSeparateSpecularLight();
     
     tunnel1.secondTime = false;
-    
+    lastMessage = " ";
 
     #ifdef __APPLE__
         CGDisplayHideCursor(NULL); // <- Sometimes necessary to hide cursor on Macs
@@ -121,6 +121,8 @@ void controller::update(){
         }
         current_state = next_state;
     }
+    
+    //cout << "Diff 10: " << mind.diff10() << " | Diff 20:" << mind.diff20() << endl;
 }
 
 //--------------------------------------------------------------
@@ -237,6 +239,28 @@ void controller::gotMessage(ofMessage& msg){
     //
     //
     
+    if (msg.message == lastMessage) {
+        return;
+    } else {
+        lastMessage = msg.message;
+    }
+    
+    if (ofIsStringInString(msg.message, "TunnelA")) {
+        int branch = ofToInt(ofSplitString(msg.message, ":")[1]);
+        int state = ofToInt(ofSplitString(msg.message, ":")[2]);
+        cout << "Sent to Brancher from Tunnel A" << endl;
+        brancher(1, branch, state);
+    }
+    
+    if (ofIsStringInString(msg.message, "TunnelB")) {
+        int branch = ofToInt(ofSplitString(msg.message, ":")[1]);
+        int state = ofToInt(ofSplitString(msg.message, ":")[2]);
+        cout << "Sent to Brancher from Tunnel B" << endl;
+        brancher(2, branch, state);
+    }
+    
+    
+    
     if (ofIsStringInString(msg.message, "SetVid")) {
         int vid = ofToInt(ofSplitString(msg.message, ":")[1]);
         //cout << "vid will be: " << state << endl;
@@ -245,8 +269,6 @@ void controller::gotMessage(ofMessage& msg){
         } else {
             playerOutro.setFile(vid);
         }
-        
-        
     }
     
     if (ofIsStringInString(msg.message, "NextState")) {
@@ -495,6 +517,133 @@ void controller::drawDebugMessages(){
         default:
             break;
     }
+}
+
+//--------------------------------------------------------------
+void controller::brancher(int source, int branch, int state){
+    
+    if (state == 0) {
+        next_state = A;
+    } else if (state == 1) {
+        next_state = B;
+    } else if (state == 2) {
+        next_state = C;
+    } else if (state == 3) {
+        next_state = D;
+    } else if (state == 4) {
+        next_state = E;
+    } else if (state == 5) {
+        next_state = F;
+    } else if (state == 6) {
+        next_state = G;
+    } else if (state == 7) {
+        next_state = H;
+    } else if (state == 8) {
+        next_state = I;
+    }
+    
+
+    if (source==1) {
+        if (mind.hasNewInfo()) {
+            if (mind.diff20() > -100.0) {
+                if (mind.diff20()>10) {
+                    // VERY Attentive
+                    cout << "VERY Attentive" << endl;
+                    playerBranch1.setFile(branch);
+                } else if (mind.diff20()>0){
+                    // SOMEWHAT Attentive
+                    cout << "SOMEWHAT Attentive" << endl;
+                    playerBranch1.setFile(branch);
+                } else if (mind.diff20()<-10) {
+                    //VERY Meditative
+                    cout << "VERY Meditative" << endl;
+                    playerBranch1.setFile(branch);
+                } else {
+                    //Somewhat Meditative
+                    cout << "Somewhat Meditative" << endl;
+                    playerBranch1.setFile(branch);
+                }
+            } else if (mind.diff10() > -100.0) {
+                if (mind.diff10()>10) {
+                    // VERY Attentive
+                    cout << "VERY Attentive" << endl;
+                    playerBranch1.setFile(branch);
+                } else if (mind.diff10()>0){
+                    // SOMEWHAT Attentive
+                    cout << "SOMEWHAT Attentive" << endl;
+                    playerBranch1.setFile(branch);
+                } else if (mind.diff10()<-10) {
+                    //VERY Meditative
+                    cout << "VERY Meditative" << endl;
+                    playerBranch1.setFile(branch);
+                } else {
+                    //Somewhat Meditative
+                    cout << "Somewhat Meditative" << endl;
+                    playerBranch1.setFile(branch);
+                }
+            } else {
+                // Cannot Determine
+                cout << "Cannot Determine" << endl;
+                playerBranch1.setFile(branch);
+            }
+        } else {
+            // NO EEG DATA
+            cout << "NO EEG DATA" << endl;
+            playerBranch1.setFile(branch);
+        }
+        
+    } else if (source == 2){
+        if (mind.hasNewInfo()) {
+            if (mind.diff20() > -100.0) {
+                if (mind.diff20()>10) {
+                    // VERY Attentive
+                    cout << "VERY Attentive" << endl;
+                    playerOutro.setFile(branch);
+                } else if (mind.diff20()>0){
+                    // SOMEWHAT Attentive
+                    cout << "SOMEWHAT Attentive" << endl;
+                    playerOutro.setFile(branch);
+                } else if (mind.diff20()<-10) {
+                    //VERY Meditative
+                    cout << "VERY Meditative" << endl;
+                    playerOutro.setFile(branch);
+                } else {
+                    //Somewhat Meditative
+                    cout << "Somewhat Meditative" << endl;
+                    playerOutro.setFile(branch);
+                }
+            } else if (mind.diff10() > -100.0) {
+                if (mind.diff10()>10) {
+                    // VERY Attentive
+                    cout << "VERY Attentive" << endl;
+                    playerOutro.setFile(branch);
+                } else if (mind.diff10()>0){
+                    // SOMEWHAT Attentive
+                    cout << "Somewhat Attentive" << endl;
+                    playerOutro.setFile(branch);
+                } else if (mind.diff10()<-10) {
+                    //VERY Meditative
+                    cout << "VERY Meditative" << endl;
+                    playerOutro.setFile(branch);
+                } else {
+                    //Somewhat Meditative
+                    cout << "Somewhat Meditative" << endl;
+                    playerOutro.setFile(branch);
+                }
+            } else {
+                // Cannot Determine
+                cout << "Cannot Determine" << endl;
+                playerOutro.setFile(branch);
+            }
+        } else {
+            // NO EEG DATA
+            cout << "NO EEG DATA" << endl;
+            playerOutro.setFile(branch);
+        }
+    }
+    
+    fader.moveOn();
+    
 }
 
 //--------------------------------------------------------------
