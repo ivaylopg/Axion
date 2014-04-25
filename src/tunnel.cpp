@@ -78,23 +78,28 @@ void Tunnel::draw(float alph){
     */
     if (!secondTime) {
         if (camera.getPosition().squareDistance(goal1) < (4900.0 * distFactor)) {
-            ofSendMessage("SetVid:2");
-            ofSendMessage("NextState:3");
-            ofSendMessage("moveOn");
+//            ofSendMessage("SetVid:2");
+//            ofSendMessage("NextState:3");
+//            ofSendMessage("moveOn");
+            ofSendMessage("TunnelA:1:3");
         }
         
         if (camera.getPosition().squareDistance(goal2) < (4900.0 * distFactor)) {
-            ofSendMessage("SetVid:1");
-            ofSendMessage("NextState:3");
-            ofSendMessage("moveOn");
+//            ofSendMessage("SetVid:1");
+//            ofSendMessage("NextState:3");
+//            ofSendMessage("moveOn");
+            //ofSendMessage(" Where From : Which Branch : Next State ");
+            ofSendMessage("TunnelA:2:3");
         }
     }
     
     if (secondTime) {
         if (camera.getPosition().squareDistance(goal1) < (250000.0 * distFactor) || camera.getPosition().squareDistance(goal2) < (250000.0 * distFactor)) {
-            ofSendMessage("SetVid:0");
-            ofSendMessage("NextState:7");
-            ofSendMessage("moveOn");
+//            ofSendMessage("SetVid:0");
+//            ofSendMessage("NextState:7");
+//            ofSendMessage("moveOn");
+            //ofSendMessage(" Where From : Which Branch : Next State ");
+            ofSendMessage("TunnelB:0:7");
         }
     }
     
