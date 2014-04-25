@@ -27,12 +27,13 @@ void SoundPlayer::setup(){
 void SoundPlayer::update(){
     ofSoundUpdate();
     
-    if (!hasStarted && volume < 0.65) {
-        volume+=0.005;
-    } else {
-        hasStarted = true;
-        volume = 0.65;
-    }
+    
+//    if (!hasStarted && volume < 0.65) {
+//        volume+=0.005;
+//    } else {
+//        hasStarted = true;
+//        volume = 0.65;
+//    }
     
     sound1.setVolume(volume);
     
@@ -52,6 +53,22 @@ void SoundPlayer::newVolume(float f){
     volume = f;
 }
 
+//--------------------------------------------------------------
+void SoundPlayer::newFile(string s){
+    sound1.setVolume(0);
+    sound1.stop();
+    sound1.unloadSound();
+    sound1.loadSound(s);
+    play();
+}
+
+//--------------------------------------------------------------
+void SoundPlayer::fadeDown(){
+    volume-=0.005;
+}
 
 
-
+//--------------------------------------------------------------
+void SoundPlayer::fadeUp(){
+    volume+=0.005;
+}
