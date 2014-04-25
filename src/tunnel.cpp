@@ -78,22 +78,22 @@ void Tunnel::draw(float alph){
     */
     if (!secondTime) {
         if (camera.getPosition().squareDistance(goal1) < (4900.0 * distFactor)) {
-            ofSendMessage("SetVid:1");
-            ofSendMessage("NextState:1");
+            ofSendMessage("SetVid:2");
+            ofSendMessage("NextState:3");
             ofSendMessage("moveOn");
         }
         
         if (camera.getPosition().squareDistance(goal2) < (4900.0 * distFactor)) {
-            ofSendMessage("SetVid:2");
-            ofSendMessage("NextState:1");
+            ofSendMessage("SetVid:1");
+            ofSendMessage("NextState:3");
             ofSendMessage("moveOn");
         }
     }
     
     if (secondTime) {
         if (camera.getPosition().squareDistance(goal1) < (250000.0 * distFactor) || camera.getPosition().squareDistance(goal2) < (250000.0 * distFactor)) {
-            ofSendMessage("SetVid:3");
-            ofSendMessage("NextState:1");
+            ofSendMessage("SetVid:0");
+            ofSendMessage("NextState:7");
             ofSendMessage("moveOn");
         }
     }

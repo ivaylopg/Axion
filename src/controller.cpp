@@ -24,12 +24,15 @@ void controller::setup(){
     next_state = B;
     
     current_video = m0;
+    mind.reset();
     
     //ofEnableAlphaBlending();
     ofEnableBlendMode(OF_BLENDMODE_ALPHA);
     ofEnableDepthTest();
     glShadeModel(GL_SMOOTH);
     ofEnableSeparateSpecularLight();
+    
+    tunnel1.secondTime = false;
     
 
     #ifdef __APPLE__
@@ -40,11 +43,32 @@ void controller::setup(){
     ofSetWindowPosition(ofGetScreenWidth()/2 - ofGetWidth()/2, ofGetScreenHeight()/2 - ofGetHeight()/2);
     
     ofRegisterGetMessages(this);
+    
+    vids01.clear();
+    vids02.clear();
+    vids03.clear();
+    vids04.clear();
+    
+    vids01.push_back("mov/0.mp4");
+    
+    vids02.push_back("mov/1.mp4");
+    vids02.push_back("mov/2.mp4");
+    vids02.push_back("mov/3.mp4");
+    
+    vids04.push_back("mov/1.mp4");
+    
+    playerIntro.setup(vids01.size());
+    playerBranch1.setup(vids02.size());
+    //playerBranch2.setup(vids03.size());
+    playerOutro.setup(vids04.size());
+    
+    playerIntro.load(vids01);
+    
 }
 
 //--------------------------------------------------------------
 void controller::update(){
-    
+    mind.update();
     sound.update();
     
     switch (current_state) {
@@ -53,14 +77,34 @@ void controller::update(){
             break;
         
         case B:
-            player.update();
+            playerIntro.update();
             break;
             
         case C:
-            tunnel.update();
+            tunnel1.update();
             break;
             
         case D:
+            playerBranch1.update();
+            break;
+            
+        case E:
+            //outroPlayer.update();
+            break;
+            
+        case F:
+            playerBranch2.update();
+            break;
+            
+        case G:
+            /////////////////////
+            break;
+            
+        case H:
+            playerOutro.update();
+            break;
+            
+        case I:
             outroPlayer.update();
             break;
             
@@ -70,9 +114,9 @@ void controller::update(){
     
     fader.update();                                     // fader is what controls transition between states
     if (fader.fullCover()) {
-        if (current_state == B) {
-            tunnel.camera.reset();
-            tunnel.camera.target(ofVec3f(0,0,1));
+        if (current_state != C) {
+            tunnel1.camera.reset();
+            tunnel1.camera.target(ofVec3f(0,0,1));
             //tunnel.secondTime = true;
         }
         current_state = next_state;
@@ -92,13 +136,13 @@ void controller::draw(){
             next_state = B;
             break;
         case B:
-            player.play();
-            player.draw(0, 0, ofGetWidth(), ofGetHeight());
+            playerIntro.play();
+            playerIntro.draw(0, 0, ofGetWidth(), ofGetHeight());
             
-            if (player.isDone) {
-                player.stop();
-                player.reset();
-                
+            if (playerIntro.isDone) {
+                //playerIntro.stop();
+                //playerIntro.reset();
+                /*
                 if (player.whichMov == 1 || player.whichMov == 2) {     // This seems a little inelegant with if/then.
                     tunnel.secondTime = true;                           //     I think there is a better way by doing this
                 }                                                       //         from within the movieplayer class somehow.
@@ -110,17 +154,67 @@ void controller::draw(){
                 } else {
                     next_state = C;
                 }
-                
+                */
+                next_state = C;
+                playerIntro.clear();
                 fader.fadeUp();
             }
             break;
             
         case C:
-            tunnel.draw(fader.getAlpha());
+            tunnel1.draw(fader.getAlpha());
+            if (!tunnel1.secondTime) {
+                playerBranch1.load(vids02);
+            } else if (tunnel1.secondTime) {
+                playerOutro.load(vids04);
+            }
             break;
             
         case D:
-            outroPlayer.draw();
+            playerBranch1.play();
+            playerBranch1.draw(0, 0, ofGetWidth(), ofGetHeight());
+            
+            if (playerBranch1.isDone) {
+                next_state = C;
+                tunnel1.secondTime = true;
+                playerBranch1.clear();
+                fader.fadeUp();
+            }
+            break;
+            
+        case E:
+            //outroPlayer.draw();
+            break;
+            
+        case F:
+            playerBranch2.play();
+            playerBranch2.draw(0, 0, ofGetWidth(), ofGetHeight());
+            
+            if (playerBranch2.isDone) {
+                next_state = C;
+                tunnel1.secondTime = true;
+                playerBranch2.clear();
+                fader.fadeUp();
+            }
+            break;
+            
+        case G:
+            //outroPlayer.draw();
+            break;
+            
+        case H:
+            playerOutro.play();
+            playerOutro.draw(0, 0, ofGetWidth(), ofGetHeight());
+            
+            if (playerOutro.isDone) {
+                next_state = I;
+                playerOutro.clear();
+                fader.fadeUp();
+            }
+            break;
+            
+        case I:
+                outroPlayer.draw();
             break;
             
         default:
@@ -128,7 +222,7 @@ void controller::draw(){
     }
     
     drawDebugMessages();
-    drawHelp();
+    //drawHelp();
     fader.draw();
 }
 //--------------------------------------------------------------
@@ -146,7 +240,12 @@ void controller::gotMessage(ofMessage& msg){
     if (ofIsStringInString(msg.message, "SetVid")) {
         int vid = ofToInt(ofSplitString(msg.message, ":")[1]);
         //cout << "vid will be: " << state << endl;
-        player.setFile(vid);
+        if (!tunnel1.secondTime) {
+            playerBranch1.setFile(vid);
+        } else {
+            playerOutro.setFile(vid);
+        }
+        
         
     }
     
@@ -161,6 +260,16 @@ void controller::gotMessage(ofMessage& msg){
             next_state = C;
         } else if (state == 3) {
             next_state = D;
+        } else if (state == 4) {
+            next_state = E;
+        } else if (state == 5) {
+            next_state = F;
+        } else if (state == 6) {
+            next_state = G;
+        } else if (state == 7) {
+            next_state = H;
+        } else if (state == 8) {
+            next_state = I;
         }
     }
     
@@ -193,7 +302,7 @@ void controller::keyPressed(int key){
         case 'i':
             helpOn = !helpOn;
             break;
-        
+        /*
         case '0':
             if (current_state == B) {
                 player.stop();
@@ -238,7 +347,7 @@ void controller::keyPressed(int key){
                 fader.moveOn();
             }
             break;
-            
+            */
         case '.':
             debugMessages = !debugMessages;
             break;
@@ -246,6 +355,12 @@ void controller::keyPressed(int key){
             
         case OF_KEY_ESC:
             //
+            break;
+            
+        case ';':
+            if (current_state == I) {
+                setup();
+            }
             break;
             
         default:
@@ -345,8 +460,8 @@ void controller::drawDebugMessages(){
                 ofDrawBitmapString("FrameRate: " + ofToString(ofGetFrameRate(),2) +
                                    " | Screen Size: " + ofToString(ofGetScreenWidth()) + "," + ofToString(ofGetScreenHeight()) +
                                    " | Window Size: " + ofToString(ofGetWidth()) + "," + ofToString(ofGetHeight()) +
-                                   "\nWhich Movie: " + ofToString(player.whichMov) + " | Is playing? " + ofToString(player.isPlaying()) +
-                                   " | Which File: " + player.getPath(),
+                                   "\nWhich Movie: " + ofToString(playerIntro.whichMov) + " | Is playing? " + ofToString(playerIntro.isPlaying()) +
+                                   " | Which File: " + playerIntro.getPath(),
                                    20,ofGetHeight() - 50);
                 //+ player.getPath()
             }
@@ -357,13 +472,13 @@ void controller::drawDebugMessages(){
                 ofDrawBitmapString("FrameRate: " + ofToString(ofGetFrameRate(),2) +
                                    " | Screen Size: " + ofToString(ofGetScreenWidth()) + "," + ofToString(ofGetScreenHeight()) +
                                    " | Window Size: " + ofToString(ofGetWidth()) + "," + ofToString(ofGetHeight()) +
-                                   "\nCamera Position: (" + ofToString(tunnel.camera.getPosition().x,2) + "," +
-                                   ofToString(tunnel.camera.getPosition().y,2) + "," + ofToString(tunnel.camera.getPosition().z,2) + ") | " +
-                                   "Goal 1: (" + ofToString(tunnel.goal1.x,2) + "," + ofToString(tunnel.goal1.y,2) + "," + ofToString(tunnel.goal1.z,2) + ") | " +
-                                   "Goal 1 Distance: " + ofToString(tunnel.camera.getPosition().squareDistance(tunnel.goal1),2) +
-                                   "\nGoal 2: (" + ofToString(tunnel.goal2.x,2) + "," + ofToString(tunnel.goal2.y,2) + "," + ofToString(tunnel.goal2.z,2) + ") | " +
-                                   " | Goal 2 Distance: " + ofToString(tunnel.camera.getPosition().squareDistance(tunnel.goal2),2) + " | Distance Factor: " +
-                                   ofToString(tunnel.distFactor,2) + " | Second Time? " + ofToString(tunnel.secondTime),
+                                   "\nCamera Position: (" + ofToString(tunnel1.camera.getPosition().x,2) + "," +
+                                   ofToString(tunnel1.camera.getPosition().y,2) + "," + ofToString(tunnel1.camera.getPosition().z,2) + ") | " +
+                                   "Goal 1: (" + ofToString(tunnel1.goal1.x,2) + "," + ofToString(tunnel1.goal1.y,2) + "," + ofToString(tunnel1.goal1.z,2) + ") | " +
+                                   "Goal 1 Distance: " + ofToString(tunnel1.camera.getPosition().squareDistance(tunnel1.goal1),2) +
+                                   "\nGoal 2: (" + ofToString(tunnel1.goal2.x,2) + "," + ofToString(tunnel1.goal2.y,2) + "," + ofToString(tunnel1.goal2.z,2) + ") | " +
+                                   " | Goal 2 Distance: " + ofToString(tunnel1.camera.getPosition().squareDistance(tunnel1.goal2),2) + " | Distance Factor: " +
+                                   ofToString(tunnel1.distFactor,2) + " | Second Time? " + ofToString(tunnel1.secondTime),
                                    20,ofGetHeight() - 50);
             }
             break;
@@ -384,7 +499,7 @@ void controller::drawDebugMessages(){
 
 //--------------------------------------------------------------
 void controller::exit(){
-    
+    mind.free();
 }
 
 //--------------------------------------------------------------
