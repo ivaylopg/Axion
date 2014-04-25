@@ -10,10 +10,13 @@ public:
     void play();
     void pause();
     void newVolume(float f);
+    void newFile(string s);
+    void fadeDown();
+    void fadeUp();
+    //bool fade(int which, float start, float stop);
     
     bool initialized = false;
-    
-    bool isDone;
+
     
     bool hasStarted;
     float volume;

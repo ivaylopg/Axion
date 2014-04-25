@@ -15,9 +15,6 @@ void Tunnel::setup(){
     //hallModel.loadModel("Hallway1C.obj");
     hallModel.loadModel("hallway1.obj");
     hallModel.setPosition(0, 0, 0);
-    offRange = 10;
-    meshAdvance = 0;
-    mOffset = 0;
     
     camera.setup();
     camTargSet = false;
@@ -36,14 +33,16 @@ void Tunnel::setup(){
     goal1 = ofVec3f(442,0,854) * distFactor;
     goal2 = ofVec3f(-317,0,1175) * distFactor;
     
+    hallModel.update();
+    hallMesh = hallModel.getCurrentAnimatedMesh(0);
+    
     secondTime = false;
 }
 
 //--------------------------------------------------------------
 void Tunnel::update(){
-    hallModel.update();
-    hallMesh = hallModel.getCurrentAnimatedMesh(0);
-    mOffset = ofMap(ofGetMouseX(), 0, ofGetWidth(), -offRange, offRange);
+    //hallModel.update();
+    //hallMesh = hallModel.getCurrentAnimatedMesh(0);
 }
 
 //--------------------------------------------------------------
@@ -57,6 +56,14 @@ void Tunnel::draw(float alph){
     
     camPos = camera.getPosition();
 	hallLight.enable();
+
+    if (!secondTime) {
+        hallLight.setPosition(camera.getPosition());
+        hallLight.setAttenuation(0,0.008,0);
+    } else {
+        hallLight.setPosition(0,0,0);
+        hallLight.setAttenuation(1,0,0);
+    }
     
     ofPushMatrix();
     ofSetColor(255,255-alph);
@@ -66,39 +73,26 @@ void Tunnel::draw(float alph){
     ofMultMatrix(hallModel.getModelMatrix());
     ofMultMatrix(meshHelper.matrix);
 
-    //cout << "Cam x: " << camera.getPosition().x << " | Cam y: " << camera.getPosition().y << " | Cam z: " << camera.getPosition().z << endl;
-    
-    //cout << "goal 1: " << camera.getPosition().distance(goal1) << " | goal 2: " << camera.getPosition().distance(goal2) << endl;
-    
+
     /*
     if (camPos.z < -52.0) {
         camPos.z = -52.0;
         camera.clip(camPos);
     }
     */
+    
     if (!secondTime) {
         if (camera.getPosition().squareDistance(goal1) < (4900.0 * distFactor)) {
-//            ofSendMessage("SetVid:2");
-//            ofSendMessage("NextState:3");
-//            ofSendMessage("moveOn");
             ofSendMessage("TunnelA:1:3");
         }
         
         if (camera.getPosition().squareDistance(goal2) < (4900.0 * distFactor)) {
-//            ofSendMessage("SetVid:1");
-//            ofSendMessage("NextState:3");
-//            ofSendMessage("moveOn");
-            //ofSendMessage(" Where From : Which Branch : Next State ");
             ofSendMessage("TunnelA:2:3");
         }
     }
     
     if (secondTime) {
         if (camera.getPosition().squareDistance(goal1) < (250000.0 * distFactor) || camera.getPosition().squareDistance(goal2) < (250000.0 * distFactor)) {
-//            ofSendMessage("SetVid:0");
-//            ofSendMessage("NextState:7");
-//            ofSendMessage("moveOn");
-            //ofSendMessage(" Where From : Which Branch : Next State ");
             ofSendMessage("TunnelB:0:7");
         }
     }
@@ -112,12 +106,11 @@ void Tunnel::draw(float alph){
     ofDisableLighting();
     
     camera.end();
-    
-    /*
-    ofDrawBitmapString("goal 1: " + ofToString(camera.getPosition().squareDistance(goal1)) + " | goal 2: " + ofToString(camera.getPosition().squareDistance(goal2)), 20,20);
-    
-    ofDrawBitmapString("Cam x: " + ofToString(camera.getPosition().x) + " | Cam y: " + ofToString(camera.getPosition().y) + " | Cam z: " + ofToString(camera.getPosition().z), 20,50);
-    
-    ofDrawBitmapString(ofToString(ofGetScreenWidth()) + "  |  " + ofToString(((float)(ofGetScreenWidth()/2560.0))), 20,80);
-    */
 }
+//cout << hallLight.getPosition() << "  |  " << camera.getPosition() << endl;
+//cout << hallLight.getIsPointLight() << "  |  " << hallLight.getIsSpotlight() << endl;
+//hallLight.setOrientation(camera.getOrientationEuler());
+//cout << hallLight.getSpotConcentration() << "  |  " << hallLight.getSpotlightCutOff() << endl;
+//hallLight.setSpotlightCutOff(20); //andle between axis and edge of cone
+//hallLight.setSpotConcentration(90); //Falloff 0-128;
+//cout << hallLight.getAttenuationConstant() << "  |  " << hallLight.getAttenuationLinear() << "  |  " << hallLight.getAttenuationQuadratic() << "  |  "<< endl;

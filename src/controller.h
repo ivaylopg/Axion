@@ -45,11 +45,10 @@ class controller : public ofBaseApp{
     bool helpOn;
     bool debugMessages;
     
+    float volume;
+    
     State current_state;
     State next_state;
-    
-    
-    Vid current_video;
     
     EEGreader mind;
     Fader fader;
