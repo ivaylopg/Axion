@@ -5,7 +5,8 @@ class MoviePlayer {
 public:
     MoviePlayer();
     
-    void setup();
+    void setup(int howMany);
+    void load(vector<string> s);
     void update();
     void draw(int x, int y);
     void draw(int x, int y, int w, int h);
@@ -14,15 +15,17 @@ public:
     void stop();
     void setFile(int i);
     void reset();
+    void clear();
     bool isPlaying();
     string getPath();
     
     bool initialized = false;
     
     vector<ofVideoPlayer* > videos;
-    static const int N_VIDEOS = 4;
+    int N_VIDEOS;
     int whichMov;
     
     bool isDone;
+    bool loaded;
     
 };

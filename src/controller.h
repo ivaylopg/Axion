@@ -14,6 +14,7 @@
 #include "fader.h"
 #include "soundPlayer.h"
 #include "outro.h"
+#include "eegReader.h"
 
 
 class controller : public ofBaseApp{
@@ -46,11 +47,25 @@ class controller : public ofBaseApp{
     State current_state;
     State next_state;
     
+    
     Vid current_video;
+    
+    EEGreader mind;
     Fader fader;
-    Intro introPlayer;
-    MoviePlayer player;
-    Tunnel tunnel;
     SoundPlayer sound;
+    
+    Intro introPlayer;
+    MoviePlayer playerIntro;
+    Tunnel tunnel1;
+    MoviePlayer playerBranch1;
+    // EEG?
+    MoviePlayer playerBranch2;
+    //Tunnel tunnel2;
+    MoviePlayer playerOutro;
     Outro outroPlayer;
+    
+    vector<string> vids01;
+    vector<string> vids02;
+    vector<string> vids03;
+    vector<string> vids04;
 };
