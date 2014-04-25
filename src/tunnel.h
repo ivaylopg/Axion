@@ -17,9 +17,6 @@ public:
     ofxAssimpModelLoader hallModel;
     ofMesh hallMesh;
     ofLight hallLight;
-    float mOffset;
-    float offRange;
-    float meshAdvance;
     
     ofxFPSCamera camera;
     bool camTargSet;
