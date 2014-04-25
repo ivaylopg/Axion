@@ -3,10 +3,15 @@
 #include "ofMain.h"
 
 enum State {
-    A,      // Intro
-    B,      // Movie Player
+    A,      // Introscreen
+    B,      // Movie Player INTRO
     C,      // Tunnel Player 1
-    D,
+    D,      // Movie Player Branch 1
+    E,      // EEG Landscape
+    F,      // Movie Player Branch 2
+    G,      // Tunnel Player 2
+    H,      // Movie Player OUTRO
+    I,      // End screen
     Pause
 };
 
