@@ -12,6 +12,10 @@ public:
     void draw();
     void free();
     void reset();
+    bool hasNewInfo();
+    
+    float diff10();
+    float diff20();
     
     bool initialized = false;
     
@@ -23,6 +27,9 @@ public:
     float ave20s;
     float diff10s;
     float diff20s;
+    
+    bool hasD20;
+    bool hasD10;
     
     float result10s;
     float result20s;

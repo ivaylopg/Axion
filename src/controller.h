@@ -37,6 +37,7 @@ class controller : public ofBaseApp{
         void gotMessage(ofMessage& msg);
         void drawHelp();
         void drawDebugMessages();
+        void brancher(int source, int branch, int state);
         void exit();
     
     const float VERSION = 0.2;
@@ -63,6 +64,8 @@ class controller : public ofBaseApp{
     //Tunnel tunnel2;
     MoviePlayer playerOutro;
     Outro outroPlayer;
+    
+    string lastMessage;
     
     vector<string> vids01;
     vector<string> vids02;
