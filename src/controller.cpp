@@ -621,13 +621,13 @@ void controller::brancher(int source, int branch, int state){
             } else {
                 // Cannot Determine
                 cout << "Cannot Determine" << endl;
-                ofLog(OF_LOG_NOTICE) << "Cannot Determine - Branch 1 - " << ofGetElapsedTimeMillis() << "\n";
+                ofLog(OF_LOG_NOTICE) << "Cannot Determine - Branch 2 - " << ofGetElapsedTimeMillis() << "\n";
                 playerOutro.setFile(floor(ofRandom(2)));
             }
         } else {
             // NO EEG DATA
             cout << "NO EEG DATA" << endl;
-            ofLog(OF_LOG_NOTICE) << "No EEG Data - Branch 1 - " << ofGetElapsedTimeMillis() << "\n";
+            ofLog(OF_LOG_NOTICE) << "No EEG Data - Branch 2 - " << ofGetElapsedTimeMillis() << "\n";
             playerOutro.setFile(floor(ofRandom(2)));
         }
     }
