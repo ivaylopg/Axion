@@ -61,34 +61,21 @@ void Outro::draw(){
     akzidenz32.drawString("SCIENTISTS:", 100, 780);
     ofSetColor(128);
     akzidenz28.drawString("PROFESSOR MARTIN POHL"
-                          "\nDR. MARK WYMAN"
-                          "\nPROFESSOR ELENA APRILE", 100, 820);
+                          "\n\n\nDR. MARK WYMAN"
+                          "\n\n\nPROFESSOR ELENA APRILE", 100, 820);
     
     ofSetColor(255);
-    akzidenz28.drawString("DiRECTOR of the NUCLEAR and PARTICLE PHYSICS DEPARTMENT, UNIVERSITY OF GENEVA"
-                          "\nJAMES ARTHUR POSTDOCTORAL FELLOW, NYU"
-                          "\nCO-DIRECTOR, COLUMBIA ASTROPHYSICS LABORATORY, COLUMBIA UNIVERSITY", 450, 820);
+    akzidenz28.drawString("\nDIRECTOR of the NUCLEAR and PARTICLE PHYSICS DEPARTMENT, UNIVERSITY OF GENEVA"
+                          "\n\n\nJAMES ARTHUR POSTDOCTORAL FELLOW, NYU"
+                          "\n\n\nCO-DIRECTOR, COLUMBIA ASTROPHYSICS LABORATORY, COLUMBIA UNIVERSITY", 100, 820);
     
-    /*
-     Professor Martin Pohl
-     Director of the Nuclear and Particle Physics Department
-     University of Geneva
-     
-     Dr. Mark Wyman
-     James Arthur Postdoctoral Fellow
-     New York University
-     
-     Professor Elena Aprile
-     Co-director, Columbia Astrophysics Laboratory
-     Columbia University
-     */
     
     ofSetColor(255);
-    akzidenz32.drawString("THANK YOU:", 100, 1020);
+    akzidenz32.drawString("THANK YOU:", 100, 1120);
     ofSetColor(128);
     akzidenz28.drawString("NEAL HARTMAN at CERN; OPEYEMI OLUKEMI, INGRID KOPP, and AMELIE LEENHARDT at TRIBECA FILM INSTITUTE\n"
                           "NATASHA RODRIGUEZ-BACCUS (LOGO DESIGN), MACIEJ MUSZKOWSKI (PROGRAMMING HELP), ZACH CALDWELL (VIDEOGRAPHY)\n"
-                          "JOONA KURIKKA at the CERN IDEALAB, and EVERYBODY AT CERN, CINEGLOBE, AND TFI.", 100, 1060);
+                          "JOONA KURIKKA at the CERN IDEALAB, and EVERYBODY AT CERN, CINEGLOBE, AND TFI.", 100, 1160);
     
     
     ofPopMatrix();
