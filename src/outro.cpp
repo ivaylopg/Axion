@@ -61,8 +61,27 @@ void Outro::draw(){
     akzidenz32.drawString("SCIENTISTS:", 100, 780);
     ofSetColor(128);
     akzidenz28.drawString("PROFESSOR MARTIN POHL"
-                          "\nMARK WYMAN"
-                          "\nELENA APRILE", 100, 820);
+                          "\nDR. MARK WYMAN"
+                          "\nPROFESSOR ELENA APRILE", 100, 820);
+    
+    ofSetColor(255);
+    akzidenz28.drawString("DiRECTOR of the NUCLEAR and PARTICLE PHYSICS DEPARTMENT, UNIVERSITY OF GENEVA"
+                          "\nJAMES ARTHUR POSTDOCTORAL FELLOW, NYU"
+                          "\nCO-DIRECTOR, COLUMBIA ASTROPHYSICS LABORATORY, COLUMBIA UNIVERSITY", 450, 820);
+    
+    /*
+     Professor Martin Pohl
+     Director of the Nuclear and Particle Physics Department
+     University of Geneva
+     
+     Dr. Mark Wyman
+     James Arthur Postdoctoral Fellow
+     New York University
+     
+     Professor Elena Aprile
+     Co-director, Columbia Astrophysics Laboratory
+     Columbia University
+     */
     
     ofSetColor(255);
     akzidenz32.drawString("THANK YOU:", 100, 1020);
@@ -73,20 +92,4 @@ void Outro::draw(){
     
     
     ofPopMatrix();
-    
-    /*
-     
-     
-     We would like to thank:
-     Professor Martin Pohl (interview)
-     Maciej Muszkowski (programming)
-     Natasha Rodriguez-Bacchus (graphic design)
-     Zach Caldwell (videographer)
-     
-     None of this would have been possible without:
-     Neal Hartman (CERN)
-     Opeyemi Olukemi (Tribeca Film Institute)
-     Amelie Leenhardt (Tribeca Film Institute)
-     Joona Kurikka (CERN IdeaLab)
-     */
 }
