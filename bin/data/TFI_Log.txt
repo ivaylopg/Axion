@@ -1,0 +1,81 @@
+
+
+--------------------------------------- 2014-04-26-04-15-47-799
+[notice ] Connecting to /dev/tty.MindWaveMobile-DevA ...
+[ fatal ] /dev/tty.MindWaveMobile-DevA could not be opened. Check that the name is a valid COM port on your system.
+[verbose] ofxAssimpModelLoader: clear(): deleting GL resources
+[verbose] ofxAssimpModelLoader: loadModel(): loading "introMesh.obj" from "../../../data/"
+[verbose] ofxAssimpModelLoader: calculateDimensions(): inited scene with 1 meshes & 0 animations
+[verbose] ofxAssimpModelLoader: loadGLResources(): starting
+[verbose] ofxAssimpModelLoader: loadGLResources(): loading mesh 0
+[verbose] ofxAssimpModelLoader: loadGLResource(): finished
+[verbose] ofxAssimpModelLoader: loadMode(): no animations
+[verbose] ofxAssimpModelLoader: clear(): deleting GL resources
+[verbose] ofxAssimpModelLoader: loadModel(): loading "hallway1.obj" from "../../../data/"
+[verbose] ofxAssimpModelLoader: calculateDimensions(): inited scene with 1 meshes & 0 animations
+[verbose] ofxAssimpModelLoader: loadGLResources(): starting
+[verbose] ofxAssimpModelLoader: loadGLResources(): loading mesh 0
+[verbose] ofxAssimpModelLoader: loadGLResource(): finished
+[verbose] ofxAssimpModelLoader: loadMode(): no animations
+[notice ] NEW USER - April 26, 2014 04:15:57 am - 0
+
+[notice ] Sent to Brancher from Tunnel A - 48476
+
+[notice ] No EEG Data - Branch 1 - 48476
+
+[notice ] Sent to Brancher from Tunnel B - 75074
+
+[notice ] No EEG Data - Branch 1 - 75074
+
+[ error ] ofQTKitPlayer: getPixelsRef(): returning pixels that may be unallocated, make sure to initialize the video player before calling this function
+[verbose] ofEvents: OF app is being terminated!
+[verbose] ofxAssimpModelLoader: clear(): deleting GL resources
+[verbose] ofxAssimpModelLoader: clear(): deleting GL resources
+
+
+--------------------------------------- 2014-04-26-04-21-29-804
+[notice ] Connecting to /dev/tty.MindWaveMobile-DevA ...
+[ fatal ] /dev/tty.MindWaveMobile-DevA could not be opened. Check that the name is a valid COM port on your system.
+[notice ] NEW USER - April 26, 2014 04:21:37 am - 0
+
+
+
+--------------------------------------- 2014-04-26-04-22-41-265
+[notice ] Connecting to /dev/tty.MindWaveMobile-DevA ...
+[ fatal ] /dev/tty.MindWaveMobile-DevA could not be opened. Check that the name is a valid COM port on your system.
+[notice ] NEW USER - April 26, 2014 04:22:48 am - 0
+
+
+
+--------------------------------------- 2014-04-26-04-26-17-119
+[notice ] Connecting to /dev/tty.MindWaveMobile-DevA ...
+[ fatal ] /dev/tty.MindWaveMobile-DevA could not be opened. Check that the name is a valid COM port on your system.
+[notice ] NEW USER - April 26, 2014 04:26:24 am - 0
+
+[notice ] RESTARTING - April 26, 2014 04:26:48 am - 24096
+
+[notice ] NEW USER - April 26, 2014 04:26:48 am - 0
+
+[notice ] QUITTING - April 26, 2014 04:26:52 am - 3560
+
+
+
+--------------------------------------- 2014-04-26-04-39-55-436
+[notice ] Current Path: /Users/ivaylopg/Documents/openFrameworks_0.8.1/apps/Axion/Axion/bin/AxionDebug.app/Contents/Resources
+
+[notice ] Connecting to /dev/tty.MindWaveMobile-DevA ...
+[ fatal ] /dev/tty.MindWaveMobile-DevA could not be opened. Check that the name is a valid COM port on your system.
+[notice ] NEW USER - April 26, 2014 04:40:03 am - 1
+
+[notice ] Sent to Brancher from Tunnel A - 33035
+
+[notice ] No EEG Data - Branch 1 - 33036
+
+[ error ] ofQTKitPlayer: getPixelsRef(): returning pixels that may be unallocated, make sure to initialize the video player before calling this function
+[notice ] Sent to Brancher from Tunnel B - 73060
+
+[notice ] No EEG Data - Branch 1 - 73060
+
+[ error ] ofQTKitPlayer: getPixelsRef(): returning pixels that may be unallocated, make sure to initialize the video player before calling this function
+[notice ] QUITTING - April 26, 2014 04:41:36 am - 93530
+
