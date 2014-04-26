@@ -15,4 +15,6 @@ public:
     bool initialized = false;
     
     ofImage outImage;
+    ofTrueTypeFont	akzidenz32;
+    ofTrueTypeFont	akzidenz28;
 };
