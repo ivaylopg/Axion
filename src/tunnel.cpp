@@ -59,7 +59,8 @@ void Tunnel::draw(float alph){
 
     if (!secondTime) {
         hallLight.setPosition(camera.getPosition());
-        hallLight.setAttenuation(0,0.008,0);
+        float attenuationFactor = 0.008 * (2560.0/ofGetScreenWidth());
+        hallLight.setAttenuation(0,attenuationFactor,0);
     } else {
         hallLight.setPosition(0,0,0);
         hallLight.setAttenuation(1,0,0);
