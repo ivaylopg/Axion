@@ -17,6 +17,9 @@ void controller::setup(){
     ofSetVerticalSync(true);
     ofSetFrameRate(60);
     
+    ofResetElapsedTimeCounter();
+    ofLog(OF_LOG_NOTICE) << "NEW USER - " << ofGetTimestampString("%B %e, %Y %h:%M:%S %a - ") << ofGetElapsedTimeMillis() << "\n";
+    
     helpOn = false;
     debugMessages = false;
     
@@ -251,7 +254,7 @@ void controller::draw(){
     }
     
     drawDebugMessages();
-    //drawHelp();
+    drawHelp();
     fader.draw();
 }
 //--------------------------------------------------------------
@@ -276,6 +279,7 @@ void controller::gotMessage(ofMessage& msg){
         int branch = ofToInt(ofSplitString(msg.message, ":")[1]);
         int state = ofToInt(ofSplitString(msg.message, ":")[2]);
         cout << "Sent to Brancher from Tunnel A" << endl;
+        ofLog(OF_LOG_NOTICE) << "Sent to Brancher from Tunnel A - " << ofGetElapsedTimeMillis() << "\n";
         brancher(1, branch, state);
     }
     
@@ -283,6 +287,7 @@ void controller::gotMessage(ofMessage& msg){
         int branch = ofToInt(ofSplitString(msg.message, ":")[1]);
         int state = ofToInt(ofSplitString(msg.message, ":")[2]);
         cout << "Sent to Brancher from Tunnel B" << endl;
+        ofLog(OF_LOG_NOTICE) << "Sent to Brancher from Tunnel B - " << ofGetElapsedTimeMillis() << "\n";
         brancher(2, branch, state);
     }
     
@@ -433,28 +438,11 @@ void controller::mousePressed(int x, int y, int button){
 void controller::drawHelp(){
     ofSetColor(255);
     switch (current_state) {
-        case A:
-            ofDrawBitmapString("Axion \n\nDevelopment Version: " + ofToString(VERSION, 1) + "\n\n"
-                               "This is basically an app version of what we presented at CERN\n"
-                               "plus some cleanup. Please let me know how it runs on your computer,\n"
-                               "and let\'s use it as something to build from for Tribeca.\n\n"
-                               "I\'m doing my best to squash bugs, but once it gets running on computers\n"
-                               "out of my control there are sure to be things I couldn't plan for.\n\n"
-                               "If something seems wrong or isn't working, press the \" i \" key for HELP.\n"
-                               "Navigate the tunnel using \"W\" to move FORWARD, \"S\" to move BACK, \nand LOOK around with the MOUSE\n\n"
-                               "The \" F \" key toggles Full Screen\n"
-                               "The ESC key Quits\n\n"
-                               "Pres ANY KEY to start!",
-                               20, 20);
-            break;
-            
         case B:
             if (helpOn) {
                 ofDrawBitmapStringHighlight("There should be a MOVIE playing here. If there isn\'t, I\'m Sorry! Please let me know.\n\n"
                                             "If it does not automatically move on, or if it keeps looping, press \" 0 \" (zero)"
                                             , 20,20);
-            } else {
-                ofDrawBitmapStringHighlight("Press the \" i \" key for HELP", 20,20);
             }
             break;
             
@@ -469,23 +457,15 @@ void controller::drawHelp(){
                                             "If this is your second time through the hallway and you cannot move on, press \"3\" \n\n"
                                             "",
                                             20,20);
-            } else {
-                ofDrawBitmapStringHighlight("Press the \" i \" key for HELP", 20,20);
             }
             break;
             
         case D:
-            ofDrawBitmapString("That\'s it for now! \n\nOn the agenda:\n"
-                               "    -Add more video content\n"
-                               "    -Incorporate and expand Jasmine\'s sound design\n"
-                               "    -Develop another two to three hallways so we don\'t reuse the same one\n"
-                               "    -Disable ability to walk through walls in the hallway\n"
-                               "    -Develop one to two additional environments/experiences between videos so it\'s not just navigating a hallway\n"
-                               "    -Add support for MindWave so videos are determined not just by choosing paths, but also via EEG\n"
-                               "    -Jason wants to work with Jasmine to add narrative to the parts between videos (hallway, etc)\n"
-                               "    -Clean up and optimize code. Find bugs and DESTROY THEM!\n\n\n"
-                               "Press ESC key to QUIT"
-                               , 20,20);
+            if (helpOn) {
+                ofDrawBitmapStringHighlight("There should be a MOVIE playing here. If there isn\'t, I\'m Sorry! Please let me know.\n\n"
+                                            "If it does not automatically move on, or if it keeps looping, press \" 0 \" (zero)"
+                                            , 20,20);
+            }
             break;
             
         default:
@@ -498,22 +478,28 @@ void controller::drawDebugMessages(){
     ofSetColor(255,0,0);
     switch (current_state) {
         case A:
-            if (debugMessages) {
-                ofDrawBitmapString("FrameRate: " + ofToString(ofGetFrameRate(),2) +
-                                   " | Screen Size: " + ofToString(ofGetScreenWidth()) + "," + ofToString(ofGetScreenHeight()) +
-                                   " | Window Size: " + ofToString(ofGetWidth()) + "," + ofToString(ofGetHeight()),
-                                   20,ofGetHeight() - 50);
-            }
-            break;
-            
-        case B:
+        case I:
             if (debugMessages) {
                 ofDrawBitmapString("FrameRate: " + ofToString(ofGetFrameRate(),2) +
                                    " | Screen Size: " + ofToString(ofGetScreenWidth()) + "," + ofToString(ofGetScreenHeight()) +
                                    " | Window Size: " + ofToString(ofGetWidth()) + "," + ofToString(ofGetHeight()) +
+                                   "\nEEG Has New Info: " + ofToString(mind.hasNewInfo()) + " | Diff 20: " + ofToString(mind.diff20()) + " | Diff 10: " + ofToString(mind.diff10()),
+                                   20,ofGetHeight() - 70);
+            }
+            break;
+            
+        case B:
+        case D:
+        case F:
+        case H:
+            if (debugMessages) {
+                ofDrawBitmapString("FrameRate: " + ofToString(ofGetFrameRate(),2) +
+                                   " | Screen Size: " + ofToString(ofGetScreenWidth()) + "," + ofToString(ofGetScreenHeight()) +
+                                   " | Window Size: " + ofToString(ofGetWidth()) + "," + ofToString(ofGetHeight()) +
+                                   "\nEEG Has New Info: " + ofToString(mind.hasNewInfo()) + " | Diff 20: " + ofToString(mind.diff20()) + " | Diff 10: " + ofToString(mind.diff10()) +
                                    "\nWhich Movie: " + ofToString(playerIntro.whichMov) + " | Is playing? " + ofToString(playerIntro.isPlaying()) +
                                    " | Which File: " + playerIntro.getPath(),
-                                   20,ofGetHeight() - 50);
+                                   20,ofGetHeight() - 70);
                 //+ player.getPath()
             }
             break;
@@ -523,6 +509,7 @@ void controller::drawDebugMessages(){
                 ofDrawBitmapString("FrameRate: " + ofToString(ofGetFrameRate(),2) +
                                    " | Screen Size: " + ofToString(ofGetScreenWidth()) + "," + ofToString(ofGetScreenHeight()) +
                                    " | Window Size: " + ofToString(ofGetWidth()) + "," + ofToString(ofGetHeight()) +
+                                   "\nEEG Has New Info: " + ofToString(mind.hasNewInfo()) + " | Diff 20: " + ofToString(mind.diff20()) + " | Diff 10: " + ofToString(mind.diff10()) +
                                    "\nCamera Position: (" + ofToString(tunnel1.camera.getPosition().x,2) + "," +
                                    ofToString(tunnel1.camera.getPosition().y,2) + "," + ofToString(tunnel1.camera.getPosition().z,2) + ") | " +
                                    "Goal 1: (" + ofToString(tunnel1.goal1.x,2) + "," + ofToString(tunnel1.goal1.y,2) + "," + ofToString(tunnel1.goal1.z,2) + ") | " +
@@ -530,18 +517,10 @@ void controller::drawDebugMessages(){
                                    "\nGoal 2: (" + ofToString(tunnel1.goal2.x,2) + "," + ofToString(tunnel1.goal2.y,2) + "," + ofToString(tunnel1.goal2.z,2) + ") | " +
                                    " | Goal 2 Distance: " + ofToString(tunnel1.camera.getPosition().squareDistance(tunnel1.goal2),2) + " | Distance Factor: " +
                                    ofToString(tunnel1.distFactor,2) + " | Second Time? " + ofToString(tunnel1.secondTime),
-                                   20,ofGetHeight() - 50);
+                                   20,ofGetHeight() - 70);
             }
             break;
             
-        case D:
-            if (debugMessages) {
-                ofDrawBitmapString("FrameRate: " + ofToString(ofGetFrameRate(),2) +
-                                            " | Screen Size: " + ofToString(ofGetScreenWidth()) + "," + ofToString(ofGetScreenHeight()) +
-                                            " | Window Size: " + ofToString(ofGetWidth(),2) + "," + ofToString(ofGetHeight()),
-                                            20,ofGetHeight() - 50);
-            }
-            break;
             
         default:
             break;
@@ -578,46 +557,56 @@ void controller::brancher(int source, int branch, int state){
                 if (mind.diff20()>10) {
                     // VERY Attentive
                     cout << "VERY Attentive" << endl;
+                    ofLog(OF_LOG_NOTICE) << "Very Attentive - Branch 1 - Diff20 - " << ofGetElapsedTimeMillis() << "\n";
                     playerBranch1.setFile(branch);
                 } else if (mind.diff20()>0){
                     // SOMEWHAT Attentive
                     cout << "SOMEWHAT Attentive" << endl;
+                    ofLog(OF_LOG_NOTICE) << "Somewhat Attentive - Branch 1 - Diff20 - " << ofGetElapsedTimeMillis() << "\n";
                     playerBranch1.setFile(branch);
                 } else if (mind.diff20()<-10) {
                     //VERY Meditative
                     cout << "VERY Meditative" << endl;
+                    ofLog(OF_LOG_NOTICE) << "Very Meditative - Branch 1 - Diff20 - " << ofGetElapsedTimeMillis() << "\n";
                     playerBranch1.setFile(branch);
                 } else {
                     //Somewhat Meditative
                     cout << "Somewhat Meditative" << endl;
+                    ofLog(OF_LOG_NOTICE) << "Somewhat Meditative - Branch 1 - Diff20 - " << ofGetElapsedTimeMillis() << "\n";
                     playerBranch1.setFile(branch);
                 }
             } else if (mind.diff10() > -100.0) {
                 if (mind.diff10()>10) {
                     // VERY Attentive
                     cout << "VERY Attentive" << endl;
+                    ofLog(OF_LOG_NOTICE) << "Very Attentive - Branch 1 - Diff10 - " << ofGetElapsedTimeMillis() << "\n";
                     playerBranch1.setFile(branch);
                 } else if (mind.diff10()>0){
                     // SOMEWHAT Attentive
                     cout << "SOMEWHAT Attentive" << endl;
+                    ofLog(OF_LOG_NOTICE) << "Somewhat Attentive - Branch 1 - Diff10 - " << ofGetElapsedTimeMillis() << "\n";
                     playerBranch1.setFile(branch);
                 } else if (mind.diff10()<-10) {
                     //VERY Meditative
                     cout << "VERY Meditative" << endl;
+                    ofLog(OF_LOG_NOTICE) << "Very Meditative - Branch 1 - Diff10 - " << ofGetElapsedTimeMillis() << "\n";
                     playerBranch1.setFile(branch);
                 } else {
                     //Somewhat Meditative
                     cout << "Somewhat Meditative" << endl;
+                    ofLog(OF_LOG_NOTICE) << "Somewhat Meditative - Branch 1 - Diff10 - " << ofGetElapsedTimeMillis() << "\n";
                     playerBranch1.setFile(branch);
                 }
             } else {
                 // Cannot Determine
                 cout << "Cannot Determine" << endl;
+                ofLog(OF_LOG_NOTICE) << "Cannot Determine - Branch 1 - " << ofGetElapsedTimeMillis() << "\n";
                 playerBranch1.setFile(branch);
             }
         } else {
             // NO EEG DATA
             cout << "NO EEG DATA" << endl;
+            ofLog(OF_LOG_NOTICE) << "No EEG Data - Branch 1 - " << ofGetElapsedTimeMillis() << "\n";
             playerBranch1.setFile(branch);
         }
         
@@ -627,46 +616,56 @@ void controller::brancher(int source, int branch, int state){
                 if (mind.diff20()>10) {
                     // VERY Attentive
                     cout << "VERY Attentive" << endl;
+                    ofLog(OF_LOG_NOTICE) << "Very Attentive - Branch 2 - Diff20 - " << ofGetElapsedTimeMillis() << "\n";
                     playerOutro.setFile(branch);
                 } else if (mind.diff20()>0){
                     // SOMEWHAT Attentive
                     cout << "SOMEWHAT Attentive" << endl;
+                    ofLog(OF_LOG_NOTICE) << "Somewhat Attentive - Branch 2 - Diff20 - " << ofGetElapsedTimeMillis() << "\n";
                     playerOutro.setFile(branch);
                 } else if (mind.diff20()<-10) {
                     //VERY Meditative
                     cout << "VERY Meditative" << endl;
+                    ofLog(OF_LOG_NOTICE) << "Very Meditative - Branch 2 - Diff20 - " << ofGetElapsedTimeMillis() << "\n";
                     playerOutro.setFile(branch);
                 } else {
                     //Somewhat Meditative
                     cout << "Somewhat Meditative" << endl;
+                    ofLog(OF_LOG_NOTICE) << "Somewhat Meditative - Branch 2 - Diff20 - " << ofGetElapsedTimeMillis() << "\n";
                     playerOutro.setFile(branch);
                 }
             } else if (mind.diff10() > -100.0) {
                 if (mind.diff10()>10) {
                     // VERY Attentive
                     cout << "VERY Attentive" << endl;
+                    ofLog(OF_LOG_NOTICE) << "Very Attentive - Branch 2 - Diff10 - " << ofGetElapsedTimeMillis() << "\n";
                     playerOutro.setFile(branch);
                 } else if (mind.diff10()>0){
                     // SOMEWHAT Attentive
                     cout << "Somewhat Attentive" << endl;
+                    ofLog(OF_LOG_NOTICE) << "Somewhat Attentive - Branch 2 - Diff10 - " << ofGetElapsedTimeMillis() << "\n";
                     playerOutro.setFile(branch);
                 } else if (mind.diff10()<-10) {
                     //VERY Meditative
                     cout << "VERY Meditative" << endl;
+                    ofLog(OF_LOG_NOTICE) << "Very Meditative - Branch 2 - Diff10 - " << ofGetElapsedTimeMillis() << "\n";
                     playerOutro.setFile(branch);
                 } else {
                     //Somewhat Meditative
                     cout << "Somewhat Meditative" << endl;
+                    ofLog(OF_LOG_NOTICE) << "Somewhat Meditative - Branch 2 - Diff10 - " << ofGetElapsedTimeMillis() << "\n";
                     playerOutro.setFile(branch);
                 }
             } else {
                 // Cannot Determine
                 cout << "Cannot Determine" << endl;
+                ofLog(OF_LOG_NOTICE) << "Cannot Determine - Branch 1 - " << ofGetElapsedTimeMillis() << "\n";
                 playerOutro.setFile(branch);
             }
         } else {
             // NO EEG DATA
             cout << "NO EEG DATA" << endl;
+            ofLog(OF_LOG_NOTICE) << "No EEG Data - Branch 1 - " << ofGetElapsedTimeMillis() << "\n";
             playerOutro.setFile(branch);
         }
     }
