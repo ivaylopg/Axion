@@ -60,7 +60,9 @@ void Outro::draw(){
     ofSetColor(255);
     akzidenz32.drawString("SCIENTISTS:", 100, 780);
     ofSetColor(128);
-    akzidenz28.drawString("MARTIN POHL\nMARK WYMAN\nELENA APRILE", 100, 820);
+    akzidenz28.drawString("PROFESSOR MARTIN POHL"
+                          "\nMARK WYMAN"
+                          "\nELENA APRILE", 100, 820);
     
     ofSetColor(255);
     akzidenz32.drawString("THANK YOU:", 100, 1020);
