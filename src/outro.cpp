@@ -16,6 +16,13 @@ void Outro::setup(){
 	initialized = true;
     
     outImage.loadImage("logo.png");
+    ofTrueTypeFont::setGlobalDpi(72);
+    akzidenz32.loadFont("akzidenz-grotesk-light.ttf", 32,true,true);
+    akzidenz28.loadFont("akzidenz-grotesk-light.ttf", 28,true,true);
+    //akzidenz.setLineHeight(18.0f);
+	akzidenz32.setLetterSpacing(1.037);
+    akzidenz28.setLetterSpacing(1.05);
+    akzidenz28.setLineHeight(30);
 }
 
 
@@ -29,9 +36,55 @@ void Outro::draw(){
     ofBackground(0);
     ofSetColor(255);
     ofPushMatrix();
-    ofTranslate(ofGetWidth()/2, ofGetHeight()/6);
+    ofTranslate(3 * ofGetWidth()/4, ofGetHeight()/6);
     ofScale(scl*0.6, scl*0.6);
     ofTranslate(-outImage.width/2, 0);
     outImage.draw(0, 0);
     ofPopMatrix();
+    
+    ofPushMatrix();
+    float textScale = ofGetWidth()/2560.0;
+    ofScale(textScale, textScale);
+    
+    ofSetColor(255);
+    akzidenz32.drawString("CREATORS:", 100, 300);
+    
+    ofSetColor(128);
+    akzidenz28.drawString("RAIN ASHFORD, IVAYLO GETOV, KYLE GUSTAFSON,\nJASMINE IDUN LYMAN, JULIAN MACIEJEWSKI, JASON WISHNOW", 100, 340);
+    
+    akzidenz28.drawString("RAIN ASHFORD\nIVAYLO GETOV\nKYLE GUSTAFSON\nJASMINE IDUN LYMAN\nJULIAN MACIEJEWSKI\nJASON WISHNOW", 100, 500);
+    
+    ofSetColor(255);
+    akzidenz28.drawString("INTERACTIVITY DEVELOPER\nSOFTWARE & GRAPHICS\nSCIENCE ADVISOR\nEXPERIENCE DESIGNER\nSOFTWARE DEVELOPER\nCREATIVE DEVELOPER", 450, 500);
+    
+    ofSetColor(255);
+    akzidenz32.drawString("SCIENTISTS:", 100, 780);
+    ofSetColor(128);
+    akzidenz28.drawString("MARTIN POHL\nMARK WYMAN\nELENA APRILE", 100, 820);
+    
+    ofSetColor(255);
+    akzidenz32.drawString("THANK YOU:", 100, 1020);
+    ofSetColor(128);
+    akzidenz28.drawString("NEAL HARTMAN at CERN; OPEYEMI OLUKEMI, INGRID KOPP, and AMELIE LEENHARDT at TRIBECA FILM INSTITUTE\n"
+                          "NATASHA RODRIGUEZ-BACCUS (LOGO DESIGN), MACIEJ MUSZKOWSKI (PROGRAMMING HELP), ZACH CALDWELL (VIDEOGRAPHY)\n"
+                          "JOONA KURIKKA at the CERN IDEALAB, and EVERYBODY AT CERN, CINEGLOBE, AND TFI.", 100, 1060);
+    
+    
+    ofPopMatrix();
+    
+    /*
+     
+     
+     We would like to thank:
+     Professor Martin Pohl (interview)
+     Maciej Muszkowski (programming)
+     Natasha Rodriguez-Bacchus (graphic design)
+     Zach Caldwell (videographer)
+     
+     None of this would have been possible without:
+     Neal Hartman (CERN)
+     Opeyemi Olukemi (Tribeca Film Institute)
+     Amelie Leenhardt (Tribeca Film Institute)
+     Joona Kurikka (CERN IdeaLab)
+     */
 }
