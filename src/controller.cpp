@@ -53,15 +53,15 @@ void controller::setup(){
     vids03.clear();
     vids04.clear();
     
-    vids01.push_back("mov/0.mp4");
+    vids01.push_back("mov/0.mov");
     
-    vids02.push_back("mov/1.mp4");
+    vids02.push_back("mov/1.mov");
     vids02.push_back("mov/2.mp4");
-    vids02.push_back("mov/3.mp4");
-    vids02.push_back("mov/4.mp4");
+    vids02.push_back("mov/3.mov");
+    vids02.push_back("mov/4.mov");
     
     vids04.push_back("mov/5.mp4");
-    vids04.push_back("mov/6.mp4");
+    vids04.push_back("mov/6.mov");
     
     playerIntro.setup(vids01.size());
     playerBranch1.setup(vids02.size());
@@ -451,9 +451,6 @@ void controller::drawDebugMessages(){
             break;
             
         case B:
-        case D:
-        case F:
-        case H:
             if (debugMessages) {
                 ofDrawBitmapString("FrameRate: " + ofToString(ofGetFrameRate(),2) +
                                    " | Screen Size: " + ofToString(ofGetScreenWidth()) + "," + ofToString(ofGetScreenHeight()) +
@@ -462,7 +459,33 @@ void controller::drawDebugMessages(){
                                    "\nWhich Movie: " + ofToString(playerIntro.whichMov) + " | Is playing? " + ofToString(playerIntro.isPlaying()) +
                                    " | Which File: " + playerIntro.getPath(),
                                    20,ofGetHeight() - 70);
-                //+ player.getPath()
+            }
+            break;
+            
+        case D:
+            if (debugMessages) {
+                ofDrawBitmapString("FrameRate: " + ofToString(ofGetFrameRate(),2) +
+                                   " | Screen Size: " + ofToString(ofGetScreenWidth()) + "," + ofToString(ofGetScreenHeight()) +
+                                   " | Window Size: " + ofToString(ofGetWidth()) + "," + ofToString(ofGetHeight()) +
+                                   "\nEEG Has New Info: " + ofToString(mind.hasNewInfo()) + " | Diff 20: " + ofToString(mind.diff20()) + " | Diff 10: " + ofToString(mind.diff10()) +
+                                   "\nWhich Movie: " + ofToString(playerBranch1.whichMov) + " | Is playing? " + ofToString(playerBranch1.isPlaying()) +
+                                   " | Which File: " + playerBranch1.getPath(),
+                                   20,ofGetHeight() - 70);
+            }
+            break;
+            
+        case F:
+            break;
+            
+        case H:
+            if (debugMessages) {
+                ofDrawBitmapString("FrameRate: " + ofToString(ofGetFrameRate(),2) +
+                                   " | Screen Size: " + ofToString(ofGetScreenWidth()) + "," + ofToString(ofGetScreenHeight()) +
+                                   " | Window Size: " + ofToString(ofGetWidth()) + "," + ofToString(ofGetHeight()) +
+                                   "\nEEG Has New Info: " + ofToString(mind.hasNewInfo()) + " | Diff 20: " + ofToString(mind.diff20()) + " | Diff 10: " + ofToString(mind.diff10()) +
+                                   "\nWhich Movie: " + ofToString(playerOutro.whichMov) + " | Is playing? " + ofToString(playerOutro.isPlaying()) +
+                                   " | Which File: " + playerOutro.getPath(),
+                                   20,ofGetHeight() - 70);
             }
             break;
             
