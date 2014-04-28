@@ -44,11 +44,8 @@
 		F965125418ECD97000933E76 /* moviePlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F965125318ECD97000933E76 /* moviePlayer.cpp */; };
 		F965125718EDED6E00933E76 /* tunnel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F965125618EDED6E00933E76 /* tunnel.cpp */; };
 		F97436F918F4897F00199CF1 /* soundPlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F97436F818F4897F00199CF1 /* soundPlayer.cpp */; };
-<<<<<<< HEAD
-=======
 		F995D6B4190AB81B00F2F53A /* MSACoreGL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F995D6B1190AB81B00F2F53A /* MSACoreGL.cpp */; };
 		F995D6BF190AB93100F2F53A /* eegReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F995D6BE190AB93100F2F53A /* eegReader.cpp */; };
->>>>>>> develop
 		F9DA0FF218F3D9D600AC6455 /* fader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F9DA0FF118F3D9D600AC6455 /* fader.cpp */; };
 /* End PBXBuildFile section */
 
@@ -174,8 +171,6 @@
 		F965125618EDED6E00933E76 /* tunnel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tunnel.cpp; sourceTree = "<group>"; };
 		F97436F718F4893400199CF1 /* soundPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = soundPlayer.h; sourceTree = "<group>"; };
 		F97436F818F4897F00199CF1 /* soundPlayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = soundPlayer.cpp; sourceTree = "<group>"; };
-<<<<<<< HEAD
-=======
 		F995D6A7190AB81600F2F53A /* ofxThinkGear.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxThinkGear.h; sourceTree = "<group>"; };
 		F995D6A9190AB81600F2F53A /* put_ThinkGear.bundle_here.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = put_ThinkGear.bundle_here.txt; sourceTree = "<group>"; };
 		F995D6AA190AB81600F2F53A /* ThinkGear.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ThinkGear.bundle; sourceTree = "<group>"; };
@@ -194,7 +189,6 @@
 		F995D6BC190AB81E00F2F53A /* MSAInterpolatorT.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSAInterpolatorT.h; sourceTree = "<group>"; };
 		F995D6BD190AB89E00F2F53A /* eegReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = eegReader.h; sourceTree = "<group>"; };
 		F995D6BE190AB93100F2F53A /* eegReader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = eegReader.cpp; sourceTree = "<group>"; };
->>>>>>> develop
 		F9DA0FF018F3D93200AC6455 /* fader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fader.h; sourceTree = "<group>"; };
 		F9DA0FF118F3D9D600AC6455 /* fader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = fader.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -288,12 +282,9 @@
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
-<<<<<<< HEAD
-=======
 				F995D6B5190AB81E00F2F53A /* ofxMSAInterpolator */,
 				F995D6AB190AB81B00F2F53A /* ofxMSACore */,
 				F995D6A5190AB81600F2F53A /* ofxThinkGear */,
->>>>>>> develop
 				F965123E18ECA71300933E76 /* ofxXmlSettings */,
 				9F66160B6D853AA730F370C2 /* ofx3DModelLoader */,
 				2C8F245ACBE61E28646C17F2 /* ofxAssimpModelLoader */,
@@ -398,11 +389,8 @@
 				F91DBA1C18F9A75500C90AB6 /* states.h */,
 				F91DBA1D18F9A9EE00C90AB6 /* outro.h */,
 				F91DBA1E18F9AA4500C90AB6 /* outro.cpp */,
-<<<<<<< HEAD
-=======
 				F995D6BD190AB89E00F2F53A /* eegReader.h */,
 				F995D6BE190AB93100F2F53A /* eegReader.cpp */,
->>>>>>> develop
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -507,8 +495,6 @@
 			path = ../../../addons/ofxXmlSettings/libs;
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
-=======
 		F995D6A5190AB81600F2F53A /* ofxThinkGear */ = {
 			isa = PBXGroup;
 			children = (
@@ -582,7 +568,6 @@
 			path = ../../../addons/ofxMSAInterpolator/src;
 			sourceTree = "<group>";
 		};
->>>>>>> develop
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -661,11 +646,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-<<<<<<< HEAD
-			shellScript = "cp -f ../../../libs/fmodex/lib/osx/libfmodex.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/libfmodex.dylib\"; install_name_tool -change ./libfmodex.dylib @executable_path/libfmodex.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/$PRODUCT_NAME\";\nmkdir -p \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/Resources/\"\ncp -f \"$ICON_FILE\" \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/Resources/\"\ncp -r bin/data \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/Resources\";\n";
-=======
 			shellScript = "cp -f ../../../libs/fmodex/lib/osx/libfmodex.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/libfmodex.dylib\"; install_name_tool -change ./libfmodex.dylib @executable_path/libfmodex.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/$PRODUCT_NAME\";\nmkdir -p \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/Resources/\"\ncp -f \"$ICON_FILE\" \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/Resources/\"\n# cp -r bin/data \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/Resources\";\n";
->>>>>>> develop
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -692,11 +673,8 @@
 				F965124A18ECA71300933E76 /* tinyxmlparser.cpp in Sources */,
 				B8846EF8E504895A4A9EFEC0 /* ofxAssimpTexture.cpp in Sources */,
 				F965125418ECD97000933E76 /* moviePlayer.cpp in Sources */,
-<<<<<<< HEAD
-=======
 				F995D6BF190AB93100F2F53A /* eegReader.cpp in Sources */,
 				F995D6B4190AB81B00F2F53A /* MSACoreGL.cpp in Sources */,
->>>>>>> develop
 				0B1BAD9F9F9035D94079299F /* ofxFPSCamera.cpp in Sources */,
 				F965124918ECA71300933E76 /* tinyxmlerror.cpp in Sources */,
 			);
