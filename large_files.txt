@@ -1,4 +1,4 @@
-164567468 bin/AxionDebug.app/Contents/MacOS/AxionDebug
+262927528 bin/AxionDebug.app/Contents/MacOS/AxionDebug
 67925534 bin/data/mov/5.mov
 66868023 bin/data/mov/2.mov
 54615304 bin/test_02Debug.app/Contents/MacOS/test_02Debug
@@ -13,10 +13,6 @@
 16872041 bin/data/mov/1.mp4
 16872041 bin/AxionDebug.app/Contents/Resources/data/mov/1.mp4
 16872041 bin/Axion 0.2.app/Contents/Resources/data/mov/1.mp4
-16761256 bin/data/audio/2.aiff
-16761256 bin/AxionDebug.app/Contents/Resources/data/audio/2.aiff
-15752248 bin/data/audio/3.aiff
-15752248 bin/AxionDebug.app/Contents/Resources/data/audio/3.aiff
 15265636 bin/data/mov/6.mov
 13716486 bin/data/mov/2.mp4
 13716486 bin/AxionDebug.app/Contents/Resources/data/mov/2.mp4
@@ -27,6 +23,9 @@
 10128913 bin/data/mov/0.mov
 10128913 bin/data/NewIntro-H2648000.mov
 10128913 bin/AxionDebug.app/Contents/Resources/data/mov/0.mov
+7907520 bin/data/mov/6.mp4
+7907520 bin/data/mov/5.mp4
+7907520 bin/data/mov/4.mp4
 7907520 bin/data/mov/3.mp4
 7907520 bin/AxionDebug.app/Contents/Resources/data/mov/3.mp4
 7907520 bin/Axion 0.2.app/Contents/Resources/data/mov/3.mp4
