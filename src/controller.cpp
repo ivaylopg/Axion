@@ -17,13 +17,25 @@ void controller::setup(){
     ofSetVerticalSync(true);
     ofSetFrameRate(60);
     
+<<<<<<< HEAD
+=======
+    ofResetElapsedTimeCounter();
+    ofLog(OF_LOG_NOTICE) << "NEW USER - " << ofGetTimestampString("%B %e, %Y %h:%M:%S %a - ") << ofGetElapsedTimeMillis() << "\n";
+    
+>>>>>>> develop
     helpOn = false;
     debugMessages = false;
     
     current_state = A;
     next_state = B;
     
+<<<<<<< HEAD
     current_video = m0;
+=======
+    mind.reset();
+    
+    volume = 0.65;
+>>>>>>> develop
     
     //ofEnableAlphaBlending();
     ofEnableBlendMode(OF_BLENDMODE_ALPHA);
@@ -31,6 +43,11 @@ void controller::setup(){
     glShadeModel(GL_SMOOTH);
     ofEnableSeparateSpecularLight();
     
+<<<<<<< HEAD
+=======
+    tunnel1.secondTime = false;
+    lastMessage = " ";
+>>>>>>> develop
 
     #ifdef __APPLE__
         CGDisplayHideCursor(NULL); // <- Sometimes necessary to hide cursor on Macs
@@ -40,19 +57,57 @@ void controller::setup(){
     ofSetWindowPosition(ofGetScreenWidth()/2 - ofGetWidth()/2, ofGetScreenHeight()/2 - ofGetHeight()/2);
     
     ofRegisterGetMessages(this);
+<<<<<<< HEAD
+=======
+    
+    vids01.clear();
+    vids02.clear();
+    vids03.clear();
+    vids04.clear();
+    
+    vids01.push_back("mov/0.mov");
+    
+    vids02.push_back("mov/1.mov");
+    vids02.push_back("mov/2.mp4");
+    vids02.push_back("mov/3.mov");
+    vids02.push_back("mov/4.mov");
+    
+    vids04.push_back("mov/5.mp4");
+    vids04.push_back("mov/6.mov");
+    
+    playerIntro.setup(vids01.size());
+    playerBranch1.setup(vids02.size());
+    //playerBranch2.setup(vids03.size());
+    playerOutro.setup(vids04.size());
+    
+    playerIntro.load(vids01);
+    
+>>>>>>> develop
 }
 
 //--------------------------------------------------------------
 void controller::update(){
+<<<<<<< HEAD
     
     sound.update();
     
     switch (current_state) {
         case A:
+=======
+    mind.update();
+    //sound.update();
+    
+    switch (current_state) {
+        case A:
+            if (sound.volume < volume) {
+                sound.fadeUp();
+            }
+>>>>>>> develop
             introPlayer.update();
             break;
         
         case B:
+<<<<<<< HEAD
             player.update();
             break;
             
@@ -61,6 +116,57 @@ void controller::update(){
             break;
             
         case D:
+=======
+            if (sound.volume > volume/3) {
+                sound.fadeDown();
+            }
+            playerIntro.update();
+            break;
+            
+        case C:
+            if (sound.volume < volume) {
+                sound.fadeUp();
+            }
+            tunnel1.update();
+            break;
+            
+        case D:
+            if (sound.volume > 0) {
+                sound.fadeDown();
+            }
+            if (sound.volume <= 0) {
+                sound.newFile("audio/3.aiff");
+            }
+            playerBranch1.update();
+            break;
+            
+        case E:
+            //outroPlayer.update();
+            break;
+            
+        case F:
+            if (sound.volume > volume/3) {
+                sound.fadeDown();
+            }
+            playerBranch2.update();
+            break;
+            
+        case G:
+            /////////////////////
+            break;
+            
+        case H:
+            if (sound.volume > 0) {
+                sound.fadeDown();
+            }
+            playerOutro.update();
+            break;
+            
+        case I:
+            if (sound.volume < volume) {
+                sound.fadeUp();
+            }
+>>>>>>> develop
             outroPlayer.update();
             break;
             
@@ -68,15 +174,30 @@ void controller::update(){
             break;
     }
     
+<<<<<<< HEAD
     fader.update();                                     // fader is what controls transition between states
     if (fader.fullCover()) {
         if (current_state == B) {
             tunnel.camera.reset();
             tunnel.camera.target(ofVec3f(0,0,1));
+=======
+    sound.update();
+    
+    fader.update();                                     // fader is what controls transition between states
+    if (fader.fullCover()) {
+        if (current_state != C && next_state == C) {
+            tunnel1.camera.reset();
+            tunnel1.camera.target(ofVec3f(0,0,1));
+>>>>>>> develop
             //tunnel.secondTime = true;
         }
         current_state = next_state;
     }
+<<<<<<< HEAD
+=======
+    
+    //cout << "Diff 10: " << mind.diff10() << " | Diff 20:" << mind.diff20() << endl;
+>>>>>>> develop
 }
 
 //--------------------------------------------------------------
@@ -92,6 +213,7 @@ void controller::draw(){
             next_state = B;
             break;
         case B:
+<<<<<<< HEAD
             player.play();
             player.draw(0, 0, ofGetWidth(), ofGetHeight());
             
@@ -99,6 +221,15 @@ void controller::draw(){
                 player.stop();
                 player.reset();
                 
+=======
+            playerIntro.play();
+            playerIntro.draw(0, 0, ofGetWidth(), ofGetHeight());
+            
+            if (playerIntro.isDone) {
+                //playerIntro.stop();
+                //playerIntro.reset();
+                /*
+>>>>>>> develop
                 if (player.whichMov == 1 || player.whichMov == 2) {     // This seems a little inelegant with if/then.
                     tunnel.secondTime = true;                           //     I think there is a better way by doing this
                 }                                                       //         from within the movieplayer class somehow.
@@ -110,17 +241,79 @@ void controller::draw(){
                 } else {
                     next_state = C;
                 }
+<<<<<<< HEAD
                 
+=======
+                */
+                next_state = C;
+                playerIntro.clear();
+>>>>>>> develop
                 fader.fadeUp();
             }
             break;
             
         case C:
+<<<<<<< HEAD
             tunnel.draw(fader.getAlpha());
             break;
             
         case D:
             outroPlayer.draw();
+=======
+            tunnel1.draw(fader.getAlpha());
+            if (!tunnel1.secondTime) {
+                playerBranch1.load(vids02);
+            } else if (tunnel1.secondTime) {
+                playerOutro.load(vids04);
+            }
+            break;
+            
+        case D:
+            playerBranch1.play();
+            playerBranch1.draw(0, 0, ofGetWidth(), ofGetHeight());
+            
+            if (playerBranch1.isDone) {
+                next_state = C;
+                tunnel1.secondTime = true;
+                playerBranch1.clear();
+                fader.fadeUp();
+            }
+            break;
+            
+        case E:
+            //outroPlayer.draw();
+            break;
+            
+        case F:
+            playerBranch2.play();
+            playerBranch2.draw(0, 0, ofGetWidth(), ofGetHeight());
+            
+            if (playerBranch2.isDone) {
+                next_state = C;
+                tunnel1.secondTime = true;
+                playerBranch2.clear();
+                fader.fadeUp();
+            }
+            break;
+            
+        case G:
+            //outroPlayer.draw();
+            break;
+            
+        case H:
+            playerOutro.play();
+            playerOutro.draw(0, 0, ofGetWidth(), ofGetHeight());
+            
+            if (playerOutro.isDone) {
+                next_state = I;
+                playerOutro.clear();
+                fader.fadeUp();
+            }
+            break;
+            
+        case I:
+                outroPlayer.draw();
+>>>>>>> develop
             break;
             
         default:
@@ -128,7 +321,11 @@ void controller::draw(){
     }
     
     drawDebugMessages();
+<<<<<<< HEAD
     drawHelp();
+=======
+    //drawHelp();
+>>>>>>> develop
     fader.draw();
 }
 //--------------------------------------------------------------
@@ -143,11 +340,46 @@ void controller::gotMessage(ofMessage& msg){
     //
     //
     
+<<<<<<< HEAD
     if (ofIsStringInString(msg.message, "SetVid")) {
         int vid = ofToInt(ofSplitString(msg.message, ":")[1]);
         //cout << "vid will be: " << state << endl;
         player.setFile(vid);
         
+=======
+    if (msg.message == lastMessage) {
+        return;
+    } else {
+        lastMessage = msg.message;
+    }
+    
+    if (ofIsStringInString(msg.message, "TunnelA")) {
+        int branch = ofToInt(ofSplitString(msg.message, ":")[1]);
+        int state = ofToInt(ofSplitString(msg.message, ":")[2]);
+        cout << "Sent to Brancher from Tunnel A" << endl;
+        ofLog(OF_LOG_NOTICE) << "Sent to Brancher from Tunnel A - " << ofGetElapsedTimeMillis() << "\n";
+        brancher(1, branch, state);
+    }
+    
+    if (ofIsStringInString(msg.message, "TunnelB")) {
+        int branch = ofToInt(ofSplitString(msg.message, ":")[1]);
+        int state = ofToInt(ofSplitString(msg.message, ":")[2]);
+        cout << "Sent to Brancher from Tunnel B" << endl;
+        ofLog(OF_LOG_NOTICE) << "Sent to Brancher from Tunnel B - " << ofGetElapsedTimeMillis() << "\n";
+        brancher(2, branch, state);
+    }
+    
+    
+    
+    if (ofIsStringInString(msg.message, "SetVid")) {
+        int vid = ofToInt(ofSplitString(msg.message, ":")[1]);
+        //cout << "vid will be: " << state << endl;
+        if (!tunnel1.secondTime) {
+            playerBranch1.setFile(vid);
+        } else {
+            playerOutro.setFile(vid);
+        }
+>>>>>>> develop
     }
     
     if (ofIsStringInString(msg.message, "NextState")) {
@@ -161,6 +393,19 @@ void controller::gotMessage(ofMessage& msg){
             next_state = C;
         } else if (state == 3) {
             next_state = D;
+<<<<<<< HEAD
+=======
+        } else if (state == 4) {
+            next_state = E;
+        } else if (state == 5) {
+            next_state = F;
+        } else if (state == 6) {
+            next_state = G;
+        } else if (state == 7) {
+            next_state = H;
+        } else if (state == 8) {
+            next_state = I;
+>>>>>>> develop
         }
     }
     
@@ -191,6 +436,7 @@ void controller::keyPressed(int key){
         /**************************************/
         // Debug Stuff
         case 'i':
+<<<<<<< HEAD
             helpOn = !helpOn;
             break;
         
@@ -237,6 +483,13 @@ void controller::keyPressed(int key){
                 next_state = B;
                 fader.moveOn();
             }
+=======
+            //helpOn = !helpOn;
+            break;
+        
+        case '0':
+            current_state = next_state;
+>>>>>>> develop
             break;
             
         case '.':
@@ -248,6 +501,18 @@ void controller::keyPressed(int key){
             //
             break;
             
+<<<<<<< HEAD
+=======
+        case ';':
+            if (current_state == I) {
+                ofLog(OF_LOG_NOTICE) << "RESTARTING - " << ofGetTimestampString("%B %e, %Y %h:%M:%S %a - ") << ofGetElapsedTimeMillis() << "\n";
+                sound.volume == 0;
+                sound.newFile("audio/1.aiff");
+                setup();
+            }
+            break;
+            
+>>>>>>> develop
         default:
             if (current_state == A) {
                 fader.moveOn();
@@ -267,6 +532,7 @@ void controller::mousePressed(int x, int y, int button){
 void controller::drawHelp(){
     ofSetColor(255);
     switch (current_state) {
+<<<<<<< HEAD
         case A:
             ofDrawBitmapString("Axion \n\nDevelopment Version: " + ofToString(VERSION, 1) + "\n\n"
                                "This is basically an app version of what we presented at CERN\n"
@@ -282,13 +548,18 @@ void controller::drawHelp(){
                                20, 20);
             break;
             
+=======
+>>>>>>> develop
         case B:
             if (helpOn) {
                 ofDrawBitmapStringHighlight("There should be a MOVIE playing here. If there isn\'t, I\'m Sorry! Please let me know.\n\n"
                                             "If it does not automatically move on, or if it keeps looping, press \" 0 \" (zero)"
                                             , 20,20);
+<<<<<<< HEAD
             } else {
                 ofDrawBitmapStringHighlight("Press the \" i \" key for HELP", 20,20);
+=======
+>>>>>>> develop
             }
             break;
             
@@ -303,12 +574,16 @@ void controller::drawHelp(){
                                             "If this is your second time through the hallway and you cannot move on, press \"3\" \n\n"
                                             "",
                                             20,20);
+<<<<<<< HEAD
             } else {
                 ofDrawBitmapStringHighlight("Press the \" i \" key for HELP", 20,20);
+=======
+>>>>>>> develop
             }
             break;
             
         case D:
+<<<<<<< HEAD
             ofDrawBitmapString("That\'s it for now! \n\nOn the agenda:\n"
                                "    -Add more video content\n"
                                "    -Incorporate and expand Jasmine\'s sound design\n"
@@ -320,6 +595,13 @@ void controller::drawHelp(){
                                "    -Clean up and optimize code. Find bugs and DESTROY THEM!\n\n\n"
                                "Press ESC key to QUIT"
                                , 20,20);
+=======
+            if (helpOn) {
+                ofDrawBitmapStringHighlight("There should be a MOVIE playing here. If there isn\'t, I\'m Sorry! Please let me know.\n\n"
+                                            "If it does not automatically move on, or if it keeps looping, press \" 0 \" (zero)"
+                                            , 20,20);
+            }
+>>>>>>> develop
             break;
             
         default:
@@ -332,11 +614,21 @@ void controller::drawDebugMessages(){
     ofSetColor(255,0,0);
     switch (current_state) {
         case A:
+<<<<<<< HEAD
             if (debugMessages) {
                 ofDrawBitmapString("FrameRate: " + ofToString(ofGetFrameRate(),2) +
                                    " | Screen Size: " + ofToString(ofGetScreenWidth()) + "," + ofToString(ofGetScreenHeight()) +
                                    " | Window Size: " + ofToString(ofGetWidth()) + "," + ofToString(ofGetHeight()),
                                    20,ofGetHeight() - 50);
+=======
+        case I:
+            if (debugMessages) {
+                ofDrawBitmapString("FrameRate: " + ofToString(ofGetFrameRate(),2) +
+                                   " | Screen Size: " + ofToString(ofGetScreenWidth()) + "," + ofToString(ofGetScreenHeight()) +
+                                   " | Window Size: " + ofToString(ofGetWidth()) + "," + ofToString(ofGetHeight()) +
+                                   "\nEEG Has New Info: " + ofToString(mind.hasNewInfo()) + " | Diff 20: " + ofToString(mind.diff20()) + " | Diff 10: " + ofToString(mind.diff10()),
+                                   20,ofGetHeight() - 70);
+>>>>>>> develop
             }
             break;
             
@@ -345,6 +637,7 @@ void controller::drawDebugMessages(){
                 ofDrawBitmapString("FrameRate: " + ofToString(ofGetFrameRate(),2) +
                                    " | Screen Size: " + ofToString(ofGetScreenWidth()) + "," + ofToString(ofGetScreenHeight()) +
                                    " | Window Size: " + ofToString(ofGetWidth()) + "," + ofToString(ofGetHeight()) +
+<<<<<<< HEAD
                                    "\nWhich Movie: " + ofToString(player.whichMov) + " | Is playing? " + ofToString(player.isPlaying()) +
                                    " | Which File: " + player.getPath(),
                                    20,ofGetHeight() - 50);
@@ -353,10 +646,21 @@ void controller::drawDebugMessages(){
             break;
             
         case C:
+=======
+                                   "\nEEG Has New Info: " + ofToString(mind.hasNewInfo()) + " | Diff 20: " + ofToString(mind.diff20()) + " | Diff 10: " + ofToString(mind.diff10()) +
+                                   "\nWhich Movie: " + ofToString(playerIntro.whichMov) + " | Is playing? " + ofToString(playerIntro.isPlaying()) +
+                                   " | Which File: " + playerIntro.getPath(),
+                                   20,ofGetHeight() - 70);
+            }
+            break;
+            
+        case D:
+>>>>>>> develop
             if (debugMessages) {
                 ofDrawBitmapString("FrameRate: " + ofToString(ofGetFrameRate(),2) +
                                    " | Screen Size: " + ofToString(ofGetScreenWidth()) + "," + ofToString(ofGetScreenHeight()) +
                                    " | Window Size: " + ofToString(ofGetWidth()) + "," + ofToString(ofGetHeight()) +
+<<<<<<< HEAD
                                    "\nCamera Position: (" + ofToString(tunnel.camera.getPosition().x,2) + "," +
                                    ofToString(tunnel.camera.getPosition().y,2) + "," + ofToString(tunnel.camera.getPosition().z,2) + ") | " +
                                    "Goal 1: (" + ofToString(tunnel.goal1.x,2) + "," + ofToString(tunnel.goal1.y,2) + "," + ofToString(tunnel.goal1.z,2) + ") | " +
@@ -377,14 +681,209 @@ void controller::drawDebugMessages(){
             }
             break;
             
+=======
+                                   "\nEEG Has New Info: " + ofToString(mind.hasNewInfo()) + " | Diff 20: " + ofToString(mind.diff20()) + " | Diff 10: " + ofToString(mind.diff10()) +
+                                   "\nWhich Movie: " + ofToString(playerBranch1.whichMov) + " | Is playing? " + ofToString(playerBranch1.isPlaying()) +
+                                   " | Which File: " + playerBranch1.getPath(),
+                                   20,ofGetHeight() - 70);
+            }
+            break;
+            
+        case F:
+            break;
+            
+        case H:
+            if (debugMessages) {
+                ofDrawBitmapString("FrameRate: " + ofToString(ofGetFrameRate(),2) +
+                                   " | Screen Size: " + ofToString(ofGetScreenWidth()) + "," + ofToString(ofGetScreenHeight()) +
+                                   " | Window Size: " + ofToString(ofGetWidth()) + "," + ofToString(ofGetHeight()) +
+                                   "\nEEG Has New Info: " + ofToString(mind.hasNewInfo()) + " | Diff 20: " + ofToString(mind.diff20()) + " | Diff 10: " + ofToString(mind.diff10()) +
+                                   "\nWhich Movie: " + ofToString(playerOutro.whichMov) + " | Is playing? " + ofToString(playerOutro.isPlaying()) +
+                                   " | Which File: " + playerOutro.getPath(),
+                                   20,ofGetHeight() - 70);
+            }
+            break;
+            
+        case C:
+            if (debugMessages) {
+                ofDrawBitmapString("FrameRate: " + ofToString(ofGetFrameRate(),2) +
+                                   " | Screen Size: " + ofToString(ofGetScreenWidth()) + "," + ofToString(ofGetScreenHeight()) +
+                                   " | Window Size: " + ofToString(ofGetWidth()) + "," + ofToString(ofGetHeight()) +
+                                   "\nEEG Has New Info: " + ofToString(mind.hasNewInfo()) + " | Diff 20: " + ofToString(mind.diff20()) + " | Diff 10: " + ofToString(mind.diff10()) +
+                                   "\nCamera Position: (" + ofToString(tunnel1.camera.getPosition().x,2) + "," +
+                                   ofToString(tunnel1.camera.getPosition().y,2) + "," + ofToString(tunnel1.camera.getPosition().z,2) + ") | " +
+                                   "Goal 1: (" + ofToString(tunnel1.goal1.x,2) + "," + ofToString(tunnel1.goal1.y,2) + "," + ofToString(tunnel1.goal1.z,2) + ") | " +
+                                   "Goal 1 Distance: " + ofToString(tunnel1.camera.getPosition().squareDistance(tunnel1.goal1),2) +
+                                   "\nGoal 2: (" + ofToString(tunnel1.goal2.x,2) + "," + ofToString(tunnel1.goal2.y,2) + "," + ofToString(tunnel1.goal2.z,2) + ") | " +
+                                   " | Goal 2 Distance: " + ofToString(tunnel1.camera.getPosition().squareDistance(tunnel1.goal2),2) + " | Distance Factor: " +
+                                   ofToString(tunnel1.distFactor,2) + " | Second Time? " + ofToString(tunnel1.secondTime),
+                                   20,ofGetHeight() - 70);
+            }
+            break;
+            
+            
+>>>>>>> develop
         default:
             break;
     }
 }
 
 //--------------------------------------------------------------
+<<<<<<< HEAD
 void controller::exit(){
     
+=======
+void controller::brancher(int source, int branch, int state){
+    
+    if (state == 0) {
+        next_state = A;
+    } else if (state == 1) {
+        next_state = B;
+    } else if (state == 2) {
+        next_state = C;
+    } else if (state == 3) {
+        next_state = D;
+    } else if (state == 4) {
+        next_state = E;
+    } else if (state == 5) {
+        next_state = F;
+    } else if (state == 6) {
+        next_state = G;
+    } else if (state == 7) {
+        next_state = H;
+    } else if (state == 8) {
+        next_state = I;
+    }
+    
+
+    if (source==1) {
+        if (mind.hasNewInfo()) {
+            if (mind.diff20() > -100.0) {
+                if (mind.diff20()>10) {
+                    // VERY Attentive
+                    cout << "VERY Attentive" << endl;
+                    ofLog(OF_LOG_NOTICE) << "Very Attentive - Branch 1 - Diff20 - " << ofGetElapsedTimeMillis() << "\n";
+                    playerBranch1.setFile(0);
+                } else if (mind.diff20()>0){
+                    // SOMEWHAT Attentive
+                    cout << "SOMEWHAT Attentive" << endl;
+                    ofLog(OF_LOG_NOTICE) << "Somewhat Attentive - Branch 1 - Diff20 - " << ofGetElapsedTimeMillis() << "\n";
+                    playerBranch1.setFile(1);
+                } else if (mind.diff20()<-10) {
+                    //VERY Meditative
+                    cout << "VERY Meditative" << endl;
+                    ofLog(OF_LOG_NOTICE) << "Very Meditative - Branch 1 - Diff20 - " << ofGetElapsedTimeMillis() << "\n";
+                    playerBranch1.setFile(3);
+                } else {
+                    //Somewhat Meditative
+                    cout << "Somewhat Meditative" << endl;
+                    ofLog(OF_LOG_NOTICE) << "Somewhat Meditative - Branch 1 - Diff20 - " << ofGetElapsedTimeMillis() << "\n";
+                    playerBranch1.setFile(2);
+                }
+            } else if (mind.diff10() > -100.0) {
+                if (mind.diff10()>10) {
+                    // VERY Attentive
+                    cout << "VERY Attentive" << endl;
+                    ofLog(OF_LOG_NOTICE) << "Very Attentive - Branch 1 - Diff10 - " << ofGetElapsedTimeMillis() << "\n";
+                    playerBranch1.setFile(0);
+                } else if (mind.diff10()>0){
+                    // SOMEWHAT Attentive
+                    cout << "SOMEWHAT Attentive" << endl;
+                    ofLog(OF_LOG_NOTICE) << "Somewhat Attentive - Branch 1 - Diff10 - " << ofGetElapsedTimeMillis() << "\n";
+                    playerBranch1.setFile(1);
+                } else if (mind.diff10()<-10) {
+                    //VERY Meditative
+                    cout << "VERY Meditative" << endl;
+                    ofLog(OF_LOG_NOTICE) << "Very Meditative - Branch 1 - Diff10 - " << ofGetElapsedTimeMillis() << "\n";
+                    playerBranch1.setFile(3);
+                } else {
+                    //Somewhat Meditative
+                    cout << "Somewhat Meditative" << endl;
+                    ofLog(OF_LOG_NOTICE) << "Somewhat Meditative - Branch 1 - Diff10 - " << ofGetElapsedTimeMillis() << "\n";
+                    playerBranch1.setFile(2);
+                }
+            } else {
+                // Cannot Determine
+                cout << "Cannot Determine" << endl;
+                ofLog(OF_LOG_NOTICE) << "Cannot Determine - Branch 1 - " << ofGetElapsedTimeMillis() << "\n";
+                playerBranch1.setFile(branch);
+            }
+        } else {
+            // NO EEG DATA
+            cout << "NO EEG DATA" << endl;
+            ofLog(OF_LOG_NOTICE) << "No EEG Data - Branch 1 - " << ofGetElapsedTimeMillis() << "\n";
+            playerBranch1.setFile(branch);
+        }
+        
+    } else if (source == 2){
+        if (mind.hasNewInfo()) {
+            if (mind.diff20() > -100.0) {
+                if (mind.diff20()>10) {
+                    // VERY Attentive
+                    cout << "VERY Attentive" << endl;
+                    ofLog(OF_LOG_NOTICE) << "Very Attentive - Branch 2 - Diff20 - " << ofGetElapsedTimeMillis() << "\n";
+                    playerOutro.setFile(0);
+                } else if (mind.diff20()>0){
+                    // SOMEWHAT Attentive
+                    cout << "SOMEWHAT Attentive" << endl;
+                    ofLog(OF_LOG_NOTICE) << "Somewhat Attentive - Branch 2 - Diff20 - " << ofGetElapsedTimeMillis() << "\n";
+                    playerOutro.setFile(0);
+                } else if (mind.diff20()<-10) {
+                    //VERY Meditative
+                    cout << "VERY Meditative" << endl;
+                    ofLog(OF_LOG_NOTICE) << "Very Meditative - Branch 2 - Diff20 - " << ofGetElapsedTimeMillis() << "\n";
+                    playerOutro.setFile(1);
+                } else {
+                    //Somewhat Meditative
+                    cout << "Somewhat Meditative" << endl;
+                    ofLog(OF_LOG_NOTICE) << "Somewhat Meditative - Branch 2 - Diff20 - " << ofGetElapsedTimeMillis() << "\n";
+                    playerOutro.setFile(1);
+                }
+            } else if (mind.diff10() > -100.0) {
+                if (mind.diff10()>10) {
+                    // VERY Attentive
+                    cout << "VERY Attentive" << endl;
+                    ofLog(OF_LOG_NOTICE) << "Very Attentive - Branch 2 - Diff10 - " << ofGetElapsedTimeMillis() << "\n";
+                    playerOutro.setFile(0);
+                } else if (mind.diff10()>0){
+                    // SOMEWHAT Attentive
+                    cout << "Somewhat Attentive" << endl;
+                    ofLog(OF_LOG_NOTICE) << "Somewhat Attentive - Branch 2 - Diff10 - " << ofGetElapsedTimeMillis() << "\n";
+                    playerOutro.setFile(0);
+                } else if (mind.diff10()<-10) {
+                    //VERY Meditative
+                    cout << "VERY Meditative" << endl;
+                    ofLog(OF_LOG_NOTICE) << "Very Meditative - Branch 2 - Diff10 - " << ofGetElapsedTimeMillis() << "\n";
+                    playerOutro.setFile(1);
+                } else {
+                    //Somewhat Meditative
+                    cout << "Somewhat Meditative" << endl;
+                    ofLog(OF_LOG_NOTICE) << "Somewhat Meditative - Branch 2 - Diff10 - " << ofGetElapsedTimeMillis() << "\n";
+                    playerOutro.setFile(1);
+                }
+            } else {
+                // Cannot Determine
+                cout << "Cannot Determine" << endl;
+                ofLog(OF_LOG_NOTICE) << "Cannot Determine - Branch 2 - " << ofGetElapsedTimeMillis() << "\n";
+                playerOutro.setFile(floor(ofRandom(2)));
+            }
+        } else {
+            // NO EEG DATA
+            cout << "NO EEG DATA" << endl;
+            ofLog(OF_LOG_NOTICE) << "No EEG Data - Branch 2 - " << ofGetElapsedTimeMillis() << "\n";
+            playerOutro.setFile(floor(ofRandom(2)));
+        }
+    }
+    
+    fader.moveOn();
+    
+}
+
+//--------------------------------------------------------------
+void controller::exit(){
+    mind.free();
+    ofLog(OF_LOG_NOTICE) << "QUITTING - " << ofGetTimestampString("%B %e, %Y %h:%M:%S %a - ") << ofGetElapsedTimeMillis() << "\n";
+>>>>>>> develop
 }
 
 //--------------------------------------------------------------
