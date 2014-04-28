@@ -3,26 +3,11 @@
 
 //--------------------------------------------------------------
 MoviePlayer::MoviePlayer(){
-<<<<<<< HEAD
-	setup();
-=======
->>>>>>> develop
 }
 
 // Do something with closeMovie() ?
 
 //--------------------------------------------------------------
-<<<<<<< HEAD
-void MoviePlayer::setup(){
-    if(initialized) {
-		return;
-	}
-
-	initialized = true;
-    isDone = false;
-    
-    whichMov = 0;
-=======
 void MoviePlayer::setup(int howMany){
     
 //    if(initialized) {
@@ -34,15 +19,10 @@ void MoviePlayer::setup(int howMany){
     N_VIDEOS = howMany;
     whichMov = 0;
     loaded = false;
->>>>>>> develop
     
     for (int i = 0; i < N_VIDEOS; i++) {
         ofVideoPlayer* p = new ofVideoPlayer();
         videos.push_back(p);
-<<<<<<< HEAD
-        videos.at(i)->loadMovie("mov/" + ofToString(i) + ".mp4");
-        videos.at(i)->setLoopState(OF_LOOP_NONE);
-=======
     }
 }
 
@@ -54,7 +34,6 @@ void MoviePlayer::load(vector<string> s) {
             videos.at(i)->setLoopState(OF_LOOP_NONE);
         }
         loaded = true;
->>>>>>> develop
     }
 }
 
@@ -67,13 +46,6 @@ void MoviePlayer::setFile(int i){
     isDone = false;
 }
 
-<<<<<<< HEAD
-
-//--------------------------------------------------------------
-void MoviePlayer::update(){
-    if (videos.at(whichMov)->getIsMovieDone()) {
-        videos.at(whichMov)->stop();
-=======
 //--------------------------------------------------------------
 void MoviePlayer::clear(){
     for (int i=0; i<videos.size(); i++) {
@@ -87,7 +59,6 @@ void MoviePlayer::clear(){
 void MoviePlayer::update(){
     if (videos.at(whichMov)->getPosition() > 0.99) {
         videos.at(whichMov)->setPaused(true);
->>>>>>> develop
         isDone = true;
         return;
     } else {

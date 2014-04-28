@@ -10,12 +10,6 @@ public:
     void play();
     void pause();
     void newVolume(float f);
-<<<<<<< HEAD
-    
-    bool initialized = false;
-    
-    bool isDone;
-=======
     void newFile(string s);
     void fadeDown();
     void fadeUp();
@@ -23,7 +17,6 @@ public:
     
     bool initialized = false;
 
->>>>>>> develop
     
     bool hasStarted;
     float volume;

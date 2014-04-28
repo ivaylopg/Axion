@@ -15,9 +15,6 @@ public:
     bool initialized = false;
     
     ofImage outImage;
-<<<<<<< HEAD
-=======
     ofTrueTypeFont	akzidenz32;
     ofTrueTypeFont	akzidenz28;
->>>>>>> develop
 };
