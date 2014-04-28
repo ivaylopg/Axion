@@ -27,28 +27,14 @@
 10128913 bin/data/mov/0.mov
 10128913 bin/data/NewIntro-H2648000.mov
 10128913 bin/AxionDebug.app/Contents/Resources/data/mov/0.mov
-8718278 bin/data/hallway1.obj
-8718278 bin/AxionDebug.app/Contents/Resources/data/hallway1.obj
-8718278 bin/Axion 0.2.app/Contents/Resources/data/hallway1.obj
 7907520 bin/data/mov/3.mp4
 7907520 bin/AxionDebug.app/Contents/Resources/data/mov/3.mp4
 7907520 bin/Axion 0.2.app/Contents/Resources/data/mov/3.mp4
-7399904 bin/data/audio/1.aiff
-7399904 bin/AxionDebug.app/Contents/Resources/data/audio/1.aiff
-7399904 bin/Axion 0.2.app/Contents/Resources/data/audio/1.aiff
 5844592 bin/data/mov/0.mp4
 5844592 bin/AxionDebug.app/Contents/Resources/data/mov/0.mp4
 5844592 bin/Axion 0.2.app/Contents/Resources/data/mov/0.mp4
-2675995 bin/data/circ3.jpg
-2675995 bin/AxionDebug.app/Contents/Resources/data/circ3.jpg
 1956044 bin/test_02Debug.app/Contents/MacOS/libfmodex.dylib
 1956044 bin/AxionDebug.app/Contents/MacOS/libfmodex.dylib
 1956044 bin/Axion-NeueHouse.app/Contents/MacOS/libfmodex.dylib
 1956044 bin/Axion 0.2.app/Contents/MacOS/libfmodex.dylib
 1956044 bin/Axion 0.1.app/Contents/MacOS/libfmodex.dylib
-1894011 bin/data/Hallway1C.obj
-1894011 bin/AxionDebug.app/Contents/Resources/data/Hallway1C.obj
-1894011 bin/Axion 0.2.app/Contents/Resources/data/Hallway1C.obj
-1839005 bin/data/MainScreen.png
-1839005 bin/AxionDebug.app/Contents/Resources/data/MainScreen.png
-1839005 bin/Axion 0.2.app/Contents/Resources/data/MainScreen.png
