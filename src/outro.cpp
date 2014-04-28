@@ -16,8 +16,6 @@ void Outro::setup(){
 	initialized = true;
     
     outImage.loadImage("logo.png");
-<<<<<<< HEAD
-=======
     ofTrueTypeFont::setGlobalDpi(72);
     akzidenz32.loadFont("akzidenz-grotesk-light.ttf", 32,true,true);
     akzidenz28.loadFont("akzidenz-grotesk-light.ttf", 28,true,true);
@@ -25,7 +23,6 @@ void Outro::setup(){
 	akzidenz32.setLetterSpacing(1.037);
     akzidenz28.setLetterSpacing(1.05);
     akzidenz28.setLineHeight(30);
->>>>>>> develop
 }
 
 
@@ -39,17 +36,11 @@ void Outro::draw(){
     ofBackground(0);
     ofSetColor(255);
     ofPushMatrix();
-<<<<<<< HEAD
-    ofTranslate(ofGetWidth()/2, ofGetHeight()/6);
-=======
     ofTranslate(3 * ofGetWidth()/4, ofGetHeight()/6);
->>>>>>> develop
     ofScale(scl*0.6, scl*0.6);
     ofTranslate(-outImage.width/2, 0);
     outImage.draw(0, 0);
     ofPopMatrix();
-<<<<<<< HEAD
-=======
     
     ofPushMatrix();
     float textScale = ofGetWidth()/2560.0;
@@ -88,5 +79,4 @@ void Outro::draw(){
     
     
     ofPopMatrix();
->>>>>>> develop
 }
