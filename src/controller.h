@@ -14,6 +14,10 @@
 #include "fader.h"
 #include "soundPlayer.h"
 #include "outro.h"
+<<<<<<< HEAD
+=======
+#include "eegReader.h"
+>>>>>>> develop
 
 
 class controller : public ofBaseApp{
@@ -36,6 +40,10 @@ class controller : public ofBaseApp{
         void gotMessage(ofMessage& msg);
         void drawHelp();
         void drawDebugMessages();
+<<<<<<< HEAD
+=======
+        void brancher(int source, int branch, int state);
+>>>>>>> develop
         void exit();
     
     const float VERSION = 0.2;
@@ -43,6 +51,7 @@ class controller : public ofBaseApp{
     bool helpOn;
     bool debugMessages;
     
+<<<<<<< HEAD
     State current_state;
     State next_state;
     
@@ -53,4 +62,31 @@ class controller : public ofBaseApp{
     Tunnel tunnel;
     SoundPlayer sound;
     Outro outroPlayer;
+=======
+    float volume;
+    
+    State current_state;
+    State next_state;
+    
+    EEGreader mind;
+    Fader fader;
+    SoundPlayer sound;
+    
+    Intro introPlayer;
+    MoviePlayer playerIntro;
+    Tunnel tunnel1;
+    MoviePlayer playerBranch1;
+    // EEG?
+    MoviePlayer playerBranch2;
+    //Tunnel tunnel2;
+    MoviePlayer playerOutro;
+    Outro outroPlayer;
+    
+    string lastMessage;
+    
+    vector<string> vids01;
+    vector<string> vids02;
+    vector<string> vids03;
+    vector<string> vids04;
+>>>>>>> develop
 };
