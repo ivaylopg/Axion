@@ -14,10 +14,7 @@
 #include "fader.h"
 #include "soundPlayer.h"
 #include "outro.h"
-<<<<<<< HEAD
-=======
 #include "eegReader.h"
->>>>>>> develop
 
 
 class controller : public ofBaseApp{
@@ -40,10 +37,7 @@ class controller : public ofBaseApp{
         void gotMessage(ofMessage& msg);
         void drawHelp();
         void drawDebugMessages();
-<<<<<<< HEAD
-=======
         void brancher(int source, int branch, int state);
->>>>>>> develop
         void exit();
     
     const float VERSION = 0.2;
@@ -51,18 +45,6 @@ class controller : public ofBaseApp{
     bool helpOn;
     bool debugMessages;
     
-<<<<<<< HEAD
-    State current_state;
-    State next_state;
-    
-    Vid current_video;
-    Fader fader;
-    Intro introPlayer;
-    MoviePlayer player;
-    Tunnel tunnel;
-    SoundPlayer sound;
-    Outro outroPlayer;
-=======
     float volume;
     
     State current_state;
@@ -88,5 +70,4 @@ class controller : public ofBaseApp{
     vector<string> vids02;
     vector<string> vids03;
     vector<string> vids04;
->>>>>>> develop
 };

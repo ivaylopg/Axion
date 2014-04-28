@@ -3,12 +3,6 @@
 #include "ofMain.h"
 
 enum State {
-<<<<<<< HEAD
-    A,      // Intro
-    B,      // Movie Player
-    C,      // Tunnel Player 1
-    D,
-=======
     A,      // Introscreen
     B,      // Movie Player INTRO
     C,      // Tunnel Player 1
@@ -18,7 +12,6 @@ enum State {
     G,      // Tunnel Player 2
     H,      // Movie Player OUTRO
     I,      // End screen
->>>>>>> develop
     Pause
 };
 
