@@ -17,6 +17,9 @@ Release*/
 */bin/*
 !*/bin/data/
 
+*.mov
+*.mp4
+
 # osx noise
 .DS_Store
 profile
