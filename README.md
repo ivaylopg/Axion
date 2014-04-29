@@ -4,29 +4,28 @@
 
 If you're not sure why you're here, get some [more info](http://axionexperience.tumblr.com/) on this project.
 
-For a compiled binary, click [here](https://drive.google.com/file/d/0B9rpWt6eo-EeRTQ5Z0ZlR2ZhWDQ/edit?usp=sharing).
+For comiled binaries, click [here](https://drive.google.com/folderview?id=0B9rpWt6eo-EeN25NbXdSZW5JeDg&usp=sharing). For the video files, contact me via GitHub or the Axion site, or else use placeholders.
 
-This is basically an app version of what we presented at CERN plus some cleanup. Please let me know how it runs on your computer and let's use it as something to build from for Tribeca. I'm doing my best to squash bugs, but once it gets running on computers out of my control there are sure to be things I couldn't plan for.
-
-If something seems wrong or isn't working, press the " i " key for HELP.  
-Navigate the tunnel using "W" to move FORWARD, "S" to move BACK, and LOOK around with the MOUSE. 
-
+Built in Open Frameworks 0.8.1  
+Navigate using "W" to move FORWARD, "S" to move BACK, and LOOK around with the MOUSE.   
 The "F" key toggles Full Screen   
+The "." (Period) toggles Debug messages  
 The ESC key Quits   
-Press ANY KEY to start!
+Press ANY KEY to start<br /><br />
 - - - - 
-On the agenda:
+#####On the agenda:#####
 
-* Add more video content
+* ~~Add more video content~~ Added two more interviews, but we still need more!
 * Incorporate and expand Jasmine's sound design
 * Develop another two to three hallways so we don't reuse the same one
 * Disable ability to walk through walls in the hallway
 * Develop one to two additional environments/experiences between videos so it's not just navigating a hallway
-* Add support for MindWave so videos are determined not just by choosing paths, but also via EEG
+* ~~Add support for MindWave so videos are determined not just by choosing paths, but also via EEG~~ Done!
 * Jason wants to work with Jasmine to add narrative to the parts between videos (hallway, etc)
 * Clean up and optimize code. Find bugs and DESTROY THEM!
 
 - - - -
+#####Addons#####
 If you're building from source, you need the following addons (part of openFrameworks Core):
 
 * **ofxXmlSettings**
@@ -35,6 +34,24 @@ If you're building from source, you need the following addons (part of openFrame
 
 And the following contributed addons:
 
+* **[ofxMSACore](https://github.com/memo/ofxMSACore)**
+* **[ofxMSAInterpolator](https://github.com/memo/ofxMSAInterpolator)**
 * **[ofxFPSCamera](https://github.com/ivaylopg/ofxFPSCamera)**
+* **[ofxThinkGear](https://github.com/ivaylopg/ofxFPSCamera) (Must use ivaylopg's fork because there are some new methods, although all credit goes to [Akira Hayasaka](https://github.com/Akira-Hayasaka/ofxThinkGear) for the original Addon)**
 
+- - - -
+#####Versions#####
+
+**0.3**<br />
+Demo of more functionality for TFI Interactive Playground 2014. Incorporates MindWave EEG headset to control branching and several more interviews.
+
+Does not have help messages ("i" key). Requires: ofxXmlSettings, ofx3DModelLoader, ofxAssimpModelLoader, ofxFPSCamera, ofxMSACore, ofxMSAInterpolator, and ofxThinkGear.<br /><br />
+
+**0.2**<br />
+This is basically an app version of what we presented at CERN plus some cleanup. Please let me know how it runs on your computer and let's use it as something to build from for Tribeca. I'm doing my best to squash bugs, but once it gets running on computers out of my control there are sure to be things I couldn't plan for.
+
+If something seems wrong or isn't working, press the " i " key for HELP. Requires: ofxXmlSettings, ofx3DModelLoader, ofxAssimpModelLoader, and ofxFPSCamera.
+
+**0.1 (Not in this repo)**<br />
+The barely functioning tests and demos we finished at CERN. Completely different codebase.
 - - - -
