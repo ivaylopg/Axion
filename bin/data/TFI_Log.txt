@@ -321,3 +321,61 @@
 
 [notice ] QUITTING - April 28, 2014 03:32:31 pm - 841
 
+
+
+--------------------------------------- 2014-04-28-17-26-13-407
+[notice ] Connecting to /dev/tty.MindWaveMobile-DevA ...
+[ fatal ] /dev/tty.MindWaveMobile-DevA could not be opened. Check that the name is a valid COM port on your system.
+[notice ] NEW USER - April 28, 2014 05:26:21 pm - 0
+
+[ error ] ofQTKitPlayer: loadMovie(): couldn't load "../../../data/mov/0.mp4"
+[notice ] QUITTING - April 28, 2014 05:26:59 pm - 37985
+
+
+
+--------------------------------------- 2014-04-28-17-27-48-281
+[notice ] Connecting to /dev/tty.MindWaveMobile-DevA ...
+[ fatal ] /dev/tty.MindWaveMobile-DevA could not be opened. Check that the name is a valid COM port on your system.
+[notice ] NEW USER - April 28, 2014 05:27:56 pm - 0
+
+[ error ] ofQTKitPlayer: loadMovie(): couldn't load "../../../data/mov/0.mp4"
+[notice ] QUITTING - April 28, 2014 05:28:08 pm - 12739
+
+
+
+--------------------------------------- 2014-04-28-17-29-05-073
+[notice ] Connecting to /dev/tty.MindWaveMobile-DevA ...
+[ fatal ] /dev/tty.MindWaveMobile-DevA could not be opened. Check that the name is a valid COM port on your system.
+[notice ] NEW USER - April 28, 2014 05:29:12 pm - 0
+
+[ error ] ofQTKitPlayer: getPixelsRef(): returning pixels that may be unallocated, make sure to initialize the video player before calling this function
+[notice ] Sent to Brancher from Tunnel A - 66619
+
+[notice ] No EEG Data - Branch 1 - 66668
+
+[notice ] Sent to Brancher from Tunnel B - 135620
+
+[notice ] No EEG Data - Branch 2 - 135644
+
+[ error ] ofQTKitPlayer: getPixelsRef(): returning pixels that may be unallocated, make sure to initialize the video player before calling this function
+[notice ] QUITTING - April 28, 2014 05:32:31 pm - 198381
+
+
+
+--------------------------------------- 2014-04-28-17-33-13-468
+[notice ] Connecting to /dev/tty.MindWaveMobile-DevA ...
+[ fatal ] /dev/tty.MindWaveMobile-DevA could not be opened. Check that the name is a valid COM port on your system.
+[notice ] NEW USER - April 28, 2014 05:33:21 pm - 0
+
+[notice ] Sent to Brancher from Tunnel A - 100306
+
+[notice ] No EEG Data - Branch 1 - 100306
+
+[ error ] ofQTKitPlayer: getPixelsRef(): returning pixels that may be unallocated, make sure to initialize the video player before calling this function
+[notice ] Sent to Brancher from Tunnel B - 178354
+
+[notice ] No EEG Data - Branch 2 - 178354
+
+[ error ] ofQTKitPlayer: getPixelsRef(): returning pixels that may be unallocated, make sure to initialize the video player before calling this function
+[notice ] QUITTING - April 28, 2014 05:37:12 pm - 230972
+

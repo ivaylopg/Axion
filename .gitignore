@@ -15,11 +15,16 @@ Debug*/
 Release*/
 *.pyc
 
+# openFrameworks Specific #
 */bin/*
 !*/bin/data/
 
+# Big Files #
 *.mov
 *.mp4
+*.aiff
+bin/data/mov/*
+*/bin/data/mov/*
 
 # osx noise
 .DS_Store
