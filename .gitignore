@@ -22,7 +22,6 @@ Release*/
 # Big Files #
 *.mov
 *.mp4
-*.aiff
 bin/data/mov/*
 */bin/data/mov/*
 
