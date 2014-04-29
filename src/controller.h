@@ -40,7 +40,7 @@ class controller : public ofBaseApp{
         void brancher(int source, int branch, int state);
         void exit();
     
-    const float VERSION = 0.2;
+    const float VERSION = 0.3;
     
     bool helpOn;
     bool debugMessages;

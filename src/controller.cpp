@@ -53,15 +53,15 @@ void controller::setup(){
     vids03.clear();
     vids04.clear();
     
-    vids01.push_back("mov/0.mov");
+    vids01.push_back("mov/0.mp4");
     
-    vids02.push_back("mov/1.mov");
+    vids02.push_back("mov/1.mp4");
     vids02.push_back("mov/2.mp4");
-    vids02.push_back("mov/3.mov");
-    vids02.push_back("mov/4.mov");
+    vids02.push_back("mov/3.mp4");
+    vids02.push_back("mov/4.mp4");
     
     vids04.push_back("mov/5.mp4");
-    vids04.push_back("mov/6.mov");
+    vids04.push_back("mov/6.mp4");
     
     playerIntro.setup(vids01.size());
     playerBranch1.setup(vids02.size());
