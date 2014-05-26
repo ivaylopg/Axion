@@ -18,7 +18,7 @@ void controller::setup(){
     ofSetFrameRate(60);
     
     ofResetElapsedTimeCounter();
-    ofLog(OF_LOG_NOTICE) << "NEW USER - " << ofGetTimestampString("%B %e, %Y %h:%M:%S %a - ") << ofGetElapsedTimeMillis() << "\n";
+    ofLog(OF_LOG_NOTICE) << "##################" << "\n" << "------------- NEW USER - " << ofGetTimestampString("%B %e, %Y %h:%M:%S %a - ") << ofGetElapsedTimeMillis() << "\n";
     
     helpOn = false;
     debugMessages = false;
@@ -281,7 +281,7 @@ void controller::gotMessage(ofMessage& msg){
         int branch = ofToInt(ofSplitString(msg.message, ":")[1]);
         int state = ofToInt(ofSplitString(msg.message, ":")[2]);
         cout << "Sent to Brancher from Tunnel A" << endl;
-        ofLog(OF_LOG_NOTICE) << "Sent to Brancher from Tunnel A - " << ofGetElapsedTimeMillis() << "\n";
+        ofLog(OF_LOG_NOTICE) << "##### Sent to Brancher from Tunnel A - " << ofGetElapsedTimeMillis() << " #####";
         brancher(1, branch, state);
     }
     
@@ -289,7 +289,7 @@ void controller::gotMessage(ofMessage& msg){
         int branch = ofToInt(ofSplitString(msg.message, ":")[1]);
         int state = ofToInt(ofSplitString(msg.message, ":")[2]);
         cout << "Sent to Brancher from Tunnel B" << endl;
-        ofLog(OF_LOG_NOTICE) << "Sent to Brancher from Tunnel B - " << ofGetElapsedTimeMillis() << "\n";
+        ofLog(OF_LOG_NOTICE) << "##### Sent to Brancher from Tunnel B - " << ofGetElapsedTimeMillis() << " #####";
         brancher(2, branch, state);
     }
     
@@ -374,7 +374,7 @@ void controller::keyPressed(int key){
             
         case ';':
             if (current_state == I) {
-                ofLog(OF_LOG_NOTICE) << "RESTARTING - " << ofGetTimestampString("%B %e, %Y %h:%M:%S %a - ") << ofGetElapsedTimeMillis() << "\n";
+                ofLog(OF_LOG_NOTICE) << "##### RESTARTING - " << ofGetTimestampString("%B %e, %Y %h:%M:%S %a - ") << ofGetElapsedTimeMillis() << " #####";
                 sound.volume == 0;
                 sound.newFile("audio/1.aiff");
                 setup();
@@ -515,6 +515,8 @@ void controller::drawDebugMessages(){
 //--------------------------------------------------------------
 void controller::brancher(int source, int branch, int state){
     
+    float diffThresh = 0.5;
+    
     if (state == 0) {
         next_state = A;
     } else if (state == 1) {
@@ -539,118 +541,118 @@ void controller::brancher(int source, int branch, int state){
     if (source==1) {
         if (mind.hasNewInfo()) {
             if (mind.diff20() > -100.0) {
-                if (mind.diff20()>10) {
+                if (mind.diff20()>diffThresh) {
                     // VERY Attentive
                     cout << "VERY Attentive" << endl;
-                    ofLog(OF_LOG_NOTICE) << "Very Attentive - Branch 1 - Diff20 - " << ofGetElapsedTimeMillis() << "\n";
+                    ofLog(OF_LOG_NOTICE) << "##### Very Attentive - Branch 1 - Diff20 - " << ofGetElapsedTimeMillis() << " #####";
                     playerBranch1.setFile(0);
                 } else if (mind.diff20()>0){
                     // SOMEWHAT Attentive
                     cout << "SOMEWHAT Attentive" << endl;
-                    ofLog(OF_LOG_NOTICE) << "Somewhat Attentive - Branch 1 - Diff20 - " << ofGetElapsedTimeMillis() << "\n";
+                    ofLog(OF_LOG_NOTICE) << "##### Somewhat Attentive - Branch 1 - Diff20 - " << ofGetElapsedTimeMillis() << " #####";
                     playerBranch1.setFile(1);
-                } else if (mind.diff20()<-10) {
+                } else if (mind.diff20()<-diffThresh) {
                     //VERY Meditative
                     cout << "VERY Meditative" << endl;
-                    ofLog(OF_LOG_NOTICE) << "Very Meditative - Branch 1 - Diff20 - " << ofGetElapsedTimeMillis() << "\n";
+                    ofLog(OF_LOG_NOTICE) << "##### Very Meditative - Branch 1 - Diff20 - " << ofGetElapsedTimeMillis() << " #####";
                     playerBranch1.setFile(3);
                 } else {
                     //Somewhat Meditative
                     cout << "Somewhat Meditative" << endl;
-                    ofLog(OF_LOG_NOTICE) << "Somewhat Meditative - Branch 1 - Diff20 - " << ofGetElapsedTimeMillis() << "\n";
+                    ofLog(OF_LOG_NOTICE) << "##### Somewhat Meditative - Branch 1 - Diff20 - " << ofGetElapsedTimeMillis() << " #####";
                     playerBranch1.setFile(2);
                 }
             } else if (mind.diff10() > -100.0) {
-                if (mind.diff10()>10) {
+                if (mind.diff10()>diffThresh) {
                     // VERY Attentive
                     cout << "VERY Attentive" << endl;
-                    ofLog(OF_LOG_NOTICE) << "Very Attentive - Branch 1 - Diff10 - " << ofGetElapsedTimeMillis() << "\n";
+                    ofLog(OF_LOG_NOTICE) << "##### Very Attentive - Branch 1 - Diff10 - " << ofGetElapsedTimeMillis() << " #####";
                     playerBranch1.setFile(0);
                 } else if (mind.diff10()>0){
                     // SOMEWHAT Attentive
                     cout << "SOMEWHAT Attentive" << endl;
-                    ofLog(OF_LOG_NOTICE) << "Somewhat Attentive - Branch 1 - Diff10 - " << ofGetElapsedTimeMillis() << "\n";
+                    ofLog(OF_LOG_NOTICE) << "##### Somewhat Attentive - Branch 1 - Diff10 - " << ofGetElapsedTimeMillis() << " #####";
                     playerBranch1.setFile(1);
-                } else if (mind.diff10()<-10) {
+                } else if (mind.diff10()<-diffThresh) {
                     //VERY Meditative
                     cout << "VERY Meditative" << endl;
-                    ofLog(OF_LOG_NOTICE) << "Very Meditative - Branch 1 - Diff10 - " << ofGetElapsedTimeMillis() << "\n";
+                    ofLog(OF_LOG_NOTICE) << "##### Very Meditative - Branch 1 - Diff10 - " << ofGetElapsedTimeMillis() << " #####";
                     playerBranch1.setFile(3);
                 } else {
                     //Somewhat Meditative
                     cout << "Somewhat Meditative" << endl;
-                    ofLog(OF_LOG_NOTICE) << "Somewhat Meditative - Branch 1 - Diff10 - " << ofGetElapsedTimeMillis() << "\n";
+                    ofLog(OF_LOG_NOTICE) << "##### Somewhat Meditative - Branch 1 - Diff10 - " << ofGetElapsedTimeMillis() << " #####";
                     playerBranch1.setFile(2);
                 }
             } else {
                 // Cannot Determine
                 cout << "Cannot Determine" << endl;
-                ofLog(OF_LOG_NOTICE) << "Cannot Determine - Branch 1 - " << ofGetElapsedTimeMillis() << "\n";
+                ofLog(OF_LOG_NOTICE) << "##### Cannot Determine - Branch 1 - " << ofGetElapsedTimeMillis() << " #####";
                 playerBranch1.setFile(branch);
             }
         } else {
             // NO EEG DATA
             cout << "NO EEG DATA" << endl;
-            ofLog(OF_LOG_NOTICE) << "No EEG Data - Branch 1 - " << ofGetElapsedTimeMillis() << "\n";
+            ofLog(OF_LOG_NOTICE) << "##### No EEG Data - Branch 1 - " << ofGetElapsedTimeMillis() << " #####";
             playerBranch1.setFile(branch);
         }
         
     } else if (source == 2){
         if (mind.hasNewInfo()) {
             if (mind.diff20() > -100.0) {
-                if (mind.diff20()>10) {
+                if (mind.diff20()>diffThresh) {
                     // VERY Attentive
                     cout << "VERY Attentive" << endl;
-                    ofLog(OF_LOG_NOTICE) << "Very Attentive - Branch 2 - Diff20 - " << ofGetElapsedTimeMillis() << "\n";
+                    ofLog(OF_LOG_NOTICE) << "##### Very Attentive - Branch 2 - Diff20 - " << ofGetElapsedTimeMillis() << " #####";
                     playerOutro.setFile(0);
                 } else if (mind.diff20()>0){
                     // SOMEWHAT Attentive
                     cout << "SOMEWHAT Attentive" << endl;
-                    ofLog(OF_LOG_NOTICE) << "Somewhat Attentive - Branch 2 - Diff20 - " << ofGetElapsedTimeMillis() << "\n";
+                    ofLog(OF_LOG_NOTICE) << "##### Somewhat Attentive - Branch 2 - Diff20 - " << ofGetElapsedTimeMillis() << " #####";
                     playerOutro.setFile(0);
-                } else if (mind.diff20()<-10) {
+                } else if (mind.diff20()<-diffThresh) {
                     //VERY Meditative
                     cout << "VERY Meditative" << endl;
-                    ofLog(OF_LOG_NOTICE) << "Very Meditative - Branch 2 - Diff20 - " << ofGetElapsedTimeMillis() << "\n";
+                    ofLog(OF_LOG_NOTICE) << "##### Very Meditative - Branch 2 - Diff20 - " << ofGetElapsedTimeMillis() << " #####";
                     playerOutro.setFile(1);
                 } else {
                     //Somewhat Meditative
                     cout << "Somewhat Meditative" << endl;
-                    ofLog(OF_LOG_NOTICE) << "Somewhat Meditative - Branch 2 - Diff20 - " << ofGetElapsedTimeMillis() << "\n";
+                    ofLog(OF_LOG_NOTICE) << "##### Somewhat Meditative - Branch 2 - Diff20 - " << ofGetElapsedTimeMillis() << " #####";
                     playerOutro.setFile(1);
                 }
             } else if (mind.diff10() > -100.0) {
-                if (mind.diff10()>10) {
+                if (mind.diff10()>diffThresh) {
                     // VERY Attentive
                     cout << "VERY Attentive" << endl;
-                    ofLog(OF_LOG_NOTICE) << "Very Attentive - Branch 2 - Diff10 - " << ofGetElapsedTimeMillis() << "\n";
+                    ofLog(OF_LOG_NOTICE) << "##### Very Attentive - Branch 2 - Diff10 - " << ofGetElapsedTimeMillis() << " #####";
                     playerOutro.setFile(0);
                 } else if (mind.diff10()>0){
                     // SOMEWHAT Attentive
                     cout << "Somewhat Attentive" << endl;
-                    ofLog(OF_LOG_NOTICE) << "Somewhat Attentive - Branch 2 - Diff10 - " << ofGetElapsedTimeMillis() << "\n";
+                    ofLog(OF_LOG_NOTICE) << "##### Somewhat Attentive - Branch 2 - Diff10 - " << ofGetElapsedTimeMillis() << " #####";
                     playerOutro.setFile(0);
-                } else if (mind.diff10()<-10) {
+                } else if (mind.diff10()<-diffThresh) {
                     //VERY Meditative
                     cout << "VERY Meditative" << endl;
-                    ofLog(OF_LOG_NOTICE) << "Very Meditative - Branch 2 - Diff10 - " << ofGetElapsedTimeMillis() << "\n";
+                    ofLog(OF_LOG_NOTICE) << "##### Very Meditative - Branch 2 - Diff10 - " << ofGetElapsedTimeMillis() << " #####";
                     playerOutro.setFile(1);
                 } else {
                     //Somewhat Meditative
                     cout << "Somewhat Meditative" << endl;
-                    ofLog(OF_LOG_NOTICE) << "Somewhat Meditative - Branch 2 - Diff10 - " << ofGetElapsedTimeMillis() << "\n";
+                    ofLog(OF_LOG_NOTICE) << "##### Somewhat Meditative - Branch 2 - Diff10 - " << ofGetElapsedTimeMillis() << " #####";
                     playerOutro.setFile(1);
                 }
             } else {
                 // Cannot Determine
                 cout << "Cannot Determine" << endl;
-                ofLog(OF_LOG_NOTICE) << "Cannot Determine - Branch 2 - " << ofGetElapsedTimeMillis() << "\n";
+                ofLog(OF_LOG_NOTICE) << "##### Cannot Determine - Branch 2 - " << ofGetElapsedTimeMillis() << " #####";
                 playerOutro.setFile(floor(ofRandom(2)));
             }
         } else {
             // NO EEG DATA
             cout << "NO EEG DATA" << endl;
-            ofLog(OF_LOG_NOTICE) << "No EEG Data - Branch 2 - " << ofGetElapsedTimeMillis() << "\n";
+            ofLog(OF_LOG_NOTICE) << "##### No EEG Data - Branch 2 - " << ofGetElapsedTimeMillis() << " #####";
             playerOutro.setFile(floor(ofRandom(2)));
         }
     }
@@ -662,7 +664,7 @@ void controller::brancher(int source, int branch, int state){
 //--------------------------------------------------------------
 void controller::exit(){
     mind.free();
-    ofLog(OF_LOG_NOTICE) << "QUITTING - " << ofGetTimestampString("%B %e, %Y %h:%M:%S %a - ") << ofGetElapsedTimeMillis() << "\n";
+    ofLog(OF_LOG_NOTICE) << "##### QUITTING - " << ofGetTimestampString("%B %e, %Y %h:%M:%S %a - ") << ofGetElapsedTimeMillis() << " #####";
 }
 
 //--------------------------------------------------------------

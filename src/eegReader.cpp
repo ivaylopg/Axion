@@ -129,9 +129,9 @@ void EEGreader::update(){
                 attMedRatio.push_back(ave);
                 
                 //cout << values[0] << "/" << values[1] << " : " << values[0]/values[1] << " : " << thinkGear.getIsConnected() << " : " << thinkGear.getSignalQuality() << endl;
-                cout << "Diff 10: " << diff10() << " | Diff 20:" << diff20() << "Att: " << values[0] << "Med: " << values[1] << endl;
+                cout << "Att: " << values[0] << " | Med: " << values[1]  << " | Diff 10: " << diff10() << " | Diff 20:" << diff20() << endl;
                 
-                ofLog(OF_LOG_NOTICE) <<"Diff 10: " << diff10() << " | Diff 20:" << diff20() << "Att: " << values[0] << "Med: " << values[1] << "\n";
+                ofLog(OF_LOG_NOTICE) << "Att: " << values[0] << " | Med: " << values[1] << " | Diff 10: " << diff10() << " | Diff 20:" << diff20();
                 
                 
                 

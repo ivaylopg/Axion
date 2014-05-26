@@ -10,6 +10,7 @@ int main( ){
                                                     // This is to make self-contained app (via xcode) on Mac, along with this run script:
                                                     // cp -r bin/data "$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/Resources";
     ofSetLogLevel(OF_LOG_NOTICE);
-    ofLogToFile("TFI_Log.txt", true);
+    ofLogToFile("Axion_Log.txt", true);
+    //ofLogToConsole();
 	ofRunApp(new controller());
 }
