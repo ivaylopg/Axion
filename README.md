@@ -4,8 +4,6 @@
 
 If you're not sure why you're here, get some [more info](http://axionexperience.tumblr.com/) on this project.
 
-You can find our compiled binaries [here](https://drive.google.com/folderview?id=0B9rpWt6eo-EeN25NbXdSZW5JeDg&usp=sharing), but these are tests and betas so there is no guarantee that they will work on your system yet. 
-
 This repo does not include the video/audio files. If you want the original media files, contact me via GitHub or the Axion site, otherwise use placeholders to test the code.
 
 Built in Open Frameworks 0.8.1  
