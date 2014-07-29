@@ -144,3 +144,18 @@
 [notice ] Att: 37 | Med: 43 | Diff 10: -100 | Diff 20:-100
 [notice ] disconnecting connection ID: 0
 [notice ] ##### QUITTING - June 8, 2014 11:15:19 pm - 3083 #####
+
+
+--------------------------------------- 2014-07-22-15-15-18-257
+[notice ] Connecting to /dev/tty.MindWaveMobile-DevA ...
+[ fatal ] /dev/tty.MindWaveMobile-DevA could not be opened. Check that the name is a valid COM port on your system.
+[notice ] ##################
+------------- NEW USER - July 22, 2014 03:15:25 pm - 0
+
+[notice ] ##### Sent to Brancher from Tunnel A - 315360 #####
+[notice ] ##### No EEG Data - Branch 1 - 315360 #####
+[ error ] ofQTKitPlayer: getPixelsRef(): returning pixels that may be unallocated, make sure to initialize the video player before calling this function
+[notice ] ##### Sent to Brancher from Tunnel B - 382101 #####
+[notice ] ##### No EEG Data - Branch 2 - 382101 #####
+[ error ] ofQTKitPlayer: getPixelsRef(): returning pixels that may be unallocated, make sure to initialize the video player before calling this function
+[notice ] ##### QUITTING - July 22, 2014 03:22:29 pm - 423735 #####
