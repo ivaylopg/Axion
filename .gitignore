@@ -50,3 +50,6 @@ CVS
 
 */ThinkGear.bundle
 */ThinkGear.bundle/*
+bin/data/ThinkGear.bundle/Contents/Info.plist
+bin/data/ThinkGear.bundle/Contents/MacOS/ThinkGearBundle
+bin/data/ThinkGear.bundle/Contents/Resources/English.lproj/InfoPlist.strings
