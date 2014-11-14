@@ -17,6 +17,12 @@ void controller::setup(){
     ofSetVerticalSync(true);
     ofSetFrameRate(60);
     
+#ifdef OF_RELEASE
+    cout << "You are in Release Mode!" << endl;
+#elif OF_DEBUG
+    cout << "You are in Debug Mode!" << endl;
+#endif
+    
     ofResetElapsedTimeCounter();
     ofLog(OF_LOG_NOTICE) << "##################" << "\n" << "------------- NEW USER - " << ofGetTimestampString("%B %e, %Y %h:%M:%S %a - ") << ofGetElapsedTimeMillis() << "\n";
     
