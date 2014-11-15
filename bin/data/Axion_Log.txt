@@ -243,3 +243,260 @@
 ------------- NEW USER - November 14, 2014 12:38:41 pm - 0
 
 [notice ] ##### QUITTING - November 14, 2014 12:39:00 pm - 18847 #####
+=======
+--------------------------------------- 2014-11-14-12-34-51-894
+[notice ] Connecting to /dev/tty.MindWaveMobile-DevA ...
+[ fatal ] /dev/tty.MindWaveMobile-DevA could not be opened. Check that the name is a valid COM port on your system.
+[notice ] ##################
+------------- NEW USER - November 14, 2014 12:34:59 pm - 0
+
+[notice ] ##### QUITTING - November 14, 2014 12:38:18 pm - 199223 #####
+
+
+--------------------------------------- 2014-11-14-13-22-24-057
+[notice ] Connecting to /dev/tty.MindWaveMobile-DevA ...
+[ fatal ] /dev/tty.MindWaveMobile-DevA could not be opened. Check that the name is a valid COM port on your system.
+[notice ] ##################
+------------- NEW USER - November 14, 2014 01:22:33 pm - 0
+
+[notice ] ##### QUITTING - November 14, 2014 01:22:45 pm - 12018 #####
+
+
+--------------------------------------- 2014-11-14-17-17-27-917
+[notice ] Connecting to /dev/tty.MindWaveMobile-DevA ...
+[ fatal ] /dev/tty.MindWaveMobile-DevA could not be opened. Check that the name is a valid COM port on your system.
+[notice ] ##################
+------------- NEW USER - November 14, 2014 05:17:36 pm - 0
+
+[notice ] ##### QUITTING - November 14, 2014 05:18:34 pm - 58576 #####
+
+
+--------------------------------------- 2014-11-14-17-19-16-919
+[notice ] Connecting to /dev/tty.MindWaveMobile-DevA ...
+[ fatal ] /dev/tty.MindWaveMobile-DevA could not be opened. Check that the name is a valid COM port on your system.
+[notice ] ##################
+------------- NEW USER - November 14, 2014 05:19:27 pm - 0
+
+[notice ] ##### QUITTING - November 14, 2014 05:19:37 pm - 9937 #####
+
+
+--------------------------------------- 2014-11-14-17-26-44-273
+[notice ] Connecting to /dev/tty.MindWaveMobile-DevA ...
+[ fatal ] /dev/tty.MindWaveMobile-DevA could not be opened. Check that the name is a valid COM port on your system.
+[notice ] ##################
+------------- NEW USER - November 14, 2014 05:26:54 pm - 0
+
+[notice ] ##### QUITTING - November 14, 2014 05:27:17 pm - 22639 #####
+
+
+--------------------------------------- 2014-11-14-17-27-37-703
+[notice ] Connecting to /dev/tty.MindWaveMobile-DevA ...
+[ fatal ] /dev/tty.MindWaveMobile-DevA could not be opened. Check that the name is a valid COM port on your system.
+[notice ] ##################
+------------- NEW USER - November 14, 2014 05:27:45 pm - 0
+
+[notice ] ##### QUITTING - November 14, 2014 05:28:06 pm - 21324 #####
+
+
+--------------------------------------- 2014-11-14-18-12-54-040
+[notice ] Connecting to /dev/tty.MindWaveMobile-DevA ...
+[ fatal ] /dev/tty.MindWaveMobile-DevA could not be opened. Check that the name is a valid COM port on your system.
+[notice ] ##################
+------------- NEW USER - November 14, 2014 06:13:03 pm - 0
+
+[notice ] ##### QUITTING - November 14, 2014 06:13:31 pm - 27981 #####
+
+
+--------------------------------------- 2014-11-14-18-18-43-703
+[notice ] Connecting to /dev/tty.MindWaveMobile-DevA ...
+[ fatal ] /dev/tty.MindWaveMobile-DevA could not be opened. Check that the name is a valid COM port on your system.
+[notice ] ##################
+------------- NEW USER - November 14, 2014 06:18:50 pm - 0
+
+[notice ] ##### QUITTING - November 14, 2014 06:19:04 pm - 13255 #####
+
+
+--------------------------------------- 2014-11-14-18-19-50-029
+[notice ] Connecting to /dev/tty.MindWaveMobile-DevA ...
+[ fatal ] /dev/tty.MindWaveMobile-DevA could not be opened. Check that the name is a valid COM port on your system.
+[notice ] ##################
+------------- NEW USER - November 14, 2014 06:19:57 pm - 0
+
+[notice ] ##### QUITTING - November 14, 2014 06:20:15 pm - 17997 #####
+
+
+--------------------------------------- 2014-11-14-18-20-40-341
+[notice ] Connecting to /dev/tty.MindWaveMobile-DevA ...
+[ fatal ] /dev/tty.MindWaveMobile-DevA could not be opened. Check that the name is a valid COM port on your system.
+[notice ] ##################
+------------- NEW USER - November 14, 2014 06:20:47 pm - 0
+
+[notice ] ##### QUITTING - November 14, 2014 06:21:00 pm - 12463 #####
+
+
+--------------------------------------- 2014-11-14-18-21-21-063
+[notice ] Connecting to /dev/tty.MindWaveMobile-DevA ...
+[ fatal ] /dev/tty.MindWaveMobile-DevA could not be opened. Check that the name is a valid COM port on your system.
+[notice ] ##################
+------------- NEW USER - November 14, 2014 06:21:28 pm - 0
+
+[notice ] ##### QUITTING - November 14, 2014 06:21:38 pm - 10544 #####
+
+
+--------------------------------------- 2014-11-14-18-21-54-679
+[notice ] Connecting to /dev/tty.MindWaveMobile-DevA ...
+[ fatal ] /dev/tty.MindWaveMobile-DevA could not be opened. Check that the name is a valid COM port on your system.
+[notice ] ##################
+------------- NEW USER - November 14, 2014 06:22:01 pm - 0
+
+[notice ] ##### QUITTING - November 14, 2014 06:22:11 pm - 9740 #####
+
+
+--------------------------------------- 2014-11-14-19-32-52-376
+[notice ] Connecting to /dev/tty.MindWaveMobile-DevA ...
+[ fatal ] /dev/tty.MindWaveMobile-DevA could not be opened. Check that the name is a valid COM port on your system.
+[notice ] ##################
+------------- NEW USER - November 14, 2014 07:33:00 pm - 0
+
+
+
+--------------------------------------- 2014-11-14-19-34-30-121
+[notice ] Connecting to /dev/tty.MindWaveMobile-DevA ...
+[ fatal ] /dev/tty.MindWaveMobile-DevA could not be opened. Check that the name is a valid COM port on your system.
+[notice ] ##################
+------------- NEW USER - November 14, 2014 07:34:37 pm - 0
+
+[notice ] ##### QUITTING - November 14, 2014 07:34:44 pm - 6843 #####
+
+
+--------------------------------------- 2014-11-14-19-36-17-919
+[notice ] Connecting to /dev/tty.MindWaveMobile-DevA ...
+[ fatal ] /dev/tty.MindWaveMobile-DevA could not be opened. Check that the name is a valid COM port on your system.
+[notice ] ##################
+------------- NEW USER - November 14, 2014 07:36:25 pm - 0
+
+[notice ] ##### QUITTING - November 14, 2014 07:36:27 pm - 2647 #####
+
+
+--------------------------------------- 2014-11-14-19-37-08-553
+[notice ] Connecting to /dev/tty.MindWaveMobile-DevA ...
+[ fatal ] /dev/tty.MindWaveMobile-DevA could not be opened. Check that the name is a valid COM port on your system.
+[notice ] ##################
+------------- NEW USER - November 14, 2014 07:37:15 pm - 0
+
+
+
+--------------------------------------- 2014-11-14-19-38-48-607
+[notice ] Connecting to /dev/tty.MindWaveMobile-DevA ...
+[ fatal ] /dev/tty.MindWaveMobile-DevA could not be opened. Check that the name is a valid COM port on your system.
+[notice ] ##################
+------------- NEW USER - November 14, 2014 07:38:55 pm - 0
+
+[notice ] ##### QUITTING - November 14, 2014 07:39:06 pm - 10840 #####
+
+
+--------------------------------------- 2014-11-14-19-39-18-669
+[notice ] Connecting to /dev/tty.MindWaveMobile-DevA ...
+[ fatal ] /dev/tty.MindWaveMobile-DevA could not be opened. Check that the name is a valid COM port on your system.
+[notice ] ##################
+------------- NEW USER - November 14, 2014 07:39:25 pm - 0
+
+[notice ] ##### QUITTING - November 14, 2014 07:39:35 pm - 9459 #####
+
+
+--------------------------------------- 2014-11-14-19-40-05-713
+[notice ] Connecting to /dev/tty.MindWaveMobile-DevA ...
+[ fatal ] /dev/tty.MindWaveMobile-DevA could not be opened. Check that the name is a valid COM port on your system.
+[notice ] ##################
+------------- NEW USER - November 14, 2014 07:40:12 pm - 0
+
+[notice ] ##### QUITTING - November 14, 2014 07:40:25 pm - 12908 #####
+
+
+--------------------------------------- 2014-11-14-19-57-08-660
+[notice ] Connecting to /dev/tty.MindWaveMobile-DevA ...
+[ fatal ] /dev/tty.MindWaveMobile-DevA could not be opened. Check that the name is a valid COM port on your system.
+[notice ] ##################
+------------- NEW USER - November 14, 2014 07:57:15 pm - 0
+
+[notice ] ##### QUITTING - November 14, 2014 07:57:30 pm - 14057 #####
+
+
+--------------------------------------- 2014-11-14-20-00-14-164
+[notice ] Connecting to /dev/tty.MindWaveMobile-DevA ...
+[ fatal ] /dev/tty.MindWaveMobile-DevA could not be opened. Check that the name is a valid COM port on your system.
+[notice ] ##################
+------------- NEW USER - November 14, 2014 08:00:22 pm - 0
+
+[notice ] ##### QUITTING - November 14, 2014 08:00:40 pm - 18831 #####
+
+
+--------------------------------------- 2014-11-14-20-00-52-437
+[notice ] Connecting to /dev/tty.MindWaveMobile-DevA ...
+[ fatal ] /dev/tty.MindWaveMobile-DevA could not be opened. Check that the name is a valid COM port on your system.
+[notice ] ##################
+------------- NEW USER - November 14, 2014 08:00:59 pm - 0
+
+[notice ] ##### QUITTING - November 14, 2014 08:01:11 pm - 11776 #####
+
+
+--------------------------------------- 2014-11-14-20-02-00-789
+[notice ] Connecting to /dev/tty.MindWaveMobile-DevA ...
+[ fatal ] /dev/tty.MindWaveMobile-DevA could not be opened. Check that the name is a valid COM port on your system.
+[notice ] ##################
+------------- NEW USER - November 14, 2014 08:02:07 pm - 0
+
+[notice ] ##### QUITTING - November 14, 2014 08:02:23 pm - 15083 #####
+
+
+--------------------------------------- 2014-11-14-20-26-01-847
+[notice ] Connecting to /dev/tty.MindWaveMobile-DevA ...
+[ fatal ] /dev/tty.MindWaveMobile-DevA could not be opened. Check that the name is a valid COM port on your system.
+[notice ] ##################
+------------- NEW USER - November 14, 2014 08:26:11 pm - 0
+
+[notice ] ##### QUITTING - November 14, 2014 08:26:43 pm - 32314 #####
+
+
+--------------------------------------- 2014-11-14-20-27-34-666
+[notice ] Connecting to /dev/tty.MindWaveMobile-DevA ...
+[ fatal ] /dev/tty.MindWaveMobile-DevA could not be opened. Check that the name is a valid COM port on your system.
+[notice ] ##################
+------------- NEW USER - November 14, 2014 08:27:42 pm - 0
+
+[notice ] ##### QUITTING - November 14, 2014 08:27:46 pm - 4095 #####
+
+
+--------------------------------------- 2014-11-14-20-58-36-056
+[notice ] Connecting to /dev/tty.MindWaveMobile-DevA ...
+[ fatal ] /dev/tty.MindWaveMobile-DevA could not be opened. Check that the name is a valid COM port on your system.
+[notice ] ##################
+------------- NEW USER - November 14, 2014 08:58:44 pm - 0
+
+
+
+--------------------------------------- 2014-11-14-20-59-37-708
+[notice ] Connecting to /dev/tty.MindWaveMobile-DevA ...
+[ fatal ] /dev/tty.MindWaveMobile-DevA could not be opened. Check that the name is a valid COM port on your system.
+[notice ] ##################
+------------- NEW USER - November 14, 2014 08:59:44 pm - 0
+
+[notice ] ##### QUITTING - November 14, 2014 08:59:45 pm - 1060 #####
+
+
+--------------------------------------- 2014-11-14-21-00-27-563
+[notice ] Connecting to /dev/tty.MindWaveMobile-DevA ...
+[ fatal ] /dev/tty.MindWaveMobile-DevA could not be opened. Check that the name is a valid COM port on your system.
+[notice ] ##################
+------------- NEW USER - November 14, 2014 09:00:34 pm - 0
+
+[notice ] ##### QUITTING - November 14, 2014 09:01:05 pm - 30595 #####
+
+
+--------------------------------------- 2014-11-14-21-01-55-550
+[notice ] Connecting to /dev/tty.MindWaveMobile-DevA ...
+[ fatal ] /dev/tty.MindWaveMobile-DevA could not be opened. Check that the name is a valid COM port on your system.
+[notice ] ##################
+------------- NEW USER - November 14, 2014 09:02:02 pm - 0
+
+[notice ] ##### QUITTING - November 14, 2014 09:03:38 pm - 95410 #####
