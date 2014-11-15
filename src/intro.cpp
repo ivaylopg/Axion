@@ -21,6 +21,20 @@ void Intro::setup(){
     introImg.loadImage("logo.png");
     introModel.loadModel("introMesh.obj");
     introModel.setPosition(ofGetWidth()/2, ofGetHeight()/2, 0);
+    
+    gui = new ofxUICanvas();
+    gui->setGlobalCanvasWidth(320);
+    
+    gui->setFont("akzidenz-grotesk-light.ttf");
+    gui->setFontSize(OFX_UI_FONT_LARGE, 32);
+    gui->setFontSize(OFX_UI_FONT_MEDIUM, 28);
+    gui->setFontSize(OFX_UI_FONT_SMALL, 18);
+    
+    gui->addLabelButton("Start Axion", false, true);
+    
+    
+    gui->autoSizeToFitWidgets();
+    //ofAddListener(gui->newGUIEvent,this,&controller);
 }
 
 
@@ -35,14 +49,18 @@ void Intro::update(){
 void Intro::draw(){
     ofSetColor(255);
     float scl = (float) ofGetWidth() / (float) ofGetScreenWidth();
+    int imgW = (int) ceil(ofGetWidth()/5);
+    int imgH = (int) ceil((imgW * introImg.height)/introImg.width);
+    
 	//ofBackgroundGradient(ofColor(20,20,20),ofColor(0,0,0), OF_GRADIENT_CIRCULAR);
     
     ofPushMatrix();
-    ofTranslate(ofGetWidth()/2, ofGetHeight()/6);
+    ofTranslate(ofGetWidth()/6, ofGetHeight()/8);
     //ofScale(.6, .6);
-    ofScale(scl*0.6, scl*0.6);
-    ofTranslate(-introImg.width/2, 0);
-    introImg.draw(0, 0);
+    //ofScale(scl*0.6, scl*0.6);
+    //ofTranslate(-introImg.width/2, 0);
+    introImg.draw(0, 0, imgW, imgH);
+    gui->setPosition(ofGetWidth()/6, ofGetHeight()/8+imgH*1.5);
     ofPopMatrix();
     
     
@@ -70,5 +88,8 @@ void Intro::draw(){
     ofPopMatrix();
     introLight.disable();
     ofDisableLighting();
+    
+    ofSetColor(200);
+    ofCircle(ofGetMouseX(), ofGetMouseY(), 300, 20);
     
 }

@@ -175,6 +175,7 @@ void controller::draw(){
             introPlayer.draw();
             next_state = B;
             break;
+            
         case B:
             playerIntro.play();
             playerIntro.draw(0, 0, ofGetWidth(), ofGetHeight());
@@ -389,7 +390,7 @@ void controller::keyPressed(int key){
             
         default:
             if (current_state == A) {
-                fader.moveOn();
+                //fader.moveOn();
             }
             break;
     }
@@ -398,7 +399,7 @@ void controller::keyPressed(int key){
 //--------------------------------------------------------------
 void controller::mousePressed(int x, int y, int button){
     if (current_state == A) {
-        fader.moveOn();
+        //fader.moveOn();
     }
 }
 
