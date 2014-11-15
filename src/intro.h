@@ -38,11 +38,13 @@ private:
     
     ofTrueTypeFont	akzidenz;
     ofTrueTypeFont	akzidenzB;
+    ofTrueTypeFont	akzidenzS;
     
     float eegSignal;
     
     bool showHelp;
     float helpAlpha;
+    float alphaStep;
     
     bool useMindWave;
 };

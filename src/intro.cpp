@@ -23,9 +23,9 @@ void Intro::setup(){
     introModel.loadModel("introMesh.obj");
     introModel.setPosition(ofGetWidth()/2, ofGetHeight()/2, 0);
     
-    akzidenz.loadFont("akzidenz-grotesk-light.ttf", 8, true, false, false, 0.3, 200);
-    akzidenzB.loadFont("akzidenz-grotesk-light.ttf", 12, true, false, false, 0.3, 200);
-    
+    akzidenz.loadFont("akzidenz-grotesk-light.ttf", 16, true, true, true);
+    akzidenzB.loadFont("akzidenz-grotesk-light.ttf", 26, true, true, true);
+    akzidenzS.loadFont("akzidenz-grotesk-light.ttf", 14, true, true, true);
     startButton.setup(&akzidenzB, "BEGIN AXION");
     helpButton.setup(&akzidenz, "HELP");
     settingsButton.setup(&akzidenz, "xx");
@@ -33,8 +33,9 @@ void Intro::setup(){
     
     ofAddListener(Button::buttonClickedGlobal, this, &Intro::buttonPressed);
     
-    showHelp = true;
-    helpAlpha = 250;
+    showHelp = false;
+    helpAlpha = 0;
+    alphaStep = 5.0;
     
     useMindWave = true;
 }
@@ -48,7 +49,8 @@ void Intro::buttonPressed(string &e){
         string s = "start";
         ofNotifyEvent(progControl, s);
     } else if (e == "HELP") {
-        cout << "Help Button" << endl;
+        //cout << "Help Button" << endl;
+        showHelp = !showHelp;
     } else if (e == "eegOn" || e == "eegOff") {
         //cout << e << endl;
         if (e == "eegOn") {
@@ -129,6 +131,33 @@ void Intro::draw(){
         ofDrawBitmapString(ofToString(eegSignal), ofGetWidth()-50, 50);
     }
     
+    if (showHelp) {
+        if (helpAlpha < 255) {
+            helpAlpha += alphaStep;
+        }
+        if (alphaStep > 255) {
+            alphaStep = 255;
+        }
+    } else {
+        if (helpAlpha > 0) {
+            helpAlpha -= alphaStep;
+        }
+        if (alphaStep < 0) {
+            alphaStep = 0;
+        }
+    }
+    
+    if (helpAlpha > 0) {
+        ofSetColor(128, helpAlpha);
+        float resetLH = akzidenzS.getLineHeight();
+        akzidenzS.setLineHeight(20);
+        akzidenzS.drawString("Axion is an unconventional interactive documentary \nthat allows players to explore and discover for themselves", ofGetWidth()/2,ofGetHeight()/6);
+        
+        akzidenzS.drawString("Navigate using \"W\" to move FORWARD, \"S\" to move BACK, and \nLOOK around with the MOUSE.\n\nThe \"F\" key toggles Full Screen\nThe ESC key pauses the app", ofGetWidth()/2, ofGetHeight()/6 + 50);
+        
+        akzidenzS.setLineHeight(resetLH);
+        ofSetColor(255,255);
+    }
     //ofSetColor(200);
     //ofCircle(ofGetMouseX(), ofGetMouseY(), 20);
     pointer.draw(ofGetMouseX(), ofGetMouseY(), 35, 35);
