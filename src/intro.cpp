@@ -28,13 +28,15 @@ void Intro::setup(){
     
     startButton.setup(&akzidenzB, "BEGIN AXION");
     helpButton.setup(&akzidenz, "HELP");
-    settingsButton.setup(&akzidenz, "SETTINGS");
+    settingsButton.setup(&akzidenz, "xx");
     quitButton.setup(&akzidenz, "QUIT");
     
     ofAddListener(Button::buttonClickedGlobal, this, &Intro::buttonPressed);
     
     showHelp = true;
     helpAlpha = 250;
+    
+    useMindWave = true;
 }
 
 
@@ -47,8 +49,14 @@ void Intro::buttonPressed(string &e){
         ofNotifyEvent(progControl, s);
     } else if (e == "HELP") {
         cout << "Help Button" << endl;
-    } else if (e == "SETTINGS") {
-        cout << "Settings Button" << endl;
+    } else if (e == "eegOn" || e == "eegOff") {
+        //cout << e << endl;
+        if (e == "eegOn") {
+            useMindWave = true;
+        } else {
+            useMindWave = false;
+        }
+        ofNotifyEvent(progControl, e);
     } else if (e == "QUIT"){
         cout << "Quit Button" << endl;
         OF_EXIT_APP(0); 
@@ -85,8 +93,8 @@ void Intro::draw(){
     helpButton.draw(transX + imgW * 0.09, transY + imgH * 1.25+40);
     
     ofSetColor(128);
-    akzidenz.drawString("SETTINGS", transX + imgW * 0.09, transY + imgH * 1.25 + 80);
-    //settingsButton.draw(transX + imgW * 0.09, transY + imgH * 1.25 + 80);
+    akzidenz.drawString("USE EEG:  ", transX + imgW * 0.09, transY + imgH * 1.25 + 80);
+    settingsButton.draw(transX + imgW * 0.09 + akzidenz.stringWidth("USE EEG:X"), transY + imgH * 1.25 + 80);
     
     quitButton.draw(transX + imgW * 0.09, transY + imgH * 1.25 + 120);
     ofPopMatrix();
@@ -117,7 +125,9 @@ void Intro::draw(){
     introLight.disable();
     ofDisableLighting();
     
-    ofDrawBitmapString(ofToString(eegSignal), ofGetWidth()-50, 50);
+    if (useMindWave) {
+        ofDrawBitmapString(ofToString(eegSignal), ofGetWidth()-50, 50);
+    }
     
     //ofSetColor(200);
     //ofCircle(ofGetMouseX(), ofGetMouseY(), 20);

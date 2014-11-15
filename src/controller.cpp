@@ -34,6 +34,7 @@ void controller::setup(){
     next_state = B;
     
     mind.reset();
+    usingEEG = true;
     
     volume = 0.65;
     
@@ -83,7 +84,10 @@ void controller::setup(){
 
 //--------------------------------------------------------------
 void controller::update(){
-    mind.update();
+    if (usingEEG) {
+        mind.update();
+    }
+    
     //sound.update();
     
     switch (current_state) {
@@ -91,7 +95,9 @@ void controller::update(){
             if (sound.volume < volume) {
                 sound.fadeUp();
             }
-            introPlayer.update(mind.getSignalQuality());
+            if (usingEEG) {
+                introPlayer.update(mind.getSignalQuality());
+            }
             break;
         
         case B:
@@ -361,6 +367,22 @@ void controller::controlEvent(string &e){
     if (current_state == A && e == "start") {
         fader.moveOn();
     }
+    
+    if (e == "eegOn") {
+        //cout << e << endl;
+        if (!usingEEG) {
+            mind.restart();
+            usingEEG = true;
+            cout << "started mindwave" << endl;
+        }
+    } else if (e == "eegOff") {
+        //cout << e << endl;
+        if (usingEEG) {
+            mind.free();
+            usingEEG = false;
+            cout << "stopped mindwave" << endl;
+        }
+    }
 }
 
 //--------------------------------------------------------------
@@ -556,7 +578,7 @@ void controller::brancher(int source, int branch, int state){
     
 
     if (source==1) {
-        if (mind.hasNewInfo()) {
+        if (usingEEG && mind.hasNewInfo()) {
             if (mind.diff20() > -100.0) {
                 if (mind.diff20()>diffThresh) {
                     // VERY Attentive
@@ -615,7 +637,7 @@ void controller::brancher(int source, int branch, int state){
         }
         
     } else if (source == 2){
-        if (mind.hasNewInfo()) {
+        if (usingEEG && mind.hasNewInfo()) {
             if (mind.diff20() > -100.0) {
                 if (mind.diff20()>diffThresh) {
                     // VERY Attentive

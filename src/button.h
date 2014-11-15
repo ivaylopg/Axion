@@ -8,6 +8,7 @@ public:
     void setup(ofTrueTypeFont *f, string bText);
     void draw(float x, float y);
     void updatePos(float x, float y);
+    float width();
     
     bool inside(float _x, float _y );
     
@@ -27,6 +28,9 @@ private:
     ofColor buttonCol;
     ofVec2f pos;
     float buttWidth;
+    bool isToggle;
+    bool active;
+    int toggleSize;
     
 protected:
     bool bRegisteredEvents;

@@ -54,6 +54,7 @@ public:
     State next_state;
     
     EEGreader mind;
+    bool usingEEG;
     Fader fader;
     SoundPlayer sound;
     
