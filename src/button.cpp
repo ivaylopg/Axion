@@ -1,6 +1,6 @@
 #include "button.h"
 
-ofEvent<float> Button::buttonClickedGlobal = ofEvent<float>();
+ofEvent<string> Button::buttonClickedGlobal = ofEvent<string>();
 
 //--------------------------------------------------------------
 Button::Button(){
@@ -47,7 +47,7 @@ void Button::mousePressed(ofMouseEventArgs & args){}
 //--------------------------------------------------------------
 void Button::mouseReleased(ofMouseEventArgs & args){
     if (inside(args.x, args.y)) {
-//        ofNotifyEvent(buttonClickedGlobal, args.x);
+        ofNotifyEvent(buttonClickedGlobal, buttText);
         //cout << buttText << endl;
     }
 }

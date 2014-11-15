@@ -16,7 +16,7 @@ public:
     void update();
     void draw();
     
-    void buttonPressed(float &);
+    void buttonPressed(string & e);
     
     Button startButton;
     Button settingsButton;

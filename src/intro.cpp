@@ -36,6 +36,11 @@ void Intro::setup(){
 
 
 //--------------------------------------------------------------
+void Intro::buttonPressed(string &e){
+    cout << e << endl;
+}
+
+//--------------------------------------------------------------
 void Intro::update(){
     introModel.update();
     introMesh = introModel.getCurrentAnimatedMesh(0);
