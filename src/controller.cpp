@@ -16,6 +16,7 @@
 void controller::setup(){
     ofSetVerticalSync(true);
     ofSetFrameRate(60);
+    ofSetEscapeQuitsApp(false);
     
 #ifdef OF_RELEASE
     cout << "You are in Release Mode!" << endl;

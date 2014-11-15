@@ -19,25 +19,32 @@ void Intro::setup(){
     initialized = true;
     
     introImg.loadImage("logo.png");
+    pointer.loadImage("pointer.png");
     introModel.loadModel("introMesh.obj");
     introModel.setPosition(ofGetWidth()/2, ofGetHeight()/2, 0);
     
-    akzidenz.loadFont("akzidenz-grotesk-light.ttf", 14, true, false, false, 0.3, 200);
-    akzidenzB.loadFont("akzidenz-grotesk-light.ttf", 16, true, false, false, 0.3, 200);
-    //loadFont(filename,fontsize,_bAntiAliased, _bFullCharacterSet, makeContours, simplifyAmt,dpi);
+    akzidenz.loadFont("akzidenz-grotesk-light.ttf", 10, true, false, false, 0.3, 200);
+    akzidenzB.loadFont("akzidenz-grotesk-light.ttf", 12, true, false, false, 0.3, 200);
+    
     startButton.setup(&akzidenzB, "BEGIN AXION");
     settingsButton.setup(&akzidenz, "SETTINGS");
     quitButton.setup(&akzidenz, "QUIT");
     
-//    ofAddListener(Button::buttonClickedGlobal, this, &Intro::buttonPressed(string s));
     ofAddListener(Button::buttonClickedGlobal, this, &Intro::buttonPressed);
-    //    void (ListenerClass::*listenerMethod)(const void *, ArgumentsType &)
 }
 
 
 //--------------------------------------------------------------
 void Intro::buttonPressed(string &e){
-    cout << e << endl;
+    //cout << e << endl;
+    if (e == "BEGIN AXION") {
+        cout << "Begin Button" << endl;
+    } else if (e == "SETTINGS") {
+        cout << "Settings Button" << endl;
+    } else if (e == "QUIT"){
+        cout << "Quit Button" << endl;
+        OF_EXIT_APP(0); 
+    }
 }
 
 //--------------------------------------------------------------
@@ -51,7 +58,7 @@ void Intro::update(){
 void Intro::draw(){
     ofSetColor(255);
     float scl = (float) ofGetWidth() / (float) ofGetScreenWidth();
-    int imgW = (int) ceil(ofGetWidth()/5);
+    int imgW = (int) ceil(ofGetWidth()/4.5);
     int imgH = (int) ceil((imgW * introImg.height)/introImg.width);
     
     //ofBackgroundGradient(ofColor(20,20,20),ofColor(0,0,0), OF_GRADIENT_CIRCULAR);
@@ -59,16 +66,23 @@ void Intro::draw(){
     ofPushMatrix();
     float transX = ofGetWidth()/6;
     float transY = ofGetHeight()/10;
-    ofTranslate(transX, transY);
+    ofTranslate(transX, transY,-20);
     //ofScale(.6, .6);
     //ofScale(scl*0.6, scl*0.6);
     //ofTranslate(-introImg.width/2, 0);
+//    glPushAttrib(GL_ENABLE_BIT);
+//    ofEnableAlphaBlending();
     introImg.draw(0, 0, imgW, imgH);
+//    ofDisableAlphaBlending();
+//    glPopAttrib();
     ofPopMatrix();
     
-    startButton.draw(transX + imgW * 0.1, transY + imgH * 1.1);
-    settingsButton.draw(transX + imgW * 0.1, transY + imgH * 1.1 + 50);
-    quitButton.draw(transX + imgW * 0.1, transY + imgH * 1.1 + 100);
+    ofPushMatrix();
+    ofTranslate(0,0,-1);
+    startButton.draw(transX + imgW * 0.09, transY + imgH * 1.25);
+    settingsButton.draw(transX + imgW * 0.09, transY + imgH * 1.25 + 50);
+    quitButton.draw(transX + imgW * 0.09, transY + imgH * 1.25 + 100);
+    ofPopMatrix();
     
     
     introLight.enable();
@@ -96,7 +110,8 @@ void Intro::draw(){
     introLight.disable();
     ofDisableLighting();
     
-    ofSetColor(200);
-    ofCircle(ofGetMouseX(), ofGetMouseY(), 20);
+    //ofSetColor(200);
+    //ofCircle(ofGetMouseX(), ofGetMouseY(), 20);
+    pointer.draw(ofGetMouseX(), ofGetMouseY(), 35, 35);
     
 }

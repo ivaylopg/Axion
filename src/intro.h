@@ -30,6 +30,7 @@ public:
     
 private:
     ofImage introImg;
+    ofImage pointer;
     ofMesh introMesh;
     
     ofTrueTypeFont	akzidenz;
