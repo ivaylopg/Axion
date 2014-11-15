@@ -225,3 +225,21 @@
 ------------- NEW USER - November 14, 2014 12:29:23 pm - 0
 
 [notice ] ##### QUITTING - November 14, 2014 12:33:49 pm - 265935 #####
+
+
+--------------------------------------- 2014-11-14-12-34-45-356
+[notice ] Connecting to /dev/tty.MindWaveMobile-DevA ...
+[ fatal ] /dev/tty.MindWaveMobile-DevA could not be opened. Check that the name is a valid COM port on your system.
+[notice ] ##################
+------------- NEW USER - November 14, 2014 12:34:52 pm - 0
+
+[notice ] ##### QUITTING - November 14, 2014 12:38:20 pm - 207353 #####
+
+
+--------------------------------------- 2014-11-14-12-38-33-983
+[notice ] Connecting to /dev/tty.MindWaveMobile-DevA ...
+[ fatal ] /dev/tty.MindWaveMobile-DevA could not be opened. Check that the name is a valid COM port on your system.
+[notice ] ##################
+------------- NEW USER - November 14, 2014 12:38:41 pm - 0
+
+[notice ] ##### QUITTING - November 14, 2014 12:39:00 pm - 18847 #####
