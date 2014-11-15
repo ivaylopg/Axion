@@ -25,8 +25,13 @@ void Intro::setup(){
     akzidenz.loadFont("akzidenz-grotesk-light.ttf", 14, true, false, false, 0.3, 200);
     akzidenzB.loadFont("akzidenz-grotesk-light.ttf", 16, true, false, false, 0.3, 200);
     //loadFont(filename,fontsize,_bAntiAliased, _bFullCharacterSet, makeContours, simplifyAmt,dpi);
-    startButton.setup(&akzidenz, "BEGIN AXION");
+    startButton.setup(&akzidenzB, "BEGIN AXION");
+    settingsButton.setup(&akzidenz, "SETTINGS");
+    quitButton.setup(&akzidenz, "QUIT");
     
+//    ofAddListener(Button::buttonClickedGlobal, this, &Intro::buttonPressed(string s));
+    ofAddListener(Button::buttonClickedGlobal, this, &Intro::buttonPressed);
+    //    void (ListenerClass::*listenerMethod)(const void *, ArgumentsType &)
 }
 
 
@@ -57,6 +62,8 @@ void Intro::draw(){
     ofPopMatrix();
     
     startButton.draw(transX + imgW * 0.1, transY + imgH * 1.1);
+    settingsButton.draw(transX + imgW * 0.1, transY + imgH * 1.1 + 50);
+    quitButton.draw(transX + imgW * 0.1, transY + imgH * 1.1 + 100);
     
     
     introLight.enable();

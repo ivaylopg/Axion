@@ -16,6 +16,8 @@ public:
     void mousePressed(ofMouseEventArgs & args);
     void mouseReleased(ofMouseEventArgs & args);
     
+    static ofEvent<float> buttonClickedGlobal;
+    
 private:
     string buttText;
     ofImage buttImg;

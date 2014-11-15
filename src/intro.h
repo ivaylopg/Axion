@@ -3,6 +3,9 @@
 #include "ofxAssimpModelLoader.h"
 #include "ofVboMesh.h"
 #include "button.h"
+#include "ofEventUtils.h"
+#include "ofEvents.h"
+
 
 class Intro {
 public:
@@ -13,13 +16,17 @@ public:
     void update();
     void draw();
     
+    void buttonPressed(float &);
+    
+    Button startButton;
+    Button settingsButton;
+    Button quitButton;
+    
     bool initialized = false;
     ofLight introLight;
     ofxAssimpModelLoader introModel;
     ofVec3f introPos;
     float introRot;
-    
-    Button startButton;
     
 private:
     ofImage introImg;

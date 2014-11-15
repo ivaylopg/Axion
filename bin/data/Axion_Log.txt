@@ -403,3 +403,48 @@
 ------------- NEW USER - November 14, 2014 07:57:15 pm - 0
 
 [notice ] ##### QUITTING - November 14, 2014 07:57:30 pm - 14057 #####
+
+
+--------------------------------------- 2014-11-14-20-00-14-164
+[notice ] Connecting to /dev/tty.MindWaveMobile-DevA ...
+[ fatal ] /dev/tty.MindWaveMobile-DevA could not be opened. Check that the name is a valid COM port on your system.
+[notice ] ##################
+------------- NEW USER - November 14, 2014 08:00:22 pm - 0
+
+[notice ] ##### QUITTING - November 14, 2014 08:00:40 pm - 18831 #####
+
+
+--------------------------------------- 2014-11-14-20-00-52-437
+[notice ] Connecting to /dev/tty.MindWaveMobile-DevA ...
+[ fatal ] /dev/tty.MindWaveMobile-DevA could not be opened. Check that the name is a valid COM port on your system.
+[notice ] ##################
+------------- NEW USER - November 14, 2014 08:00:59 pm - 0
+
+[notice ] ##### QUITTING - November 14, 2014 08:01:11 pm - 11776 #####
+
+
+--------------------------------------- 2014-11-14-20-02-00-789
+[notice ] Connecting to /dev/tty.MindWaveMobile-DevA ...
+[ fatal ] /dev/tty.MindWaveMobile-DevA could not be opened. Check that the name is a valid COM port on your system.
+[notice ] ##################
+------------- NEW USER - November 14, 2014 08:02:07 pm - 0
+
+[notice ] ##### QUITTING - November 14, 2014 08:02:23 pm - 15083 #####
+
+
+--------------------------------------- 2014-11-14-20-26-01-847
+[notice ] Connecting to /dev/tty.MindWaveMobile-DevA ...
+[ fatal ] /dev/tty.MindWaveMobile-DevA could not be opened. Check that the name is a valid COM port on your system.
+[notice ] ##################
+------------- NEW USER - November 14, 2014 08:26:11 pm - 0
+
+[notice ] ##### QUITTING - November 14, 2014 08:26:43 pm - 32314 #####
+
+
+--------------------------------------- 2014-11-14-20-27-34-666
+[notice ] Connecting to /dev/tty.MindWaveMobile-DevA ...
+[ fatal ] /dev/tty.MindWaveMobile-DevA could not be opened. Check that the name is a valid COM port on your system.
+[notice ] ##################
+------------- NEW USER - November 14, 2014 08:27:42 pm - 0
+
+[notice ] ##### QUITTING - November 14, 2014 08:27:46 pm - 4095 #####
