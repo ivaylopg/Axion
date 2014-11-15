@@ -2,7 +2,6 @@
 #include "ofMain.h"
 #include "ofxAssimpModelLoader.h"
 #include "ofVboMesh.h"
-#include "ofxUI.h"
 
 class Intro {
 public:
@@ -12,9 +11,6 @@ public:
     void setup();
     void update();
     void draw();
-    
-    ofxUICanvas *gui;
-    void guiEvent(ofxUIEventArgs &e);
     
     bool initialized = false;
     ofLight introLight;
