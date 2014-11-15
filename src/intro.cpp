@@ -3,24 +3,30 @@
 
 //--------------------------------------------------------------
 Intro::Intro(){
-	setup();
+    setup();
 }
 
 Intro::~Intro(){
-	//cout << "I'm dead" << endl;
+    //cout << "I'm dead" << endl;
 }
 
 //--------------------------------------------------------------
 void Intro::setup(){
     if(initialized) {
-		return;
-	}
+        return;
+    }
     
-	initialized = true;
+    initialized = true;
     
     introImg.loadImage("logo.png");
     introModel.loadModel("introMesh.obj");
     introModel.setPosition(ofGetWidth()/2, ofGetHeight()/2, 0);
+    
+    akzidenz.loadFont("akzidenz-grotesk-light.ttf", 14, true, false, false, 0.3, 200);
+    akzidenzB.loadFont("akzidenz-grotesk-light.ttf", 16, true, false, false, 0.3, 200);
+    //loadFont(filename,fontsize,_bAntiAliased, _bFullCharacterSet, makeContours, simplifyAmt,dpi);
+    startButton.setup(&akzidenz, "BEGIN AXION");
+    
 }
 
 
@@ -38,15 +44,19 @@ void Intro::draw(){
     int imgW = (int) ceil(ofGetWidth()/5);
     int imgH = (int) ceil((imgW * introImg.height)/introImg.width);
     
-	//ofBackgroundGradient(ofColor(20,20,20),ofColor(0,0,0), OF_GRADIENT_CIRCULAR);
+    //ofBackgroundGradient(ofColor(20,20,20),ofColor(0,0,0), OF_GRADIENT_CIRCULAR);
     
     ofPushMatrix();
-    ofTranslate(ofGetWidth()/6, ofGetHeight()/8);
+    float transX = ofGetWidth()/6;
+    float transY = ofGetHeight()/10;
+    ofTranslate(transX, transY);
     //ofScale(.6, .6);
     //ofScale(scl*0.6, scl*0.6);
     //ofTranslate(-introImg.width/2, 0);
     introImg.draw(0, 0, imgW, imgH);
     ofPopMatrix();
+    
+    startButton.draw(transX + imgW * 0.1, transY + imgH * 1.1);
     
     
     introLight.enable();
@@ -75,6 +85,6 @@ void Intro::draw(){
     ofDisableLighting();
     
     ofSetColor(200);
-    ofCircle(ofGetMouseX(), ofGetMouseY(), 300, 20);
+    ofCircle(ofGetMouseX(), ofGetMouseY(), 20);
     
 }

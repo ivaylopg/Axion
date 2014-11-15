@@ -2,6 +2,7 @@
 #include "ofMain.h"
 #include "ofxAssimpModelLoader.h"
 #include "ofVboMesh.h"
+#include "button.h"
 
 class Intro {
 public:
@@ -18,7 +19,13 @@ public:
     ofVec3f introPos;
     float introRot;
     
+    Button startButton;
+    
 private:
     ofImage introImg;
     ofMesh introMesh;
+    
+    ofTrueTypeFont	akzidenz;
+    ofTrueTypeFont	akzidenzB;
+    
 };
