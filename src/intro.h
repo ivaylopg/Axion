@@ -13,12 +13,13 @@ public:
     ~Intro();
     
     void setup();
-    void update();
+    void update(float eeg);
     void draw();
     
     void buttonPressed(string & e);
     
     Button startButton;
+    Button helpButton;
     Button settingsButton;
     Button quitButton;
     
@@ -28,6 +29,8 @@ public:
     ofVec3f introPos;
     float introRot;
     
+    ofEvent<string> progControl;
+    
 private:
     ofImage introImg;
     ofImage pointer;
@@ -36,4 +39,10 @@ private:
     ofTrueTypeFont	akzidenz;
     ofTrueTypeFont	akzidenzB;
     
+    float eegSignal;
+    
+    bool showHelp;
+    float helpAlpha;
+    
+    bool useMindWave;
 };

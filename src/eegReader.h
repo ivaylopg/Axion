@@ -13,6 +13,7 @@ public:
     void free();
     void reset();
     bool hasNewInfo();
+    void restart();
     
     float diff10();
     float diff20();
@@ -46,7 +47,11 @@ public:
     bool useLength;
     int numSteps;
     
+    float getSignalQuality();
+    
+    
 private:
     ofxThinkGear thinkGear;
     void blinkListener(float &param);
+    float signalQuality;
 };

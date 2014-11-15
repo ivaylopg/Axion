@@ -77,6 +77,8 @@ void controller::setup(){
     
     playerIntro.load(vids01);
     
+    ofAddListener(introPlayer.progControl, this, &controller::controlEvent);
+    
 }
 
 //--------------------------------------------------------------
@@ -89,7 +91,7 @@ void controller::update(){
             if (sound.volume < volume) {
                 sound.fadeUp();
             }
-            introPlayer.update();
+            introPlayer.update(mind.getSignalQuality());
             break;
         
         case B:
@@ -352,6 +354,13 @@ void controller::gotMessage(ofMessage& msg){
 //--------------------------------------------------------------
 void controller::gotMessage(ofMessage msg){
     
+}
+
+//--------------------------------------------------------------
+void controller::controlEvent(string &e){
+    if (current_state == A && e == "start") {
+        fader.moveOn();
+    }
 }
 
 //--------------------------------------------------------------

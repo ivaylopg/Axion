@@ -23,14 +23,18 @@ void Intro::setup(){
     introModel.loadModel("introMesh.obj");
     introModel.setPosition(ofGetWidth()/2, ofGetHeight()/2, 0);
     
-    akzidenz.loadFont("akzidenz-grotesk-light.ttf", 10, true, false, false, 0.3, 200);
+    akzidenz.loadFont("akzidenz-grotesk-light.ttf", 8, true, false, false, 0.3, 200);
     akzidenzB.loadFont("akzidenz-grotesk-light.ttf", 12, true, false, false, 0.3, 200);
     
     startButton.setup(&akzidenzB, "BEGIN AXION");
+    helpButton.setup(&akzidenz, "HELP");
     settingsButton.setup(&akzidenz, "SETTINGS");
     quitButton.setup(&akzidenz, "QUIT");
     
     ofAddListener(Button::buttonClickedGlobal, this, &Intro::buttonPressed);
+    
+    showHelp = true;
+    helpAlpha = 250;
 }
 
 
@@ -39,6 +43,10 @@ void Intro::buttonPressed(string &e){
     //cout << e << endl;
     if (e == "BEGIN AXION") {
         cout << "Begin Button" << endl;
+        string s = "start";
+        ofNotifyEvent(progControl, s);
+    } else if (e == "HELP") {
+        cout << "Help Button" << endl;
     } else if (e == "SETTINGS") {
         cout << "Settings Button" << endl;
     } else if (e == "QUIT"){
@@ -48,10 +56,11 @@ void Intro::buttonPressed(string &e){
 }
 
 //--------------------------------------------------------------
-void Intro::update(){
+void Intro::update(float eeg){
     introModel.update();
     introMesh = introModel.getCurrentAnimatedMesh(0);
     introModel.setPosition(ofGetWidth()/2, ofGetHeight()/2, 0);
+    eegSignal = eeg;
 }
 
 //--------------------------------------------------------------
@@ -66,22 +75,20 @@ void Intro::draw(){
     ofPushMatrix();
     float transX = ofGetWidth()/6;
     float transY = ofGetHeight()/10;
-    ofTranslate(transX, transY,-20);
-    //ofScale(.6, .6);
-    //ofScale(scl*0.6, scl*0.6);
-    //ofTranslate(-introImg.width/2, 0);
-//    glPushAttrib(GL_ENABLE_BIT);
-//    ofEnableAlphaBlending();
+    ofTranslate(transX, transY,-1);
     introImg.draw(0, 0, imgW, imgH);
-//    ofDisableAlphaBlending();
-//    glPopAttrib();
     ofPopMatrix();
     
     ofPushMatrix();
     ofTranslate(0,0,-1);
     startButton.draw(transX + imgW * 0.09, transY + imgH * 1.25);
-    settingsButton.draw(transX + imgW * 0.09, transY + imgH * 1.25 + 50);
-    quitButton.draw(transX + imgW * 0.09, transY + imgH * 1.25 + 100);
+    helpButton.draw(transX + imgW * 0.09, transY + imgH * 1.25+40);
+    
+    ofSetColor(128);
+    akzidenz.drawString("SETTINGS", transX + imgW * 0.09, transY + imgH * 1.25 + 80);
+    //settingsButton.draw(transX + imgW * 0.09, transY + imgH * 1.25 + 80);
+    
+    quitButton.draw(transX + imgW * 0.09, transY + imgH * 1.25 + 120);
     ofPopMatrix();
     
     
@@ -109,6 +116,8 @@ void Intro::draw(){
     ofPopMatrix();
     introLight.disable();
     ofDisableLighting();
+    
+    ofDrawBitmapString(ofToString(eegSignal), ofGetWidth()-50, 50);
     
     //ofSetColor(200);
     //ofCircle(ofGetMouseX(), ofGetMouseY(), 20);

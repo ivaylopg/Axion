@@ -26,6 +26,7 @@ private:
     ofColor inactiveCol;
     ofColor buttonCol;
     ofVec2f pos;
+    float buttWidth;
     
 protected:
     bool bRegisteredEvents;

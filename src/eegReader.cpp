@@ -38,6 +38,8 @@ void EEGreader::setup(){
     
     numBlinks = 0;
     lastBlinkVal = 0;
+    
+    signalQuality = 201.0;
 }
 
 //--------------------------------------------------------------
@@ -50,6 +52,17 @@ void EEGreader::reset(){
     attMedRatio.clear();
     hasD10 = false;
     hasD20 = false;
+    
+    for (int i=0; i < 10; i++) {
+        values[i] = 0.0;
+        mapped[i] = 0.0;
+        averages[i] = 0.0;
+        loHi[i][0] = 100000.0;
+        loHi[i][1] = 1.0;
+    }
+    
+    numBlinks = 0;
+    lastBlinkVal = 0;
 }
 
 //--------------------------------------------------------------
@@ -69,11 +82,15 @@ void EEGreader::update(){
      values[9] is TG_DATA_GAMMA2 = 12;
      */
     
+    signalQuality = 201.0;
+    
     //thinkGear.update();
     if (thinkGear.ableToConnect) {
         if (ofGetFrameNum()%60 == 0) {
             
             thinkGear.update();
+            
+            signalQuality = thinkGear.getSignalQuality();
             
             if (thinkGear.getSignalQuality() == 0 && thinkGear.getNewInfo()) {
                 for (int i=0; i<10; i++) {
@@ -180,6 +197,11 @@ void EEGreader::update(){
 }
 
 //--------------------------------------------------------------
+float EEGreader::getSignalQuality(){
+    return signalQuality;
+}
+
+//--------------------------------------------------------------
 float EEGreader::diff10(){
     if (hasD10) {
         return diff10s;
@@ -218,4 +240,11 @@ void EEGreader::blinkListener(float &param)
 //--------------------------------------------------------------
 void EEGreader::free(){
     thinkGear.freeConnection();
+}
+
+//--------------------------------------------------------------
+void EEGreader::restart(){
+    thinkGear.freeConnection();
+    reset();
+    thinkGear.setup();
 }
