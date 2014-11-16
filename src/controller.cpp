@@ -105,6 +105,7 @@ void controller::update(){
             if (sound.volume > volume/3) {
                 sound.fadeDown();
             }
+            playerIntro.pause(isPaused);
             playerIntro.update();
             break;
             
@@ -112,6 +113,7 @@ void controller::update(){
             if (sound.volume < volume) {
                 sound.fadeUp();
             }
+            tunnel1.pause(isPaused);
             tunnel1.update();
             break;
             
@@ -122,6 +124,7 @@ void controller::update(){
             if (sound.volume <= 0) {
                 sound.newFile("audio/3.aiff");
             }
+            playerBranch1.pause(isPaused);
             playerBranch1.update();
             break;
             
@@ -133,6 +136,7 @@ void controller::update(){
             if (sound.volume > volume/3) {
                 sound.fadeDown();
             }
+            playerBranch2.pause(isPaused);
             playerBranch2.update();
             break;
             
@@ -144,6 +148,7 @@ void controller::update(){
             if (sound.volume > 0) {
                 sound.fadeDown();
             }
+            playerOutro.pause(isPaused);
             playerOutro.update();
             break;
             
@@ -415,23 +420,23 @@ void controller::keyPressed(int key){
             switch (current_state) {
                 case C:
                 case G:
-                    tunnel1.pause(isPaused);
+                    //tunnel1.pause(isPaused);
                     break;
                 
                 case B:
-                    playerIntro.pause(isPaused);
+                    //playerIntro.pause(isPaused);
                     break;
                     
                 case D:
-                    playerBranch1.pause(isPaused);
+                    //playerBranch1.pause(isPaused);
                     break;
                 
                 case F:
-                    playerBranch2.pause(isPaused);
+                    //playerBranch2.pause(isPaused);
                     break;
                     
                 case H:
-                    playerOutro.pause(isPaused);
+                    //playerOutro.pause(isPaused);
                     break;
                     
                 default:
