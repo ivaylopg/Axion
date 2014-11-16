@@ -44,12 +44,22 @@ void Tunnel::setup(){
 void Tunnel::update(){
     //hallModel.update();
     //hallMesh = hallModel.getCurrentAnimatedMesh(0);
-    float camSpeed = 1 * (60/ofGetFrameRate());
-    camera.speed = camSpeed;
     
+    //*
+    float accel = 0.3 * (60/ofGetFrameRate());
+    camera.accel = ofClamp(accel, 0.1, 0.8);
+    //*/
+    
+    //*
+    float camSpeed = 4 * (60/ofGetFrameRate());
+    camera.speed = ofClamp(camSpeed,8.0,20.0);
+    //*/
+    
+    /*
     float sensitivity = 0.01f * (60/ofGetFrameRate());
     camera.sensitivityX = sensitivity;
     camera.sensitivityY = sensitivity;
+    //*/
 }
 
 //--------------------------------------------------------------
