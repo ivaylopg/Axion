@@ -46,17 +46,18 @@ void Tunnel::update(){
     //hallMesh = hallModel.getCurrentAnimatedMesh(0);
     
     //*
-    float accel = 0.3 * (60/ofGetFrameRate());
-    camera.accel = ofClamp(accel, 0.1, 0.8);
+    float accel = 0.05 * (60/ofGetFrameRate());
+    camera.accel = ofClamp(accel, 0.05, 0.4);
     //*/
     
     //*
-    float camSpeed = 4 * (60/ofGetFrameRate());
-    camera.speed = ofClamp(camSpeed,8.0,20.0);
+    float camSpeed = 1.0f * (60/ofGetFrameRate());
+    camera.speed = ofClamp(camSpeed,1.0,3.0);
     //*/
     
-    /*
-    float sensitivity = 0.01f * (60/ofGetFrameRate());
+    ///*
+    float sensitivity = 0.05f * (60/ofGetFrameRate());
+    sensitivity = ofClamp(sensitivity, 0.05, 0.4);
     camera.sensitivityX = sensitivity;
     camera.sensitivityY = sensitivity;
     //*/

@@ -15,6 +15,7 @@ public:
     void setup();
     void update(float eeg);
     void draw();
+    void drawPaused();
     
     void buttonPressed(string & e);
     
@@ -47,4 +48,7 @@ private:
     float alphaStep;
     
     bool useMindWave;
+    
+    bool pauseScreen;
+    float pauseAlpha;
 };

@@ -38,6 +38,7 @@ void Intro::setup(){
     alphaStep = 5.0;
     
     useMindWave = true;
+    pauseScreen = false;
 }
 
 
@@ -163,3 +164,11 @@ void Intro::draw(){
     pointer.draw(ofGetMouseX(), ofGetMouseY(), 35, 35);
     
 }
+
+//--------------------------------------------------------------
+void Intro::drawPaused() {
+    
+}
+
+
+
