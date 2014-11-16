@@ -29,6 +29,7 @@ void controller::setup(){
     
     helpOn = false;
     debugMessages = false;
+    isPaused = false;
     
     current_state = A;
     next_state = B;
@@ -408,7 +409,35 @@ void controller::keyPressed(int key){
         /**************************************/
             
         case OF_KEY_ESC:
-            //
+            isPaused = !isPaused;
+            sound.pause(isPaused);
+            
+            switch (current_state) {
+                case C:
+                case G:
+                    tunnel1.pause(isPaused);
+                    break;
+                
+                case B:
+                    playerIntro.pause(isPaused);
+                    break;
+                    
+                case D:
+                    playerBranch1.pause(isPaused);
+                    break;
+                
+                case F:
+                    playerBranch2.pause(isPaused);
+                    break;
+                    
+                case H:
+                    playerOutro.pause(isPaused);
+                    break;
+                    
+                default:
+                    break;
+            }
+            
             break;
             
         case ';':

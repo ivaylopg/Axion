@@ -11,6 +11,7 @@ public:
     void setup();
     void update();
     void draw(float alph = 0);
+    void pause(bool b);
     
     bool initialized = false;
     
@@ -27,4 +28,5 @@ public:
     
     bool secondTime;
     float distFactor;
+    bool isPaused;
 };

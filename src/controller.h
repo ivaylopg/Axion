@@ -47,6 +47,7 @@ public:
     
     bool helpOn;
     bool debugMessages;
+    bool isPaused;
     
     float volume;
     

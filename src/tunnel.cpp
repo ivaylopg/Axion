@@ -37,17 +37,36 @@ void Tunnel::setup(){
     hallMesh = hallModel.getCurrentAnimatedMesh(0);
     
     secondTime = false;
+    isPaused = false;
 }
 
 //--------------------------------------------------------------
 void Tunnel::update(){
     //hallModel.update();
     //hallMesh = hallModel.getCurrentAnimatedMesh(0);
+    float camSpeed = 1 * (60/ofGetFrameRate());
+    camera.speed = camSpeed;
+    
+    float sensitivity = 0.01f * (60/ofGetFrameRate());
+    camera.sensitivityX = sensitivity;
+    camera.sensitivityY = sensitivity;
+}
+
+//--------------------------------------------------------------
+void Tunnel::pause(bool b){
+    isPaused = b;
+    if (b) {
+        camera.disableMove();
+    } else {
+        camera.enableMove();
+    }
 }
 
 //--------------------------------------------------------------
 void Tunnel::draw(float alph){
-    camera.enableMove();
+    if (!isPaused) {
+        camera.enableMove();
+    }
     camera.begin();
     if (!camTargSet) {
         camera.target(ofVec3f(0,0,1));
