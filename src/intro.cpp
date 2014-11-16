@@ -30,6 +30,7 @@ void Intro::setup(){
     helpButton.setup(&akzidenz, "HELP");
     settingsButton.setup(&akzidenz, "xx");
     quitButton.setup(&akzidenz, "QUIT");
+    restartButton.setup(&akzidenz, "RESTART");
     
     ofAddListener(Button::buttonClickedGlobal, this, &Intro::buttonPressed);
     
@@ -60,6 +61,9 @@ void Intro::buttonPressed(string &e){
             useMindWave = false;
         }
         ofNotifyEvent(progControl, e);
+    } else if (e == "RESTART") {
+        //cout << "Restart" << endl;
+        ofNotifyEvent(progControl, e);
     } else if (e == "QUIT"){
         cout << "Quit Button" << endl;
         OF_EXIT_APP(0); 
@@ -80,26 +84,37 @@ void Intro::draw(){
     float scl = (float) ofGetWidth() / (float) ofGetScreenWidth();
     int imgW = (int) ceil(ofGetWidth()/4.5);
     int imgH = (int) ceil((imgW * introImg.height)/introImg.width);
-    
-    //ofBackgroundGradient(ofColor(20,20,20),ofColor(0,0,0), OF_GRADIENT_CIRCULAR);
-    
-    ofPushMatrix();
     float transX = ofGetWidth()/6;
     float transY = ofGetHeight()/10;
-    ofTranslate(transX, transY,-1);
-    introImg.draw(0, 0, imgW, imgH);
-    ofPopMatrix();
+    
+    //ofBackgroundGradient(ofColor(20,20,20),ofColor(0,0,0), OF_GRADIENT_CIRCULAR);
+    if (!pauseScreen) {
+        ofPushMatrix();
+        ofTranslate(transX, transY,-1);
+        introImg.draw(0, 0, imgW, imgH);
+        ofPopMatrix();
+    }
     
     ofPushMatrix();
     ofTranslate(0,0,-1);
-    startButton.draw(transX + imgW * 0.09, transY + imgH * 1.25);
-    helpButton.draw(transX + imgW * 0.09, transY + imgH * 1.25+40);
-    
-    ofSetColor(128);
-    akzidenz.drawString("USE EEG:  ", transX + imgW * 0.09, transY + imgH * 1.25 + 80);
-    settingsButton.draw(transX + imgW * 0.09 + akzidenz.stringWidth("USE EEG:X"), transY + imgH * 1.25 + 80);
-    
-    quitButton.draw(transX + imgW * 0.09, transY + imgH * 1.25 + 120);
+    if (pauseScreen) {
+        float offset = 0.25;
+        akzidenzB.drawString("PAUSED", transX + imgW * 0.09, transY + imgH * offset);
+        helpButton.draw(transX + imgW * 0.09, transY + imgH * offset + 40);
+        ofSetColor(128);
+        akzidenz.drawString("USE EEG:  ", transX + imgW * 0.09, transY + imgH * offset + 80);
+        settingsButton.draw(transX + imgW * 0.09 + akzidenz.stringWidth("USE EEG:X"), transY + imgH * offset + 80);
+        restartButton.draw(transX + imgW * 0.09, transY + imgH * offset + 120);
+        quitButton.draw(transX + imgW * 0.09, transY + imgH * offset + 160);
+    } else {
+        float offset = 1.25;
+        startButton.draw(transX + imgW * 0.09, transY + imgH * offset);
+        helpButton.draw(transX + imgW * 0.09, transY + imgH * offset + 40);
+        ofSetColor(128);
+        akzidenz.drawString("USE EEG:  ", transX + imgW * 0.09, transY + imgH * offset + 80);
+        settingsButton.draw(transX + imgW * 0.09 + akzidenz.stringWidth("USE EEG:X"), transY + imgH * offset + 80);
+        quitButton.draw(transX + imgW * 0.09, transY + imgH * offset + 120);
+    }
     ofPopMatrix();
     
     

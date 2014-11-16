@@ -405,6 +405,12 @@ void controller::controlEvent(string &e){
             usingEEG = false;
             cout << "stopped mindwave" << endl;
         }
+    } else if (e == "RESTART") {
+        cout << "Restart" << endl;
+        ofLog(OF_LOG_NOTICE) << "##### RESTARTING - " << ofGetTimestampString("%B %e, %Y %h:%M:%S %a - ") << ofGetElapsedTimeMillis() << " #####";
+        sound.volume == 0;
+        sound.newFile("audio/1.aiff");
+        setup();
     }
 }
 
@@ -418,7 +424,9 @@ void controller::keyPressed(int key){
         /**************************************/
         // Debug Stuff
         case 'i':
-            //helpOn = !helpOn;
+#ifdef OF_DEBUG
+            helpOn = !helpOn;
+#endif
             break;
         
         case '0':

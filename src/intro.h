@@ -23,6 +23,7 @@ public:
     Button helpButton;
     Button settingsButton;
     Button quitButton;
+    Button restartButton;
     
     bool initialized = false;
     ofLight introLight;
