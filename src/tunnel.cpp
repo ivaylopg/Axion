@@ -47,17 +47,17 @@ void Tunnel::update(){
     
     //*
     float accel = 0.05 * (60/ofGetFrameRate());
-    camera.accel = ofClamp(accel, 0.05, 0.4);
+    camera.accel = ofClamp(accel, 0.05, 0.2);
     //*/
     
     //*
     float camSpeed = 1.0f * (60/ofGetFrameRate());
-    camera.speed = ofClamp(camSpeed,1.0,3.0);
+    camera.speed = ofClamp(camSpeed,1.0,2.0);
     //*/
     
     ///*
     float sensitivity = 0.05f * (60/ofGetFrameRate());
-    sensitivity = ofClamp(sensitivity, 0.05, 0.4);
+    sensitivity = ofClamp(sensitivity, 0.05, 0.2);
     camera.sensitivityX = sensitivity;
     camera.sensitivityY = sensitivity;
     //*/

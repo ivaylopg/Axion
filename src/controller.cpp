@@ -185,97 +185,114 @@ void controller::draw(){
     
     sound.play();
     
-    switch (current_state) {
-        case A:
-            introPlayer.draw();
-            next_state = B;
-            break;
-            
-        case B:
-            playerIntro.play();
-            playerIntro.draw(0, 0, ofGetWidth(), ofGetHeight());
-            
-            if (playerIntro.isDone) {
-                //playerIntro.stop();
-                //playerIntro.reset();
-                /*
-                if (player.whichMov == 1 || player.whichMov == 2) {     // This seems a little inelegant with if/then.
-                    tunnel.secondTime = true;                           //     I think there is a better way by doing this
-                }                                                       //         from within the movieplayer class somehow.
-                if (player.whichMov == 3) {
-                    next_state = D;
-                    tunnel.secondTime = false;
-                    player.setFile(0);
-                    fader.fadeUp();
-                } else {
-                    next_state = C;
-                }
-                */
-                next_state = C;
-                playerIntro.clear();
-                fader.fadeUp();
-            }
-            break;
-            
-        case C:
-            tunnel1.draw(fader.getAlpha());
-            if (!tunnel1.secondTime) {
-                playerBranch1.load(vids02);
-            } else if (tunnel1.secondTime) {
-                playerOutro.load(vids04);
-            }
-            break;
-            
-        case D:
-            playerBranch1.play();
-            playerBranch1.draw(0, 0, ofGetWidth(), ofGetHeight());
-            
-            if (playerBranch1.isDone) {
-                next_state = C;
-                tunnel1.secondTime = true;
-                playerBranch1.clear();
-                fader.fadeUp();
-            }
-            break;
-            
-        case E:
-            //outroPlayer.draw();
-            break;
-            
-        case F:
-            playerBranch2.play();
-            playerBranch2.draw(0, 0, ofGetWidth(), ofGetHeight());
-            
-            if (playerBranch2.isDone) {
-                next_state = C;
-                tunnel1.secondTime = true;
-                playerBranch2.clear();
-                fader.fadeUp();
-            }
-            break;
-            
-        case G:
-            //outroPlayer.draw();
-            break;
-            
-        case H:
-            playerOutro.play();
-            playerOutro.draw(0, 0, ofGetWidth(), ofGetHeight());
-            
-            if (playerOutro.isDone) {
-                next_state = I;
-                playerOutro.clear();
-                fader.fadeUp();
-            }
-            break;
-            
-        case I:
+    if (!isPaused && (current_state == A || current_state == I)) {
+        switch (current_state) {
+            case A:
+                introPlayer.draw();
+                next_state = B;
+                break;
+                
+            case I:
                 outroPlayer.draw();
-            break;
-            
-        default:
-            break;
+                break;
+                
+            default:
+                break;
+        }
+    } else if (!isPaused) {
+        switch (current_state) {
+            case B:
+                playerIntro.play();
+                playerIntro.draw(0, 0, ofGetWidth(), ofGetHeight());
+                
+                if (playerIntro.isDone) {
+                    //playerIntro.stop();
+                    //playerIntro.reset();
+                    /*
+                     if (player.whichMov == 1 || player.whichMov == 2) {     // This seems a little inelegant with if/then.
+                     tunnel.secondTime = true;                           //     I think there is a better way by doing this
+                     }                                                       //         from within the movieplayer class somehow.
+                     if (player.whichMov == 3) {
+                     next_state = D;
+                     tunnel.secondTime = false;
+                     player.setFile(0);
+                     fader.fadeUp();
+                     } else {
+                     next_state = C;
+                     }
+                     */
+                    next_state = C;
+                    playerIntro.clear();
+                    fader.fadeUp();
+                }
+                break;
+                
+            case C:
+                tunnel1.draw(fader.getAlpha());
+                if (!tunnel1.secondTime) {
+                    playerBranch1.load(vids02);
+                } else if (tunnel1.secondTime) {
+                    playerOutro.load(vids04);
+                }
+                break;
+                
+            case D:
+                playerBranch1.play();
+                playerBranch1.draw(0, 0, ofGetWidth(), ofGetHeight());
+                
+                if (playerBranch1.isDone) {
+                    next_state = C;
+                    tunnel1.secondTime = true;
+                    playerBranch1.clear();
+                    fader.fadeUp();
+                }
+                break;
+                
+            case E:
+                //outroPlayer.draw();
+                break;
+                
+            case F:
+                playerBranch2.play();
+                playerBranch2.draw(0, 0, ofGetWidth(), ofGetHeight());
+                
+                if (playerBranch2.isDone) {
+                    next_state = C;
+                    tunnel1.secondTime = true;
+                    playerBranch2.clear();
+                    fader.fadeUp();
+                }
+                break;
+                
+            case G:
+                //outroPlayer.draw();
+                break;
+                
+            case H:
+                playerOutro.play();
+                playerOutro.draw(0, 0, ofGetWidth(), ofGetHeight());
+                
+                if (playerOutro.isDone) {
+                    next_state = I;
+                    playerOutro.clear();
+                    fader.fadeUp();
+                }
+                break;
+                
+            default:
+                break;
+        }
+    } else {
+        introPlayer.drawPaused();
     }
+    
+    
+    
+    /*
+    if (current_state != A && current_state != I) {
+        introPlayer.drawPaused(isPaused);
+    }
+    */
     
     drawDebugMessages();
     //drawHelp();
@@ -414,35 +431,12 @@ void controller::keyPressed(int key){
         /**************************************/
             
         case OF_KEY_ESC:
-            isPaused = !isPaused;
-            sound.pause(isPaused);
-            
-            switch (current_state) {
-                case C:
-                case G:
-                    //tunnel1.pause(isPaused);
-                    break;
-                
-                case B:
-                    //playerIntro.pause(isPaused);
-                    break;
-                    
-                case D:
-                    //playerBranch1.pause(isPaused);
-                    break;
-                
-                case F:
-                    //playerBranch2.pause(isPaused);
-                    break;
-                    
-                case H:
-                    //playerOutro.pause(isPaused);
-                    break;
-                    
-                default:
-                    break;
+            if (current_state != A && current_state != I) {
+                isPaused = !isPaused;
+                sound.pause(isPaused);
+            } else {
+                isPaused = false;
             }
-            
             break;
             
         case ';':
@@ -738,6 +732,7 @@ void controller::brancher(int source, int branch, int state){
 void controller::exit(){
     mind.free();
     ofLog(OF_LOG_NOTICE) << "##### QUITTING - " << ofGetTimestampString("%B %e, %Y %h:%M:%S %a - ") << ofGetElapsedTimeMillis() << " #####";
+    cout << "Axion is quitting..." << endl;
 }
 
 //--------------------------------------------------------------

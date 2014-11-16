@@ -136,15 +136,15 @@ void Intro::draw(){
         if (helpAlpha < 255) {
             helpAlpha += alphaStep;
         }
-        if (alphaStep > 255) {
-            alphaStep = 255;
+        if (helpAlpha > 255) {
+            helpAlpha = 255;
         }
     } else {
         if (helpAlpha > 0) {
             helpAlpha -= alphaStep;
         }
-        if (alphaStep < 0) {
-            alphaStep = 0;
+        if (helpAlpha < 0) {
+            helpAlpha = 0;
         }
     }
     
@@ -167,6 +167,9 @@ void Intro::draw(){
 
 //--------------------------------------------------------------
 void Intro::drawPaused() {
+    pauseScreen = true;
+    draw();
+    pauseScreen = false;
     
 }
 
