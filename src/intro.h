@@ -38,6 +38,8 @@ private:
     ofImage pointer;
     ofMesh introMesh;
     
+    vector<ofImage> mindwaveReception;
+    
     ofTrueTypeFont	akzidenz;
     ofTrueTypeFont	akzidenzB;
     ofTrueTypeFont	akzidenzS;

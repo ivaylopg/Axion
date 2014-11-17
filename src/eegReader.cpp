@@ -82,7 +82,7 @@ void EEGreader::update(){
      values[9] is TG_DATA_GAMMA2 = 12;
      */
     
-    signalQuality = 201.0;
+    //signalQuality = 201.0;
     
     //thinkGear.update();
     if (thinkGear.ableToConnect) {
@@ -146,9 +146,17 @@ void EEGreader::update(){
                 attMedRatio.push_back(ave);
                 
                 //cout << values[0] << "/" << values[1] << " : " << values[0]/values[1] << " : " << thinkGear.getIsConnected() << " : " << thinkGear.getSignalQuality() << endl;
+                
+                string waves = "| wave data: ";
+                for (int i = 2; i < 10; i++) {
+                    waves += ofToString(values[i],1);
+                    if (i != 9) {
+                        waves += ", ";
+                    }
+                }
                 cout << "Att: " << values[0] << " | Med: " << values[1]  << " | Diff 10: " << diff10() << " | Diff 20:" << diff20() << endl;
                 
-                ofLog(OF_LOG_NOTICE) << "Att: " << values[0] << " | Med: " << values[1] << " | Diff 10: " << diff10() << " | Diff 20:" << diff20();
+                ofLog(OF_LOG_NOTICE) << "Att: " << values[0] << " | Med: " << values[1] << " | Diff 10: " << diff10() << " | Diff 20:" << diff20() << waves;
                 
                 
                 
@@ -240,6 +248,7 @@ void EEGreader::blinkListener(float &param)
 //--------------------------------------------------------------
 void EEGreader::free(){
     thinkGear.freeConnection();
+    initialized = false;
 }
 
 //--------------------------------------------------------------

@@ -23,6 +23,12 @@ void Intro::setup(){
     introModel.loadModel("introMesh.obj");
     introModel.setPosition(ofGetWidth()/2, ofGetHeight()/2, 0);
     
+    for (int i = 0; i < 4; i++) {
+        ofImage img;
+        img.loadImage("singal_" + ofToString(i) + ".png");
+        mindwaveReception.push_back(img);
+    }
+    
     akzidenz.loadFont("akzidenz-grotesk-light.ttf", 16, true, true, true);
     akzidenzB.loadFont("akzidenz-grotesk-light.ttf", 26, true, true, true);
     akzidenzS.loadFont("akzidenz-grotesk-light.ttf", 14, true, true, true);
@@ -144,9 +150,24 @@ void Intro::draw(){
     ofDisableLighting();
     
     if (useMindWave) {
-        ofDrawBitmapString(ofToString(eegSignal), ofGetWidth()-50, 50);
+        ofPushMatrix();
+        ofTranslate(0,0, -1);
+        ofSetColor(200);
+        //ofDrawBitmapString(ofToString(eegSignal), ofGetWidth()-50, 50);
+        //mindwaveReception[0].draw(ofGetWidth()-100, 25, 75, 75/1.5749);
+        if (eegSignal >= 200) {
+            mindwaveReception[0].draw(ofGetWidth()-100, 25, 75, 75/1.5749);
+        } else if (eegSignal >= 100) {
+            mindwaveReception[1].draw(ofGetWidth()-100, 25, 75, 75/1.5749);
+        } else if (eegSignal >= 1) {
+            mindwaveReception[2].draw(ofGetWidth()-100, 25, 75, 75/1.5749);
+        } else {
+            mindwaveReception[3].draw(ofGetWidth()-100, 25, 75, 75/1.5749);
+        }
+        ofSetColor(255,255);
+        ofPopMatrix();
     }
-    
+//    1.5749
     if (showHelp) {
         if (helpAlpha < 255) {
             helpAlpha += alphaStep;
@@ -164,6 +185,8 @@ void Intro::draw(){
     }
     
     if (helpAlpha > 0) {
+        ofPushMatrix();
+        ofTranslate(0,0, -1);
         ofSetColor(128, helpAlpha);
         float resetLH = akzidenzS.getLineHeight();
         akzidenzS.setLineHeight(20);
@@ -173,6 +196,7 @@ void Intro::draw(){
         
         akzidenzS.setLineHeight(resetLH);
         ofSetColor(255,255);
+        ofPopMatrix();
     }
     //ofSetColor(200);
     //ofCircle(ofGetMouseX(), ofGetMouseY(), 20);

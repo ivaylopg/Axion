@@ -520,7 +520,7 @@ void controller::drawDebugMessages(){
                 ofDrawBitmapString("FrameRate: " + ofToString(ofGetFrameRate(),2) +
                                    " | Screen Size: " + ofToString(ofGetScreenWidth()) + "," + ofToString(ofGetScreenHeight()) +
                                    " | Window Size: " + ofToString(ofGetWidth()) + "," + ofToString(ofGetHeight()) +
-                                   "\nEEG Has New Info: " + ofToString(mind.hasNewInfo()) + " | Diff 20: " + ofToString(mind.diff20()) + " | Diff 10: " + ofToString(mind.diff10()),
+                                   "\nEEG Has New Info: " + ofToString(mind.hasNewInfo()) + " | Mindwave Signal Quality: " + ofToString(mind.getSignalQuality()) + " | Diff 20: " + ofToString(mind.diff20()) + " | Diff 10: " + ofToString(mind.diff10()),
                                    20,ofGetHeight() - 70);
             }
             break;
@@ -530,7 +530,7 @@ void controller::drawDebugMessages(){
                 ofDrawBitmapString("FrameRate: " + ofToString(ofGetFrameRate(),2) +
                                    " | Screen Size: " + ofToString(ofGetScreenWidth()) + "," + ofToString(ofGetScreenHeight()) +
                                    " | Window Size: " + ofToString(ofGetWidth()) + "," + ofToString(ofGetHeight()) +
-                                   "\nEEG Has New Info: " + ofToString(mind.hasNewInfo()) + " | Diff 20: " + ofToString(mind.diff20()) + " | Diff 10: " + ofToString(mind.diff10()) +
+                                   "\nEEG Has New Info: " + ofToString(mind.hasNewInfo()) + " | Mindwave Signal Quality: " + ofToString(mind.getSignalQuality()) +  " | Diff 20: " + ofToString(mind.diff20()) + " | Diff 10: " + ofToString(mind.diff10()) +
                                    "\nWhich Movie: " + ofToString(playerIntro.whichMov) + " | Is playing? " + ofToString(playerIntro.isPlaying()) +
                                    " | Which File: " + playerIntro.getPath(),
                                    20,ofGetHeight() - 70);
@@ -542,7 +542,7 @@ void controller::drawDebugMessages(){
                 ofDrawBitmapString("FrameRate: " + ofToString(ofGetFrameRate(),2) +
                                    " | Screen Size: " + ofToString(ofGetScreenWidth()) + "," + ofToString(ofGetScreenHeight()) +
                                    " | Window Size: " + ofToString(ofGetWidth()) + "," + ofToString(ofGetHeight()) +
-                                   "\nEEG Has New Info: " + ofToString(mind.hasNewInfo()) + " | Diff 20: " + ofToString(mind.diff20()) + " | Diff 10: " + ofToString(mind.diff10()) +
+                                   "\nEEG Has New Info: " + ofToString(mind.hasNewInfo()) + " | Mindwave Signal Quality: " + ofToString(mind.getSignalQuality()) +  " | Diff 20: " + ofToString(mind.diff20()) + " | Diff 10: " + ofToString(mind.diff10()) +
                                    "\nWhich Movie: " + ofToString(playerBranch1.whichMov) + " | Is playing? " + ofToString(playerBranch1.isPlaying()) +
                                    " | Which File: " + playerBranch1.getPath(),
                                    20,ofGetHeight() - 70);
@@ -557,7 +557,7 @@ void controller::drawDebugMessages(){
                 ofDrawBitmapString("FrameRate: " + ofToString(ofGetFrameRate(),2) +
                                    " | Screen Size: " + ofToString(ofGetScreenWidth()) + "," + ofToString(ofGetScreenHeight()) +
                                    " | Window Size: " + ofToString(ofGetWidth()) + "," + ofToString(ofGetHeight()) +
-                                   "\nEEG Has New Info: " + ofToString(mind.hasNewInfo()) + " | Diff 20: " + ofToString(mind.diff20()) + " | Diff 10: " + ofToString(mind.diff10()) +
+                                   "\nEEG Has New Info: " + ofToString(mind.hasNewInfo()) + " | Mindwave Signal Quality: " + ofToString(mind.getSignalQuality()) +  " | Diff 20: " + ofToString(mind.diff20()) + " | Diff 10: " + ofToString(mind.diff10()) +
                                    "\nWhich Movie: " + ofToString(playerOutro.whichMov) + " | Is playing? " + ofToString(playerOutro.isPlaying()) +
                                    " | Which File: " + playerOutro.getPath(),
                                    20,ofGetHeight() - 70);
@@ -569,7 +569,7 @@ void controller::drawDebugMessages(){
                 ofDrawBitmapString("FrameRate: " + ofToString(ofGetFrameRate(),2) +
                                    " | Screen Size: " + ofToString(ofGetScreenWidth()) + "," + ofToString(ofGetScreenHeight()) +
                                    " | Window Size: " + ofToString(ofGetWidth()) + "," + ofToString(ofGetHeight()) +
-                                   "\nEEG Has New Info: " + ofToString(mind.hasNewInfo()) + " | Diff 20: " + ofToString(mind.diff20()) + " | Diff 10: " + ofToString(mind.diff10()) +
+                                   "\nEEG Has New Info: " + ofToString(mind.hasNewInfo()) + " | Mindwave Signal Quality: " + ofToString(mind.getSignalQuality()) +  " | Diff 20: " + ofToString(mind.diff20()) + " | Diff 10: " + ofToString(mind.diff10()) +
                                    "\nCamera Position: (" + ofToString(tunnel1.camera.getPosition().x,2) + "," +
                                    ofToString(tunnel1.camera.getPosition().y,2) + "," + ofToString(tunnel1.camera.getPosition().z,2) + ") | " +
                                    "Goal 1: (" + ofToString(tunnel1.goal1.x,2) + "," + ofToString(tunnel1.goal1.y,2) + "," + ofToString(tunnel1.goal1.z,2) + ") | " +
