@@ -161,7 +161,7 @@ void Intro::draw(){
             mindwaveReception[1].draw(ofGetWidth()-100, 25, 75, 75/1.5749);
         } else if (eegSignal >= 1) {
             mindwaveReception[2].draw(ofGetWidth()-100, 25, 75, 75/1.5749);
-        } else {
+        } else if (eegSignal == 0) {
             mindwaveReception[3].draw(ofGetWidth()-100, 25, 75, 75/1.5749);
         }
         ofSetColor(255,255);

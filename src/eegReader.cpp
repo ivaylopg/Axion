@@ -13,7 +13,7 @@ void EEGreader::setup(){
 	initialized = true;
     
     thinkGear.setup();
-    ofAddListener(thinkGear.blinkChangeEvent, this, &EEGreader::blinkListener);
+    //ofAddListener(thinkGear.blinkChangeEvent, this, &EEGreader::blinkListener);
     
     interpolationType = msa::kInterpolationCubic;
     useLength = false;
@@ -249,11 +249,16 @@ void EEGreader::blinkListener(float &param)
 void EEGreader::free(){
     thinkGear.freeConnection();
     initialized = false;
+    //ofRemoveListener(thinkGear.blinkChangeEvent, this, &EEGreader::blinkListener);
 }
 
 //--------------------------------------------------------------
 void EEGreader::restart(){
     thinkGear.freeConnection();
-    reset();
-    thinkGear.setup();
+    //thinkGear = ofxThinkGear();
+    //reset();
+    thinkGear.reset();
+    setup();
+    //thinkGear.setup();
+    
 }
