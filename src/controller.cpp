@@ -127,7 +127,8 @@ void controller::update(){
                 sound.fadeDown();
             }
             if (sound.volume <= 0) {
-                sound.newFile("audio/3.aiff");
+                //sound.newFile("audio/3.aiff"); // "unfinished journey"
+                sound.newFile("audio/1.aiff");
             }
             playerBranch1.pause(isPaused);
             playerBranch1.update();

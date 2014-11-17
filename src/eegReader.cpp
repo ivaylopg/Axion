@@ -248,6 +248,8 @@ void EEGreader::blinkListener(float &param)
 //--------------------------------------------------------------
 void EEGreader::free(){
     thinkGear.freeConnection();
+    thinkGear.reset();
+    reset();
     initialized = false;
     //ofRemoveListener(thinkGear.blinkChangeEvent, this, &EEGreader::blinkListener);
 }
@@ -256,7 +258,7 @@ void EEGreader::free(){
 void EEGreader::restart(){
     thinkGear.freeConnection();
     //thinkGear = ofxThinkGear();
-    //reset();
+    reset();
     thinkGear.reset();
     setup();
     //thinkGear.setup();

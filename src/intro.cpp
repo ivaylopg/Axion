@@ -105,13 +105,16 @@ void Intro::draw(){
     ofTranslate(0,0,-1);
     if (pauseScreen) {
         float offset = 0.25;
+        ofSetColor(255);
         akzidenzB.drawString("PAUSED", transX + imgW * 0.09, transY + imgH * offset);
-        helpButton.draw(transX + imgW * 0.09, transY + imgH * offset + 40);
         ofSetColor(128);
-        akzidenz.drawString("USE EEG:  ", transX + imgW * 0.09, transY + imgH * offset + 80);
-        settingsButton.draw(transX + imgW * 0.09 + akzidenz.stringWidth("USE EEG:X"), transY + imgH * offset + 80);
-        restartButton.draw(transX + imgW * 0.09, transY + imgH * offset + 120);
-        quitButton.draw(transX + imgW * 0.09, transY + imgH * offset + 160);
+        akzidenz.drawString("PRESS ESCAPE KEY TO RESUME", transX + imgW * 0.09, transY + imgH * offset + 40);
+        helpButton.draw(transX + imgW * 0.09, transY + imgH * offset + 80);
+        ofSetColor(128);
+        akzidenz.drawString("USE EEG:  ", transX + imgW * 0.09, transY + imgH * offset + 120);
+        settingsButton.draw(transX + imgW * 0.09 + akzidenz.stringWidth("USE EEG:X"), transY + imgH * offset + 120);
+        restartButton.draw(transX + imgW * 0.09, transY + imgH * offset + 160);
+        quitButton.draw(transX + imgW * 0.09, transY + imgH * offset + 200);
     } else {
         float offset = 1.25;
         startButton.draw(transX + imgW * 0.09, transY + imgH * offset);
