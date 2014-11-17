@@ -154,7 +154,7 @@ void EEGreader::update(){
                         waves += ", ";
                     }
                 }
-                cout << "Att: " << values[0] << " | Med: " << values[1]  << " | Diff 10: " << diff10() << " | Diff 20:" << diff20() << endl;
+                //cout << "Att: " << values[0] << " | Med: " << values[1]  << " | Diff 10: " << diff10() << " | Diff 20:" << diff20() << endl;
                 
                 ofLog(OF_LOG_NOTICE) << "Att: " << values[0] << " | Med: " << values[1] << " | Diff 10: " << diff10() << " | Diff 20:" << diff20() << waves;
                 
