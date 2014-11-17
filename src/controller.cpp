@@ -81,6 +81,11 @@ void controller::setup(){
     
     ofAddListener(introPlayer.progControl, this, &controller::controlEvent);
     
+    mainGraphics.allocate(ofGetWidth(), ofGetHeight(), GL_RGBA);
+    mainGraphics.begin();
+    ofClear(255,255,255, 0);
+    mainGraphics.end();
+    
 }
 
 //--------------------------------------------------------------
@@ -200,6 +205,10 @@ void controller::draw(){
                 break;
         }
     } else if (!isPaused) {
+        mainGraphics.begin();
+        ofSetColor(255);
+        ofBackground(0);
+        
         switch (current_state) {
             case B:
                 playerIntro.play();
@@ -282,11 +291,14 @@ void controller::draw(){
             default:
                 break;
         }
+        mainGraphics.end();
+        mainGraphics.draw(0,0);
     } else {
         introPlayer.drawPaused();
     }
     
     
+    //mainGraphics.draw(0,0);
     
     /*
     if (current_state != A && current_state != I) {

@@ -51,6 +51,8 @@ public:
     
     float volume;
     
+    ofFbo mainGraphics;
+    
     State current_state;
     State next_state;
     
