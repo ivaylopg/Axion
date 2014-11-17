@@ -38,7 +38,7 @@ void Tunnel::setup(){
     
     secondTime = false;
     isPaused = false;
-    hallWidth = 12.0 * distFactor;
+    hallWidth = 10.0 * distFactor;
 }
 
 //--------------------------------------------------------------
@@ -108,24 +108,37 @@ void Tunnel::draw(float alph){
 
     //*
     ofVec3f testPos = camPos;
-    if (testPos.z < goal1.z-hallWidth) {
+    if (testPos.z < goal1.z-hallWidth && abs(testPos.x)) {
         if (testPos.x > hallWidth){
             testPos.x = hallWidth;
         } else if (camPos.x < -hallWidth) {
             testPos.x = -hallWidth;
         }
-        //camPos.z = -52.0;
-        if (testPos != camPos) {
-            camera.clip(testPos);
+        
+        if (testPos.z < -53 * distFactor) {
+            testPos.z = -53 * distFactor;
         }
     }
+    
+    if ((testPos.z >= goal1.z-hallWidth && abs(testPos.x) >= hallWidth*1.1) || testPos.z >= goal1.z+hallWidth) {
+        if (testPos.z > goal1.z+(hallWidth*0.9)) {
+            testPos.z = goal1.z+(hallWidth*0.9);
+        } else if (testPos.z < goal1.z-(hallWidth*0.9)) {
+            testPos.z = goal1.z-(hallWidth*0.9);
+        }
+    }
+    
+    if (testPos != camPos) {
+        camera.clip(testPos);
+    }
+
     //*/
     
     
     //glLineWidth(4);
     //ofSetColor(255,0,0);
     //ofLine(0, 0, 0, 0, 0, goal1.z);
-    //cout << "camPos.x: " << camPos.x << " | camPos.x: " << camPos.x/distFactor << endl;
+    //cout << "camPos.z: " << camPos.z << " | camPos.z: " << camPos.z/distFactor << endl;
     //ofSetColor(255);
     //glLineWidth(1);
     
