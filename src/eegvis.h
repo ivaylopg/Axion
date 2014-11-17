@@ -1,14 +1,10 @@
-//
-//  eegvis.h
-//  Axion
-//
-//  Created by Ivaylo Getov on 11/16/14.
-//
-//
+#pragma once
+#include "ofMain.h"
+#include "ofxTween.h"
 
-#ifndef Axion_eegvis_h
-#define Axion_eegvis_h
-
-
-
-#endif
+class EEGvis {
+    public:
+    EEGvis();
+    
+    void draw();
+};
