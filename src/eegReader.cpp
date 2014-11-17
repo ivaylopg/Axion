@@ -158,7 +158,7 @@ void EEGreader::update(){
                 
                 ofLog(OF_LOG_NOTICE) << "Att: " << values[0] << " | Med: " << values[1] << " | Diff 10: " << diff10() << " | Diff 20:" << diff20() << waves;
                 
-                
+                ofNotifyEvent(pushedBack, values[1]);
                 
             } else if (!thinkGear.getNewInfo()){
                 //cout << "bad connection" << endl;

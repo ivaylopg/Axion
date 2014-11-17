@@ -15,6 +15,7 @@
 #include "soundPlayer.h"
 #include "outro.h"
 #include "eegReader.h"
+#include "eegvis.h"
 
 #include "ofEventUtils.h"
 #include "ofEvents.h"
@@ -41,6 +42,7 @@ public:
     void drawDebugMessages();
     void brancher(int source, int branch, int state);
     void controlEvent(string & e);
+    void updateEegVis(float &f);
     void exit();
     
     const float VERSION = 0.4;
@@ -57,6 +59,7 @@ public:
     State next_state;
     
     EEGreader mind;
+    EEGvis vis;
     bool usingEEG;
     Fader fader;
     SoundPlayer sound;

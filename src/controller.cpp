@@ -80,6 +80,8 @@ void controller::setup(){
     playerIntro.load(vids01);
     
     ofAddListener(introPlayer.progControl, this, &controller::controlEvent);
+    ofAddListener(mind.pushedBack, this, &controller::updateEegVis);
+    //ofAddListener(mind.thinkGear.meditationChangeEvent, this, &controller::controlEvent);
     
     mainGraphics.allocate(ofGetWidth(), ofGetHeight(), GL_RGBA);
     mainGraphics.begin();
@@ -306,6 +308,9 @@ void controller::draw(){
         introPlayer.drawPaused(isPaused);
     }
     */
+    if (usingEEG && current_state != A && current_state != I && !isPaused) {
+        vis.draw();
+    }
     
     drawDebugMessages();
     //drawHelp();
@@ -396,6 +401,16 @@ void controller::gotMessage(ofMessage& msg){
 //--------------------------------------------------------------
 void controller::gotMessage(ofMessage msg){
     
+}
+
+//--------------------------------------------------------------
+void controller::updateEegVis(float &f){
+    //cout << "ping" << endl;
+    if (mind.diff20() > -100 && !isPaused) {
+        vis.update(mind.diff20());
+    } else if (mind.diff10() > -100 && !isPaused) {
+        vis.update(mind.diff10());
+    }
 }
 
 //--------------------------------------------------------------

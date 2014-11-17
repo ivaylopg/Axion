@@ -49,6 +49,9 @@ public:
     
     float getSignalQuality();
     
+    ofEvent<float> pushedBack;
+    
+    
     
 private:
     ofxThinkGear thinkGear;
