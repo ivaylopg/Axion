@@ -38,6 +38,7 @@ void Tunnel::setup(){
     
     secondTime = false;
     isPaused = false;
+    hallWidth = 12.0 * distFactor;
 }
 
 //--------------------------------------------------------------
@@ -105,12 +106,28 @@ void Tunnel::draw(float alph){
     ofMultMatrix(meshHelper.matrix);
 
 
-    /*
-    if (camPos.z < -52.0) {
-        camPos.z = -52.0;
-        camera.clip(camPos);
+    //*
+    ofVec3f testPos = camPos;
+    if (testPos.z < goal1.z-hallWidth) {
+        if (testPos.x > hallWidth){
+            testPos.x = hallWidth;
+        } else if (camPos.x < -hallWidth) {
+            testPos.x = -hallWidth;
+        }
+        //camPos.z = -52.0;
+        if (testPos != camPos) {
+            camera.clip(testPos);
+        }
     }
-    */
+    //*/
+    
+    
+    //glLineWidth(4);
+    //ofSetColor(255,0,0);
+    //ofLine(0, 0, 0, 0, 0, goal1.z);
+    //cout << "camPos.x: " << camPos.x << " | camPos.x: " << camPos.x/distFactor << endl;
+    //ofSetColor(255);
+    //glLineWidth(1);
     
     if (!secondTime) {
         if (camera.getPosition().squareDistance(goal1) < (4900.0 * distFactor)) {
@@ -130,6 +147,8 @@ void Tunnel::draw(float alph){
     
     //hallMesh.drawFaces();
     hallMesh.drawWireframe();
+    
+    
     
     ofPopMatrix();
     

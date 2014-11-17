@@ -31,7 +31,7 @@ void controller::setup(){
     debugMessages = false;
     isPaused = false;
     
-    current_state = A;
+    current_state = C;
     next_state = B;
     
     mind.reset();

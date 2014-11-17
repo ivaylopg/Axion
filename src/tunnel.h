@@ -29,4 +29,6 @@ public:
     bool secondTime;
     float distFactor;
     bool isPaused;
+    
+    float hallWidth;
 };
