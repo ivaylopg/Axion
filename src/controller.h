@@ -45,7 +45,7 @@ public:
     void updateEegVis(float &f);
     void exit();
     
-    const float VERSION = 0.4;
+    const float VERSION = 0.39;
     
     bool helpOn;
     bool debugMessages;
