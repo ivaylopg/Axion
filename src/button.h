@@ -6,7 +6,7 @@ public:
     Button();
     ~Button();
     void setup(ofTrueTypeFont *f, string bText);
-    void draw(float x, float y);
+    void draw(float x, float y, int alpha = 255);
     void updatePos(float x, float y);
     float width();
     

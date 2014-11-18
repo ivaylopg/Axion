@@ -33,6 +33,10 @@ public:
     
     ofEvent<string> progControl;
     
+    bool firstTime;
+    int counter;
+    int firstAlpha;
+    
 private:
     ofImage introImg;
     ofImage pointer;

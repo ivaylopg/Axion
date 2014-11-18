@@ -31,7 +31,7 @@ void controller::setup(){
     debugMessages = false;
     isPaused = false;
     
-    current_state = C;
+    current_state = A;
     next_state = B;
     
     mind.reset();
@@ -87,7 +87,9 @@ void controller::setup(){
     mainGraphics.begin();
     ofClear(255,255,255, 0);
     mainGraphics.end();
-    
+    introPlayer.firstTime = true;
+    introPlayer.counter = 0;
+    introPlayer.firstAlpha = 0;
 }
 
 //--------------------------------------------------------------
@@ -458,7 +460,7 @@ void controller::keyPressed(int key){
             break;
         
         case '0':
-            current_state = next_state;
+            tunnel1.toggleClipping();
             break;
             
         case '.':
@@ -548,7 +550,7 @@ void controller::drawDebugMessages(){
                 ofDrawBitmapString("FrameRate: " + ofToString(ofGetFrameRate(),2) +
                                    " | Screen Size: " + ofToString(ofGetScreenWidth()) + "," + ofToString(ofGetScreenHeight()) +
                                    " | Window Size: " + ofToString(ofGetWidth()) + "," + ofToString(ofGetHeight()) +
-                                   "\nEEG Has New Info: " + ofToString(mind.hasNewInfo()) + " | Mindwave Signal Quality: " + ofToString(mind.getSignalQuality()) + " | Diff 20: " + ofToString(mind.diff20()) + " | Diff 10: " + ofToString(mind.diff10()),
+                                   "\nEEG Has New Info: " + ofToString(mind.hasNewInfo()) + " | Mindwave Signal Quality: " + ofToString(mind.getSignalQuality()) + " | Diff 20: " + ofToString(mind.diff20()) + " | Diff 10: " + ofToString(mind.diff10()) + " | Solid Walls?: " + ofToString(tunnel1.isClipping),
                                    20,ofGetHeight() - 70);
             }
             break;
@@ -560,7 +562,7 @@ void controller::drawDebugMessages(){
                                    " | Window Size: " + ofToString(ofGetWidth()) + "," + ofToString(ofGetHeight()) +
                                    "\nEEG Has New Info: " + ofToString(mind.hasNewInfo()) + " | Mindwave Signal Quality: " + ofToString(mind.getSignalQuality()) +  " | Diff 20: " + ofToString(mind.diff20()) + " | Diff 10: " + ofToString(mind.diff10()) +
                                    "\nWhich Movie: " + ofToString(playerIntro.whichMov) + " | Is playing? " + ofToString(playerIntro.isPlaying()) +
-                                   " | Which File: " + playerIntro.getPath(),
+                                   " | Which File: " + playerIntro.getPath() + " | Solid Walls?: " + ofToString(tunnel1.isClipping),
                                    20,ofGetHeight() - 70);
             }
             break;
@@ -572,7 +574,7 @@ void controller::drawDebugMessages(){
                                    " | Window Size: " + ofToString(ofGetWidth()) + "," + ofToString(ofGetHeight()) +
                                    "\nEEG Has New Info: " + ofToString(mind.hasNewInfo()) + " | Mindwave Signal Quality: " + ofToString(mind.getSignalQuality()) +  " | Diff 20: " + ofToString(mind.diff20()) + " | Diff 10: " + ofToString(mind.diff10()) +
                                    "\nWhich Movie: " + ofToString(playerBranch1.whichMov) + " | Is playing? " + ofToString(playerBranch1.isPlaying()) +
-                                   " | Which File: " + playerBranch1.getPath(),
+                                   " | Which File: " + playerBranch1.getPath() + " | Solid Walls?: " + ofToString(tunnel1.isClipping),
                                    20,ofGetHeight() - 70);
             }
             break;
@@ -587,7 +589,7 @@ void controller::drawDebugMessages(){
                                    " | Window Size: " + ofToString(ofGetWidth()) + "," + ofToString(ofGetHeight()) +
                                    "\nEEG Has New Info: " + ofToString(mind.hasNewInfo()) + " | Mindwave Signal Quality: " + ofToString(mind.getSignalQuality()) +  " | Diff 20: " + ofToString(mind.diff20()) + " | Diff 10: " + ofToString(mind.diff10()) +
                                    "\nWhich Movie: " + ofToString(playerOutro.whichMov) + " | Is playing? " + ofToString(playerOutro.isPlaying()) +
-                                   " | Which File: " + playerOutro.getPath(),
+                                   " | Which File: " + playerOutro.getPath() + " | Solid Walls?: " + ofToString(tunnel1.isClipping),
                                    20,ofGetHeight() - 70);
             }
             break;
@@ -604,7 +606,7 @@ void controller::drawDebugMessages(){
                                    "Goal 1 Distance: " + ofToString(tunnel1.camera.getPosition().squareDistance(tunnel1.goal1),2) +
                                    "\nGoal 2: (" + ofToString(tunnel1.goal2.x,2) + "," + ofToString(tunnel1.goal2.y,2) + "," + ofToString(tunnel1.goal2.z,2) + ") | " +
                                    " | Goal 2 Distance: " + ofToString(tunnel1.camera.getPosition().squareDistance(tunnel1.goal2),2) + " | Distance Factor: " +
-                                   ofToString(tunnel1.distFactor,2) + " | Second Time? " + ofToString(tunnel1.secondTime),
+                                   ofToString(tunnel1.distFactor,2) + " | Second Time? " + ofToString(tunnel1.secondTime) + " | Solid Walls?: " + ofToString(tunnel1.isClipping),
                                    20,ofGetHeight() - 70);
             }
             break;

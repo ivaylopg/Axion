@@ -31,4 +31,6 @@ public:
     bool isPaused;
     
     float hallWidth;
+    bool isClipping;
+    void toggleClipping();
 };

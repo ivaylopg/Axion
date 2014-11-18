@@ -15,7 +15,9 @@ void Intro::setup(){
     if(initialized) {
         return;
     }
-    
+    firstTime = true;
+    counter = 0;
+    firstAlpha = 0;
     initialized = true;
     
     introImg.loadImage("logo.png");
@@ -116,41 +118,29 @@ void Intro::draw(){
         restartButton.draw(transX + imgW * 0.09, transY + imgH * offset + 160);
         quitButton.draw(transX + imgW * 0.09, transY + imgH * offset + 200);
     } else {
+        if (counter < 7 * 60){
+            counter ++;
+        } else {
+            if (firstAlpha < 255) {
+                firstAlpha++;
+            }
+        }
         float offset = 1.25;
-        startButton.draw(transX + imgW * 0.09, transY + imgH * offset);
-        helpButton.draw(transX + imgW * 0.09, transY + imgH * offset + 40);
-        ofSetColor(128);
+        
+        float introAlph;
+        if (firstTime) {
+            introAlph = ofClamp(firstAlpha,0,255);
+        } else {
+            introAlph = 255;
+        }
+        startButton.draw(transX + imgW * 0.09, transY + imgH * offset, introAlph);
+        helpButton.draw(transX + imgW * 0.09, transY + imgH * offset + 40, introAlph);
+        ofSetColor(128, introAlph);
         akzidenz.drawString("USE EEG:  ", transX + imgW * 0.09, transY + imgH * offset + 80);
-        settingsButton.draw(transX + imgW * 0.09 + akzidenz.stringWidth("USE EEG:X"), transY + imgH * offset + 80);
-        quitButton.draw(transX + imgW * 0.09, transY + imgH * offset + 120);
+        settingsButton.draw(transX + imgW * 0.09 + akzidenz.stringWidth("USE EEG:X"), transY + imgH * offset + 80, introAlph);
+        quitButton.draw(transX + imgW * 0.09, transY + imgH * offset + 120, introAlph);
     }
     ofPopMatrix();
-    
-    
-    introLight.enable();
-    
-    ofPushMatrix();
-    ofTranslate((ofGetWidth()/2)*0.3, (ofGetHeight()/2)*0.3, 300);
-    ofTranslate(introModel.getPosition().x, introModel.getPosition().y, 0);
-    
-    ofRotateX(10);
-    ofRotateZ(-20);
-    ofRotateY(introRot);
-    introRot+=0.05;
-    
-    ofTranslate(-introModel.getPosition().x, -introModel.getPosition().y, 0);
-    
-    ofxAssimpMeshHelper & meshHelper = introModel.getMeshHelper(0);
-    ofMultMatrix(introModel.getModelMatrix());
-    ofMultMatrix(meshHelper.matrix);
-    
-    ofScale(scl, scl);
-    //introMesh.drawFaces();
-    introMesh.drawWireframe();
-    
-    ofPopMatrix();
-    introLight.disable();
-    ofDisableLighting();
     
     if (useMindWave) {
         ofPushMatrix();
@@ -203,6 +193,33 @@ void Intro::draw(){
     }
     //ofSetColor(200);
     //ofCircle(ofGetMouseX(), ofGetMouseY(), 20);
+    
+    introLight.enable();
+    ofSetColor(255, 255);
+    
+    ofPushMatrix();
+    ofTranslate((ofGetWidth()/2)*0.3, (ofGetHeight()/2)*0.3, 300);
+    ofTranslate(introModel.getPosition().x, introModel.getPosition().y, 0);
+    
+    ofRotateX(10);
+    ofRotateZ(-20);
+    ofRotateY(introRot);
+    introRot+=0.05;
+    
+    ofTranslate(-introModel.getPosition().x, -introModel.getPosition().y, 0);
+    
+    ofxAssimpMeshHelper & meshHelper = introModel.getMeshHelper(0);
+    ofMultMatrix(introModel.getModelMatrix());
+    ofMultMatrix(meshHelper.matrix);
+    
+    ofScale(scl, scl);
+    //introMesh.drawFaces();
+    introMesh.drawWireframe();
+    
+    ofPopMatrix();
+    introLight.disable();
+    ofDisableLighting();
+    
     pointer.draw(ofGetMouseX(), ofGetMouseY(), 35, 35);
     
 }

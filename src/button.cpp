@@ -107,21 +107,21 @@ float Button::width(){
 }
 
 //--------------------------------------------------------------
-void Button::draw(float x, float y){
+void Button::draw(float x, float y, int alpha){
     updatePos(x, y);
-    ofSetColor(buttonCol);
+    ofSetColor(buttonCol.r,buttonCol.g,buttonCol.b,alpha);
     if (isToggle) {
         if (active) {
-            ofSetColor(0);
+            ofSetColor(0,alpha);
             ofLine(pos.x+2, pos.y-2, pos.x+(toggleSize-2), pos.y-(toggleSize-2));
             ofLine(pos.x+2, pos.y-(toggleSize-2), pos.x+(toggleSize-2), pos.y-2);
             //ofCircle(pos.x, pos.y, 4* toggleSize);
             
         }
-        ofSetColor(buttonCol);
+        ofSetColor(buttonCol.r,buttonCol.g,buttonCol.b,alpha);
         ofRect(pos.x, pos.y, toggleSize, -toggleSize);
     } else {
         font.drawString(buttText, pos.x, pos.y);
     }
-    ofSetColor(255);
+    ofSetColor(255,alpha);
 }
