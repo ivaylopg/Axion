@@ -118,7 +118,7 @@ void Intro::draw(){
         restartButton.draw(transX + imgW * 0.09, transY + imgH * offset + 160);
         quitButton.draw(transX + imgW * 0.09, transY + imgH * offset + 200);
     } else {
-        if (counter < 7 * 60){
+        if (counter < 6 * 60){
             counter ++;
         } else {
             if (firstAlpha < 255) {

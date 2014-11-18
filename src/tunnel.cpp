@@ -154,7 +154,7 @@ void Tunnel::draw(float alph){
     
     if (!secondTime) {
         if (camera.getPosition().squareDistance(goal1) < (4900.0 * distFactor)) {
-            ofSendMessage("TunnelA:0:3");
+            ofSendMessage("TunnelA:1:3");
         }
         
         if (camera.getPosition().squareDistance(goal2) < (4900.0 * distFactor)) {

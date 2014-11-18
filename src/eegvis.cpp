@@ -93,8 +93,10 @@ void EEGvis::draw(){
             branches[1+currVid].draw(0,0, 150, 150);
             takenBranch = 1+currVid;
         }
-    } else {
-        //
+    } else if (currState == 7){
+        if (currVid == 5 || currVid == 6) {
+            branches[1 + currVid].draw(0,0, 150, 150);;
+        }
     }
     //cout << currVid << endl;
     ofPopMatrix();
