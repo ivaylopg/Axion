@@ -18,7 +18,7 @@ void Tunnel::setup(){
     
     camera.setup();
     camTargSet = false;
-    camera.speed =  0.75f;
+    camera.speed =  1.0f;
     //camera.speed =  1.0f;
     camera.sensitivityX = 0.05f;
     camera.sensitivityY = 0.05f;
@@ -52,7 +52,7 @@ void Tunnel::update(){
     camera.accel = ofClamp(accel, 0.05, 0.2);
     //*/
     
-    /*
+    //*
     float camSpeed = 1.0f * (60/ofGetFrameRate());
     camera.speed = ofClamp(camSpeed,1.0,2.0);
     //*/

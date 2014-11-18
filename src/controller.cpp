@@ -62,15 +62,15 @@ void controller::setup(){
     vids03.clear();
     vids04.clear();
     
-    vids01.push_back("mov/0.mp4");
+    vids01.push_back("mov/0.mov");
     
-    vids02.push_back("mov/1.mp4");
-    vids02.push_back("mov/2.mp4");
-    vids02.push_back("mov/3.mp4");
-    vids02.push_back("mov/4.mp4");
+    vids02.push_back("mov/1.mov");
+    vids02.push_back("mov/2.mov");
+    vids02.push_back("mov/3.mov");
+    vids02.push_back("mov/4.mov");
     
-    vids04.push_back("mov/5.mp4");
-    vids04.push_back("mov/6.mp4");
+    vids04.push_back("mov/5.mov");
+    vids04.push_back("mov/6.mov");
     
     playerIntro.setup(vids01.size());
     playerBranch1.setup(vids02.size());
@@ -183,8 +183,35 @@ void controller::update(){
             //tunnel.secondTime = true;
         }
         current_state = next_state;
+        
+        if (current_state != A && current_state != I && !isPaused) {
+            if (current_state == D) {
+                vis.updateBranches(current_state,playerBranch1.getPath());
+            } else if (current_state == F) {
+                vis.updateBranches(current_state,playerBranch2.getPath());
+            } else if (current_state == H) {
+                vis.updateBranches(current_state,playerOutro.getPath());
+            } else if (current_state == C && tunnel1.secondTime){
+                vis.updateBranches(current_state, "second");
+            } else {
+                vis.updateBranches(current_state);
+            }
+        }
     }
     
+    /*
+    if (current_state != A && current_state != I && !isPaused) {
+        if (current_state == D) {
+            vis.updateBranches(current_state,playerBranch1.getPath());
+        } else if (current_state == F) {
+            vis.updateBranches(current_state,playerBranch2.getPath());
+        } else if (current_state == H) {
+            vis.updateBranches(current_state,playerOutro.getPath());
+        } else {
+            vis.updateBranches(current_state);
+        }
+    }
+    */
     //cout << "Diff 10: " << mind.diff10() << " | Diff 20:" << mind.diff20() << endl;
 }
 

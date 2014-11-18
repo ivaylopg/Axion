@@ -8,6 +8,7 @@ public:
     EEGvis();
     
     void update(float _newVal);
+    void updateBranches(int state, string m = "none");
     void draw();
     
     void toggleWedge();
@@ -27,4 +28,9 @@ private:
     
     vector<ofVec4f> oldWedges;
     bool started;
+    int currState;
+    int currVid;
+    int takenBranch;
+    
+    vector<ofImage> branches;
 };

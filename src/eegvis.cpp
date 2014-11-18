@@ -8,7 +8,16 @@ EEGvis::EEGvis(){
     drawLine = true;
     drawWedge = false;
     started = false;
+    currState = 0;
+    currVid = 99;
+    takenBranch = 0;
     //update(newVal);
+    
+    for (int i = 0; i < 8; i++) {
+        ofImage img;
+        img.loadImage(ofToString(i)+".png");
+        branches.push_back(img);
+    }
 }
 
 //--------------------------------------------------------------
@@ -22,6 +31,22 @@ void EEGvis::update(float _newVal){
     }
     if (started) {
         line.setParameters(1, ease, ofxTween::easeInOut, oldValLine, newValLine, 1000, 0);
+    }
+}
+
+//--------------------------------------------------------------
+void EEGvis::updateBranches(int state, string m) {
+    currState = state;
+    //cout << m << endl;
+    for (int i = 0 ; i < 7; i++) {
+        if (ofIsStringInString(m, ofToString(i))) {
+            currVid = i;
+            break;
+        } else if (ofIsStringInString(m, "sec")) {
+            currVid = 98;
+        } else {
+            currVid = 99;
+        }
     }
 }
 
@@ -51,4 +76,27 @@ void EEGvis::draw(){
         ofSetColor(255);
         ofPopMatrix();
     }
+    
+    ofPushMatrix();
+    ofTranslate(ofGetWidth()-150,50,1);
+    //cout << currState << endl;
+    if (currState == 1) {
+        branches[0].draw(0,0, 150, 150);
+    } else if (currState == 2) {
+        if (currVid == 98){
+            branches[takenBranch].draw(0,0, 150, 150);
+        } else {
+            branches[1].draw(0,0, 150, 150);
+        }
+    } else if (currState == 3) {
+        if (currVid <= 4) {
+            branches[1+currVid].draw(0,0, 150, 150);
+            takenBranch = 1+currVid;
+        }
+    } else {
+        //
+    }
+    //cout << currVid << endl;
+    ofPopMatrix();
+    
 }
