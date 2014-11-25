@@ -6,7 +6,7 @@ If you're not sure why you're here, get some [more info](http://axionexperience.
 
 This repo does not include the video/audio files. If you want the original media files, contact me via GitHub or the Axion site, otherwise use placeholders to test the code.
 
-Built in Open Frameworks 0.8.1  
+~~Built in Open Frameworks 0.8.1~~ Updated to OF 0.8.4  
 Navigate using "W" to move FORWARD, "S" to move BACK, and LOOK around with the MOUSE.   
 The "F" key toggles Full Screen   
 The "." (Period) toggles Debug messages  
@@ -37,7 +37,7 @@ And the following contributed addons:
 * **[ofxMSACore](https://github.com/memo/ofxMSACore)**
 * **[ofxMSAInterpolator](https://github.com/memo/ofxMSAInterpolator)**
 * **[ofxFPSCamera](https://github.com/ivaylopg/ofxFPSCamera)**
-* **[ofxThinkGear](https://github.com/ivaylopg/ofxFPSCamera) (Must use ivaylopg's fork because there are some new methods, although all credit goes to [Akira Hayasaka](https://github.com/Akira-Hayasaka/ofxThinkGear) for the original Addon)**
+* **[ofxThinkGear](https://github.com/ivaylopg/ofxFPSCamera)** (Must use ivaylopg's fork because there are some new methods, although all credit goes to [Akira Hayasaka](https://github.com/Akira-Hayasaka/ofxThinkGear) for the original Addon)
 
 - - - -
 #####Versions#####

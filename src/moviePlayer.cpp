@@ -19,6 +19,7 @@ void MoviePlayer::setup(int howMany){
     N_VIDEOS = howMany;
     whichMov = 0;
     loaded = false;
+    isPaused - false;
     
     for (int i = 0; i < N_VIDEOS; i++) {
         ofVideoPlayer* p = new ofVideoPlayer();
@@ -88,14 +89,15 @@ void MoviePlayer::draw(int x, int y, int w, int h){
 
 //--------------------------------------------------------------
 void MoviePlayer::play(){
-    if (!isPlaying() && !isDone) {
+    if (!isPlaying() && !isDone && !isPaused) {
         videos.at(whichMov)->play();
     }
 }
 
 //--------------------------------------------------------------
-void MoviePlayer::pause(){
-    videos.at(whichMov)->setPaused(true);
+void MoviePlayer::pause(bool b){
+    isPaused = b;
+    videos.at(whichMov)->setPaused(isPaused);
 }
 
 //--------------------------------------------------------------

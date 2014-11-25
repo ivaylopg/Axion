@@ -8,7 +8,7 @@ public:
     void setup();
     void update();
     void play();
-    void pause();
+    void pause(bool b);
     void newVolume(float f);
     void newFile(string s);
     void fadeDown();
