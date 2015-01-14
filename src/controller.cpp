@@ -110,6 +110,8 @@ void controller::update(){
             }
             if (usingEEG) {
                 introPlayer.update(mind.getSignalQuality());
+            } else {
+                introPlayer.update(-1);
             }
             break;
         

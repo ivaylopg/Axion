@@ -19,11 +19,13 @@ public:
     
     void buttonPressed(string & e);
     
+    /*
     Button startButton;
     Button helpButton;
     Button settingsButton;
     Button quitButton;
     Button restartButton;
+    */
     
     bool initialized = false;
     ofLight introLight;
@@ -44,9 +46,9 @@ private:
     
     vector<ofImage> mindwaveReception;
     
-    ofTrueTypeFont	akzidenz;
-    ofTrueTypeFont	akzidenzB;
-    ofTrueTypeFont	akzidenzS;
+    //ofTrueTypeFont	akzidenz;
+    //ofTrueTypeFont	akzidenzB;
+    //ofTrueTypeFont	akzidenzS;
     
     float eegSignal;
     
