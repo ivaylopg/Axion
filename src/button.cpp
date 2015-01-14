@@ -32,7 +32,7 @@ void Button::setup(ofTrueTypeFont *f, string bText){
     
     if (bText == "xx") {
         isToggle = true;
-        active = true;
+        active = false;
         //cout << "set toggle and true" << endl;
     } else {
         isToggle = false;

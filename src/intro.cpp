@@ -46,7 +46,7 @@ void Intro::setup(){
     helpAlpha = 0;
     alphaStep = 5.0;
     
-    useMindWave = true;
+    useMindWave = false;
     pauseScreen = false;
 }
 
@@ -194,6 +194,7 @@ void Intro::draw(){
     //ofSetColor(200);
     //ofCircle(ofGetMouseX(), ofGetMouseY(), 20);
     
+    ofSetColor(255, 255);
     introLight.enable();
     ofSetColor(255, 255);
     

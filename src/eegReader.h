@@ -14,6 +14,8 @@ public:
     void reset();
     bool hasNewInfo();
     void restart();
+    void connect();
+    bool getIsConnected();
     
     float diff10();
     float diff20();
@@ -57,4 +59,5 @@ private:
     ofxThinkGear thinkGear;
     void blinkListener(float &param);
     float signalQuality;
+    bool trying;
 };

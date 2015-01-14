@@ -11,8 +11,8 @@ void EEGreader::setup(){
 		return;
 	}
 	initialized = true;
-    
-    thinkGear.setup();
+    trying = false;
+    //connect();
     //ofAddListener(thinkGear.blinkChangeEvent, this, &EEGreader::blinkListener);
     
     interpolationType = msa::kInterpolationCubic;
@@ -40,6 +40,14 @@ void EEGreader::setup(){
     lastBlinkVal = 0;
     
     signalQuality = 201.0;
+}
+
+//--------------------------------------------------------------
+void EEGreader::connect(){
+    if (!trying && !thinkGear.getIsConnected()) {
+        trying = true;
+        thinkGear.setup();
+    }
 }
 
 //--------------------------------------------------------------
@@ -255,12 +263,23 @@ void EEGreader::free(){
 }
 
 //--------------------------------------------------------------
+bool EEGreader::getIsConnected(){
+    bool connected = thinkGear.getIsConnected();
+    if (connected) {
+        trying = false;
+    }
+    return connected;
+}
+
+//--------------------------------------------------------------
 void EEGreader::restart(){
     thinkGear.freeConnection();
     //thinkGear = ofxThinkGear();
     reset();
+    initialized = false;
     thinkGear.reset();
     setup();
+    connect();
     //thinkGear.setup();
     
 }

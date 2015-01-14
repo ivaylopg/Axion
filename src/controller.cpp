@@ -35,7 +35,8 @@ void controller::setup(){
     next_state = B;
     
     mind.reset();
-    usingEEG = true;
+//    mind.connect();
+    usingEEG = false;
     
     volume = 0.65;
     
@@ -94,7 +95,9 @@ void controller::setup(){
 
 //--------------------------------------------------------------
 void controller::update(){
-    if (usingEEG) {
+    if (usingEEG && !mind.getIsConnected()){
+        mind.connect();
+    } else if (usingEEG && mind.getIsConnected()) {
         mind.update();
     }
     
