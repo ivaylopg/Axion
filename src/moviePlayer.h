@@ -11,7 +11,7 @@ public:
     void draw(int x, int y);
     void draw(int x, int y, int w, int h);
     void play();
-    void pause();
+    void pause(bool b);
     void stop();
     void setFile(int i);
     void reset();
@@ -27,5 +27,6 @@ public:
     
     bool isDone;
     bool loaded;
+    bool isPaused;
     
 };

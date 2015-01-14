@@ -16,17 +16,26 @@
 void controller::setup(){
     ofSetVerticalSync(true);
     ofSetFrameRate(60);
+    ofSetEscapeQuitsApp(false);
+    
+#ifdef OF_RELEASE
+    cout << "You are in Release Mode!" << endl;
+#elif OF_DEBUG
+    cout << "You are in Debug Mode!" << endl;
+#endif
     
     ofResetElapsedTimeCounter();
     ofLog(OF_LOG_NOTICE) << "##################" << "\n" << "------------- NEW USER - " << ofGetTimestampString("%B %e, %Y %h:%M:%S %a - ") << ofGetElapsedTimeMillis() << "\n";
     
     helpOn = false;
     debugMessages = false;
+    isPaused = false;
     
     current_state = A;
     next_state = B;
     
     mind.reset();
+    usingEEG = true;
     
     volume = 0.65;
     
@@ -53,15 +62,15 @@ void controller::setup(){
     vids03.clear();
     vids04.clear();
     
-    vids01.push_back("mov/0.mp4");
+    vids01.push_back("mov/0.mov");
     
-    vids02.push_back("mov/1.mp4");
-    vids02.push_back("mov/2.mp4");
-    vids02.push_back("mov/3.mp4");
-    vids02.push_back("mov/4.mp4");
+    vids02.push_back("mov/1.mov");
+    vids02.push_back("mov/2.mov");
+    vids02.push_back("mov/3.mov");
+    vids02.push_back("mov/4.mov");
     
-    vids04.push_back("mov/5.mp4");
-    vids04.push_back("mov/6.mp4");
+    vids04.push_back("mov/5.mov");
+    vids04.push_back("mov/6.mov");
     
     playerIntro.setup(vids01.size());
     playerBranch1.setup(vids02.size());
@@ -70,11 +79,25 @@ void controller::setup(){
     
     playerIntro.load(vids01);
     
+    ofAddListener(introPlayer.progControl, this, &controller::controlEvent);
+    ofAddListener(mind.pushedBack, this, &controller::updateEegVis);
+    //ofAddListener(mind.thinkGear.meditationChangeEvent, this, &controller::controlEvent);
+    
+    mainGraphics.allocate(ofGetWidth(), ofGetHeight(), GL_RGBA);
+    mainGraphics.begin();
+    ofClear(255,255,255, 0);
+    mainGraphics.end();
+    introPlayer.firstTime = true;
+    introPlayer.counter = 0;
+    introPlayer.firstAlpha = 0;
 }
 
 //--------------------------------------------------------------
 void controller::update(){
-    mind.update();
+    if (usingEEG) {
+        mind.update();
+    }
+    
     //sound.update();
     
     switch (current_state) {
@@ -82,13 +105,16 @@ void controller::update(){
             if (sound.volume < volume) {
                 sound.fadeUp();
             }
-            introPlayer.update();
+            if (usingEEG) {
+                introPlayer.update(mind.getSignalQuality());
+            }
             break;
         
         case B:
             if (sound.volume > volume/3) {
                 sound.fadeDown();
             }
+            playerIntro.pause(isPaused);
             playerIntro.update();
             break;
             
@@ -96,6 +122,7 @@ void controller::update(){
             if (sound.volume < volume) {
                 sound.fadeUp();
             }
+            tunnel1.pause(isPaused);
             tunnel1.update();
             break;
             
@@ -104,8 +131,10 @@ void controller::update(){
                 sound.fadeDown();
             }
             if (sound.volume <= 0) {
-                sound.newFile("audio/3.aiff");
+                //sound.newFile("audio/3.aiff"); // "unfinished journey"
+                sound.newFile("audio/1.aiff");
             }
+            playerBranch1.pause(isPaused);
             playerBranch1.update();
             break;
             
@@ -117,6 +146,7 @@ void controller::update(){
             if (sound.volume > volume/3) {
                 sound.fadeDown();
             }
+            playerBranch2.pause(isPaused);
             playerBranch2.update();
             break;
             
@@ -128,6 +158,7 @@ void controller::update(){
             if (sound.volume > 0) {
                 sound.fadeDown();
             }
+            playerOutro.pause(isPaused);
             playerOutro.update();
             break;
             
@@ -152,8 +183,35 @@ void controller::update(){
             //tunnel.secondTime = true;
         }
         current_state = next_state;
+        
+        if (current_state != A && current_state != I && !isPaused) {
+            if (current_state == D) {
+                vis.updateBranches(current_state,playerBranch1.getPath());
+            } else if (current_state == F) {
+                vis.updateBranches(current_state,playerBranch2.getPath());
+            } else if (current_state == H) {
+                vis.updateBranches(current_state,playerOutro.getPath());
+            } else if (current_state == C && tunnel1.secondTime){
+                vis.updateBranches(current_state, "second");
+            } else {
+                vis.updateBranches(current_state);
+            }
+        }
     }
     
+    /*
+    if (current_state != A && current_state != I && !isPaused) {
+        if (current_state == D) {
+            vis.updateBranches(current_state,playerBranch1.getPath());
+        } else if (current_state == F) {
+            vis.updateBranches(current_state,playerBranch2.getPath());
+        } else if (current_state == H) {
+            vis.updateBranches(current_state,playerOutro.getPath());
+        } else {
+            vis.updateBranches(current_state);
+        }
+    }
+    */
     //cout << "Diff 10: " << mind.diff10() << " | Diff 20:" << mind.diff20() << endl;
 }
 
@@ -164,95 +222,123 @@ void controller::draw(){
     
     sound.play();
     
-    switch (current_state) {
-        case A:
-            introPlayer.draw();
-            next_state = B;
-            break;
-        case B:
-            playerIntro.play();
-            playerIntro.draw(0, 0, ofGetWidth(), ofGetHeight());
-            
-            if (playerIntro.isDone) {
-                //playerIntro.stop();
-                //playerIntro.reset();
-                /*
-                if (player.whichMov == 1 || player.whichMov == 2) {     // This seems a little inelegant with if/then.
-                    tunnel.secondTime = true;                           //     I think there is a better way by doing this
-                }                                                       //         from within the movieplayer class somehow.
-                if (player.whichMov == 3) {
-                    next_state = D;
-                    tunnel.secondTime = false;
-                    player.setFile(0);
-                    fader.fadeUp();
-                } else {
-                    next_state = C;
-                }
-                */
-                next_state = C;
-                playerIntro.clear();
-                fader.fadeUp();
-            }
-            break;
-            
-        case C:
-            tunnel1.draw(fader.getAlpha());
-            if (!tunnel1.secondTime) {
-                playerBranch1.load(vids02);
-            } else if (tunnel1.secondTime) {
-                playerOutro.load(vids04);
-            }
-            break;
-            
-        case D:
-            playerBranch1.play();
-            playerBranch1.draw(0, 0, ofGetWidth(), ofGetHeight());
-            
-            if (playerBranch1.isDone) {
-                next_state = C;
-                tunnel1.secondTime = true;
-                playerBranch1.clear();
-                fader.fadeUp();
-            }
-            break;
-            
-        case E:
-            //outroPlayer.draw();
-            break;
-            
-        case F:
-            playerBranch2.play();
-            playerBranch2.draw(0, 0, ofGetWidth(), ofGetHeight());
-            
-            if (playerBranch2.isDone) {
-                next_state = C;
-                tunnel1.secondTime = true;
-                playerBranch2.clear();
-                fader.fadeUp();
-            }
-            break;
-            
-        case G:
-            //outroPlayer.draw();
-            break;
-            
-        case H:
-            playerOutro.play();
-            playerOutro.draw(0, 0, ofGetWidth(), ofGetHeight());
-            
-            if (playerOutro.isDone) {
-                next_state = I;
-                playerOutro.clear();
-                fader.fadeUp();
-            }
-            break;
-            
-        case I:
+    if (!isPaused && (current_state == A || current_state == I)) {
+        switch (current_state) {
+            case A:
+                introPlayer.draw();
+                next_state = B;
+                break;
+                
+            case I:
                 outroPlayer.draw();
-            break;
-            
-        default:
-            break;
+                break;
+                
+            default:
+                break;
+        }
+    } else if (!isPaused) {
+        mainGraphics.begin();
+        ofSetColor(255);
+        ofBackground(0);
+        
+        switch (current_state) {
+            case B:
+                playerIntro.play();
+                playerIntro.draw(0, 0, ofGetWidth(), ofGetHeight());
+                
+                if (playerIntro.isDone) {
+                    //playerIntro.stop();
+                    //playerIntro.reset();
+                    /*
+                     if (player.whichMov == 1 || player.whichMov == 2) {     // This seems a little inelegant with if/then.
+                     tunnel.secondTime = true;                           //     I think there is a better way by doing this
+                     }                                                       //         from within the movieplayer class somehow.
+                     if (player.whichMov == 3) {
+                     next_state = D;
+                     tunnel.secondTime = false;
+                     player.setFile(0);
+                     fader.fadeUp();
+                     } else {
+                     next_state = C;
+                     }
+                     */
+                    next_state = C;
+                    playerIntro.clear();
+                    fader.fadeUp();
+                }
+                break;
+                
+            case C:
+                tunnel1.draw(fader.getAlpha());
+                if (!tunnel1.secondTime) {
+                    playerBranch1.load(vids02);
+                } else if (tunnel1.secondTime) {
+                    playerOutro.load(vids04);
+                }
+                break;
+                
+            case D:
+                playerBranch1.play();
+                playerBranch1.draw(0, 0, ofGetWidth(), ofGetHeight());
+                
+                if (playerBranch1.isDone) {
+                    next_state = C;
+                    tunnel1.secondTime = true;
+                    playerBranch1.clear();
+                    fader.fadeUp();
+                }
+                break;
+                
+            case E:
+                //outroPlayer.draw();
+                break;
+                
+            case F:
+                playerBranch2.play();
+                playerBranch2.draw(0, 0, ofGetWidth(), ofGetHeight());
+                
+                if (playerBranch2.isDone) {
+                    next_state = C;
+                    tunnel1.secondTime = true;
+                    playerBranch2.clear();
+                    fader.fadeUp();
+                }
+                break;
+                
+            case G:
+                //outroPlayer.draw();
+                break;
+                
+            case H:
+                playerOutro.play();
+                playerOutro.draw(0, 0, ofGetWidth(), ofGetHeight());
+                
+                if (playerOutro.isDone) {
+                    next_state = I;
+                    playerOutro.clear();
+                    fader.fadeUp();
+                }
+                break;
+                
+            default:
+                break;
+        }
+        mainGraphics.end();
+        mainGraphics.draw(0,0);
+    } else {
+        introPlayer.drawPaused();
+    }
+    
+    
+    //mainGraphics.draw(0,0);
+    
+    /*
+    if (current_state != A && current_state != I) {
+        introPlayer.drawPaused(isPaused);
+    }
+    */
+    if (usingEEG && current_state != A && current_state != I && !isPaused) {
+        vis.draw();
     }
     
     drawDebugMessages();
@@ -347,6 +433,45 @@ void controller::gotMessage(ofMessage msg){
 }
 
 //--------------------------------------------------------------
+void controller::updateEegVis(float &f){
+    //cout << "ping" << endl;
+    if (mind.diff20() > -100 && !isPaused) {
+        vis.update(mind.diff20());
+    } else if (mind.diff10() > -100 && !isPaused) {
+        vis.update(mind.diff10());
+    }
+}
+
+//--------------------------------------------------------------
+void controller::controlEvent(string &e){
+    if (current_state == A && e == "start") {
+        fader.moveOn();
+    }
+    
+    if (e == "eegOn") {
+        //cout << e << endl;
+        if (!usingEEG) {
+            mind.restart();
+            usingEEG = true;
+            cout << "started mindwave" << endl;
+        }
+    } else if (e == "eegOff") {
+        //cout << e << endl;
+        if (usingEEG) {
+            mind.free();
+            usingEEG = false;
+            cout << "stopped mindwave" << endl;
+        }
+    } else if (e == "RESTART") {
+        cout << "Restart" << endl;
+        ofLog(OF_LOG_NOTICE) << "##### RESTARTING - " << ofGetTimestampString("%B %e, %Y %h:%M:%S %a - ") << ofGetElapsedTimeMillis() << " #####";
+        sound.volume == 0;
+        sound.newFile("audio/1.aiff");
+        setup();
+    }
+}
+
+//--------------------------------------------------------------
 void controller::keyPressed(int key){
     switch (key) {
         case 'f':
@@ -356,11 +481,13 @@ void controller::keyPressed(int key){
         /**************************************/
         // Debug Stuff
         case 'i':
-            //helpOn = !helpOn;
+#ifdef OF_DEBUG
+            helpOn = !helpOn;
+#endif
             break;
         
         case '0':
-            current_state = next_state;
+            tunnel1.toggleClipping();
             break;
             
         case '.':
@@ -369,7 +496,12 @@ void controller::keyPressed(int key){
         /**************************************/
             
         case OF_KEY_ESC:
-            //
+            if (current_state != A && current_state != I) {
+                isPaused = !isPaused;
+                sound.pause(isPaused);
+            } else {
+                isPaused = false;
+            }
             break;
             
         case ';':
@@ -383,7 +515,7 @@ void controller::keyPressed(int key){
             
         default:
             if (current_state == A) {
-                fader.moveOn();
+                //fader.moveOn();
             }
             break;
     }
@@ -392,7 +524,7 @@ void controller::keyPressed(int key){
 //--------------------------------------------------------------
 void controller::mousePressed(int x, int y, int button){
     if (current_state == A) {
-        fader.moveOn();
+        //fader.moveOn();
     }
 }
 
@@ -445,7 +577,7 @@ void controller::drawDebugMessages(){
                 ofDrawBitmapString("FrameRate: " + ofToString(ofGetFrameRate(),2) +
                                    " | Screen Size: " + ofToString(ofGetScreenWidth()) + "," + ofToString(ofGetScreenHeight()) +
                                    " | Window Size: " + ofToString(ofGetWidth()) + "," + ofToString(ofGetHeight()) +
-                                   "\nEEG Has New Info: " + ofToString(mind.hasNewInfo()) + " | Diff 20: " + ofToString(mind.diff20()) + " | Diff 10: " + ofToString(mind.diff10()),
+                                   "\nEEG Has New Info: " + ofToString(mind.hasNewInfo()) + " | Mindwave Signal Quality: " + ofToString(mind.getSignalQuality()) + " | Diff 20: " + ofToString(mind.diff20()) + " | Diff 10: " + ofToString(mind.diff10()) + " | Solid Walls?: " + ofToString(tunnel1.isClipping),
                                    20,ofGetHeight() - 70);
             }
             break;
@@ -455,9 +587,9 @@ void controller::drawDebugMessages(){
                 ofDrawBitmapString("FrameRate: " + ofToString(ofGetFrameRate(),2) +
                                    " | Screen Size: " + ofToString(ofGetScreenWidth()) + "," + ofToString(ofGetScreenHeight()) +
                                    " | Window Size: " + ofToString(ofGetWidth()) + "," + ofToString(ofGetHeight()) +
-                                   "\nEEG Has New Info: " + ofToString(mind.hasNewInfo()) + " | Diff 20: " + ofToString(mind.diff20()) + " | Diff 10: " + ofToString(mind.diff10()) +
+                                   "\nEEG Has New Info: " + ofToString(mind.hasNewInfo()) + " | Mindwave Signal Quality: " + ofToString(mind.getSignalQuality()) +  " | Diff 20: " + ofToString(mind.diff20()) + " | Diff 10: " + ofToString(mind.diff10()) +
                                    "\nWhich Movie: " + ofToString(playerIntro.whichMov) + " | Is playing? " + ofToString(playerIntro.isPlaying()) +
-                                   " | Which File: " + playerIntro.getPath(),
+                                   " | Which File: " + playerIntro.getPath() + " | Solid Walls?: " + ofToString(tunnel1.isClipping),
                                    20,ofGetHeight() - 70);
             }
             break;
@@ -467,9 +599,9 @@ void controller::drawDebugMessages(){
                 ofDrawBitmapString("FrameRate: " + ofToString(ofGetFrameRate(),2) +
                                    " | Screen Size: " + ofToString(ofGetScreenWidth()) + "," + ofToString(ofGetScreenHeight()) +
                                    " | Window Size: " + ofToString(ofGetWidth()) + "," + ofToString(ofGetHeight()) +
-                                   "\nEEG Has New Info: " + ofToString(mind.hasNewInfo()) + " | Diff 20: " + ofToString(mind.diff20()) + " | Diff 10: " + ofToString(mind.diff10()) +
+                                   "\nEEG Has New Info: " + ofToString(mind.hasNewInfo()) + " | Mindwave Signal Quality: " + ofToString(mind.getSignalQuality()) +  " | Diff 20: " + ofToString(mind.diff20()) + " | Diff 10: " + ofToString(mind.diff10()) +
                                    "\nWhich Movie: " + ofToString(playerBranch1.whichMov) + " | Is playing? " + ofToString(playerBranch1.isPlaying()) +
-                                   " | Which File: " + playerBranch1.getPath(),
+                                   " | Which File: " + playerBranch1.getPath() + " | Solid Walls?: " + ofToString(tunnel1.isClipping),
                                    20,ofGetHeight() - 70);
             }
             break;
@@ -482,9 +614,9 @@ void controller::drawDebugMessages(){
                 ofDrawBitmapString("FrameRate: " + ofToString(ofGetFrameRate(),2) +
                                    " | Screen Size: " + ofToString(ofGetScreenWidth()) + "," + ofToString(ofGetScreenHeight()) +
                                    " | Window Size: " + ofToString(ofGetWidth()) + "," + ofToString(ofGetHeight()) +
-                                   "\nEEG Has New Info: " + ofToString(mind.hasNewInfo()) + " | Diff 20: " + ofToString(mind.diff20()) + " | Diff 10: " + ofToString(mind.diff10()) +
+                                   "\nEEG Has New Info: " + ofToString(mind.hasNewInfo()) + " | Mindwave Signal Quality: " + ofToString(mind.getSignalQuality()) +  " | Diff 20: " + ofToString(mind.diff20()) + " | Diff 10: " + ofToString(mind.diff10()) +
                                    "\nWhich Movie: " + ofToString(playerOutro.whichMov) + " | Is playing? " + ofToString(playerOutro.isPlaying()) +
-                                   " | Which File: " + playerOutro.getPath(),
+                                   " | Which File: " + playerOutro.getPath() + " | Solid Walls?: " + ofToString(tunnel1.isClipping),
                                    20,ofGetHeight() - 70);
             }
             break;
@@ -494,14 +626,14 @@ void controller::drawDebugMessages(){
                 ofDrawBitmapString("FrameRate: " + ofToString(ofGetFrameRate(),2) +
                                    " | Screen Size: " + ofToString(ofGetScreenWidth()) + "," + ofToString(ofGetScreenHeight()) +
                                    " | Window Size: " + ofToString(ofGetWidth()) + "," + ofToString(ofGetHeight()) +
-                                   "\nEEG Has New Info: " + ofToString(mind.hasNewInfo()) + " | Diff 20: " + ofToString(mind.diff20()) + " | Diff 10: " + ofToString(mind.diff10()) +
+                                   "\nEEG Has New Info: " + ofToString(mind.hasNewInfo()) + " | Mindwave Signal Quality: " + ofToString(mind.getSignalQuality()) +  " | Diff 20: " + ofToString(mind.diff20()) + " | Diff 10: " + ofToString(mind.diff10()) +
                                    "\nCamera Position: (" + ofToString(tunnel1.camera.getPosition().x,2) + "," +
                                    ofToString(tunnel1.camera.getPosition().y,2) + "," + ofToString(tunnel1.camera.getPosition().z,2) + ") | " +
                                    "Goal 1: (" + ofToString(tunnel1.goal1.x,2) + "," + ofToString(tunnel1.goal1.y,2) + "," + ofToString(tunnel1.goal1.z,2) + ") | " +
                                    "Goal 1 Distance: " + ofToString(tunnel1.camera.getPosition().squareDistance(tunnel1.goal1),2) +
                                    "\nGoal 2: (" + ofToString(tunnel1.goal2.x,2) + "," + ofToString(tunnel1.goal2.y,2) + "," + ofToString(tunnel1.goal2.z,2) + ") | " +
                                    " | Goal 2 Distance: " + ofToString(tunnel1.camera.getPosition().squareDistance(tunnel1.goal2),2) + " | Distance Factor: " +
-                                   ofToString(tunnel1.distFactor,2) + " | Second Time? " + ofToString(tunnel1.secondTime),
+                                   ofToString(tunnel1.distFactor,2) + " | Second Time? " + ofToString(tunnel1.secondTime) + " | Solid Walls?: " + ofToString(tunnel1.isClipping),
                                    20,ofGetHeight() - 70);
             }
             break;
@@ -539,7 +671,7 @@ void controller::brancher(int source, int branch, int state){
     
 
     if (source==1) {
-        if (mind.hasNewInfo()) {
+        if (usingEEG && mind.hasNewInfo()) {
             if (mind.diff20() > -100.0) {
                 if (mind.diff20()>diffThresh) {
                     // VERY Attentive
@@ -598,7 +730,7 @@ void controller::brancher(int source, int branch, int state){
         }
         
     } else if (source == 2){
-        if (mind.hasNewInfo()) {
+        if (usingEEG && mind.hasNewInfo()) {
             if (mind.diff20() > -100.0) {
                 if (mind.diff20()>diffThresh) {
                     // VERY Attentive
@@ -665,6 +797,7 @@ void controller::brancher(int source, int branch, int state){
 void controller::exit(){
     mind.free();
     ofLog(OF_LOG_NOTICE) << "##### QUITTING - " << ofGetTimestampString("%B %e, %Y %h:%M:%S %a - ") << ofGetElapsedTimeMillis() << " #####";
+    cout << "Axion is quitting..." << endl;
 }
 
 //--------------------------------------------------------------

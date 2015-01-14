@@ -6,7 +6,7 @@ enum State {
     A,      // Introscreen
     B,      // Movie Player INTRO
     C,      // Tunnel Player 1
-    D,      // Movie Player Branch 1
+    D,      // Mo.vie Player Branch 1
     E,      // EEG Landscape
     F,      // Movie Player Branch 2
     G,      // Tunnel Player 2

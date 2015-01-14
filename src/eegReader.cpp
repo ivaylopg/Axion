@@ -13,7 +13,7 @@ void EEGreader::setup(){
 	initialized = true;
     
     thinkGear.setup();
-    ofAddListener(thinkGear.blinkChangeEvent, this, &EEGreader::blinkListener);
+    //ofAddListener(thinkGear.blinkChangeEvent, this, &EEGreader::blinkListener);
     
     interpolationType = msa::kInterpolationCubic;
     useLength = false;
@@ -38,6 +38,8 @@ void EEGreader::setup(){
     
     numBlinks = 0;
     lastBlinkVal = 0;
+    
+    signalQuality = 201.0;
 }
 
 //--------------------------------------------------------------
@@ -50,6 +52,17 @@ void EEGreader::reset(){
     attMedRatio.clear();
     hasD10 = false;
     hasD20 = false;
+    
+    for (int i=0; i < 10; i++) {
+        values[i] = 0.0;
+        mapped[i] = 0.0;
+        averages[i] = 0.0;
+        loHi[i][0] = 100000.0;
+        loHi[i][1] = 1.0;
+    }
+    
+    numBlinks = 0;
+    lastBlinkVal = 0;
 }
 
 //--------------------------------------------------------------
@@ -69,11 +82,15 @@ void EEGreader::update(){
      values[9] is TG_DATA_GAMMA2 = 12;
      */
     
+    //signalQuality = 201.0;
+    
     //thinkGear.update();
     if (thinkGear.ableToConnect) {
         if (ofGetFrameNum()%60 == 0) {
             
             thinkGear.update();
+            
+            signalQuality = thinkGear.getSignalQuality();
             
             if (thinkGear.getSignalQuality() == 0 && thinkGear.getNewInfo()) {
                 for (int i=0; i<10; i++) {
@@ -129,11 +146,19 @@ void EEGreader::update(){
                 attMedRatio.push_back(ave);
                 
                 //cout << values[0] << "/" << values[1] << " : " << values[0]/values[1] << " : " << thinkGear.getIsConnected() << " : " << thinkGear.getSignalQuality() << endl;
-                cout << "Att: " << values[0] << " | Med: " << values[1]  << " | Diff 10: " << diff10() << " | Diff 20:" << diff20() << endl;
                 
-                ofLog(OF_LOG_NOTICE) << "Att: " << values[0] << " | Med: " << values[1] << " | Diff 10: " << diff10() << " | Diff 20:" << diff20();
+                string waves = "| wave data: ";
+                for (int i = 2; i < 10; i++) {
+                    waves += ofToString(values[i],1);
+                    if (i != 9) {
+                        waves += ", ";
+                    }
+                }
+                //cout << "Att: " << values[0] << " | Med: " << values[1]  << " | Diff 10: " << diff10() << " | Diff 20:" << diff20() << endl;
                 
+                ofLog(OF_LOG_NOTICE) << "Att: " << values[0] << " | Med: " << values[1] << " | Diff 10: " << diff10() << " | Diff 20:" << diff20() << waves;
                 
+                ofNotifyEvent(pushedBack, values[1]);
                 
             } else if (!thinkGear.getNewInfo()){
                 //cout << "bad connection" << endl;
@@ -180,6 +205,11 @@ void EEGreader::update(){
 }
 
 //--------------------------------------------------------------
+float EEGreader::getSignalQuality(){
+    return signalQuality;
+}
+
+//--------------------------------------------------------------
 float EEGreader::diff10(){
     if (hasD10) {
         return diff10s;
@@ -218,4 +248,19 @@ void EEGreader::blinkListener(float &param)
 //--------------------------------------------------------------
 void EEGreader::free(){
     thinkGear.freeConnection();
+    thinkGear.reset();
+    reset();
+    initialized = false;
+    //ofRemoveListener(thinkGear.blinkChangeEvent, this, &EEGreader::blinkListener);
+}
+
+//--------------------------------------------------------------
+void EEGreader::restart(){
+    thinkGear.freeConnection();
+    //thinkGear = ofxThinkGear();
+    reset();
+    thinkGear.reset();
+    setup();
+    //thinkGear.setup();
+    
 }

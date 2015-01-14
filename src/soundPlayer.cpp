@@ -49,6 +49,12 @@ void SoundPlayer::play(){
 }
 
 //--------------------------------------------------------------
+void SoundPlayer::pause(bool b){
+    sound1.setPaused(b);
+
+}
+
+//--------------------------------------------------------------
 void SoundPlayer::newVolume(float f){
     volume = f;
 }

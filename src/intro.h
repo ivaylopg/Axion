@@ -2,6 +2,10 @@
 #include "ofMain.h"
 #include "ofxAssimpModelLoader.h"
 #include "ofVboMesh.h"
+#include "button.h"
+#include "ofEventUtils.h"
+#include "ofEvents.h"
+
 
 class Intro {
 public:
@@ -9,15 +13,49 @@ public:
     ~Intro();
     
     void setup();
-    void update();
+    void update(float eeg);
     void draw();
+    void drawPaused();
     
+    void buttonPressed(string & e);
+    
+    Button startButton;
+    Button helpButton;
+    Button settingsButton;
+    Button quitButton;
+    Button restartButton;
     
     bool initialized = false;
     ofLight introLight;
-    ofImage introImg;
     ofxAssimpModelLoader introModel;
-    ofMesh introMesh;
     ofVec3f introPos;
     float introRot;
+    
+    ofEvent<string> progControl;
+    
+    bool firstTime;
+    int counter;
+    int firstAlpha;
+    
+private:
+    ofImage introImg;
+    ofImage pointer;
+    ofMesh introMesh;
+    
+    vector<ofImage> mindwaveReception;
+    
+    ofTrueTypeFont	akzidenz;
+    ofTrueTypeFont	akzidenzB;
+    ofTrueTypeFont	akzidenzS;
+    
+    float eegSignal;
+    
+    bool showHelp;
+    float helpAlpha;
+    float alphaStep;
+    
+    bool useMindWave;
+    
+    bool pauseScreen;
+    float pauseAlpha;
 };
