@@ -94,7 +94,7 @@ void EEGreader::update(){
             
             if (thinkGear.getSignalQuality() == 0 && thinkGear.getNewInfo()) {
                 for (int i=0; i<10; i++) {
-                    values[i] = thinkGear.values[i];
+                    values[i] = thinkGear.getValue(i);
                     if (values[1] == 0) {
                         values[1] = 0.0001;     // To prevent divide by zero
                     }
