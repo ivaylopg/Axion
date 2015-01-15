@@ -100,8 +100,8 @@ void Intro::draw(){
     
     ofSetColor(255);
     float scl = (float) ofGetWidth() / (float) ofGetScreenWidth();
-    int imgW = (int) ceil(ofGetWidth()/4.5);
-    int imgH = (int) ceil((imgW * introImg.height)/introImg.width);
+    float imgW = ceil(ofGetWidth()/10);
+    float imgH = ceil((imgW * introImg.height)/introImg.width);
     float transX = ofGetWidth()/6;
     float transY = ofGetHeight()/10;
     
@@ -109,15 +109,13 @@ void Intro::draw(){
     if (!pauseScreen) {
         ofPushMatrix();
         ofTranslate(ofGetWidth()/2, ofGetHeight()/2,-1);
-        if (counter < 6 * 60) {
-            float sW = (float) imgW * (float)(counter/(360.0));
-            float sH = (float) imgH * (float)(counter/(360.0));
-            cout << sW << endl;
-            introImg.draw(0-sW/2, 0-sH/2, sW, sH);
+        imgW *= 1.0 + (float)(counter/(4000.0));
+        imgH *= 1.0 + (float)(counter/(4000.0));
+        introImg.draw(0-imgW/2, 0-imgH/2, imgW, imgH);
+        if (counter < 20 * ofGetFrameRate()) {
             counter++;
-        } else {
-            introImg.draw(0, 0, imgW, imgH);
         }
+        
         ofPopMatrix();
     }
     

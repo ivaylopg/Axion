@@ -38,7 +38,6 @@
 		F916758E1A170198005B1509 /* button.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F916758D1A170198005B1509 /* button.cpp */; };
 		F91DBA1F18F9AA4500C90AB6 /* outro.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F91DBA1E18F9AA4500C90AB6 /* outro.cpp */; };
 		F93AB0AE1A6642E500FEC282 /* ofxThinkGear.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F93AB0A81A6642E500FEC282 /* ofxThinkGear.cpp */; };
-		F93AB0AF1A6642E500FEC282 /* ThinkGear.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F93AB0AD1A6642E500FEC282 /* ThinkGear.framework */; };
 		F963298B1A19AA4F006A7BF0 /* eegvis.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F963298A1A19AA4F006A7BF0 /* eegvis.cpp */; };
 		F96329AA1A19AB0C006A7BF0 /* ofxEasing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F96329901A19AB0C006A7BF0 /* ofxEasing.cpp */; };
 		F96329AB1A19AB0C006A7BF0 /* ofxEasingBack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F96329921A19AB0C006A7BF0 /* ofxEasingBack.cpp */; };
@@ -180,7 +179,6 @@
 		F93AB0A91A6642E500FEC282 /* ofxThinkGear.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxThinkGear.h; sourceTree = "<group>"; };
 		F93AB0AB1A6642E500FEC282 /* *** ThinkGear.bundle-goes-here ***.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "*** ThinkGear.bundle-goes-here ***.txt"; sourceTree = "<group>"; };
 		F93AB0AC1A6642E500FEC282 /* ThinkGear.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ThinkGear.bundle; sourceTree = "<group>"; };
-		F93AB0AD1A6642E500FEC282 /* ThinkGear.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ThinkGear.framework; sourceTree = "<group>"; };
 		F96329891A19AA46006A7BF0 /* eegvis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = eegvis.h; sourceTree = "<group>"; };
 		F963298A1A19AA4F006A7BF0 /* eegvis.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = eegvis.cpp; sourceTree = "<group>"; };
 		F963298F1A19AB0C006A7BF0 /* easing_terms_of_use.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = easing_terms_of_use.html; sourceTree = "<group>"; };
@@ -248,7 +246,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F93AB0AF1A6642E500FEC282 /* ThinkGear.framework in Frameworks */,
 				E7F985F815E0DEA3003869B5 /* Accelerate.framework in Frameworks */,
 				E7E077E815D3B6510020DFD4 /* QTKit.framework in Frameworks */,
 				E4EB6799138ADC1D00A09F29 /* GLUT.framework in Frameworks */,
@@ -544,7 +541,6 @@
 			children = (
 				F93AB0AB1A6642E500FEC282 /* *** ThinkGear.bundle-goes-here ***.txt */,
 				F93AB0AC1A6642E500FEC282 /* ThinkGear.bundle */,
-				F93AB0AD1A6642E500FEC282 /* ThinkGear.framework */,
 			);
 			name = lib;
 			path = ../../../addons/ofxThinkGear/lib;
