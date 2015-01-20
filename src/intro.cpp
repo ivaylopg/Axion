@@ -31,6 +31,7 @@ void Intro::setup(){
     canvas.end();
     
     introState = A;
+    introFader.fadeUp();
 }
 
 //--------------------------------------------------------------
@@ -39,6 +40,7 @@ void Intro::update(){
     introMesh = introModel.getCurrentAnimatedMesh(0);
     introModel.setPosition(1920/2, 1080/2, 0);
     
+    introFader.update();
     drawCanvas();
 }
 
@@ -110,7 +112,7 @@ void Intro::drawCanvas(){
     
     
     pointer.draw(ofGetMouseX(), ofGetMouseY(), 35, 35);
-    
+    introFader.draw();
     canvas.end();
 }
 

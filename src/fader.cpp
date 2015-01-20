@@ -14,7 +14,7 @@ void Fader::setup(){
     overlap = 10;
     
     fadAlpha = 0.0;
-    fadSpeed = 0.1;
+    fadSpeed = 2.5;
     
     fade = STAY;
 }
@@ -55,6 +55,7 @@ void Fader::drawCurtain(){
     ofRect(0,0, curtain.getWidth(), curtain.getHeight());
     ofSetColor(255, 255, 255,255);
     curtain.end();
+    cout << fadAlpha << endl;
 }
 
 
@@ -67,7 +68,10 @@ void Fader::draw(){
 
 //--------------------------------------------------------------
 void Fader::draw(float w, float h){
+    ofPushMatrix();
+    ofTranslate(0, 0, 10);
     curtain.draw(-overlap,-overlap,w+overlap,h+overlap);
+    ofPopMatrix();
 }
 
 //--------------------------------------------------------------
@@ -105,6 +109,11 @@ void Fader::setSpeed(float f) {
     fadSpeed = f;
 }
 
+//--------------------------------------------------------------
+void Fader::setAlpha(float f) {
+    fadAlpha = f;
+    fade = STAY;
+}
 
 
 

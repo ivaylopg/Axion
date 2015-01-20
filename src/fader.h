@@ -7,7 +7,6 @@ public:
     
     void setup();
     void update();
-    void drawCurtain();
     void draw();
     void draw(float w, float h);
     
@@ -17,8 +16,10 @@ public:
     float getAlpha();
     void blackout();
     void setSpeed(float f);
+    void setAlpha(float f);
     
 protected:
+    void drawCurtain();
     ofFbo curtain;
     float fadAlpha;
     float fadSpeed;

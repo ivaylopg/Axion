@@ -10,7 +10,6 @@ public:
     ~Intro();
     void setup();
     void update();
-    void drawCanvas();
     void draw();
     void draw(float w, float h);
     
@@ -27,6 +26,7 @@ public:
     int firstAlpha;
 
 private:
+    void drawCanvas();
     ofImage introImg;
     ofImage pointer;
     ofMesh introMesh;
@@ -41,4 +41,5 @@ private:
     };
     
     introStates introState;
+    Fader introFader;
 };
