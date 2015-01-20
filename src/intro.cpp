@@ -8,6 +8,7 @@ Intro::Intro(){
 
 Intro::~Intro(){
     //cout << "I'm dead" << endl;
+    ofUnregisterMouseEvents(this);
 }
 
 //--------------------------------------------------------------
@@ -27,6 +28,11 @@ void Intro::setup(){
     readyToMove = false;
     //introFader.fadeUp();
     
+    woodenBox.setup("audio/woodenBoxLoop.aiff");
+    woodenBox.jumpToVolume(1.0);
+    woodenBox.pause(true);
+    
+    
     ofAddListener(introFader.curtainDrawn, this, &Intro::faderDone);
     ofRegisterMouseEvents(this);
 }
@@ -37,6 +43,7 @@ void Intro::update(){
     introMesh = introModel.getCurrentAnimatedMesh(0);
     introModel.setPosition(1920/2, 1080/2, 0);
     
+    woodenBox.update();
     introFader.update();
     drawCanvas();
 }
@@ -72,6 +79,7 @@ void Intro::drawCanvas(){
         }
             
         case B: {
+            woodenBox.play();
             introLight.enable();
             ofSetColor(255, 255);
             

@@ -2,9 +2,12 @@
 #include "ofMain.h"
 #include "ofxAssimpModelLoader.h"
 #include "fader.h"
+#include "audioPlayer.h"
+
+#include "messenger.h
 
 
-class Intro {
+class Intro : public Messenger {
 public:
     Intro();
     ~Intro();
@@ -39,6 +42,8 @@ private:
     
     Fader introFader;
     void faderDone(float & f);
+    
+    AudioPlayer woodenBox;
 
     ofLight introLight;
     ofxAssimpModelLoader introModel;

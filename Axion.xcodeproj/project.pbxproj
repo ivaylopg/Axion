@@ -201,6 +201,7 @@
 		F965124618ECA71300933E76 /* tinyxmlparser.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = tinyxmlparser.cpp; sourceTree = "<group>"; };
 		F994DA661A6E2E8600D4689F /* audioPlayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = audioPlayer.cpp; sourceTree = "<group>"; };
 		F994DA671A6E2E8600D4689F /* audioPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = audioPlayer.h; sourceTree = "<group>"; };
+		F994DA691A6E386800D4689F /* messenger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = messenger.h; sourceTree = "<group>"; };
 		F995D6AD190AB81B00F2F53A /* MSACore-Cinder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MSACore-Cinder.h"; sourceTree = "<group>"; };
 		F995D6AE190AB81B00F2F53A /* MSACore-OF.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MSACore-OF.h"; sourceTree = "<group>"; };
 		F995D6AF190AB81B00F2F53A /* MSACore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSACore.h; sourceTree = "<group>"; };
@@ -414,6 +415,7 @@
 				F9E7BD781A6E008E00CA1313 /* fader.cpp */,
 				F9E7BD791A6E008E00CA1313 /* fader.h */,
 				F9E7BD741A6DF5D600CA1313 /* states.h */,
+				F994DA691A6E386800D4689F /* messenger.h */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;

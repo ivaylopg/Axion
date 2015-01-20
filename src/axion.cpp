@@ -18,6 +18,9 @@ void Axion::setup(){
     
     display = ofVec4f(0,0,1920,1080);
     isPaused = false;
+    
+    backgroundSound.setup();
+    backgroundSound.fadeToVolume(0.65);
 
 }
 
@@ -35,11 +38,14 @@ void Axion::update(){
             break;
     }
     
+    backgroundSound.update();
+    
 }
 
 //--------------------------------------------------------------
 void Axion::draw(){
     ofBackground(0);
+    backgroundSound.play();
     
     //Adjusting for different aspect ratios:
     display = checkAspect();
