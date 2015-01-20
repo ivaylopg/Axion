@@ -18,6 +18,8 @@ public:
     void setSpeed(float f);
     void setAlpha(float f);
     
+    ofEvent<float> curtainDrawn;
+    
 protected:
     void drawCurtain();
     ofFbo curtain;

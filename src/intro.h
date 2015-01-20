@@ -12,6 +12,7 @@ public:
     void update();
     void draw();
     void draw(float w, float h);
+    void faderDone(float & f);
     
     
     ofLight introLight;

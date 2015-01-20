@@ -31,7 +31,9 @@ void Intro::setup(){
     canvas.end();
     
     introState = A;
-    introFader.fadeUp();
+    //introFader.fadeUp();
+    
+    ofAddListener(introFader.curtainDrawn, this, &Intro::faderDone);
 }
 
 //--------------------------------------------------------------
@@ -126,6 +128,12 @@ void Intro::draw(){
 void Intro::draw(float w, float h){
     canvas.draw(0,0,w,h);
 }
+
+//--------------------------------------------------------------
+void Intro::faderDone(float & f) {
+    cout << f << endl;
+}
+
 
 
 

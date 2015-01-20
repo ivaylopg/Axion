@@ -28,6 +28,7 @@ void Fader::update(){
             } else {
                 fadAlpha = 255;
                 fade = STAY;
+                ofNotifyEvent(curtainDrawn, fadAlpha);
             }
             break;
             
@@ -37,6 +38,7 @@ void Fader::update(){
             } else {
                 fadAlpha = 0;
                 fade = STAY;
+                ofNotifyEvent(curtainDrawn, fadAlpha);
             }
             break;
             
@@ -55,7 +57,7 @@ void Fader::drawCurtain(){
     ofRect(0,0, curtain.getWidth(), curtain.getHeight());
     ofSetColor(255, 255, 255,255);
     curtain.end();
-    cout << fadAlpha << endl;
+//    cout << fadAlpha << endl;
 }
 
 
