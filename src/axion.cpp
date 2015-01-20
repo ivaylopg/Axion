@@ -3,22 +3,35 @@
 
 //--------------------------------------------------------------
 void Axion::setup(){
-        ofSetVerticalSync(true);
-        ofSetFrameRate(60);
-        ofSetEscapeQuitsApp(false);
+    ofSetVerticalSync(true);
+    ofSetFrameRate(60);
+    ofSetEscapeQuitsApp(false);
         
 #ifdef AXION_RELEASE
-        cout << "You are in Release Mode!" << endl;
+    cout << "You are in Release Mode!" << endl;
 #elif AXION_DEBUG
-        cout << "You are in Debug Mode!" << endl;
+    cout << "You are in Debug Mode!" << endl;
 #endif
     
+#ifdef __APPLE__
+    CGDisplayHideCursor(NULL); // <- Sometimes necessary to hide cursor on Macs
+#endif
+    ofHideCursor();
     
-    ofAddListener(Messenger::sendMessage , this, &Axion::messageListener);
-    ofAddListener(Messenger::setVolume , this, &Axion::volumeListener);
+    //ofEnableAlphaBlending();
+    ofEnableBlendMode(OF_BLENDMODE_ALPHA);
+    //ofEnableDepthTest();
+    glShadeModel(GL_SMOOTH);
+    ofEnableSeparateSpecularLight();
+    
+    ofSetWindowPosition(ofGetScreenWidth()/2 - ofGetWidth()/2, ofGetScreenHeight()/2 - ofGetHeight()/2);
     
     current_state = Intro;
     next_state = EEG_Vis;
+    
+    mind.reset();
+    //mind.connect();
+    usingEEG = false;
     
     display = ofVec4f(0,0,1920,1080);
     isPaused = false;
@@ -27,7 +40,9 @@ void Axion::setup(){
     backgroundSound.fadeToVolume(0.65);
     
     ofAddListener(mainFader.curtainDrawn, this, &Axion::faderDone);
-
+    
+    ofAddListener(Messenger::sendMessage , this, &Axion::messageListener);
+    ofAddListener(Messenger::setVolume , this, &Axion::volumeListener);
 }
 
 //--------------------------------------------------------------
@@ -74,7 +89,7 @@ void Axion::draw(){
 
 //--------------------------------------------------------------
 void Axion::keyPressed(int key){
-    
+    mind.connect();
 }
 
 //--------------------------------------------------------------
@@ -126,8 +141,11 @@ void Axion::faderDone(float &f){
 
 //--------------------------------------------------------------
 void Axion::exit(){
+    mind.free();
+    
 //    ofLog(OF_LOG_NOTICE) << "##### QUITTING - " << ofGetTimestampString("%B %e, %Y %h:%M:%S %a - ") << ofGetElapsedTimeMillis() << " #####";
-//    cout << "Axion is quitting..." << endl;
+    
+    cout << "Axion is quitting..." << endl;
 }
 
 /* BONEYARD

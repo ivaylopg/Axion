@@ -10,6 +10,7 @@
 #include "states.h"
 #include "intro.h"
 #include "audioPlayer.h"
+#include "eegReader.h"
 
 
 class Axion : public ofBaseApp{
@@ -33,17 +34,20 @@ public:
     
 private:
     void faderDone(float & f);
-    
     ofVec4f checkAspect();
+    
     ofVec4f display;
+    bool isPaused;
+    bool usingEEG;
     
     State current_state;
     State next_state;
-    bool isPaused;
     
     class Intro introPLayer;
     AudioPlayer backgroundSound;
     Fader mainFader;
+    EEGReader mind;
+    
 
 };
 
