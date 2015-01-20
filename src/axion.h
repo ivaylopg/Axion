@@ -7,6 +7,7 @@
 // classes
 #include "states.h"
 #include "intro.h"
+#include "audioPlayer.h"
 
 
 class Axion : public ofBaseApp{
@@ -37,10 +38,13 @@ public:
     
 private:
     ofVec4f checkAspect();
+    ofVec4f display;
     
     State current_state;
     State next_state;
+    bool isPaused;
     
     class Intro introPLayer;
-    ofVec4f display;
+    AudioPlayer backgroundSound;
+
 };

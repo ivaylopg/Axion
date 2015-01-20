@@ -23,7 +23,7 @@ private:
     ofImage introImg;
     ofImage pointer;
     ofMesh introMesh;
-    bool initialized = false;
+//    bool initialized = false;
     int counter;
     
     ofFbo canvas;

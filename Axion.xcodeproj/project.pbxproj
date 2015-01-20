@@ -52,6 +52,7 @@
 		F965124818ECA71300933E76 /* tinyxml.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F965124318ECA71300933E76 /* tinyxml.cpp */; };
 		F965124918ECA71300933E76 /* tinyxmlerror.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F965124518ECA71300933E76 /* tinyxmlerror.cpp */; };
 		F965124A18ECA71300933E76 /* tinyxmlparser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F965124618ECA71300933E76 /* tinyxmlparser.cpp */; };
+		F994DA681A6E2E8600D4689F /* audioPlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F994DA661A6E2E8600D4689F /* audioPlayer.cpp */; };
 		F995D6B4190AB81B00F2F53A /* MSACoreGL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F995D6B1190AB81B00F2F53A /* MSACoreGL.cpp */; };
 		F9E7BD701A6DF29700CA1313 /* axion.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F9E7BD6E1A6DF29700CA1313 /* axion.cpp */; };
 		F9E7BD771A6DF7FD00CA1313 /* intro.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F9E7BD751A6DF7FD00CA1313 /* intro.cpp */; };
@@ -198,6 +199,8 @@
 		F965124418ECA71300933E76 /* tinyxml.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = tinyxml.h; sourceTree = "<group>"; };
 		F965124518ECA71300933E76 /* tinyxmlerror.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = tinyxmlerror.cpp; sourceTree = "<group>"; };
 		F965124618ECA71300933E76 /* tinyxmlparser.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = tinyxmlparser.cpp; sourceTree = "<group>"; };
+		F994DA661A6E2E8600D4689F /* audioPlayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = audioPlayer.cpp; sourceTree = "<group>"; };
+		F994DA671A6E2E8600D4689F /* audioPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = audioPlayer.h; sourceTree = "<group>"; };
 		F995D6AD190AB81B00F2F53A /* MSACore-Cinder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MSACore-Cinder.h"; sourceTree = "<group>"; };
 		F995D6AE190AB81B00F2F53A /* MSACore-OF.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MSACore-OF.h"; sourceTree = "<group>"; };
 		F995D6AF190AB81B00F2F53A /* MSACore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSACore.h; sourceTree = "<group>"; };
@@ -406,6 +409,8 @@
 				F9E7BD761A6DF7FD00CA1313 /* intro.h */,
 				F9E7BD6E1A6DF29700CA1313 /* axion.cpp */,
 				F9E7BD6F1A6DF29700CA1313 /* axion.h */,
+				F994DA661A6E2E8600D4689F /* audioPlayer.cpp */,
+				F994DA671A6E2E8600D4689F /* audioPlayer.h */,
 				F9E7BD781A6E008E00CA1313 /* fader.cpp */,
 				F9E7BD791A6E008E00CA1313 /* fader.h */,
 				F9E7BD741A6DF5D600CA1313 /* states.h */,
@@ -756,6 +761,7 @@
 				0B1BAD9F9F9035D94079299F /* ofxFPSCamera.cpp in Sources */,
 				F965124918ECA71300933E76 /* tinyxmlerror.cpp in Sources */,
 				F96329AA1A19AB0C006A7BF0 /* ofxEasing.cpp in Sources */,
+				F994DA681A6E2E8600D4689F /* audioPlayer.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

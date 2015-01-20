@@ -12,11 +12,6 @@ Intro::~Intro(){
 
 //--------------------------------------------------------------
 void Intro::setup(){
-    if(initialized) {
-        return;
-    }
-    counter = 0;
-    initialized = true;
     
     introImg.loadImage("logo.png");
     pointer.loadImage("pointer.png");

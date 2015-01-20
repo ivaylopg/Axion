@@ -17,6 +17,7 @@ void Axion::setup(){
     next_state = Intro;
     
     display = ofVec4f(0,0,1920,1080);
+    isPaused = false;
 
 }
 
@@ -108,7 +109,7 @@ ofVec4f Axion::checkAspect() {
     float curWidth = ofGetWidth();
     float curHeight = ofGetHeight();
     float curRatio = curWidth/curHeight;
-    cout << curRatio << endl;
+    //cout << curRatio << endl;
     if (curRatio > 1.778) {
         d.x = 0;
         d.z = ofGetWidth();
