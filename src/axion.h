@@ -36,6 +36,7 @@ private:
     void faderDone(float & f);
     void updateEegVis(vector<float> &v);
     ofVec4f checkAspect();
+    void changeStates();
     
     ofVec4f display;
     bool isPaused;

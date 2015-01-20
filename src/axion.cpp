@@ -26,8 +26,8 @@ void Axion::setup(){
     
     ofSetWindowPosition(ofGetScreenWidth()/2 - ofGetWidth()/2, ofGetScreenHeight()/2 - ofGetHeight()/2);
     
-//    current_state = Intro;
-    current_state = EEG_Vis;
+    current_state = Intro;
+    //current_state = EEG_Vis;
     next_state = EEG_Vis;
     
     mind.reset();
@@ -100,7 +100,7 @@ void Axion::draw(){
 
 //--------------------------------------------------------------
 void Axion::keyPressed(int key){
-    mind.connect();
+    //mind.connect();
 }
 
 //--------------------------------------------------------------
@@ -136,7 +136,10 @@ ofVec4f Axion::checkAspect() {
 //--------------------------------------------------------------
 void Axion::messageListener(string &s){
     //cout << "move to something else!" << endl;
-    cout << s << endl;
+    //cout << s << endl;
+    if (s == "next") {
+        changeStates();
+        }
 }
 
 //--------------------------------------------------------------
@@ -154,6 +157,21 @@ void Axion::updateEegVis(vector<float> &v){
 //--------------------------------------------------------------
 void Axion::faderDone(float &f){
     //
+}
+
+//--------------------------------------------------------------
+void Axion::changeStates(){
+    switch (current_state) {
+        case Intro:
+            mainFader.blackout();
+            current_state = next_state;
+            next_state = EEG_Vis;
+            mainFader.addDelay(-30);
+            break;
+            
+        default:
+            break;
+    }
 }
 
 //--------------------------------------------------------------
