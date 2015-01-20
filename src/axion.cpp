@@ -26,7 +26,8 @@ void Axion::setup(){
     
     ofSetWindowPosition(ofGetScreenWidth()/2 - ofGetWidth()/2, ofGetScreenHeight()/2 - ofGetHeight()/2);
     
-    current_state = Intro;
+//    current_state = Intro;
+    current_state = EEG_Vis;
     next_state = EEG_Vis;
     
     mind.reset();
@@ -40,6 +41,7 @@ void Axion::setup(){
     backgroundSound.fadeToVolume(0.65);
     
     ofAddListener(mainFader.curtainDrawn, this, &Axion::faderDone);
+    ofAddListener(mind.pushedBack, this, &Axion::updateEegVis);
     
     ofAddListener(Messenger::sendMessage , this, &Axion::messageListener);
     ofAddListener(Messenger::setVolume , this, &Axion::volumeListener);
@@ -49,10 +51,15 @@ void Axion::setup(){
 void Axion::update(){
     
     checkAspect();
+    mind.update();
     
     switch (current_state) {
         case Intro:
             introPLayer.update();
+            break;
+            
+        case EEG_Vis:
+            mindVis.update();
             break;
             
         default:
@@ -77,6 +84,10 @@ void Axion::draw(){
     switch (current_state) {
         case Intro:
             introPLayer.draw(display.z,display.w);
+            break;
+            
+        case EEG_Vis:
+            mindVis.draw(display.z,display.w);
             break;
             
         default:
@@ -132,6 +143,12 @@ void Axion::messageListener(string &s){
 void Axion::volumeListener(float &f){
     float newVol = ofClamp(f, 0.0, 1.0);
     backgroundSound.fadeToVolume(newVol);
+}
+
+//--------------------------------------------------------------
+void Axion::updateEegVis(vector<float> &v){
+    //cout << "ping" << endl;
+    mindVis.updateValues(v);
 }
 
 //--------------------------------------------------------------

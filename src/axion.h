@@ -11,6 +11,7 @@
 #include "intro.h"
 #include "audioPlayer.h"
 #include "eegReader.h"
+#include "eegVis.h"
 
 
 class Axion : public ofBaseApp{
@@ -19,9 +20,6 @@ public:
     void setup();
     void update();
     void draw();
-    
-    void messageListener(string & s);
-    void volumeListener(float & f);
     
     void keyPressed(int key);
     void keyReleased(int key);
@@ -33,7 +31,10 @@ public:
     const float VERSION = 0.5;
     
 private:
+    void messageListener(string & s);
+    void volumeListener(float & f);
     void faderDone(float & f);
+    void updateEegVis(vector<float> &v);
     ofVec4f checkAspect();
     
     ofVec4f display;
@@ -47,6 +48,8 @@ private:
     AudioPlayer backgroundSound;
     Fader mainFader;
     EEGReader mind;
+    EEGVis mindVis;
+    
     
 
 };

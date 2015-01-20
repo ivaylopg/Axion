@@ -1,14 +1,29 @@
-//
-//  eegVis.h
-//  Axion
-//
-//  Created by Ivaylo Getov on 1/20/15.
-//
-//
+#pragma once
+#include "ofMain.h"
+#include "MSAInterpolator.h"
 
-#ifndef __Axion__eegVis__
-#define __Axion__eegVis__
+#include "messenger.h"
 
-#include <stdio.h>
 
-#endif /* defined(__Axion__eegVis__) */
+class EEGVis : public Messenger {
+    
+public:
+    EEGVis();
+    void setup();
+    void update();
+    void updateValues(vector<float> v);
+    void draw();
+    void draw(float w, float h);
+
+private:
+    void drawCanvas();
+    msa::Interpolator2D spline2D;
+    msa::InterpolationType interpolationType;
+    bool useLength;
+    int numSteps;
+    
+    ofFbo canvas;
+    
+    vector<float> mapped;
+    
+};

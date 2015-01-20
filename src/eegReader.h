@@ -44,6 +44,7 @@ public:
     int numSteps;
     
     float getSignalQuality();
+    ofEvent< vector<float> > pushedBack;
     
     
 private:
@@ -57,6 +58,7 @@ private:
     float mapped[10];
     float averages[10];
     float loHi [10][2];
+    vector<float> mappedVector;
 };
 
 /*

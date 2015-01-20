@@ -55,6 +55,7 @@
 		F994DA681A6E2E8600D4689F /* audioPlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F994DA661A6E2E8600D4689F /* audioPlayer.cpp */; };
 		F994DA6B1A6E3C2100D4689F /* messenger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F994DA6A1A6E3C2100D4689F /* messenger.cpp */; };
 		F994DA711A6E5B0100D4689F /* eegReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F994DA6F1A6E5B0100D4689F /* eegReader.cpp */; };
+		F994DA741A6E655D00D4689F /* eegVis.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F994DA721A6E655D00D4689F /* eegVis.cpp */; };
 		F995D6B4190AB81B00F2F53A /* MSACoreGL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F995D6B1190AB81B00F2F53A /* MSACoreGL.cpp */; };
 		F9E7BD701A6DF29700CA1313 /* axion.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F9E7BD6E1A6DF29700CA1313 /* axion.cpp */; };
 		F9E7BD771A6DF7FD00CA1313 /* intro.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F9E7BD751A6DF7FD00CA1313 /* intro.cpp */; };
@@ -207,6 +208,8 @@
 		F994DA6A1A6E3C2100D4689F /* messenger.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = messenger.cpp; sourceTree = "<group>"; };
 		F994DA6F1A6E5B0100D4689F /* eegReader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = eegReader.cpp; sourceTree = "<group>"; };
 		F994DA701A6E5B0100D4689F /* eegReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = eegReader.h; sourceTree = "<group>"; };
+		F994DA721A6E655D00D4689F /* eegVis.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = eegVis.cpp; sourceTree = "<group>"; };
+		F994DA731A6E655D00D4689F /* eegVis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = eegVis.h; sourceTree = "<group>"; };
 		F995D6AD190AB81B00F2F53A /* MSACore-Cinder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MSACore-Cinder.h"; sourceTree = "<group>"; };
 		F995D6AE190AB81B00F2F53A /* MSACore-OF.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MSACore-OF.h"; sourceTree = "<group>"; };
 		F995D6AF190AB81B00F2F53A /* MSACore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSACore.h; sourceTree = "<group>"; };
@@ -415,6 +418,8 @@
 				F9E7BD761A6DF7FD00CA1313 /* intro.h */,
 				F9E7BD6E1A6DF29700CA1313 /* axion.cpp */,
 				F9E7BD6F1A6DF29700CA1313 /* axion.h */,
+				F994DA721A6E655D00D4689F /* eegVis.cpp */,
+				F994DA731A6E655D00D4689F /* eegVis.h */,
 				F994DA661A6E2E8600D4689F /* audioPlayer.cpp */,
 				F994DA671A6E2E8600D4689F /* audioPlayer.h */,
 				F9E7BD781A6E008E00CA1313 /* fader.cpp */,
@@ -743,6 +748,7 @@
 				F96329AC1A19AB0C006A7BF0 /* ofxEasingBounce.cpp in Sources */,
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
 				F9E7BD771A6DF7FD00CA1313 /* intro.cpp in Sources */,
+				F994DA741A6E655D00D4689F /* eegVis.cpp in Sources */,
 				F93AB0AE1A6642E500FEC282 /* ofxThinkGear.cpp in Sources */,
 				F96329B11A19AB0C006A7BF0 /* ofxEasingLinear.cpp in Sources */,
 				F96329AD1A19AB0C006A7BF0 /* ofxEasingCirc.cpp in Sources */,

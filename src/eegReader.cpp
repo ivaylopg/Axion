@@ -16,6 +16,7 @@ void EEGReader::setup(){
     //connect();
     reset();
     signalQuality = 201.0;
+    mappedVector.clear();
 }
 
 //--------------------------------------------------------------
@@ -67,13 +68,14 @@ void EEGReader::update(){
     
     //thinkGear.update();
     if (thinkGear.ableToConnect) {
-        if (ofGetFrameNum()%30 == 0) {
+        if (ofGetFrameNum()%60 == 0) {
             
             thinkGear.update();
             
             signalQuality = thinkGear.getSignalQuality();
             
             if (thinkGear.getSignalQuality() == 0 && thinkGear.getNewInfo()) {
+                mappedVector.clear();
                 for (int i=0; i<10; i++) {
                     values[i] = thinkGear.getValue(i);
                     if (values[1] == 0) {
@@ -97,8 +99,10 @@ void EEGReader::update(){
                         
                         //Update mapped Values
                         mapped[i] = ofMap(values[i], loHi[i][0], loHi[i][1], 0, 100);
+                        mappedVector.push_back(mapped[i]);
                     } else {
                         mapped[i] = values[i];
+                        mappedVector.push_back(mapped[i]);
                     }
                 }
                 
@@ -140,6 +144,7 @@ void EEGReader::update(){
                 ofLog(OF_LOG_NOTICE) << "Att: " << values[0] << " | Med: " << values[1] << " | Diff 10: " << diff10() << " | Diff 20:" << diff20() << waves;
                 
                 //ofNotifyEvent(pushedBack, values[1]);
+                ofNotifyEvent(pushedBack, mappedVector);
                 
             } else if (!thinkGear.getNewInfo()){
                 //cout << "bad connection" << endl;
