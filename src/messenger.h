@@ -3,9 +3,5 @@
 
 class Messenger {
 public:
-    //Messenger();
-    //~Messenger();
-    
     static ofEvent<string> sendMessage;
-    
 };
