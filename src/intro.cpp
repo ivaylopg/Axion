@@ -140,19 +140,24 @@ void Intro::draw(float w, float h){
 
 //--------------------------------------------------------------
 void Intro::faderDone(float & f) {
+    //cout << introState << endl;
     //cout << f << endl;
     switch (introState) {
-        case A:
-            if (readyToMove) {
+        case A:{
+            if (readyToMove && f == 255) {
                 introState = B;
                 readyToMove = false;
-                introFader.addDelay(-30);
+                //introFader.addDelay(-30);
+                introFader.fadeDown();
             }
             break;
+            }
             
         case B:{
             string s = "test";
-            ofNotifyEvent(sendMessage, s);
+            if (readyToMove && f == 255) {
+                ofNotifyEvent(sendMessage, s);
+            }
             break;
             }
             

@@ -34,6 +34,7 @@ void Fader::update(){
                     fadAlpha = 255;
                     fade = STAY;
                     ofNotifyEvent(curtainDrawn, fadAlpha);
+                    //cout << "notified event UP" << endl;
                 }
             }
             
@@ -50,6 +51,7 @@ void Fader::update(){
                     fadAlpha = 0;
                     fade = STAY;
                     ofNotifyEvent(curtainDrawn, fadAlpha);
+                    //cout << "notified event DOWN" << endl;
                 }
             }
             
@@ -64,6 +66,7 @@ void Fader::update(){
         //cout << delay << endl;
     }
     drawCurtain();
+//    cout << fadAlpha << endl;
 
 }
 

@@ -137,7 +137,7 @@ ofVec4f Axion::checkAspect() {
 
 //--------------------------------------------------------------
 void Axion::messageListener(string &s){
-    
+    cout << "move to something else!" << endl;
 }
 
 //--------------------------------------------------------------
