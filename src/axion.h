@@ -24,19 +24,6 @@ public:
     
     void keyPressed(int key);
     void keyReleased(int key);
-    /*
-    void mouseMoved(int x, int y );
-    void mouseDragged(int x, int y, int button);
-    void mousePressed(int x, int y, int button);
-    void mouseReleased(int x, int y, int button);
-    void windowResized(int w, int h);
-    void dragEvent(ofDragInfo dragInfo);
-    void gotMessage(ofMessage msg);
-    void gotMessage(ofMessage& msg);
-    void brancher(int source, int branch, int state);
-    void controlEvent(string & e);
-    void updateEegVis(float &f);
-    */
     
     void drawHelp();
     void drawDebugMessages();
@@ -58,5 +45,20 @@ private:
     AudioPlayer backgroundSound;
     Fader mainFader;
 
-
 };
+
+/* BONEYARD
+
+void mouseMoved(int x, int y );
+void mouseDragged(int x, int y, int button);
+void mousePressed(int x, int y, int button);
+void mouseReleased(int x, int y, int button);
+void windowResized(int w, int h);
+void dragEvent(ofDragInfo dragInfo);
+void gotMessage(ofMessage msg);
+void gotMessage(ofMessage& msg);
+void brancher(int source, int branch, int state);
+void controlEvent(string & e);
+void updateEegVis(float &f);
+
+*/
