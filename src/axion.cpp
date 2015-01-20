@@ -15,11 +15,16 @@ void Axion::setup(){
     
     current_state = Intro;
     next_state = Intro;
+    
+    display = ofVec4f(0,0,1920,1080);
 
 }
 
 //--------------------------------------------------------------
 void Axion::update(){
+    
+    checkAspect();
+    
     switch (current_state) {
         case Intro:
             introPLayer.update();
@@ -35,14 +40,20 @@ void Axion::update(){
 void Axion::draw(){
     ofBackground(0);
     
+    //Adjusting for different aspect ratios:
+    display = checkAspect();
+    ofPushMatrix();
+    ofTranslate(display.x, display.y);
+    
     switch (current_state) {
         case Intro:
-            introPLayer.draw();
+            introPLayer.draw(display.z,display.w);
             break;
             
         default:
             break;
     }
+    ofPopMatrix();
 }
 
 //--------------------------------------------------------------
@@ -88,6 +99,30 @@ void Axion::gotMessage(ofMessage msg){
 //--------------------------------------------------------------
 void Axion::dragEvent(ofDragInfo dragInfo){
     
+}
+
+//--------------------------------------------------------------
+ofVec4f Axion::checkAspect() {
+    ofVec4f d;
+    float ideal = 16/9;
+    float curWidth = ofGetWidth();
+    float curHeight = ofGetHeight();
+    float curRatio = curWidth/curHeight;
+    cout << curRatio << endl;
+    if (curRatio > 1.778) {
+        d.x = 0;
+        d.z = ofGetWidth();
+        d.w = (d.z * 9)/16;
+        d.y = (ofGetHeight()-d.w)/2;
+    } else if(curRatio < 1.777){
+        d.y = 0;
+        d.w = ofGetHeight();
+        d.z = (d.w * 16)/9;
+        d.x = (ofGetWidth() - d.z)/2;
+    } else {
+        d = ofVec4f(0,0,ofGetWidth(),ofGetHeight());
+    };
+    return d;
 }
 
 //--------------------------------------------------------------

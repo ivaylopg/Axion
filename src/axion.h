@@ -36,8 +36,11 @@ public:
     const float VERSION = 0.5;
     
 private:
+    ofVec4f checkAspect();
+    
     State current_state;
     State next_state;
     
     class Intro introPLayer;
+    ofVec4f display;
 };

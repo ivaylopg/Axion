@@ -15,9 +15,7 @@ void Intro::setup(){
     if(initialized) {
         return;
     }
-    firstTime = true;
     counter = 0;
-    firstAlpha = 0;
     initialized = true;
     
     introImg.loadImage("logo.png");
@@ -31,9 +29,11 @@ void Intro::setup(){
     canvas.end();
     
     introState = A;
+    readyToMove = false;
     //introFader.fadeUp();
     
     ofAddListener(introFader.curtainDrawn, this, &Intro::faderDone);
+    ofRegisterMouseEvents(this);
 }
 
 //--------------------------------------------------------------
@@ -111,10 +111,16 @@ void Intro::drawCanvas(){
     
     
     
+    float px = (float) ofGetMouseX() * 1920 / ofGetWidth() ;
+    float py = (float) ofGetMouseY() * 1080 /ofGetHeight();
     
+//    cout << px << " | " << py << endl;
     
-    pointer.draw(ofGetMouseX(), ofGetMouseY(), 35, 35);
-    introFader.draw();
+    //float px = ofGetMouseX();
+    //float py = ofGetMouseY();
+    
+    pointer.draw(px, py, 35, 35);
+    introFader.draw(canvas.getWidth(),canvas.getHeight());
     canvas.end();
 }
 
@@ -131,9 +137,30 @@ void Intro::draw(float w, float h){
 
 //--------------------------------------------------------------
 void Intro::faderDone(float & f) {
-    cout << f << endl;
+    //cout << f << endl;
+    switch (introState) {
+        case A:
+            if (readyToMove) {
+                introState = B;
+                readyToMove = false;
+                introFader.addDelay(-30);
+            }
+            break;
+            
+        default:
+            break;
+    }
 }
 
+void Intro::mouseMoved(ofMouseEventArgs & args){}
+void Intro::mouseDragged(ofMouseEventArgs & args){}
+void Intro::mousePressed(ofMouseEventArgs & args){}
+void Intro::mouseReleased(ofMouseEventArgs & args){
+    if (introState == A || introState == B) {
+        introFader.fadeUp();
+        readyToMove = true;
+    }
+}
 
 
 

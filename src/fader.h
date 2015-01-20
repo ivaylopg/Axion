@@ -17,10 +17,13 @@ public:
     void blackout();
     void setSpeed(float f);
     void setAlpha(float f);
+    void addDelay(int d);
+    void clearDelay();
     
     ofEvent<float> curtainDrawn;
     
 protected:
+    int delay;
     void drawCurtain();
     ofFbo curtain;
     float fadAlpha;

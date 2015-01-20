@@ -17,29 +17,42 @@ void Fader::setup(){
     fadSpeed = 2.5;
     
     fade = STAY;
+    delay = 0;
 }
 
 //--------------------------------------------------------------
 void Fader::update(){
     switch (fade) {
         case UP:
-            if (fadAlpha < 255) {
-                fadAlpha += fadSpeed;
+            if (delay > 0) {
+                delay--;
             } else {
-                fadAlpha = 255;
-                fade = STAY;
-                ofNotifyEvent(curtainDrawn, fadAlpha);
+                delay = 0;
+                if (fadAlpha < 255) {
+                    fadAlpha += fadSpeed;
+                } else {
+                    fadAlpha = 255;
+                    fade = STAY;
+                    ofNotifyEvent(curtainDrawn, fadAlpha);
+                }
             }
+            
             break;
             
         case DOWN:
-            if (fadAlpha > 0) {
-                fadAlpha -= fadSpeed;
+            if (delay > 0) {
+                delay--;
             } else {
-                fadAlpha = 0;
-                fade = STAY;
-                ofNotifyEvent(curtainDrawn, fadAlpha);
+                delay = 0;
+                if (fadAlpha > 0) {
+                    fadAlpha -= fadSpeed;
+                } else {
+                    fadAlpha = 0;
+                    fade = STAY;
+                    ofNotifyEvent(curtainDrawn, fadAlpha);
+                }
             }
+            
             break;
             
         default:
@@ -47,7 +60,11 @@ void Fader::update(){
     }
     
     fadAlpha = ofClamp(fadAlpha, 0, 255);
+    if (delay != 0) {
+        //cout << delay << endl;
+    }
     drawCurtain();
+
 }
 
 //--------------------------------------------------------------
@@ -117,5 +134,20 @@ void Fader::setAlpha(float f) {
     fade = STAY;
 }
 
+//--------------------------------------------------------------
+void Fader::addDelay(int d) {
+    if (d < 0) {
+        delay = abs(d);
+        fadeDown();
+    } else if (d > 0) {
+        delay = abs(d);
+        fadeUp();
+    }
+}
+
+//--------------------------------------------------------------
+void Fader::clearDelay() {
+    delay = 0;
+}
 
 
