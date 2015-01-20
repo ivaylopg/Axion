@@ -1,9 +1,13 @@
-//
-//  messenger.cpp
-//  Axion
-//
-//  Created by Ivaylo Getov on 1/19/15.
-//
-//
+#include "messenger.h"
 
-#include <stdio.h>
+ofEvent<string> Messenger::sendMessage = ofEvent<string>();
+
+/*
+Messenger::Messenger(){
+
+}
+
+Messenger::~Messenger(){
+    
+}
+*/

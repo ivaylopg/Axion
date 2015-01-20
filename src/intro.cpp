@@ -150,6 +150,12 @@ void Intro::faderDone(float & f) {
             }
             break;
             
+        case B:{
+            string s = "test";
+            ofNotifyEvent(sendMessage, s);
+            break;
+            }
+            
         default:
             break;
     }

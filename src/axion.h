@@ -2,9 +2,11 @@
 
 // addons
 #include "ofMain.h"
+#include "ofEvents.h"
 
 
 // classes
+#include "messenger.h"
 #include "states.h"
 #include "intro.h"
 #include "audioPlayer.h"
@@ -16,6 +18,8 @@ public:
     void setup();
     void update();
     void draw();
+    
+    void messageListener(string & s);
     
     void keyPressed(int key);
     void keyReleased(int key);

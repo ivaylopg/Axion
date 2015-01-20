@@ -13,6 +13,9 @@ void Axion::setup(){
         cout << "You are in Debug Mode!" << endl;
 #endif
     
+    
+    ofAddListener(Messenger::sendMessage , this, &Axion::messageListener);
+    
     current_state = Intro;
     next_state = Intro;
     
@@ -130,6 +133,11 @@ ofVec4f Axion::checkAspect() {
         d = ofVec4f(0,0,ofGetWidth(),ofGetHeight());
     };
     return d;
+}
+
+//--------------------------------------------------------------
+void Axion::messageListener(string &s){
+    
 }
 
 //--------------------------------------------------------------
