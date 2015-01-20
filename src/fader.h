@@ -1,33 +1,14 @@
-#pragma once
-#include "ofMain.h"
+//
+//  fader.h
+//  Axion
+//
+//  Created by Ivaylo Getov on 1/19/15.
+//
+//
 
-class Fader {
-public:
-    Fader();
-    
-    void setup();
-    void update();
-    void draw();
-    void moveOn();
-    void fadeUp();
-    bool fullCover();
-    
-    bool initialized = false;
-    float speed;
-    float holdTime;         // in seconds
-    
-    void drawTest();
-    float getAlpha();
-    
-    //void gotMessage(ofMessage& msg);
-    
-protected:
-    float fadFac;
-    float fadz;
-    float fadAlpha;
-    bool movingOn;
-    bool revealing;
-    bool fullyCovered;
-    bool isFading;
-    
-};
+#ifndef __Axion__fader__
+#define __Axion__fader__
+
+#include <stdio.h>
+
+#endif /* defined(__Axion__fader__) */
