@@ -6,6 +6,7 @@
 
 enum State {
     Intro,
+    EEG_Vis,
     Pause
 };
 

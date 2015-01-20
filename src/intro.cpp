@@ -54,6 +54,10 @@ void Intro::drawCanvas(){
     canvas.begin();
     ofBackground(0);
     
+    if (counter < 10) {
+        woodenBox.pause(true);
+    }
+    
     ofSetColor(255);
     float scl = (float) 1920 / (float) ofGetScreenWidth();
     float imgW = ceil(1920/10);
@@ -73,13 +77,18 @@ void Intro::drawCanvas(){
             introImg.draw(0-imgW/2, 0-imgH/2, imgW, imgH);
             if (counter < 20 * ofGetFrameRate()) {
                 counter++;
+            } else {
+                woodenBox.pause(false);
+                woodenBox.jumpToVolume(1.0f);
+                introFader.fadeUp();
+                readyToMove = true;
             }
             ofPopMatrix();
             break;
         }
             
         case B: {
-            woodenBox.play();
+            //woodenBox.play();
             introLight.enable();
             ofSetColor(255, 255);
             
@@ -107,11 +116,21 @@ void Intro::drawCanvas(){
             ofDisableLighting();
             break;
         }
+        
+        case C:
+            //cout << "in stage C" << endl;
+            if (woodenBox.getIsFaded()) {
+                string s = "next";
+                ofNotifyEvent(sendMessage, s);
+                introState = D;
+            }
+            break;
             
         default:
             break;
     }
     
+    woodenBox.play();
     
     
     float px = (float) ofGetMouseX() * 1920 / ofGetWidth() ;
@@ -147,16 +166,19 @@ void Intro::faderDone(float & f) {
             if (readyToMove && f == 255) {
                 introState = B;
                 readyToMove = false;
-                //introFader.addDelay(-30);
-                introFader.fadeDown();
+                introFader.addDelay(-30);
+                float vol = 0.2;
+                ofNotifyEvent(setVolume, vol);
+                //introFader.fadeDown();
             }
             break;
             }
             
         case B:{
-            string s = "test";
             if (readyToMove && f == 255) {
-                ofNotifyEvent(sendMessage, s);
+                //ofNotifyEvent(sendMessage, s);
+                introState = C;
+                //woodenBox.fadeOut();
             }
             break;
             }
@@ -170,10 +192,15 @@ void Intro::mouseMoved(ofMouseEventArgs & args){}
 void Intro::mouseDragged(ofMouseEventArgs & args){}
 void Intro::mousePressed(ofMouseEventArgs & args){}
 void Intro::mouseReleased(ofMouseEventArgs & args){
-    if (introState == A || introState == B) {
+    if (introState == A) {
+        woodenBox.pause(false);
         introFader.fadeUp();
         readyToMove = true;
-    }
+    } else if (introState == B) {
+        introFader.fadeUp();
+        woodenBox.fadeOut();
+        readyToMove = true;
+    };
 }
 
 

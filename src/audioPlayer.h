@@ -14,6 +14,8 @@ public:
     void fadeToVolume(float f);
     void newFile(string s);
     void fadeOut();
+    bool getIsFaded();
+    void stop();
     
     
 private:

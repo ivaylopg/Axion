@@ -14,7 +14,7 @@ void Fader::setup(){
     overlap = 10;
     
     fadAlpha = 0.0;
-    fadSpeed = 2.5;
+    fadSpeed = 1.5;
     
     fade = STAY;
     delay = 0;

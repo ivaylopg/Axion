@@ -105,3 +105,18 @@ void AudioPlayer::newFile(string s){
 void AudioPlayer::fadeOut(){
     fade = OUT;
 }
+
+//--------------------------------------------------------------
+bool AudioPlayer::getIsFaded(){
+    //cout << sound1.getVolume() << endl;
+    if (sound1.getVolume() == 0.0) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+//--------------------------------------------------------------
+void AudioPlayer::stop(){
+    sound1.stop();
+}

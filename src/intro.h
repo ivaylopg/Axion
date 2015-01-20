@@ -34,7 +34,8 @@ private:
     enum introStates {
         A,
         B,
-        C
+        C,
+        D
     };
     
     introStates introState;

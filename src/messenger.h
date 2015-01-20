@@ -4,4 +4,5 @@
 class Messenger {
 public:
     static ofEvent<string> sendMessage;
+    static ofEvent<float> setVolume;
 };

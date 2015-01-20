@@ -15,15 +15,18 @@ void Axion::setup(){
     
     
     ofAddListener(Messenger::sendMessage , this, &Axion::messageListener);
+    ofAddListener(Messenger::setVolume , this, &Axion::volumeListener);
     
     current_state = Intro;
-    next_state = Intro;
+    next_state = EEG_Vis;
     
     display = ofVec4f(0,0,1920,1080);
     isPaused = false;
     
     backgroundSound.setup();
     backgroundSound.fadeToVolume(0.65);
+    
+    ofAddListener(mainFader.curtainDrawn, this, &Axion::faderDone);
 
 }
 
@@ -42,6 +45,7 @@ void Axion::update(){
     }
     
     backgroundSound.update();
+    mainFader.update();
     
 }
 
@@ -63,6 +67,8 @@ void Axion::draw(){
         default:
             break;
     }
+    
+    mainFader.draw(display.z, display.w);
     ofPopMatrix();
 }
 
@@ -76,40 +82,6 @@ void Axion::keyReleased(int key){
     
 }
 
-//--------------------------------------------------------------
-void Axion::mouseMoved(int x, int y ){
-    
-}
-
-//--------------------------------------------------------------
-void Axion::mouseDragged(int x, int y, int button){
-    
-}
-
-//--------------------------------------------------------------
-void Axion::mousePressed(int x, int y, int button){
-    
-}
-
-//--------------------------------------------------------------
-void Axion::mouseReleased(int x, int y, int button){
-    
-}
-
-//--------------------------------------------------------------
-void Axion::windowResized(int w, int h){
-    
-}
-
-//--------------------------------------------------------------
-void Axion::gotMessage(ofMessage msg){
-    
-}
-
-//--------------------------------------------------------------
-void Axion::dragEvent(ofDragInfo dragInfo){
-    
-}
 
 //--------------------------------------------------------------
 ofVec4f Axion::checkAspect() {
@@ -137,7 +109,19 @@ ofVec4f Axion::checkAspect() {
 
 //--------------------------------------------------------------
 void Axion::messageListener(string &s){
-    cout << "move to something else!" << endl;
+    //cout << "move to something else!" << endl;
+    cout << s << endl;
+}
+
+//--------------------------------------------------------------
+void Axion::volumeListener(float &f){
+    float newVol = ofClamp(f, 0.0, 1.0);
+    backgroundSound.fadeToVolume(newVol);
+}
+
+//--------------------------------------------------------------
+void Axion::faderDone(float &f){
+    //
 }
 
 //--------------------------------------------------------------
@@ -145,3 +129,43 @@ void Axion::exit(){
 //    ofLog(OF_LOG_NOTICE) << "##### QUITTING - " << ofGetTimestampString("%B %e, %Y %h:%M:%S %a - ") << ofGetElapsedTimeMillis() << " #####";
 //    cout << "Axion is quitting..." << endl;
 }
+
+/* BONEYARD
+
+//--------------------------------------------------------------
+void Axion::mouseMoved(int x, int y ){
+
+}
+
+//--------------------------------------------------------------
+void Axion::mouseDragged(int x, int y, int button){
+
+}
+
+//--------------------------------------------------------------
+void Axion::mousePressed(int x, int y, int button){
+
+}
+
+//--------------------------------------------------------------
+void Axion::mouseReleased(int x, int y, int button){
+
+}
+
+//--------------------------------------------------------------
+void Axion::windowResized(int w, int h){
+
+}
+
+//--------------------------------------------------------------
+void Axion::gotMessage(ofMessage msg){
+
+}
+
+//--------------------------------------------------------------
+void Axion::dragEvent(ofDragInfo dragInfo){
+
+}
+
+
+*/
