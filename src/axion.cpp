@@ -26,8 +26,8 @@ void Axion::setup(){
     
     ofSetWindowPosition(ofGetScreenWidth()/2 - ofGetWidth()/2, ofGetScreenHeight()/2 - ofGetHeight()/2);
     
-    current_state = Intro;
-    //current_state = EEG_Vis;
+    //current_state = Intro;
+    current_state = EEG_Vis;
     next_state = EEG_Vis;
     
     mind.reset();

@@ -22,5 +22,6 @@ private:
     ofFbo canvas;
     
     vector<float> mapped;
-    
+    vector<visLine> visLines;
+//    bool checkDead( visLine &v )
 };

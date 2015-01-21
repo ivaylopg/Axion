@@ -20,5 +20,7 @@ private:
     int numSteps;
     
     vector<float> mapped;
+    float zValue;
+    float scl;
     
 };
