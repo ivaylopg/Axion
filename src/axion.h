@@ -52,7 +52,6 @@ private:
     EEGVis mindVis;
     
     
-
 };
 
 /* BONEYARD

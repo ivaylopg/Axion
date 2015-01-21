@@ -36,7 +36,7 @@ void EEGVis::update(bool connected) {
             visLines.push_back(visLine());
         }
         ofRemove(visLines,checkDead);
-        cout << visLines.size() << endl;
+        //cout << visLines.size() << endl;
     }
     drawCanvas();
     
@@ -46,6 +46,7 @@ void EEGVis::update(bool connected) {
 void EEGVis::updateValues(vector<float> v) {
     mapped.clear();
     mapped = v;
+    visLines.push_back(visLine(v));
     
     for (int i = 0; i < 10; i++) {
         cout << mapped[i] << ", ";

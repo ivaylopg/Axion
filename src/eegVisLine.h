@@ -7,6 +7,7 @@ class visLine {
     
 public:
     visLine();
+    visLine(vector<float> v);
     void setup();
     void update();
     void draw();
@@ -22,5 +23,6 @@ private:
     vector<float> mapped;
     float zValue;
     float scl;
+    bool fade;
     
 };

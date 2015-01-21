@@ -63,7 +63,11 @@ void Axion::update(){
             break;
             
         case EEG_Vis:
-            mindVis.update();
+            if (usingEEG && mind.getIsConnected()) {
+                mindVis.update(mind.hasNewInfo());
+            } else {
+                mindVis.update();
+            }
             break;
             
         default:
@@ -100,11 +104,13 @@ void Axion::draw(){
     
     mainFader.draw(display.z, display.w);
     ofPopMatrix();
+    
+    drawDebugMessages();
 }
 
 //--------------------------------------------------------------
 void Axion::keyPressed(int key){
-    //mind.connect();
+    mind.connect();
 }
 
 //--------------------------------------------------------------
@@ -185,6 +191,22 @@ void Axion::exit(){
 //    ofLog(OF_LOG_NOTICE) << "##### QUITTING - " << ofGetTimestampString("%B %e, %Y %h:%M:%S %a - ") << ofGetElapsedTimeMillis() << " #####";
     
     cout << "Axion is quitting..." << endl;
+}
+
+//--------------------------------------------------------------
+void Axion::drawDebugMessages(){
+    ofSetColor(255,0,0);
+    switch (current_state) {
+        default:
+            if (true) {
+                ofDrawBitmapString("FrameRate: " + ofToString(ofGetFrameRate(),2) +
+                                   " | Screen Size: " + ofToString(ofGetScreenWidth()) + "," + ofToString(ofGetScreenHeight()) +
+                                   " | Window Size: " + ofToString(ofGetWidth()) + "," + ofToString(ofGetHeight()) +
+                                   "\nEEG Has New Info: " + ofToString(mind.hasNewInfo()) + " | Mindwave Signal Quality: " + ofToString(mind.getSignalQuality()) + " | Diff 20: " + ofToString(mind.diff20()) + " | Diff 10: " + ofToString(mind.diff10()),
+                                   20,ofGetHeight() - 70);
+            }
+            break;
+    }
 }
 
 /* BONEYARD
