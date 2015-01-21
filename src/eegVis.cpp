@@ -7,7 +7,7 @@ EEGVis::EEGVis(){
 //--------------------------------------------------------------
 void EEGVis::setup() {
     
-    canvas.allocate(1920, 1080, GL_RGBA);
+    canvas.allocate(1920, 1080, GL_RGBA,4);
     canvas.begin();
     ofClear(255,255,255, 0);
     canvas.end();
@@ -38,6 +38,9 @@ void EEGVis::update(bool connected) {
         ofRemove(visLines,checkDead);
         //cout << visLines.size() << endl;
     }
+    for (int i = 0; i < visLines.size(); i++) {
+        visLines[i].update();
+    }
     drawCanvas();
     
 }
@@ -49,9 +52,9 @@ void EEGVis::updateValues(vector<float> v) {
     visLines.push_back(visLine(v));
     
     for (int i = 0; i < 10; i++) {
-        cout << mapped[i] << ", ";
+        //cout << mapped[i] << ", ";
     }
-    cout << endl;
+    //cout << endl;
 }
 
 //--------------------------------------------------------------
@@ -61,7 +64,14 @@ void EEGVis::drawCanvas() {
     ofSetColor(255);
     
     for (int i = 0; i < visLines.size(); i++) {
-        visLines[i].draw(canvas.getWidth(), canvas.getHeight());
+        //visLines[i].draw(canvas.getWidth(), canvas.getHeight());
+        vector<ofVec3f> splPoints = visLines[i].getSpline();
+        ///*
+        for (int j = 0; j < splPoints.size(); j++) {
+            ofEllipse(splPoints[j].x, splPoints[j].y, splPoints[j].z, 10, 10);
+            ;
+        }
+        //*/
     }
     
     canvas.end();

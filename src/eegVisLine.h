@@ -13,6 +13,7 @@ public:
     void draw();
     void draw(float w, float h);
     bool isDead();
+    vector<ofVec3f> getSpline();
     
 private:
     msa::Interpolator2D spline2D;
@@ -24,5 +25,7 @@ private:
     float zValue;
     float scl;
     bool fade;
+    vector<ofVec3f> pos;
+    float grey;
     
 };

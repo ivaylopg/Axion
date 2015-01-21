@@ -2,10 +2,7 @@
 
 //--------------------------------------------------------------
 visLine::visLine(){
-    interpolationType = msa::kInterpolationCubic;
-    useLength = false;
-    spline2D.reserve(8);
-    numSteps = 15;
+    setup();
     
     mapped.clear();
     for (int i = 0; i < 10; i++) {
@@ -32,10 +29,6 @@ visLine::visLine(){
 
 //--------------------------------------------------------------
 visLine::visLine(vector<float> v){
-    interpolationType = msa::kInterpolationCubic;
-    useLength = false;
-    spline2D.reserve(8);
-    numSteps = 8 * 4;
     
     mapped.clear();
     mapped = v;
@@ -64,7 +57,28 @@ visLine::visLine(vector<float> v){
 }
 
 //--------------------------------------------------------------
+void visLine::setup() {
+    interpolationType = msa::kInterpolationCubic;
+    useLength = false;
+    spline2D.reserve(10);
+    numSteps = 15;
+    pos.clear();
+    pos.reserve(numSteps);
+    for (int i = 0; i < numSteps; i++) {
+        pos.push_back(ofVec3f(0,0,0));
+    }
+    grey = 255;
+}
+
+//--------------------------------------------------------------
 void visLine::update() {
+    if (fade) {
+        float grey = ofMap(zValue, -8000, -1000, 0, 255, true);
+        ofSetColor(grey, 200);
+    } else {
+        ofSetColor(100,200);
+    }
+    zValue+=6;
 }
 
 //--------------------------------------------------------------
@@ -74,36 +88,46 @@ void visLine::draw() {
 
 //--------------------------------------------------------------
 void visLine::draw(float w, float h) {
-    if (fade) {
-        float grey = ofMap(zValue, -8000, -1000, 0, 255, true);
-        ofSetColor(grey, 200);
-    } else {
-        ofSetColor(100,200);
-    }
     
     float xTrans = w/6;
     
-    //ofEnableSmoothing();
+    ofEnableSmoothing();
+    ofEnableAntiAliasing();
+    glLineWidth(2);
     ofPushMatrix();
     ofTranslate(w/2, -h/2, zValue);
         ofPushMatrix();
         ofScale(scl, 1);
         ofTranslate(xTrans, 0);
         //ofLine(0, 0, 0, 2*h);
-        drawInterpolatorSmooth(spline2D, numSteps,0,1);
+        drawInterpolatorSmooth(spline2D, numSteps,0,2);
         //drawInterpolatorRaw(spline2D,0,1);
         ofPopMatrix();
     
         ofScale(-scl, 1);
         ofTranslate(xTrans, 0);
         //ofLine(0, 0, 0, 2*h);
-        drawInterpolatorSmooth(spline2D, numSteps,0,1);
+        drawInterpolatorSmooth(spline2D, numSteps,0,2);
         //drawInterpolatorRaw(spline2D,0,1);
 
     ofPopMatrix();
-    //ofDisableSmoothing();
+    glLineWidth(1);
+    ofDisableAntiAliasing();
+    ofDisableSmoothing();
+}
+
+//--------------------------------------------------------------
+vector<ofVec3f> visLine::getSpline() {
     
-    zValue+=6;
+    //pos.clear();
+    float inc = 1.0f/numSteps;
+    
+    for (int i = 0; i < numSteps; i++) {
+        float pct = (float) i+1.0f * (1.0f/numSteps);
+        //pos[i] = ofVec3f(1,1,1);//spline2D.sampleAt(pct);
+        pos[i] = spline2D.sampleAt(pct);
+    }
+    return pos;
 }
 
 //--------------------------------------------------------------
