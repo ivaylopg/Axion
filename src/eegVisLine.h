@@ -1,14 +1,24 @@
-//
-//  eegVisLine.h
-//  Axion
-//
-//  Created by Ivaylo Getov on 1/21/15.
-//
-//
+#pragma once
+#include "ofMain.h"
+#include "MSAInterpolator.h"
 
-#ifndef __Axion__eegVisLine__
-#define __Axion__eegVisLine__
 
-#include <stdio.h>
-
-#endif /* defined(__Axion__eegVisLine__) */
+class visLine {
+    
+public:
+    visLine();
+    void setup();
+    void update();
+    void draw();
+    void draw(float w, float h);
+    bool isDead();
+    
+private:
+    msa::Interpolator2D spline2D;
+    msa::InterpolationType interpolationType;
+    bool useLength;
+    int numSteps;
+    
+    vector<float> mapped;
+    
+};

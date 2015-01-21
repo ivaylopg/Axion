@@ -51,7 +51,11 @@ void Axion::setup(){
 void Axion::update(){
     
     checkAspect();
-    mind.update();
+    
+    usingEEG = true;
+    if (usingEEG) {
+        mind.update();
+    }
     
     switch (current_state) {
         case Intro:

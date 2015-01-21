@@ -6,10 +6,6 @@ EEGVis::EEGVis(){
 
 //--------------------------------------------------------------
 void EEGVis::setup() {
-    interpolationType = msa::kInterpolationCubic;
-    useLength = false;
-    spline2D.reserve(8);
-    numSteps = 8 * 4;
     
     canvas.allocate(1920, 1080, GL_RGBA);
     canvas.begin();
@@ -24,6 +20,14 @@ void EEGVis::setup() {
 
 //--------------------------------------------------------------
 void EEGVis::update() {
+    update(false);
+}
+
+//--------------------------------------------------------------
+void EEGVis::update(bool connected) {
+    if (!connected) {
+        //
+    }
     drawCanvas();
 }
 

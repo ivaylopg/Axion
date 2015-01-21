@@ -60,6 +60,7 @@
 		F9E7BD701A6DF29700CA1313 /* axion.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F9E7BD6E1A6DF29700CA1313 /* axion.cpp */; };
 		F9E7BD771A6DF7FD00CA1313 /* intro.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F9E7BD751A6DF7FD00CA1313 /* intro.cpp */; };
 		F9E7BD7A1A6E008E00CA1313 /* fader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F9E7BD781A6E008E00CA1313 /* fader.cpp */; };
+		F9E7BD7F1A6FF62800CA1313 /* eegVisLine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F9E7BD7D1A6FF62800CA1313 /* eegVisLine.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -230,6 +231,8 @@
 		F9E7BD761A6DF7FD00CA1313 /* intro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = intro.h; sourceTree = "<group>"; };
 		F9E7BD781A6E008E00CA1313 /* fader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = fader.cpp; sourceTree = "<group>"; };
 		F9E7BD791A6E008E00CA1313 /* fader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fader.h; sourceTree = "<group>"; };
+		F9E7BD7D1A6FF62800CA1313 /* eegVisLine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = eegVisLine.cpp; sourceTree = "<group>"; };
+		F9E7BD7E1A6FF62800CA1313 /* eegVisLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = eegVisLine.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -420,6 +423,8 @@
 				F9E7BD6F1A6DF29700CA1313 /* axion.h */,
 				F994DA721A6E655D00D4689F /* eegVis.cpp */,
 				F994DA731A6E655D00D4689F /* eegVis.h */,
+				F9E7BD7D1A6FF62800CA1313 /* eegVisLine.cpp */,
+				F9E7BD7E1A6FF62800CA1313 /* eegVisLine.h */,
 				F994DA661A6E2E8600D4689F /* audioPlayer.cpp */,
 				F994DA671A6E2E8600D4689F /* audioPlayer.h */,
 				F9E7BD781A6E008E00CA1313 /* fader.cpp */,
@@ -747,6 +752,7 @@
 			files = (
 				F96329AC1A19AB0C006A7BF0 /* ofxEasingBounce.cpp in Sources */,
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
+				F9E7BD7F1A6FF62800CA1313 /* eegVisLine.cpp in Sources */,
 				F9E7BD771A6DF7FD00CA1313 /* intro.cpp in Sources */,
 				F994DA741A6E655D00D4689F /* eegVis.cpp in Sources */,
 				F93AB0AE1A6642E500FEC282 /* ofxThinkGear.cpp in Sources */,

@@ -1,6 +1,6 @@
 #pragma once
 #include "ofMain.h"
-#include "MSAInterpolator.h"
+#include "eegVisLine.h"
 
 #include "messenger.h"
 
@@ -11,16 +11,13 @@ public:
     EEGVis();
     void setup();
     void update();
+    void update(bool connected);
     void updateValues(vector<float> v);
     void draw();
     void draw(float w, float h);
 
 private:
     void drawCanvas();
-    msa::Interpolator2D spline2D;
-    msa::InterpolationType interpolationType;
-    bool useLength;
-    int numSteps;
     
     ofFbo canvas;
     
