@@ -11,6 +11,7 @@ public:
     void setup();
     void update();
     void draw();
+    void resetScroll();
     
     
     bool initialized = false;
@@ -22,4 +23,6 @@ public:
     ofTrueTypeFont	akzidenz32;
     ofTrueTypeFont	akzidenz28;
     ofTrueTypeFont	akzidenzS;
+    
+    float scroll;
 };

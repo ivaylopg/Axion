@@ -63,6 +63,7 @@ public:
     bool usingEEG;
     Fader fader;
     SoundPlayer sound;
+    SoundPlayer ida;
     
     Intro introPlayer;
     MoviePlayer playerIntro;

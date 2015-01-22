@@ -58,6 +58,8 @@
 		F965124E18ECAC1D00933E76 /* intro.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F965124D18ECAC1D00933E76 /* intro.cpp */; };
 		F965125418ECD97000933E76 /* moviePlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F965125318ECD97000933E76 /* moviePlayer.cpp */; };
 		F965125718EDED6E00933E76 /* tunnel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F965125618EDED6E00933E76 /* tunnel.cpp */; };
+		F96C7CE01A71B9D0002E359C /* ofxThinkGear.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F96C7CDA1A71B9D0002E359C /* ofxThinkGear.cpp */; };
+		F96C7CE11A71B9D0002E359C /* ThinkGear.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F96C7CDF1A71B9D0002E359C /* ThinkGear.framework */; };
 		F97436F918F4897F00199CF1 /* soundPlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F97436F818F4897F00199CF1 /* soundPlayer.cpp */; };
 		F995D6B4190AB81B00F2F53A /* MSACoreGL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F995D6B1190AB81B00F2F53A /* MSACoreGL.cpp */; };
 		F995D6BF190AB93100F2F53A /* eegReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F995D6BE190AB93100F2F53A /* eegReader.cpp */; };
@@ -215,11 +217,13 @@
 		F965125318ECD97000933E76 /* moviePlayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = moviePlayer.cpp; sourceTree = "<group>"; };
 		F965125518EDEB1D00933E76 /* tunnel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tunnel.h; sourceTree = "<group>"; };
 		F965125618EDED6E00933E76 /* tunnel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tunnel.cpp; sourceTree = "<group>"; };
+		F96C7CDA1A71B9D0002E359C /* ofxThinkGear.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxThinkGear.cpp; sourceTree = "<group>"; };
+		F96C7CDB1A71B9D0002E359C /* ofxThinkGear.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxThinkGear.h; sourceTree = "<group>"; };
+		F96C7CDD1A71B9D0002E359C /* *** ThinkGear.bundle-goes-here ***.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "*** ThinkGear.bundle-goes-here ***.txt"; sourceTree = "<group>"; };
+		F96C7CDE1A71B9D0002E359C /* ThinkGear.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ThinkGear.bundle; sourceTree = "<group>"; };
+		F96C7CDF1A71B9D0002E359C /* ThinkGear.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ThinkGear.framework; sourceTree = "<group>"; };
 		F97436F718F4893400199CF1 /* soundPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = soundPlayer.h; sourceTree = "<group>"; };
 		F97436F818F4897F00199CF1 /* soundPlayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = soundPlayer.cpp; sourceTree = "<group>"; };
-		F995D6A7190AB81600F2F53A /* ofxThinkGear.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxThinkGear.h; sourceTree = "<group>"; };
-		F995D6A9190AB81600F2F53A /* put_ThinkGear.bundle_here.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = put_ThinkGear.bundle_here.txt; sourceTree = "<group>"; };
-		F995D6AA190AB81600F2F53A /* ThinkGear.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ThinkGear.bundle; sourceTree = "<group>"; };
 		F995D6AD190AB81B00F2F53A /* MSACore-Cinder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MSACore-Cinder.h"; sourceTree = "<group>"; };
 		F995D6AE190AB81B00F2F53A /* MSACore-OF.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MSACore-OF.h"; sourceTree = "<group>"; };
 		F995D6AF190AB81B00F2F53A /* MSACore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSACore.h; sourceTree = "<group>"; };
@@ -244,6 +248,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F96C7CE11A71B9D0002E359C /* ThinkGear.framework in Frameworks */,
 				E7F985F815E0DEA3003869B5 /* Accelerate.framework in Frameworks */,
 				E7E077E815D3B6510020DFD4 /* QTKit.framework in Frameworks */,
 				E4EB6799138ADC1D00A09F29 /* GLUT.framework in Frameworks */,
@@ -328,10 +333,10 @@
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				F96C7CD81A71B9D0002E359C /* ofxThinkGear */,
 				F963298C1A19AB0C006A7BF0 /* ofxTween */,
 				F995D6B5190AB81E00F2F53A /* ofxMSAInterpolator */,
 				F995D6AB190AB81B00F2F53A /* ofxMSACore */,
-				F995D6A5190AB81600F2F53A /* ofxThinkGear */,
 				F965123E18ECA71300933E76 /* ofxXmlSettings */,
 				9F66160B6D853AA730F370C2 /* ofx3DModelLoader */,
 				2C8F245ACBE61E28646C17F2 /* ofxAssimpModelLoader */,
@@ -597,32 +602,34 @@
 			path = ../../../addons/ofxXmlSettings/libs;
 			sourceTree = "<group>";
 		};
-		F995D6A5190AB81600F2F53A /* ofxThinkGear */ = {
+		F96C7CD81A71B9D0002E359C /* ofxThinkGear */ = {
 			isa = PBXGroup;
 			children = (
-				F995D6A6190AB81600F2F53A /* src */,
-				F995D6A8190AB81600F2F53A /* libs */,
+				F96C7CD91A71B9D0002E359C /* src */,
+				F96C7CDC1A71B9D0002E359C /* lib */,
 			);
 			name = ofxThinkGear;
 			sourceTree = "<group>";
 		};
-		F995D6A6190AB81600F2F53A /* src */ = {
+		F96C7CD91A71B9D0002E359C /* src */ = {
 			isa = PBXGroup;
 			children = (
-				F995D6A7190AB81600F2F53A /* ofxThinkGear.h */,
+				F96C7CDA1A71B9D0002E359C /* ofxThinkGear.cpp */,
+				F96C7CDB1A71B9D0002E359C /* ofxThinkGear.h */,
 			);
 			name = src;
 			path = ../../../addons/ofxThinkGear/src;
 			sourceTree = "<group>";
 		};
-		F995D6A8190AB81600F2F53A /* libs */ = {
+		F96C7CDC1A71B9D0002E359C /* lib */ = {
 			isa = PBXGroup;
 			children = (
-				F995D6A9190AB81600F2F53A /* put_ThinkGear.bundle_here.txt */,
-				F995D6AA190AB81600F2F53A /* ThinkGear.bundle */,
+				F96C7CDD1A71B9D0002E359C /* *** ThinkGear.bundle-goes-here ***.txt */,
+				F96C7CDE1A71B9D0002E359C /* ThinkGear.bundle */,
+				F96C7CDF1A71B9D0002E359C /* ThinkGear.framework */,
 			);
-			name = libs;
-			path = ../../../addons/ofxThinkGear/libs;
+			name = lib;
+			path = ../../../addons/ofxThinkGear/lib;
 			sourceTree = "<group>";
 		};
 		F995D6AB190AB81B00F2F53A /* ofxMSACore */ = {
@@ -760,6 +767,7 @@
 				F97436F918F4897F00199CF1 /* soundPlayer.cpp in Sources */,
 				F96329AC1A19AB0C006A7BF0 /* ofxEasingBounce.cpp in Sources */,
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
+				F96C7CE01A71B9D0002E359C /* ofxThinkGear.cpp in Sources */,
 				F96329B11A19AB0C006A7BF0 /* ofxEasingLinear.cpp in Sources */,
 				F96329AD1A19AB0C006A7BF0 /* ofxEasingCirc.cpp in Sources */,
 				F965124818ECA71300933E76 /* tinyxml.cpp in Sources */,
@@ -915,6 +923,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+					/Users/ivaylopg/Documents/openFrameworks/addons/ofxThinkGear/lib,
 				);
 				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../../../libs/glut/lib/osx\"";
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -1003,6 +1012,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+					/Users/ivaylopg/Documents/openFrameworks/addons/ofxThinkGear/lib,
 				);
 				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../../../libs/glut/lib/osx\"";
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;

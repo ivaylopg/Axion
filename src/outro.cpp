@@ -26,11 +26,18 @@ void Outro::setup(){
     akzidenz28.setLineHeight(30);
     pointer.loadImage("pointer.png");
     restartButton.setup(&akzidenzS, "RESTART");
+    
+    scroll = 1600;
 }
 
 
 //--------------------------------------------------------------
 void Outro::update(){
+    scroll -= 1.0f;
+    cout << scroll << endl;
+    if (scroll < -1800) {
+        scroll = 1600;
+    }
 }
 
 //--------------------------------------------------------------
@@ -41,7 +48,7 @@ void Outro::draw(){
     int imgW = (int) ceil(ofGetWidth()/7);
     int imgH = (int) ceil((imgW * outImage.height)/outImage.width);
     ofPushMatrix();
-    ofTranslate(3 * ofGetWidth()/4-imgW/2, 50, -1);
+    ofTranslate(3 * ofGetWidth()/4, 50, -1);
     outImage.draw(0, 0, imgW, imgH);
     ofPopMatrix();
     
@@ -51,18 +58,18 @@ void Outro::draw(){
     ofScale(textScale, textScale);
     
     ofSetColor(255);
-    akzidenz32.drawString("CREATORS:", 100, 100);
+    akzidenz32.drawString("CREATORS:", 100, 100+scroll);
     
     ofSetColor(128);
-    akzidenz28.drawString("RAIN ASHFORD, IVAYLO GETOV, KYLE GUSTAFSON,\nJASMINE IDUN LYMAN, JULIAN MACIEJEWSKI, JASON WISHNOW", 100, 140);
+    akzidenz28.drawString("RAIN ASHFORD, IVAYLO GETOV, KYLE GUSTAFSON,\nJASMINE IDUN LYMAN, JULIAN MACIEJEWSKI, JASON WISHNOW", 100, 140+scroll);
     
-    akzidenz28.drawString("RAIN ASHFORD\nIVAYLO GETOV\nKYLE GUSTAFSON\nJASMINE IDUN LYMAN\nJULIAN MACIEJEWSKI\nJASON WISHNOW", 100, 300);
-    
-    ofSetColor(255);
-    akzidenz28.drawString("INTERACTIVITY DEVELOPMENT\nSOFTWARE & VISUAL DESIGN\nSCIENCE ADVISOR\nEXPERIENCE DESIGN\nSOFTWARE DEVELOPMENT\nCREATIVE DEVELOPMENT", 450, 300);
+    akzidenz28.drawString("RAIN ASHFORD\nIVAYLO GETOV\nKYLE GUSTAFSON\nJASMINE IDUN LYMAN\nJULIAN MACIEJEWSKI\nJASON WISHNOW", 100, 300+scroll);
     
     ofSetColor(255);
-    akzidenz32.drawString("SCIENTISTS:", 100, 580);
+    akzidenz28.drawString("INTERACTIVITY DEVELOPMENT\nSOFTWARE & VISUAL DESIGN\nSCIENCE ADVISOR\nEXPERIENCE DESIGN\nSOFTWARE DEVELOPMENT\nCREATIVE DEVELOPMENT", 450, 300+scroll);
+    
+    ofSetColor(255);
+    akzidenz32.drawString("SCIENTISTS:", 100, 580+scroll);
     ofSetColor(128);
     akzidenz28.drawString("PROFESSOR MARTIN POHL"
                           "\n\n\nDR. MARK WYMAN"
@@ -71,7 +78,7 @@ void Outro::draw(){
                           "\n\n\nDR. JENNIFER SIEGAL-GASKINS"
                           "\n\n\nDR. JASON RHODES"
                           "\n\n\nDR. ALINA KIESSLING"
-                          "\n\n\nDR. SEAN CARROLL", 100, 620);
+                          "\n\n\nDR. SEAN CARROLL", 100, 620+scroll);
     
     ofSetColor(255);
     akzidenz28.drawString("\nDIRECTOR of the NUCLEAR and PARTICLE PHYSICS DEPARTMENT, UNIVERSITY OF GENEVA"
@@ -81,23 +88,35 @@ void Outro::draw(){
                           "\n\n\nEINSTEIN POSTDOCTORAL FELLOW, CALTECH"
                           "\n\n\nSCIENTIST AT JET PROPULSION LABS; U.S. SCIENCE LEAD FOR ESA'S EUCLID MISSION"
                           "\n\n\nJPOSTDOCTORAL FELLOW AT JET PROPULSION LABS"
-                          "\n\n\nSENIOR RESEARCH ASSOCIATE IN PHYSICS, CALTECH", 100, 620);
+                          "\n\n\nSENIOR RESEARCH ASSOCIATE IN PHYSICS, CALTECH", 100, 620+scroll);
     
     
     ofSetColor(255);
-    akzidenz32.drawString("THANK YOU:", 100, 1400);
+    akzidenz32.drawString("SOUNDSCAPE:", 100, 1400+scroll);
+    ofSetColor(128);
+    akzidenz28.drawString("ALAIN THIBAULT\n"
+                          "IDA LONG\n"
+                          "IDUN", 100, 1440+scroll);
+    
+    
+    ofSetColor(255);
+    akzidenz32.drawString("THANK YOU:", 100, 1600+scroll);
     ofSetColor(128);
     akzidenz28.drawString("NEAL HARTMAN at CERN; OPEYEMI OLUKEMI, INGRID KOPP, and AMELIE LEENHARDT at TRIBECA FILM INSTITUTE\n"
-                          "NATASHA RODRIGUEZ-BACCHUS (LOGO DESIGN), MACIEJ MUSZKOWSKI (PROGRAMMING HELP), ZACH CALDWELL (VIDEOGRAPHY)\n"
+                          "NATASHA RODRIGUEZ-BACCHUS ( DESIGN), MACIEJ MUSZKOWSKI (PROGRAMMING), ZACH CALDWELL (VIDEOGRAPHY)\n"
                           "JEREMY UNGAR, NICK ZEIG-OWENS, and CLINT JOSEPH HANAWAY (CAMERA ASSISTANTS)\n"
-                          "INSTITUTION OF NEUROSCIENCE AND PHYSIOLOGY IN GOTHENBURG\n"
-                          "JOONA KURIKKA at the CERN IDEALAB, and EVERYBODY AT CERN, CINEGLOBE, AND TFI.", 100, 1440);
+                          "INSTITUTION OF NEUROSCIENCE AND PHYSIOLOGY IN GOTHENBURG (AUDIO)\n"
+                          "JOONA KURIKKA at the CERN IDEALAB, and EVERYBODY AT CERN, CINEGLOBE, AND TFI.", 100, 1640+scroll);
     
     
     ofPopMatrix();
     
-    restartButton.draw((3 * (ofGetWidth()/4)) - (imgW/2) + (imgW * 0.09), 50 + imgH * 1.1);
+    restartButton.draw((3 * (ofGetWidth()/4)) + (imgW * 0.09), 50 + imgH * 1.1);
     
     
     pointer.draw(ofGetMouseX(), ofGetMouseY(), 35, 35);
+}
+
+void Outro::resetScroll() {
+    scroll = 1600;
 }

@@ -31,7 +31,7 @@ void controller::setup(){
     debugMessages = false;
     isPaused = false;
     
-    current_state = A;
+    current_state = I;
     next_state = B;
     
     mind.reset();
@@ -62,15 +62,15 @@ void controller::setup(){
     vids03.clear();
     vids04.clear();
     
-    vids01.push_back("mov/0.mov");
+    vids01.push_back("mov/0.mp4");
     
-    vids02.push_back("mov/1.mov");
-    vids02.push_back("mov/2.mov");
-    vids02.push_back("mov/3.mov");
-    vids02.push_back("mov/4.mov");
+    vids02.push_back("mov/1.mp4");
+    vids02.push_back("mov/2.mp4");
+    vids02.push_back("mov/3.mp4");
+    vids02.push_back("mov/4.mp4");
     
-    vids04.push_back("mov/5.mov");
-    vids04.push_back("mov/6.mov");
+    vids04.push_back("mov/5.mp4");
+    vids04.push_back("mov/6.mp4");
     
     playerIntro.setup(vids01.size());
     playerBranch1.setup(vids02.size());
@@ -90,6 +90,8 @@ void controller::setup(){
     introPlayer.firstTime = true;
     introPlayer.counter = 0;
     introPlayer.firstAlpha = 0;
+    
+    ida.newFile("");
 }
 
 //--------------------------------------------------------------
@@ -108,10 +110,11 @@ void controller::update(){
             if (usingEEG) {
                 introPlayer.update(mind.getSignalQuality());
             }
+            outroPlayer.resetScroll();
             break;
         
         case B:
-            if (sound.volume > volume/3) {
+            if (sound.volume > 0) {
                 sound.fadeDown();
             }
             playerIntro.pause(isPaused);
