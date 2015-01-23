@@ -27,15 +27,15 @@ void Outro::setup(){
     pointer.loadImage("pointer.png");
     restartButton.setup(&akzidenzS, "RESTART");
     
-    scroll = 1600;
+    scroll = 1800;
 }
 
 
 //--------------------------------------------------------------
 void Outro::update(){
-    scroll -= 1.0f;
+    scroll -= 1.5f;
     cout << scroll << endl;
-    if (scroll < -1800) {
+    if (scroll < -2000) {
         scroll = 1600;
     }
 }
@@ -98,15 +98,20 @@ void Outro::draw(){
                           "IDA LONG\n"
                           "IDUN", 100, 1440+scroll);
     
+    akzidenz32.drawString("NASA IMAGES:", 100, 1600+scroll);
+    ofSetColor(128);
+    akzidenz28.drawString("FERMI PROVIDES NEW INSIGHTS ON DARK MATTER\n"
+                          "COMPUTER MODEL SHOWS A DISK GALAXY'S LIFE HISTORY",100, 1640+scroll);
+    
     
     ofSetColor(255);
-    akzidenz32.drawString("THANK YOU:", 100, 1600+scroll);
+    akzidenz32.drawString("THANK YOU:", 100, 1800+scroll);
     ofSetColor(128);
     akzidenz28.drawString("NEAL HARTMAN at CERN; OPEYEMI OLUKEMI, INGRID KOPP, and AMELIE LEENHARDT at TRIBECA FILM INSTITUTE\n"
                           "NATASHA RODRIGUEZ-BACCHUS ( DESIGN), MACIEJ MUSZKOWSKI (PROGRAMMING), ZACH CALDWELL (VIDEOGRAPHY)\n"
                           "JEREMY UNGAR, NICK ZEIG-OWENS, and CLINT JOSEPH HANAWAY (CAMERA ASSISTANTS)\n"
                           "INSTITUTION OF NEUROSCIENCE AND PHYSIOLOGY IN GOTHENBURG (AUDIO)\n"
-                          "JOONA KURIKKA at the CERN IDEALAB, and EVERYBODY AT CERN, CINEGLOBE, AND TFI.", 100, 1640+scroll);
+                          "JOONA KURIKKA at the CERN IDEALAB, and EVERYBODY AT CERN, CINEGLOBE, AND TFI.", 100, 1840+scroll);
     
     
     ofPopMatrix();

@@ -75,6 +75,12 @@ public:
     MoviePlayer playerOutro;
     Outro outroPlayer;
     
+    ofImage explorePrompt;
+    float imgAlpha;
+    //bool startedWalking;
+    
+    ofFbo canvas;
+    
     string lastMessage;
     
     vector<string> vids01;

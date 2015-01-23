@@ -31,7 +31,7 @@ void controller::setup(){
     debugMessages = false;
     isPaused = false;
     
-    current_state = C;
+    current_state = A;
     next_state = B;
     
     mind.reset();
@@ -46,7 +46,8 @@ void controller::setup(){
     ofEnableSeparateSpecularLight();
     
     tunnel1.secondTime = false;
-    tunnel1.started = false;
+    explorePrompt.loadImage("explore.png");
+    imgAlpha = 255;
     lastMessage = " ";
 
     #ifdef __APPLE__
@@ -348,6 +349,27 @@ void controller::draw(){
     } else {
         introPlayer.drawPaused();
     }
+    
+    if (current_state==C && !tunnel1.secondTime) {
+        ofPushMatrix();
+        ofSetColor(255, imgAlpha);
+        ofTranslate(ofGetWidth()/2,ofGetHeight()/2,10);
+        
+        float d = tunnel1.camPos.z;
+        if (d <= 17) {
+            imgAlpha = 255 - (d *15);
+        } else {
+            imgAlpha = 0;
+        }
+        explorePrompt.draw(-400,-200);
+        //cout << "EXPLORE" << endl;
+        ofSetColor(255, 255);
+        ofPopMatrix();
+        
+        
+    }
+    
+    
     
     
     //mainGraphics.draw(0,0);

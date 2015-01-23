@@ -8,3 +8,150 @@
 
 [ error ] ofFmodSoundPlayer: loadSound(): could not load "../../../data/audio/woodenBoxLoopEQ.aiff"
 [notice ] ##### QUITTING - January 22, 2015 05:00:54 pm - 28477 #####
+
+
+--------------------------------------- 2015-01-22-17-03-35-505
+[notice ] Connecting to /dev/tty.MindWaveMobile-DevA ...
+[ fatal ] /dev/tty.MindWaveMobile-DevA could not be opened. Check that the name is a valid COM port on your system.
+[notice ] ##################
+------------- NEW USER - January 22, 2015 05:03:42 pm - 0
+
+[ error ] ofFmodSoundPlayer: loadSound(): could not load "../../../data/audio/woodenBoxLoopEQ.aiff"
+[notice ] ##### QUITTING - January 22, 2015 05:04:45 pm - 62783 #####
+
+
+--------------------------------------- 2015-01-22-17-05-21-491
+[notice ] Connecting to /dev/tty.MindWaveMobile-DevA ...
+[ fatal ] /dev/tty.MindWaveMobile-DevA could not be opened. Check that the name is a valid COM port on your system.
+[notice ] ##################
+------------- NEW USER - January 22, 2015 05:05:28 pm - 0
+
+[ error ] ofFmodSoundPlayer: loadSound(): could not load "../../../data/audio/woodenBoxLoopEQ.aiff"
+[notice ] ##### QUITTING - January 22, 2015 05:05:45 pm - 16521 #####
+
+
+--------------------------------------- 2015-01-22-17-06-20-819
+[notice ] Connecting to /dev/tty.MindWaveMobile-DevA ...
+[ fatal ] /dev/tty.MindWaveMobile-DevA could not be opened. Check that the name is a valid COM port on your system.
+[notice ] ##################
+------------- NEW USER - January 22, 2015 05:06:28 pm - 0
+
+[ error ] ofFmodSoundPlayer: loadSound(): could not load "../../../data/audio/woodenBoxLoopEQ.aiff"
+[notice ] ##### QUITTING - January 22, 2015 05:06:51 pm - 23446 #####
+
+
+--------------------------------------- 2015-01-22-17-07-02-646
+[notice ] Connecting to /dev/tty.MindWaveMobile-DevA ...
+[ fatal ] /dev/tty.MindWaveMobile-DevA could not be opened. Check that the name is a valid COM port on your system.
+[notice ] ##################
+------------- NEW USER - January 22, 2015 05:07:10 pm - 0
+
+[ error ] ofFmodSoundPlayer: loadSound(): could not load "../../../data/audio/woodenBoxLoopEQ.aiff"
+[notice ] ##### QUITTING - January 22, 2015 05:07:15 pm - 5257 #####
+
+
+--------------------------------------- 2015-01-22-17-07-22-031
+[notice ] Connecting to /dev/tty.MindWaveMobile-DevA ...
+[ fatal ] /dev/tty.MindWaveMobile-DevA could not be opened. Check that the name is a valid COM port on your system.
+[notice ] ##################
+------------- NEW USER - January 22, 2015 05:07:29 pm - 0
+
+[ error ] ofFmodSoundPlayer: loadSound(): could not load "../../../data/audio/woodenBoxLoopEQ.aiff"
+[notice ] ##### QUITTING - January 22, 2015 05:07:52 pm - 22935 #####
+
+
+--------------------------------------- 2015-01-22-17-12-50-706
+[notice ] Connecting to /dev/tty.MindWaveMobile-DevA ...
+[ fatal ] /dev/tty.MindWaveMobile-DevA could not be opened. Check that the name is a valid COM port on your system.
+[notice ] ##################
+------------- NEW USER - January 22, 2015 05:12:58 pm - 0
+
+[ error ] ofFmodSoundPlayer: loadSound(): could not load "../../../data/audio/woodenBoxLoopEQ.aiff"
+[notice ] ##### QUITTING - January 22, 2015 05:13:16 pm - 18889 #####
+
+
+--------------------------------------- 2015-01-22-17-14-27-597
+[notice ] Connecting to /dev/tty.MindWaveMobile-DevA ...
+[ fatal ] /dev/tty.MindWaveMobile-DevA could not be opened. Check that the name is a valid COM port on your system.
+[notice ] ##################
+------------- NEW USER - January 22, 2015 05:14:34 pm - 0
+
+[ error ] ofFmodSoundPlayer: loadSound(): could not load "../../../data/audio/woodenBoxLoopEQ.aiff"
+[notice ] ##### QUITTING - January 22, 2015 05:14:46 pm - 11388 #####
+
+
+--------------------------------------- 2015-01-22-17-14-56-842
+[notice ] Connecting to /dev/tty.MindWaveMobile-DevA ...
+[ fatal ] /dev/tty.MindWaveMobile-DevA could not be opened. Check that the name is a valid COM port on your system.
+[notice ] ##################
+------------- NEW USER - January 22, 2015 05:15:04 pm - 0
+
+[ error ] ofFmodSoundPlayer: loadSound(): could not load "../../../data/audio/woodenBoxLoopEQ.aiff"
+[notice ] ##### QUITTING - January 22, 2015 05:15:33 pm - 28951 #####
+
+
+--------------------------------------- 2015-01-22-17-16-01-426
+[notice ] Connecting to /dev/tty.MindWaveMobile-DevA ...
+[ fatal ] /dev/tty.MindWaveMobile-DevA could not be opened. Check that the name is a valid COM port on your system.
+[notice ] ##################
+------------- NEW USER - January 22, 2015 05:16:08 pm - 0
+
+[ error ] ofFmodSoundPlayer: loadSound(): could not load "../../../data/audio/woodenBoxLoopEQ.aiff"
+[notice ] ##### QUITTING - January 22, 2015 05:16:32 pm - 23888 #####
+
+
+--------------------------------------- 2015-01-22-17-16-43-402
+[notice ] Connecting to /dev/tty.MindWaveMobile-DevA ...
+[ fatal ] /dev/tty.MindWaveMobile-DevA could not be opened. Check that the name is a valid COM port on your system.
+[notice ] ##################
+------------- NEW USER - January 22, 2015 05:16:50 pm - 1
+
+[ error ] ofFmodSoundPlayer: loadSound(): could not load "../../../data/audio/woodenBoxLoopEQ.aiff"
+[notice ] ##### QUITTING - January 22, 2015 05:17:09 pm - 19028 #####
+
+
+--------------------------------------- 2015-01-22-17-17-16-404
+[notice ] Connecting to /dev/tty.MindWaveMobile-DevA ...
+[ fatal ] /dev/tty.MindWaveMobile-DevA could not be opened. Check that the name is a valid COM port on your system.
+[notice ] ##################
+------------- NEW USER - January 22, 2015 05:17:23 pm - 0
+
+[ error ] ofFmodSoundPlayer: loadSound(): could not load "../../../data/audio/woodenBoxLoopEQ.aiff"
+[notice ] ##### QUITTING - January 22, 2015 05:18:22 pm - 59190 #####
+
+
+--------------------------------------- 2015-01-22-17-21-12-169
+[notice ] Connecting to /dev/tty.MindWaveMobile-DevA ...
+[ fatal ] /dev/tty.MindWaveMobile-DevA could not be opened. Check that the name is a valid COM port on your system.
+[notice ] ##################
+------------- NEW USER - January 22, 2015 05:21:19 pm - 0
+
+[ error ] ofFmodSoundPlayer: loadSound(): could not load "../../../data/audio/woodenBoxLoopEQ.aiff"
+[notice ] ##### QUITTING - January 22, 2015 05:21:38 pm - 19335 #####
+
+
+--------------------------------------- 2015-01-22-17-21-51-238
+[notice ] Connecting to /dev/tty.MindWaveMobile-DevA ...
+[ fatal ] /dev/tty.MindWaveMobile-DevA could not be opened. Check that the name is a valid COM port on your system.
+[notice ] ##################
+------------- NEW USER - January 22, 2015 05:21:58 pm - 0
+
+[ error ] ofFmodSoundPlayer: loadSound(): could not load "../../../data/audio/woodenBoxLoopEQ.aiff"
+[notice ] ##### QUITTING - January 22, 2015 05:22:13 pm - 14818 #####
+
+
+--------------------------------------- 2015-01-22-17-22-27-896
+[notice ] Connecting to /dev/tty.MindWaveMobile-DevA ...
+[ fatal ] /dev/tty.MindWaveMobile-DevA could not be opened. Check that the name is a valid COM port on your system.
+[notice ] ##################
+------------- NEW USER - January 22, 2015 05:22:35 pm - 1
+
+[notice ] ##### Sent to Brancher from Tunnel A - 222161 #####
+[notice ] ##### No EEG Data - Branch 1 - 222161 #####
+[notice ] ##### Sent to Brancher from Tunnel B - 302230 #####
+[notice ] ##### No EEG Data - Branch 2 - 302230 #####
+[notice ] ##### RESTARTING - January 22, 2015 05:29:58 pm - 443109 #####
+[notice ] ##################
+------------- NEW USER - January 22, 2015 05:29:58 pm - 0
+
+[notice ] ##### QUITTING - January 22, 2015 05:30:03 pm - 4901 #####

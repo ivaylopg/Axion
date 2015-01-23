@@ -40,9 +40,6 @@ void Tunnel::setup(){
     isPaused = false;
     hallWidth = 10.0 * distFactor;
     isClipping = true;
-    explorePrompt.loadImage("explore.png");
-    imgAlpha = 255;
-    started = false;
 }
 
 //--------------------------------------------------------------
@@ -183,12 +180,7 @@ void Tunnel::draw(float alph){
     
     camera.end();
     
-    ofPushMatrix();
-    ofSetColor(255, imgAlpha);
-    ofTranslate(ofGetWidth()/2,ofGetHeight()/2);
-    explorePrompt.draw(-400,-200);
-    ofSetColor(255, 255);
-    ofPopMatrix();
+    
 }
 
 

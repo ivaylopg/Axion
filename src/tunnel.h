@@ -33,7 +33,5 @@ public:
     float hallWidth;
     bool isClipping;
     void toggleClipping();
-    ofImage explorePrompt;
-    float imgAlpha;
-    bool started;
+   
 };
