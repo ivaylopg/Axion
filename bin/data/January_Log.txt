@@ -1,0 +1,10 @@
+
+
+--------------------------------------- 2015-01-22-17-00-18-334
+[notice ] Connecting to /dev/tty.MindWaveMobile-DevA ...
+[ fatal ] /dev/tty.MindWaveMobile-DevA could not be opened. Check that the name is a valid COM port on your system.
+[notice ] ##################
+------------- NEW USER - January 22, 2015 05:00:25 pm - 0
+
+[ error ] ofFmodSoundPlayer: loadSound(): could not load "../../../data/audio/woodenBoxLoopEQ.aiff"
+[notice ] ##### QUITTING - January 22, 2015 05:00:54 pm - 28477 #####

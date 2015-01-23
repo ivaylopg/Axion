@@ -40,6 +40,9 @@ void Tunnel::setup(){
     isPaused = false;
     hallWidth = 10.0 * distFactor;
     isClipping = true;
+    explorePrompt.loadImage("explore.png");
+    imgAlpha = 255;
+    started = false;
 }
 
 //--------------------------------------------------------------
@@ -179,7 +182,17 @@ void Tunnel::draw(float alph){
     ofDisableLighting();
     
     camera.end();
+    
+    ofPushMatrix();
+    ofSetColor(255, imgAlpha);
+    ofTranslate(ofGetWidth()/2,ofGetHeight()/2);
+    explorePrompt.draw(-400,-200);
+    ofSetColor(255, 255);
+    ofPopMatrix();
 }
+
+
+
 //cout << hallLight.getPosition() << "  |  " << camera.getPosition() << endl;
 //cout << hallLight.getIsPointLight() << "  |  " << hallLight.getIsSpotlight() << endl;
 //hallLight.setOrientation(camera.getOrientationEuler());

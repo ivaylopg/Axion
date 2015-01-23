@@ -133,12 +133,19 @@ void Intro::draw(){
         } else {
             introAlph = 255;
         }
-        startButton.draw(transX + imgW * 0.09, transY + imgH * offset, introAlph);
-        helpButton.draw(transX + imgW * 0.09, transY + imgH * offset + 40, introAlph);
+        
+        ofSetColor(200,introAlph);
+        akzidenzS.drawString("Axion (A°) is the name of a subatomic particle invented to solve a mystery.\n\n"
+                             "A° (Axion) is an unconventional interactive documentary \nthat allows players to explore and discover for themselves\n\n"
+                             "Some scientists think that A° may also resolve another,\nlarger gap in our understanding of the universe.", transX + imgW * 0.09, transY + imgH * offset - 40);
+        ofSetColor(255,255);
+        
+        startButton.draw(transX + imgW * 0.09, transY + imgH * offset + 160, introAlph);
+        //helpButton.draw(transX + imgW * 0.09, transY + imgH * offset + 200, introAlph);
         ofSetColor(128, introAlph);
-        akzidenz.drawString("USE EEG:  ", transX + imgW * 0.09, transY + imgH * offset + 80);
-        settingsButton.draw(transX + imgW * 0.09 + akzidenz.stringWidth("USE EEG:X"), transY + imgH * offset + 80, introAlph);
-        quitButton.draw(transX + imgW * 0.09, transY + imgH * offset + 120, introAlph);
+        akzidenz.drawString("USE EEG:  ", transX + imgW * 0.09, transY + imgH * offset + 200);
+        settingsButton.draw(transX + imgW * 0.09 + akzidenz.stringWidth("USE EEG:X"), transY + imgH * offset + 200, introAlph);
+        quitButton.draw(transX + imgW * 0.09, transY + imgH * offset + 240, introAlph);
     }
     ofPopMatrix();
     
@@ -161,6 +168,7 @@ void Intro::draw(){
         ofPopMatrix();
     }
 //    1.5749
+    showHelp = false;//////////////
     if (showHelp) {
         if (helpAlpha < 255) {
             helpAlpha += alphaStep;

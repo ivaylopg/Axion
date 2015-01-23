@@ -31,7 +31,7 @@ void controller::setup(){
     debugMessages = false;
     isPaused = false;
     
-    current_state = I;
+    current_state = C;
     next_state = B;
     
     mind.reset();
@@ -46,6 +46,7 @@ void controller::setup(){
     ofEnableSeparateSpecularLight();
     
     tunnel1.secondTime = false;
+    tunnel1.started = false;
     lastMessage = " ";
 
     #ifdef __APPLE__
@@ -91,7 +92,8 @@ void controller::setup(){
     introPlayer.counter = 0;
     introPlayer.firstAlpha = 0;
     
-    ida.newFile("");
+    ida.newFile("audio/woodenBoxLoopEQ.aiff");
+    ida.pause(true);
 }
 
 //--------------------------------------------------------------
@@ -104,7 +106,7 @@ void controller::update(){
     
     switch (current_state) {
         case A:
-            if (sound.volume < volume) {
+            if (sound.volume < volume/2) {
                 sound.fadeUp();
             }
             if (usingEEG) {
@@ -166,7 +168,7 @@ void controller::update(){
             break;
             
         case I:
-            if (sound.volume < volume) {
+            if (sound.volume < volume/2) {
                 sound.fadeUp();
             }
             outroPlayer.update();
@@ -216,6 +218,20 @@ void controller::update(){
     }
     */
     //cout << "Diff 10: " << mind.diff10() << " | Diff 20:" << mind.diff20() << endl;
+    
+    if (current_state == A || current_state == I) {
+        ida.pause(false);
+        if (ida.volume < volume) {
+            ida.fadeUp();
+        }
+    } else {
+        if (ida.volume > 0) {
+            ida.fadeDown();
+        } else {
+            ida.pause(true);
+        }
+    }
+    ida.update();
 }
 
 //--------------------------------------------------------------
@@ -224,6 +240,7 @@ void controller::draw(){
     ofBackground(0);
     
     sound.play();
+    ida.play();
     
     if (!isPaused && (current_state == A || current_state == I)) {
         switch (current_state) {

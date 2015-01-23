@@ -12,7 +12,7 @@ int main( ){
 #endif                                              // cp -r bin/data "$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/Resources";
     
     ofSetLogLevel(OF_LOG_NOTICE);
-    ofLogToFile("Axion_Log.txt", true);
+    ofLogToFile("January_Log.txt", true);
     //ofLogToConsole();
 	ofRunApp(new controller());
 }
