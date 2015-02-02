@@ -16,6 +16,7 @@
 #include "outro.h"
 #include "eegReader.h"
 #include "eegvis.h"
+#include "iss.h"
 
 #include "ofEventUtils.h"
 #include "ofEvents.h"
@@ -82,6 +83,8 @@ public:
     //bool startedWalking;
     
     ofFbo canvas;
+    
+//    iss iss;
     
     string lastMessage;
     

@@ -61,6 +61,7 @@
 		F96C7CE01A71B9D0002E359C /* ofxThinkGear.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F96C7CDA1A71B9D0002E359C /* ofxThinkGear.cpp */; };
 		F96C7CE11A71B9D0002E359C /* ThinkGear.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F96C7CDF1A71B9D0002E359C /* ThinkGear.framework */; };
 		F97436F918F4897F00199CF1 /* soundPlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F97436F818F4897F00199CF1 /* soundPlayer.cpp */; };
+		F97F2CCC1A8015E3001760CD /* iss.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F97F2CCA1A8015E3001760CD /* iss.cpp */; };
 		F995D6B4190AB81B00F2F53A /* MSACoreGL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F995D6B1190AB81B00F2F53A /* MSACoreGL.cpp */; };
 		F995D6BF190AB93100F2F53A /* eegReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F995D6BE190AB93100F2F53A /* eegReader.cpp */; };
 		F9DA0FF218F3D9D600AC6455 /* fader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F9DA0FF118F3D9D600AC6455 /* fader.cpp */; };
@@ -224,6 +225,8 @@
 		F96C7CDF1A71B9D0002E359C /* ThinkGear.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ThinkGear.framework; sourceTree = "<group>"; };
 		F97436F718F4893400199CF1 /* soundPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = soundPlayer.h; sourceTree = "<group>"; };
 		F97436F818F4897F00199CF1 /* soundPlayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = soundPlayer.cpp; sourceTree = "<group>"; };
+		F97F2CCA1A8015E3001760CD /* iss.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = iss.cpp; sourceTree = "<group>"; };
+		F97F2CCB1A8015E3001760CD /* iss.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iss.h; sourceTree = "<group>"; };
 		F995D6AD190AB81B00F2F53A /* MSACore-Cinder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MSACore-Cinder.h"; sourceTree = "<group>"; };
 		F995D6AE190AB81B00F2F53A /* MSACore-OF.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MSACore-OF.h"; sourceTree = "<group>"; };
 		F995D6AF190AB81B00F2F53A /* MSACore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSACore.h; sourceTree = "<group>"; };
@@ -447,6 +450,8 @@
 				F91DBA1C18F9A75500C90AB6 /* states.h */,
 				F965125618EDED6E00933E76 /* tunnel.cpp */,
 				F965125518EDEB1D00933E76 /* tunnel.h */,
+				F97F2CCA1A8015E3001760CD /* iss.cpp */,
+				F97F2CCB1A8015E3001760CD /* iss.h */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -764,6 +769,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F97F2CCC1A8015E3001760CD /* iss.cpp in Sources */,
 				F97436F918F4897F00199CF1 /* soundPlayer.cpp in Sources */,
 				F96329AC1A19AB0C006A7BF0 /* ofxEasingBounce.cpp in Sources */,
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
