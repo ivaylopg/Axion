@@ -25,7 +25,7 @@ void SoundPlayer::setup(){
 
 //--------------------------------------------------------------
 void SoundPlayer::update(){
-    ofSoundUpdate();
+    //ofSoundUpdate();
     
     
 //    if (!hasStarted && volume < 0.65) {

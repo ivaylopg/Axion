@@ -77,6 +77,8 @@ public:
     
     ofImage explorePrompt;
     float imgAlpha;
+    int exploreCounter;
+    bool timeFade;
     //bool startedWalking;
     
     ofFbo canvas;

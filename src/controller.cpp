@@ -31,7 +31,7 @@ void controller::setup(){
     debugMessages = false;
     isPaused = false;
     
-    current_state = A;
+    current_state = C;
     next_state = B;
     
     mind.reset();
@@ -48,6 +48,9 @@ void controller::setup(){
     tunnel1.secondTime = false;
     explorePrompt.loadImage("explore.png");
     imgAlpha = 255;
+    exploreCounter = 0;
+    timeFade = false;
+    
     lastMessage = " ";
 
     #ifdef __APPLE__
@@ -99,6 +102,8 @@ void controller::setup(){
 
 //--------------------------------------------------------------
 void controller::update(){
+    //ofSoundUpdate();
+    
     if (usingEEG) {
         mind.update();
     }
@@ -233,6 +238,11 @@ void controller::update(){
         }
     }
     ida.update();
+    
+    if (current_state != C) {
+        tunnel1.stopSound();
+    }
+    ofSoundUpdate();
 }
 
 //--------------------------------------------------------------
@@ -352,15 +362,29 @@ void controller::draw(){
     
     if (current_state==C && !tunnel1.secondTime) {
         ofPushMatrix();
-        ofSetColor(255, imgAlpha);
+        //ofSetColor(255, imgAlpha);
+        ofSetColor(255, ofClamp(imgAlpha, 0, 255));
         ofTranslate(ofGetWidth()/2,ofGetHeight()/2,10);
         
         float d = tunnel1.camPos.z;
-        if (d <= 17) {
+        if (d <= 17 && !timeFade) {
             imgAlpha = 255 - (d *15);
-        } else {
+        } else if (d > 17 && !timeFade) {
             imgAlpha = 0;
         }
+        
+        if (!timeFade && exploreCounter <= 120) {
+            exploreCounter++;
+        } else {
+            timeFade = true;
+        }
+            
+        if (timeFade && imgAlpha > 0) {
+            imgAlpha-=5;
+        }
+        
+        //cout << exploreCounter << endl;
+        
         explorePrompt.draw(-400,-200);
         //cout << "EXPLORE" << endl;
         ofSetColor(255, 255);

@@ -24,7 +24,8 @@ void Tunnel::setup(){
     camera.sensitivityY = 0.05f;
     camera.accel = 0.02f;
     camera.disableMove();
-    camera.disableStrafe();
+    //camera.disableStrafe();
+    camera.enableStrafe();
     
     camPos = ofVec3f(0,0,0);
     
@@ -40,6 +41,27 @@ void Tunnel::setup(){
     isPaused = false;
     hallWidth = 10.0 * distFactor;
     isClipping = true;
+    
+    
+    volumeL = 0.0;
+    volumeR = 0.0;
+    
+    soundL.loadSound("audio/tunnelL.aiff");
+
+    soundL.setMultiPlay(false);
+    soundL.setLoop(true);
+    soundL.setPan(-1.0f);
+    soundL.setVolume(volumeL);
+    soundR.play();
+
+    
+    soundR.loadSound("audio/tunnelR.aiff");
+    
+    soundR.setMultiPlay(false);
+    soundR.setLoop(true);
+    soundR.setPan(1.0f);
+    soundR.setVolume(volumeR);
+    soundR.play();
 }
 
 //--------------------------------------------------------------
@@ -53,8 +75,8 @@ void Tunnel::update(){
     //*/
     
     //*
-    float camSpeed = 1.0f * (60/ofGetFrameRate());
-    camera.speed = ofClamp(camSpeed,1.0,2.0);
+    float camSpeed = 0.8f * (60/ofGetFrameRate());
+    camera.speed = ofClamp(camSpeed,0.5,2.0);
     //*/
     
     /*
@@ -63,6 +85,29 @@ void Tunnel::update(){
     camera.sensitivityX = sensitivity;
     camera.sensitivityY = sensitivity;
     //*/
+    
+    soundL.setVolume(volumeL);
+    soundR.setVolume(volumeR);
+    
+    if (isPaused) {
+        soundL.setPaused(true);
+        soundR.setPaused(true);
+    } else {
+        soundL.setPaused(false);
+        soundR.setPaused(false);
+    }
+    
+    if (secondTime) {
+        soundL.stop();
+        soundR.stop();
+    } else {
+        if (!soundL.getIsPlaying()) {
+            soundL.play();
+        }
+        if (!soundR.getIsPlaying()) {
+            soundR.play();
+        }
+    }
 }
 
 //--------------------------------------------------------------
@@ -153,13 +198,37 @@ void Tunnel::draw(float alph){
     //*/
     
     if (!secondTime) {
-        if (camera.getPosition().squareDistance(goal1) < (4900.0 * distFactor)) {
+        double d1 = camera.getPosition().squareDistance(goal1);
+        double d2 = camera.getPosition().squareDistance(goal2);
+        if (d1 < (4900.0 * distFactor)) {
             ofSendMessage("TunnelA:1:3");
+            if (volumeL > 0) {
+                volumeL -= 0.05;
+            }
+            if (volumeR > 0) {
+                volumeR -= 0.05;
+            }
         }
         
-        if (camera.getPosition().squareDistance(goal2) < (4900.0 * distFactor)) {
+        if (d2 < (4900.0 * distFactor)) {
             ofSendMessage("TunnelA:2:3");
+            if (volumeL > 0) {
+                volumeL -= 0.05;
+            }
+            if (volumeR > 0) {
+                volumeR -= 0.05;
+            }
         }
+        float lookLR = ofMap(camera.getZAxis().x, -1.0, 1.0, -100, 100, true);
+        //cout << lookLR << endl;
+        
+        if (d1 > (101000 * distFactor)) {
+            float vol = ofMap(d1, (104440 * distFactor), (101000 * distFactor), 0.0, 0.3, true);
+            volumeL = vol;
+            volumeR = vol;
+        }
+        
+        
     }
     
     if (secondTime) {
@@ -179,6 +248,7 @@ void Tunnel::draw(float alph){
     ofDisableLighting();
     
     camera.end();
+
     
     
 }
@@ -197,4 +267,10 @@ void Tunnel::draw(float alph){
 //--------------------------------------------------------------
 void Tunnel::toggleClipping() {
     isClipping = !isClipping;
+}
+
+//--------------------------------------------------------------
+void Tunnel::stopSound() {
+    soundL.stop();
+    soundR.stop();
 }

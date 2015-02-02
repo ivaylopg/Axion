@@ -33,5 +33,12 @@ public:
     float hallWidth;
     bool isClipping;
     void toggleClipping();
+    void stopSound();
+
+private:
+    ofSoundPlayer soundL;
+    ofSoundPlayer soundR;
+    float volumeL;
+    float volumeR;
    
 };
