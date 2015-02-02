@@ -220,15 +220,38 @@ void Tunnel::draw(float alph){
             }
         }
         float lookLR = ofMap(camera.getZAxis().x, -1.0, 1.0, -100, 100, true);
-        //cout << lookLR << endl;
         
         if (d1 > (101000 * distFactor)) {
-            float vol = ofMap(d1, (104440 * distFactor), (101000 * distFactor), 0.0, 0.3, true);
+            float vol = ofMap(d1, (400000 * distFactor), (101000 * distFactor), 0.0, 0.3, true);
             volumeL = vol;
-            volumeR = vol;
+        } else {
+            volumeL = 0.3;
         }
         
+        if (d2 > (104000 * distFactor)) {
+            float vol = ofMap(d2, (650000 * distFactor), (104000 * distFactor), 0.0, 0.3, true);
+            volumeR = vol;
+        } else {
+            volumeR = 0.3;
+            volumeL = ofMap(d2, (20000.0 * distFactor), (104000 * distFactor), 0, 0.3,true);
+        }
         
+        if (d1 <= (101000 * distFactor)) {
+            volumeR = ofMap(d1, (20000.0 * distFactor), (101000 * distFactor), 0, 0.3,true);
+        }
+        
+        float lPan = ofMap(lookLR, -50, -100, -1, 0, true);
+        float rPan = ofMap(lookLR, 50, 100, 1, 0, true);
+        soundL.setPan(lPan);
+        soundR.setPan(rPan);
+        
+        if (lPan > -1) {
+            volumeR = (soundR.getVolume()+(lPan/200));
+        }
+        
+        if (rPan < 1) {
+            volumeL = (soundL.getVolume()-(rPan/200));
+        }
     }
     
     if (secondTime) {
