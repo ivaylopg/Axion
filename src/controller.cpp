@@ -31,7 +31,7 @@ void controller::setup(){
     debugMessages = false;
     isPaused = false;
     
-    current_state = A;
+    current_state = C;
     next_state = B;
     
     mind.reset();
@@ -151,6 +151,13 @@ void controller::update(){
             
         case E:
             //outroPlayer.update();
+            if (sound.volume < volume/3) {
+                sound.fadeUp();
+            } else {
+                sound.volume = volume/3;
+            }
+            iss.pause(isPaused);
+            iss.update();
             break;
             
         case F:
@@ -195,6 +202,10 @@ void controller::update(){
             tunnel1.camera.target(ofVec3f(0,0,1));
             //tunnel.secondTime = true;
         }
+        if (current_state != E && next_state == E) {
+            iss.resetCamera();
+            //tunnel.secondTime = true;
+        }
         current_state = next_state;
         
         if (current_state != A && current_state != I && !isPaused) {
@@ -204,7 +215,8 @@ void controller::update(){
                 vis.updateBranches(current_state,playerBranch2.getPath());
             } else if (current_state == H) {
                 vis.updateBranches(current_state,playerOutro.getPath());
-            } else if (current_state == C && tunnel1.secondTime){
+            //} else if (current_state == C && tunnel1.secondTime){
+            } else if (current_state == E){
                 vis.updateBranches(current_state, "second");
             } else {
                 vis.updateBranches(current_state);
@@ -315,8 +327,8 @@ void controller::draw(){
                 playerBranch1.draw(0, 0, ofGetWidth(), ofGetHeight());
                 
                 if (playerBranch1.isDone) {
-                    next_state = C;
-                    tunnel1.secondTime = true;
+                    next_state = E;
+                    //tunnel1.secondTime = true;
                     playerBranch1.clear();
                     fader.fadeUp();
                 }
@@ -324,6 +336,8 @@ void controller::draw(){
                 
             case E:
                 //outroPlayer.draw();
+                iss.draw();
+                playerOutro.load(vids04);
                 break;
                 
             case F:

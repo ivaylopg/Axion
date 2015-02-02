@@ -84,7 +84,7 @@ public:
     
     ofFbo canvas;
     
-//    iss iss;
+    Iss iss;
     
     string lastMessage;
     

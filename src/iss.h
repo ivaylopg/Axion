@@ -12,7 +12,9 @@ public:
     void update();
     void draw();
     void pause(bool b);
+    void resetCamera();
     
 private:
     bool isPaused;
+    int counter;
 };
