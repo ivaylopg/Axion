@@ -34,8 +34,8 @@ void Outro::setup(){
 //--------------------------------------------------------------
 void Outro::update(){
     scroll -= 1.5f;
-    cout << scroll << endl;
-    if (scroll < -2000) {
+    //cout << scroll << endl;
+    if (scroll < -2200) {
         scroll = 1600;
     }
 }
@@ -63,10 +63,10 @@ void Outro::draw(){
     ofSetColor(128);
     akzidenz28.drawString("RAIN ASHFORD, IVAYLO GETOV, KYLE GUSTAFSON,\nJASMINE IDUN LYMAN, JULIAN MACIEJEWSKI, JASON WISHNOW", 100, 140+scroll);
     
-    akzidenz28.drawString("RAIN ASHFORD\nIVAYLO GETOV\nKYLE GUSTAFSON\nJASMINE IDUN LYMAN\nJULIAN MACIEJEWSKI\nJASON WISHNOW", 100, 300+scroll);
+    akzidenz28.drawString("RAIN ASHFORD\nIVAYLO GETOV\nKYLE GUSTAFSON\nJASMINE IDUN LYMAN\nJULIAN MACIEJEWSKI\nJASON WISHNOW", 100, 250+scroll);
     
     ofSetColor(255);
-    akzidenz28.drawString("INTERACTIVITY DEVELOPMENT\nSOFTWARE & VISUAL DESIGN\nSCIENCE ADVISOR\nEXPERIENCE DESIGN\nSOFTWARE DEVELOPMENT\nCREATIVE DEVELOPMENT", 450, 300+scroll);
+    akzidenz28.drawString("INTERACTIVITY DEVELOPMENT\nSOFTWARE & VISUAL DESIGN\nSCIENCE ADVISOR\nEXPERIENCE DESIGN\nSOFTWARE DEVELOPMENT\nCREATIVE DEVELOPMENT", 450, 250+scroll);
     
     ofSetColor(255);
     akzidenz32.drawString("SCIENTISTS:", 100, 580+scroll);
@@ -98,20 +98,28 @@ void Outro::draw(){
                           "IDA LONG\n"
                           "IDUN", 100, 1440+scroll);
     
+    ofSetColor(255);
     akzidenz32.drawString("NASA IMAGES:", 100, 1600+scroll);
     ofSetColor(128);
     akzidenz28.drawString("FERMI PROVIDES NEW INSIGHTS ON DARK MATTER\n"
                           "COMPUTER MODEL SHOWS A DISK GALAXY'S LIFE HISTORY",100, 1640+scroll);
     
+    ofSetColor(255);
+    akzidenz32.drawString("A CO-PRODUCTION OF:", 100, 1800+scroll);
+    ofSetColor(128);
+    akzidenz28.drawString("STORY ARCHITECT\n"
+                          "LUXLOOP\n"
+                          "PLAYCENTRIC", 100, 1840+scroll);
+    
     
     ofSetColor(255);
-    akzidenz32.drawString("THANK YOU:", 100, 1800+scroll);
+    akzidenz32.drawString("THANK YOU:", 100, 2000+scroll);
     ofSetColor(128);
     akzidenz28.drawString("NEAL HARTMAN at CERN; OPEYEMI OLUKEMI, INGRID KOPP, and AMELIE LEENHARDT at TRIBECA FILM INSTITUTE\n"
                           "NATASHA RODRIGUEZ-BACCHUS ( DESIGN), MACIEJ MUSZKOWSKI (PROGRAMMING), ZACH CALDWELL (VIDEOGRAPHY)\n"
                           "JEREMY UNGAR, NICK ZEIG-OWENS, and CLINT JOSEPH HANAWAY (CAMERA ASSISTANTS)\n"
                           "INSTITUTION OF NEUROSCIENCE AND PHYSIOLOGY IN GOTHENBURG (AUDIO)\n"
-                          "JOONA KURIKKA at the CERN IDEALAB, and EVERYBODY AT CERN, CINEGLOBE, AND TFI.", 100, 1840+scroll);
+                          "JOONA KURIKKA at the CERN IDEALAB, and EVERYBODY AT CERN, CINEGLOBE, AND TFI.", 100, 2040+scroll);
     
     
     ofPopMatrix();

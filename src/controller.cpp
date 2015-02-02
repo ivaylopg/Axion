@@ -31,7 +31,7 @@ void controller::setup(){
     debugMessages = false;
     isPaused = false;
     
-    current_state = C;
+    current_state = A;
     next_state = B;
     
     mind.reset();
@@ -174,8 +174,10 @@ void controller::update(){
             break;
             
         case I:
-            if (sound.volume < volume/2) {
+            if (sound.volume < volume/3) {
                 sound.fadeUp();
+            } else {
+                sound.volume = volume/3;
             }
             outroPlayer.update();
             break;

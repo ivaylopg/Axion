@@ -76,7 +76,7 @@ void Tunnel::update(){
     
     //*
     float camSpeed = 0.8f * (60/ofGetFrameRate());
-    camera.speed = ofClamp(camSpeed,0.5,2.0);
+    camera.speed = ofClamp(camSpeed,0.8,1.6);
     //*/
     
     /*
