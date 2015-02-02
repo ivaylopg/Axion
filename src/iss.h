@@ -17,4 +17,6 @@ public:
 private:
     bool isPaused;
     int counter;
+    ofSoundPlayer spaceSounds;
+    bool playedOnce;
 };
