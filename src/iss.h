@@ -43,4 +43,7 @@ private:
     ofLight	light2;
     
     float distFactor;
+    ofImage exploreImg;
+    float imgAlpha;
+    int fadePoint;
 };

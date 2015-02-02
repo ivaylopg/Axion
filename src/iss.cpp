@@ -9,6 +9,7 @@ Iss::Iss(){
 void Iss::setup() {
     isPaused = false;
     counter = 0;
+    fadePoint = 200;
     
     spaceSounds.loadSound("audio/2b.aiff");
     
@@ -72,12 +73,19 @@ void Iss::setup() {
     eSpin = -0.01;
     labelPos = ofVec3f(0,0,0);
     labelHeight = 50;
+    
+    exploreImg.loadImage("explore.png");
+    imgAlpha = 255;
 
 }
 
 //--------------------------------------------------------------
 void Iss::update() {
-    cout << spaceSounds.getPosition() << endl;
+    
+    if (counter < fadePoint) {
+        counter++;
+    }
+    //cout << spaceSounds.getPosition() << endl;
     if (spaceSounds.getPosition() >= 0.99) {
         ofSendMessage("TunnelB:0:7");
     }
@@ -89,10 +97,18 @@ void Iss::update() {
     }
     
     earthSphere.rotate(eSpin, 0, 1.0, 0.0);
+    if (isPaused) {
+        spaceSounds.setPaused(true);
+    } else {
+        spaceSounds.setPaused(false);
+    }
 }
 
 //--------------------------------------------------------------
 void Iss::draw() {
+    if (!isPaused) {
+        cam.enableMove();
+    }
     cam.begin();
     ofSetColor(255, 0, 0);
     //ofRect(0, 0, ofGetWidth(), ofGetHeight());
@@ -147,16 +163,42 @@ void Iss::draw() {
     light2.disable();
     ofDisableLighting();
     
-    //double dist = ofDistSquared(ams.getPosition().x, ams.getPosition().z, cam.getPosition().x, cam.getPosition().z);
-    //cam.speed = ofMap(dist, 5000, 500000, 4.0 * (60/ofGetFrameRate()), 7.0 * (60/ofGetFrameRate()),true);
+    double dist = ofDistSquared(ams.getPosition().x, ams.getPosition().z, cam.getPosition().x, cam.getPosition().z);
+    cam.speed = ofMap(dist, 5000, 500000, 2.0 * (60/ofGetFrameRate()), 3.2 * (60/ofGetFrameRate()),true);
+    
+    labelPos = cam.worldToScreen(ams.getPosition());
     
     cam.end();
+    
+    ofSetColor(255,0,0,ofMap(dist, 5000, 500000, 255, 0));
+    ofLine(labelPos.x, labelPos.y, labelPos.x+200,labelPos.y+200);
+    ofDrawBitmapString("Alpha Magnetic Spectrometer (AMS-02) Experiment\nDark Matter Detector", labelPos.x+200,labelPos.y+200);
+    
+    ofSetColor(255, 255, 255,255);
+    
+    if (counter >= fadePoint && imgAlpha > 0) {
+        imgAlpha-=5;
+    }
+    ofSetColor(255, 255, 255, ofClamp(imgAlpha, 0, 255));
+    
+    ofPushMatrix();
+    ofTranslate(ofGetWidth()/2,ofGetHeight()/2,10);
+    exploreImg.draw(-400,-200);
+    //cout << "EXPLORE" << endl;
+    ofPopMatrix();
+    
+    ofSetColor(255, 255, 255,255);
 
 }
 
 //--------------------------------------------------------------
 void Iss::pause(bool b) {
     isPaused = b;
+    if (b) {
+        cam.disableMove();
+    } else {
+        cam.enableMove();
+    }
 }
 
 //--------------------------------------------------------------
@@ -164,5 +206,10 @@ void Iss::resetCamera() {
     playedOnce = false;
     spaceSounds.setPosition(0.0);
     
-    
+    counter = 0;
+    cam.reset(-100);
+    cam.loadCameraPosition();
+    cam.setMinMaxY(40, 40);
+    cam.speed = 4.0f;
+    cam.flipCam();
 }
