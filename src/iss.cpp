@@ -124,16 +124,34 @@ void Iss::draw() {
     light2.enable();
     ofEnableSeparateSpecularLight();
     
-    ofSetColor(255);
+    ofSetColor(200);
     //station.drawWireframe();
     station.drawFaces();
     ofSetColor(255);
+    
+    ofSetColor(180,0,0,255);
+    
+    ofPushMatrix();
+    ofTranslate(ams.getPosition().x, ams.getPosition().y,ams.getPosition().z);
+    //ofTranslate(ams.getPosition());
+    ofRotateY(-90);
+    ofRotateX(-90);
+    //ofTranslate(ams.getPosition().scale(-1.0));
+    ofTranslate(-ams.getPosition().x, -ams.getPosition().y,-ams.getPosition().z);
+    ams.drawFaces();
+    ofPopMatrix();
+    
+    ofSetColor(255,255,255,255);
     
     light.disable();
     light2.disable();
     ofDisableLighting();
     
+    //double dist = ofDistSquared(ams.getPosition().x, ams.getPosition().z, cam.getPosition().x, cam.getPosition().z);
+    //cam.speed = ofMap(dist, 5000, 500000, 4.0 * (60/ofGetFrameRate()), 7.0 * (60/ofGetFrameRate()),true);
+    
     cam.end();
+
 }
 
 //--------------------------------------------------------------
