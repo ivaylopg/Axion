@@ -704,6 +704,7 @@ void controller::drawDebugMessages(){
             break;
             
         case C:
+        case E:
             if (debugMessages) {
                 ofDrawBitmapString("FrameRate: " + ofToString(ofGetFrameRate(),2) +
                                    " | Screen Size: " + ofToString(ofGetScreenWidth()) + "," + ofToString(ofGetScreenHeight()) +
