@@ -62,6 +62,8 @@ void Tunnel::setup(){
     soundR.setPan(1.0f);
     soundR.setVolume(volumeR);
     soundR.play();
+    
+    maxVol = 1.0;
 }
 
 //--------------------------------------------------------------
@@ -75,8 +77,8 @@ void Tunnel::update(){
     //*/
     
     //*
-    float camSpeed = 0.8f * (60/ofGetFrameRate());
-    camera.speed = ofClamp(camSpeed,0.8,1.6);
+    float camSpeed = 1.0f * (60/ofGetFrameRate());
+    camera.speed = ofClamp(camSpeed,0.9,1.9);
     //*/
     
     /*
@@ -222,22 +224,22 @@ void Tunnel::draw(float alph){
         float lookLR = ofMap(camera.getZAxis().x, -1.0, 1.0, -100, 100, true);
         
         if (d1 > (101000 * distFactor)) {
-            float vol = ofMap(d1, (400000 * distFactor), (101000 * distFactor), 0.0, 0.3, true);
+            float vol = ofMap(d1, (400000 * distFactor), (101000 * distFactor), 0.0, maxVol, true);
             volumeL = vol;
         } else {
-            volumeL = 0.3;
+            volumeL = maxVol;
         }
         
         if (d2 > (104000 * distFactor)) {
-            float vol = ofMap(d2, (650000 * distFactor), (104000 * distFactor), 0.0, 0.3, true);
+            float vol = ofMap(d2, (650000 * distFactor), (104000 * distFactor), 0.0, maxVol, true);
             volumeR = vol;
         } else {
-            volumeR = 0.3;
-            volumeL = ofMap(d2, (20000.0 * distFactor), (104000 * distFactor), 0, 0.3,true);
+            volumeR = maxVol;
+            volumeL = ofMap(d2, (20000.0 * distFactor), (104000 * distFactor), 0, maxVol,true);
         }
         
         if (d1 <= (101000 * distFactor)) {
-            volumeR = ofMap(d1, (20000.0 * distFactor), (101000 * distFactor), 0, 0.3,true);
+            volumeR = ofMap(d1, (20000.0 * distFactor), (101000 * distFactor), 0, maxVol,true);
         }
         
         float lPan = ofMap(lookLR, -50, -100, -1, 0, true);

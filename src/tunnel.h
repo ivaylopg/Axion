@@ -40,5 +40,6 @@ private:
     ofSoundPlayer soundR;
     float volumeL;
     float volumeR;
+    float maxVol;
    
 };
