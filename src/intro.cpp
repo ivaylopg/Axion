@@ -116,7 +116,7 @@ void Intro::draw(){
         akzidenz.drawString("USE EEG:  ", transX + imgW * 0.09, transY + imgH * offset + 120);
         settingsButton.draw(transX + imgW * 0.09 + akzidenz.stringWidth("USE EEG:X"), transY + imgH * offset + 120);
         restartButton.draw(transX + imgW * 0.09, transY + imgH * offset + 160);
-        quitButton.draw(transX + imgW * 0.09, transY + imgH * offset + 200);
+        //quitButton.draw(transX + imgW * 0.09, transY + imgH * offset + 200);
     } else {
         if (counter < 6 * 60){
             counter ++;
@@ -145,7 +145,7 @@ void Intro::draw(){
         ofSetColor(128, introAlph);
         akzidenz.drawString("USE EEG:  ", transX + imgW * 0.09, transY + imgH * offset + 200);
         settingsButton.draw(transX + imgW * 0.09 + akzidenz.stringWidth("USE EEG:X"), transY + imgH * offset + 200, introAlph);
-        quitButton.draw(transX + imgW * 0.09, transY + imgH * offset + 240, introAlph);
+        //quitButton.draw(transX + imgW * 0.09, transY + imgH * offset + 240, introAlph);
     }
     ofPopMatrix();
     
